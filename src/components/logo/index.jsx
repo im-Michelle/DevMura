@@ -1,3 +1,5 @@
+import './Logo.css'
+
 const Logo = () => {
     return (    
         <img src="../img/icono-logo.svg/" alt="Icono de logo de devmura" />
