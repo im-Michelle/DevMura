@@ -78,7 +78,6 @@ npm run dev
     <li>Alejandra Patricia Chaparro Matias</li>
     <li>Karla Sofía Gómez Aguilar</li>
     <li>Alvaro David Gonzalez Oceguera</li>
-    <li>Alvaro David Gonzalez Oceguera</li>
     <li>Fátima del Cielo Moreno Díaz</li>
     <li>Omar Fernando Michaca Vera</li>
     <li>Edgar Eduardo Reyes Becerra</li>
