@@ -72,6 +72,17 @@ npm run dev
 8. Abre una pull request en el repositorio original y describe tus cambios en detalle.
 9. Espera comentarios y realiza los ajustes necesarios si es necesario.
 10. ¡Tu contribución será revisada y fusionada en el proyecto!
+
+## Autoría
+<ol>
+    <li>Alvaro David Gonzalez Oceguera</li>
+    <li>Fátima del Cielo Moreno Díaz</li>
+    <li>Omar Fernando Michaca Vera</li>
+    <li>Edgar Eduardo Reyes Becerra</li>
+    <li>Michelle Trejo García</li>
+    <li>Carlos David Vazquez Herrera</li>
+</ol>
+
 ## Licencia
 
 Este proyecto está bajo la Licencia [MIT](https://opensource.org/licenses/MIT).
