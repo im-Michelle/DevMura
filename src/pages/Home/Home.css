@@ -1,0 +1,70 @@
+.nav{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    
+    width: 100%;
+    height: 10vh;
+    position: fixed;
+    background: rgba( 255, 255, 255, 0.15 );
+    backdrop-filter: blur( 5.5px );
+    -webkit-backdrop-filter: blur( 5.5px );
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.113);
+}
+.logo{
+    font-size: 1.8rem;
+    padding-left: 10vw;
+}
+.links{
+    padding-right: 10vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 30vw;
+}
+a{
+    font-size: 1.8rem;
+    transition: all 0.2s ease-in-out;
+    text-decoration: none;
+}
+a:hover{
+    color: rgb(255, 255, 255);
+    
+}
+.presentation{
+    padding-top: 10vh;
+    width: 100%;
+    height: 100vh;
+    background-image: url("https://images-ext-1.discordapp.net/external/wPO0SweOQjGV4E3QOUokQWDNglQ2eyXd5CeE3m_hhrY/%3Fauto%3Dcompress%26cs%3Dtinysrgb%26w%3D1260%26h%3D750%26dpr%3D1/https/images.pexels.com/photos/1181279/pexels-photo-1181279.jpeg?width=908&height=606");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.introduction{
+    width: 100%;
+    background: rgba( 255, 255, 255, 0.15 );
+    backdrop-filter: blur( 5.5px );
+    -webkit-backdrop-filter: blur( 5.5px );
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.113);
+}
+.introduction:hover{
+    background: rgba( 255, 255, 255, 0.25 );
+    backdrop-filter: blur( 5.5px );
+    -webkit-backdrop-filter: blur( 5.5px );
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.113);
+}
+.intro-text{
+    font-size: 3rem;
+    color: rgb(255, 255, 255);
+    text-align: center;
+    padding: 0 10vw;
+}
+ 
