@@ -8,7 +8,7 @@ const Home = () => {
             <main>
             <nav className="nav">
                 <div className="logo">
-                    <h4>DevMura</h4>
+                    <img src="../public/img/icono-dm-blanco.svg" alt="logo" className="logo-blanco"/>
                 </div>
                 <ul className="links">
                     <li><a href="#">Home</a></li>
@@ -20,21 +20,24 @@ const Home = () => {
             <section className="presentation">
                 <div className="introduction">
                     <div className="intro-text">
-                        <h1>Desenvolvimento Web</h1>
-                        <p>Desenvolvimento de sites e sistema.</p>
+                        <img src="../public/img/icono-logo-blanco.svg" alt="logo" className="logo-blanco"/>
                     </div>
                     <div className="cta">
-                        
                     </div>
                 </div>
             </section>
+            <section className="presentation">
 
-            
+            </section>
+            <section className="presentation">
 
+            </section>
+            <section className="presentation">
+
+            </section>
 
         </main>
             )
-
     }
 
 export default Home;
