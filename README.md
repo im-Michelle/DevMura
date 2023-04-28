@@ -28,7 +28,7 @@ git clone https://github.com/im-Michelle/DevMura.git
 
 2. Ve al directorio del proyecto:
 ```bash
-cd socialnet
+cd DevMura
 ```
 3. Instala las dependencias del proyecto:
 ```bash
