@@ -13,7 +13,7 @@ const Home = () => {
                 <ul className="links">
                     <li><a href="#">Home</a></li>
                     <li><a href="#">Sobre</a></li>
-                    <li><a href="#">Contato</a></li>
+                    <li><a href="#">Contacto</a></li>
                 </ul>
             </nav>
 
@@ -26,10 +26,14 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            <section className="presentation">
+
+            <section className="presentation-video">
+                <video loop autoPlay muted>
+                <source src="/public/img/STG_flash.mp4" type="video/mp4" />
+                </video>
 
             </section>
-            <section className="presentation">
+            <section className="presentation1">
 
             </section>
             <section className="presentation">
