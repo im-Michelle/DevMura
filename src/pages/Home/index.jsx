@@ -8,7 +8,7 @@ const Home = () => {
             <main>
             <nav className="nav">
                 <div className="logo">
-                    <img src="../public/img/icono-dm-blanco.svg" alt="logo" className="logo-blanco"/>
+                    <img src="/docs/img/icono-dm-blanco.svg" alt="logo" className="logo-blanco"/>
                 </div>
                 <ul className="links">
                     <li><a href="#">Home</a></li>
@@ -20,7 +20,7 @@ const Home = () => {
             <section className="presentation">
                 <div className="introduction">
                     <div className="intro-text">
-                        <img src="../public/img/icono-logo-blanco.svg" alt="logo" className="logo-blanco"/>
+                        <img src="/docs/img/icono-logo-blanco.svg" alt="logo" className="logo-blanco"/>
                     </div>
                     <div className="cta">
                     </div>
@@ -29,7 +29,7 @@ const Home = () => {
 
             <section className="presentation-video">
                 <video loop autoPlay muted>
-                <source src="/public/img/STG_flash.mp4" type="video/mp4" />
+                <source src="/docs/img/STG_flash.mp4" type="video/mp4" />
                 </video>
 
             </section>
