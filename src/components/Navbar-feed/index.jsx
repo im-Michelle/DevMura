@@ -4,7 +4,7 @@ import "./Navbar.css";
 
 const NavBar = () => {
   return (
-    <Navbar bg="white" expand="lg" className="border-bottom mb-3">
+    <Navbar bg="dark" expand="lg" className="border-bottom mb-3">
       <Container fluid>
         <Navbar.Brand href="#">
           <img src="" alt="Logo" className="me-2" />
