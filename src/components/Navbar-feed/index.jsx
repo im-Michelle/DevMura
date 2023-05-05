@@ -1,51 +1,49 @@
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+import React from 'react';
+import { Container, Nav, Navbar, NavDropdown, Form, Button, DropdownButton, Dropdown } from 'react-bootstrap';
+import "./Navbar.css";
 
-function NavBar() {
+const NavBar = () => {
   return (
-    <Navbar bg="light" expand="lg" >
+    <Navbar bg="white" expand="lg" className="border-bottom mb-3">
       <Container fluid>
-        <Navbar.Brand href="#">DevMura</Navbar.Brand>
+        <Navbar.Brand href="#">
+          <img src="" alt="Logo" className="me-2" />
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll">
-          <Nav
-            className="me-auto my-2 my-lg-0"
-            style={{ maxHeight: '100px' }}
-            navbarScroll
-          >
-            <Nav.Link href="#action1">Home</Nav.Link>
-            <Nav.Link href="#action2">Link</Nav.Link>
-            <NavDropdown title="Link" id="navbarScrollingDropdown">
-              <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action4">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action5">
-                Something else here
-              </NavDropdown.Item>
-            </NavDropdown>
-            <Nav.Link href="#" disabled>
-              Link
-            </Nav.Link>
+          <Nav className="mx-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
+            <Form className="d-flex">
+              <Form.Control
+                type="search"
+                placeholder="Search"
+                className="me-2"
+                aria-label="Search"
+              />
+            </Form>
+            <Nav.Link href="#" className="fw-bold">Home</Nav.Link>
+            <Nav.Link href="#" className="fw-bold">Friends</Nav.Link>
+            <Nav.Link href="#" className="fw-bold">Groups</Nav.Link>
+            <Nav.Link href="#" className="fw-bold">Messages</Nav.Link>
+            <Nav.Link href="#" className="fw-bold">Notifications</Nav.Link>
+            <DropdownButton
+              align="end"
+              title="Me"
+              id="dropdown-menu-align-end"
+              variant="secondary"
+              menuVariant="dark"
+            >
+              <Dropdown.ItemText className="text-center">Name here</Dropdown.ItemText>
+              <Dropdown.Item eventKey="1">Profile</Dropdown.Item>
+              <Dropdown.Item eventKey="2">Settings</Dropdown.Item>
+              <Dropdown.Item eventKey="3">Something else here</Dropdown.Item>
+              <Dropdown.Divider />
+              <Dropdown.Item eventKey="4">Sign out</Dropdown.Item>
+            </DropdownButton>
           </Nav>
-          <Form className="d-flex">
-            <Form.Control
-              type="search"
-              placeholder="Search"
-              className="me-2"
-              aria-label="Search"
-            />
-            <Button variant="outline-success">Search</Button>
-          </Form>
         </Navbar.Collapse>
       </Container>
     </Navbar>
   );
-}
+};
 
 export default NavBar;
