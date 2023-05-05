@@ -12,8 +12,10 @@ li{
     list-style: none;
 }
 body{
-    background-color: black;
-    color: white;
+    background-color: rgb(56, 45, 45);
+    color: rgb(0, 0, 0);
+    height: 100vh;
+    width: 100%;
   }
 
 /* ===== Scrollbar CSS ===== */
@@ -25,7 +27,7 @@ body{
 
   /* Chrome, Edge, and Safari */
   *::-webkit-scrollbar {
-    width: 20px;
+    width: 10px;
   }
 
   *::-webkit-scrollbar-track {

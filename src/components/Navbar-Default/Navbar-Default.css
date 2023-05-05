@@ -1,0 +1,51 @@
+.navbardefault__container{
+    background-color: rgba(60, 51, 51, 0); 
+}
+.navbar .nav-link,
+.navbar .navbar-brand,
+.navbar .dropdown-item {
+  color: white !important;
+}
+
+
+.navbar .dropdown-menu {
+  background-color: #4b4747; 
+  
+  width: 299px;
+  font-size: 1rem;
+}
+.navbar .dropdown-menu a{
+  font-size: 1rem;
+}
+
+.navbar .btn {
+  color: white;
+  background-color: transparent;
+  border-color: white;
+}
+
+.navbar .btn:hover,
+.navbar .btn:focus {
+  color: rgb(0, 0, 0);
+  background-color: white;
+  border-color: white;
+}
+.navbar-toggler-icon{
+    color: #ffffff;
+    background-color: red;
+    
+}
+
+@media (max-width: 575px) { 
+    .navbar-brand{
+        position: absolute;
+        left: 40vw;  
+    }
+    .navbar-toggler{
+        position: absolute;
+        right: 10vw;
+        z-index: 1000;
+    }
+}
+
+    

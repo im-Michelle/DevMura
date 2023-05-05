@@ -10,9 +10,10 @@ function App() {
   
   return (
     <>
-      <NavbarDefault/>
+      {/* <NavbarDefault/> */}
+      
       {/* <Logo/> */}
-      {/* <Home/> */}
+      <Home/>
 
     </>
   )

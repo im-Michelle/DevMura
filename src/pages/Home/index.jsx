@@ -6,16 +6,7 @@ const Home = () => {
 
         return(
             <main>
-            <nav className="nav">
-                <div className="logo">
-                    <img src="/docs/img/icono-dm-blanco.svg" alt="logo" className="logo-blanco"/>
-                </div>
-                <ul className="links">
-                    <li><a href="#">Home</a></li>
-                    <li><a href="#">Sobre</a></li>
-                    <li><a href="#">Contacto</a></li>
-                </ul>
-            </nav>
+            
 
             <section className="presentation">
                 <div className="introduction">
