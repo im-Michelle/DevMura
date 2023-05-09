@@ -2,6 +2,13 @@ import React from "react";
 import "./Home.css";
 import NavbarDefault from "../../components/Navbar-Default";
 import styled from "@emotion/styled";
+import TestiMonialCard from "../../components/Card";
+
+
+
+import { colors } from "../../ui/colors";
+
+
 
 const Main = styled.main`
   width: 100%;
@@ -21,15 +28,14 @@ const Header = styled.header`
   h1 {
     background-color: #00000097;
     font-size: 4rem;
-    color: #ffffff;
+    color: ${colors.primaryText};
     text-align: center;
     width: 90%;
     max-width: 800px;
   }
   h2 {
     font-size: 2rem;
-    background-color: #00000097;
-    color: #9a9090;
+    color: ${colors.secondaryText};
     text-align: center;
     width: 90%;
     max-width: 800px;
@@ -38,7 +44,7 @@ const Header = styled.header`
 const PlatformDescription = styled.section`
   width: 100%;
   height: fit-content;
-  background-color: #263339;
+  background-color: ${colors.background};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -52,7 +58,7 @@ const PlatformDescription = styled.section`
   }
 `;
 const Card = styled.div`
-  background-color: #a9dbdc3a;
+  background-color: ${colors.background};
   border-radius: 20px;
   height: fit-content;
   width: 90%;
@@ -78,6 +84,52 @@ const Card = styled.div`
     font-size: 2rem;
   }
 `;
+const Tecnologies = styled.section`
+  width: 100%;
+  height: fit-content;
+  background-color: #263339;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 60px 0;
+  h2 {
+    color: #ffffff;
+    width: 90%;
+    text-align: center;
+    font-size: 2rem;
+  }
+`
+const Testimonials = styled.section`
+  width: 100%;
+  height: fit-content;
+  background-color: #263339;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 60px 0;
+  h2{
+    color: #ffffff;
+    width: 90%;
+    text-align: center;
+    font-size: 2rem;
+
+  }
+`
+const TestimonialsCards = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 60px 0;
+    flex-wrap: wrap;
+`
+
 
 const Home = () => {
   return (
@@ -116,6 +168,41 @@ const Home = () => {
             </h2>
           </Card>
         </PlatformDescription>
+
+        <Tecnologies>
+          <h2>Accelerate high-quality software development. </h2>
+          <ul>
+            <li>
+              <img src="./img/tecnologies/html5.png" alt="" />
+            </li>
+          </ul>
+        </Tecnologies>
+
+        <Testimonials>
+          <h2>What developers are saying about DevMura</h2>
+          <TestimonialsCards>
+           <TestiMonialCard 
+           img="https://images.pexels.com/photos/1656684/pexels-photo-1656684.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+           name="John Doe"
+           descripotin="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum."
+           />
+           <TestiMonialCard 
+           img="https://images.pexels.com/photos/12659913/pexels-photo-12659913.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+           name="Steve Bell"
+           descripotin="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum."
+           />
+           <TestiMonialCard 
+           img="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+           name="Jane Smith"
+           descripotin="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum."
+           />
+           <TestiMonialCard 
+           img="https://images.pexels.com/photos/1727003/pexels-photo-1727003.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+           name="Miranda Miller"
+           descripotin="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum."
+           />
+           </TestimonialsCards>
+        </Testimonials>
       </Main>
     </>
   );

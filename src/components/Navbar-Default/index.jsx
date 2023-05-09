@@ -39,11 +39,29 @@ const StyledLink = styled(Link)`
 `;
 const Logo = styled.picture`
   height: 100px;
-  width: 120px;
+  width: 200px;
   margin: 0 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   img {
-    width: 100%;
-    height: 100%;
+    width: 150px;
+  }
+  ol {
+    display: none;
+  }
+  @media (min-width: 938px) {
+    width: 400px;
+    ol{
+      color: white;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin: 0 10px;
+    }
   }
 `;
 const Input = styled.input`
@@ -88,6 +106,7 @@ const Products = styled.div`
     flex-direction: column;
     justify-content: center;
     align-items: start;
+    
   }
 `;
 const SyledLink2 = styled(Link)`
@@ -125,6 +144,11 @@ const Buttons = styled.div`
   flex-direction: row;
   gap: 10px;
 `;
+const StyledLink5 = styled(Link)`
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+`;
 
 const NavbarDefault = () => {
   return (
@@ -137,6 +161,11 @@ const NavbarDefault = () => {
 
         <Logo>
           <img src="./img/icono-logo-blanco.svg" alt="" />
+          <ol>
+            <StyledLink5>Product</StyledLink5>
+            <StyledLink5>Solutions</StyledLink5>
+            <StyledLink5>Pricing</StyledLink5>
+          </ol>
         </Logo>
 
         <Input type="checkbox" id="checkbox" />
@@ -146,7 +175,6 @@ const NavbarDefault = () => {
           <ol>
             <SyledLink2>Product</SyledLink2>
             <SyledLink2>Solutions</SyledLink2>
-            <SyledLink2>Open Source</SyledLink2>
             <SyledLink2>Pricing</SyledLink2>
           </ol>
           <SyledLink3 to="/sign-up">Sign up</SyledLink3>
