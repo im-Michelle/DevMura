@@ -1,6 +1,16 @@
 # DevMura
 Para esta pagina se utilizo [GitHub Pages](https://im-michelle.github.io/DevMura/) para el despliegue.
 
+## Tecnologias utilizadas en este proyecto.
+
+### Front
+
+[![My Skills](https://skillicons.dev/icons?i=html,css,js,vite,react&theme=light)](https://skillicons.dev)
+
+## Back
+
+[![My Skills](https://skillicons.dev/icons?i=java,spring&theme=light)](https://skillicons.dev)
+
 ## Descripción
 
 DevMura es una aplicación web de red social que permite a los usuarios conectarse, compartir publicaciones, seguir a otros usuarios y participar en interacciones sociales en línea. El proyecto está desarrollado utilizando React como biblioteca de JavaScript y Vite como herramienta de construcción y desarrollo rápido.
