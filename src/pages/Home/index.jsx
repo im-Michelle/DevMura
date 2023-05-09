@@ -1,11 +1,15 @@
 import React from "react";
 import "./Home.css";
+import NavbarDefault from "../../components/Navbar-Default";
+import { Link } from "react-router-dom";
 
 
 const Home = () => {
 
         return(
+            
             <main>
+                <NavbarDefault/>
             
 
             <section className="presentation">
@@ -26,6 +30,7 @@ const Home = () => {
             </section>
             <section className="presentation1">
 
+                
             </section>
             <section className="presentation">
 

@@ -1,22 +1,25 @@
 import './App.css'
 import NavbarDefault from './components/Navbar-Default'
 
-//import Boton from './components/boton'
+
 import Logo from './components/logo'
-//import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import Home from './pages/Home'
 import NavBar from './components/Navbar-feed'
+
 
 function App() {
   
   return (
-    <>
-      {/* <NavBar/> */}
-      {/* <Logo/> */}
-      {/* <NavbarDefault/> */}
-      <Home/>
+    <Router>
+      <Routes>
+        <Route path='/' element={ <Home/>} />
+        <Route path='/iniciar' element={ <iniciarsesion/>} />
+        
 
-    </>
+      </Routes>
+
+    </Router>
   )
 }
 
