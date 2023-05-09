@@ -11,6 +11,7 @@ import GroupTwoToneIcon from '@mui/icons-material/GroupTwoTone';
 import { Link } from "react-router-dom";
 import { Box, TextField } from '@mui/material';
 
+import { colors } from "../../ui/colors";
 
 export const NavBarFeed = () => {
   return (
@@ -23,7 +24,7 @@ export const NavBarFeed = () => {
       </div>
       <div className="center">
       <Link to="/ruta-destino" className="link-style">
-          <HomeOutlinedIcon className="icon-style"/>
+          <HomeOutlinedIcon className="icon-style" fontSize='40px'/>
         </Link>
         <Link to="/ruta-destino">
           <GroupTwoToneIcon />

@@ -4,11 +4,7 @@ import NavbarDefault from "../../components/Navbar-Default";
 import styled from "@emotion/styled";
 import TestiMonialCard from "../../components/Card";
 
-
-
 import { colors } from "../../ui/colors";
-
-
 
 const Main = styled.main`
   width: 100%;
@@ -58,7 +54,7 @@ const PlatformDescription = styled.section`
   }
 `;
 const Card = styled.div`
-  background-color: ${colors.background};
+  background-color: ${colors.secondaryText};
   border-radius: 20px;
   height: fit-content;
   width: 90%;
@@ -72,13 +68,12 @@ const Card = styled.div`
     width: 30%;
     height: 400px;
   }
-
   img {
     width: 200px;
     border-radius: 20px;
   }
   h2 {
-    color: #ffffff;
+    color: ${colors.primaryText};
     width: 90%;
     text-align: center;
     font-size: 2rem;
@@ -87,7 +82,7 @@ const Card = styled.div`
 const Tecnologies = styled.section`
   width: 100%;
   height: fit-content;
-  background-color: #263339;
+  background-color: ${colors.background};
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -95,7 +90,7 @@ const Tecnologies = styled.section`
   gap: 20px;
   padding: 60px 0;
   h2 {
-    color: #ffffff;
+    color: ${colors.primaryText};
     width: 90%;
     text-align: center;
     font-size: 2rem;
@@ -104,7 +99,7 @@ const Tecnologies = styled.section`
 const Testimonials = styled.section`
   width: 100%;
   height: fit-content;
-  background-color: #263339;
+  background-color: ${colors.background};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -112,7 +107,7 @@ const Testimonials = styled.section`
   gap: 20px;
   padding: 60px 0;
   h2{
-    color: #ffffff;
+    color: ${colors.primaryText};
     width: 90%;
     text-align: center;
     font-size: 2rem;
@@ -129,7 +124,6 @@ const TestimonialsCards = styled.div`
     padding: 60px 0;
     flex-wrap: wrap;
 `
-
 
 const Home = () => {
   return (
