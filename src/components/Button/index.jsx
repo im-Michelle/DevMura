@@ -5,7 +5,7 @@ const Boton = () =>{
     
     return(
 
-        <button>pAGINA EN CONSTRUCCION</button>
+        <button className='button'>Boton</button>
 
     )
 
