@@ -1,44 +1,181 @@
-import React from 'react';
-import "./Navbar.css";
-import HomeOutlinedIcon from '@mui/icons-material/Home';
-import SearchIcon from '@mui/icons-material/Search';
-import PersonIcon from '@mui/icons-material/Person';
-import EmailIcon from '@mui/icons-material/Email';
-import NotificationsIcon from '@mui/icons-material/Notifications';
-import EmailTwoToneIcon from '@mui/icons-material/EmailTwoTone';
-import NotificationsNoneTwoToneIcon from '@mui/icons-material/NotificationsNoneTwoTone';
-import GroupTwoToneIcon from '@mui/icons-material/GroupTwoTone';
-import { Link } from "react-router-dom";
-import { Box, TextField } from '@mui/material';
-
+import React, { useState } from 'react';
+import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import { colors } from "../../ui/colors";
 
+const NavBarContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 10px;
+  background-color: ${colors.background};
+`;
+
+const LogoContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-right: 20rem;
+
+  @media (max-width: 940px) {
+    margin-right: auto;
+  }
+`;
+
+const LogoImage = styled.img`
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+
+  @media (max-width: 948px) {
+    display: none;
+  }
+
+  @media (max-width: 449px) {
+    width: 20px;
+    height: 30px;
+    margin-right: 5px;
+  }
+`;
+
+const SearchInput = styled.input`
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  width: 300px;
+  background-color: ${colors.primaryText};
+
+  @media (max-width: 600px) {
+    width: 200px;
+  }
+
+  @media (max-width: 449px) {
+    width: 150px;
+  }
+`;
+
+const CenterLinks = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 4.5rem;
+
+  @media (max-width: 940px) {
+    justify-content: center;
+    gap: 2rem;
+  }
+`;
+
+const StyledLink = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #000;
+
+  .img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .text {
+    font-size: 13px;
+  }
+
+  @media (max-width: 1330px) {
+    &.link-responsive {
+      display: none;
+    }
+  }
+`;
+
+const ProfilePhoto = styled.img`
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+
+  @media (max-width: 449px) {
+    width: 30px;
+    height: 30px;
+  }
+`;
+
+const DropdownMenu = styled.div`
+  position: relative;
+`;
+
+const DropdownButton = styled.button`
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+`;
+
+const DropdownContent = styled.div`
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: ${colors.primaryText};
+  border-radius: 5px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 40px;
+  margin-top: 1.5rem;
+  display: ${(props) => (props.open ? 'block' : 'none')};
+`;
+
+const DropdownItem = styled(Link)`
+  display: block;
+  text-decoration: none;
+  color: #444;
+  padding: 10px;
+  font-size: 16px;
+  white-space: nowrap;
+`;
+
+const MeText = styled.span`
+  margin-top: 5px;
+  font-size: 15px;
+`;
+
 export const NavBarFeed = () => {
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
   return (
-    <div className="navbar">
-      <div className='right'>
-        <div className="logo-container">
-          <img src="ruta_del_logo.png" alt="Logo de la empresa" />
-        </div>
-        <input type="text" placeholder="Buscar" />
+    <NavBarContainer>
+      <div>
+        <LogoContainer>
+          <LogoImage src="ruta_del_logo.png" alt="Logo de la empresa" />
+          <SearchInput type="text" placeholder="Buscar" />
+        </LogoContainer>
       </div>
-      <div className="center">
-      <Link to="/ruta-destino" className="link-style">
-          <HomeOutlinedIcon className="icon-style" fontSize='40px'/>
-        </Link>
-        <Link to="/ruta-destino">
-          <GroupTwoToneIcon />
-        </Link>
-      </div>
-      <div className="left">
-        <Link to="/ruta-destino">
-          <NotificationsNoneTwoToneIcon />
-        </Link>
-        <Link to="/ruta-destino">
-          <EmailTwoToneIcon />
-        </Link>
-        <img src="img-profile.png" alt="profile-photo" />
-      </div>
-    </div>
+      <CenterLinks>
+        <StyledLink to="/home" className="link-style link-responsive">
+          <img className="img" src="https://img.icons8.com/material-outlined/24/000000/home--v2.png" alt="Home" />
+          <span className="text">Home</span>
+        </StyledLink>
+        <StyledLink to="/groups" className="link-style link-responsive">
+          <img className="img" src="https://img.icons8.com/android/24/000000/groups.png" alt="Groups" />
+          <span className="text">Groups</span>
+        </StyledLink>
+        <StyledLink to="/notifications" className="link-style link-responsive">
+          <img className="img" src="https://img.icons8.com/material/24/null/bell--v1.png" alt="Notifications" />
+          <span className="text">Notifications</span>
+        </StyledLink>
+        <StyledLink to="/messages" className="link-style">
+          <img className="img" src="https://img.icons8.com/material/24/null/filled-message--v1.png" alt="Messages" />
+          <span className="text">Messages</span>
+        </StyledLink>
+        <DropdownMenu>
+          <DropdownButton onClick={toggleDropdown}>
+            <ProfilePhoto src="img-profile.png" alt="profile-photo" />
+            <MeText>Me</MeText>
+          </DropdownButton>
+          <DropdownContent open={dropdownOpen}>
+            <DropdownItem to="/profile">View Profile</DropdownItem>
+            <DropdownItem to="/settings">Settings</DropdownItem>
+            <DropdownItem to="/logout">Sign Out</DropdownItem>
+          </DropdownContent>
+        </DropdownMenu>
+      </CenterLinks>
+    </NavBarContainer>
   );
 };
