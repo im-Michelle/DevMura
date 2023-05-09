@@ -1,11 +1,12 @@
-import './alerts.css'
+import './alerts.css';
+import AlertTitle from '@mui/material/Alert/Alert';
 
 const Alert = (props) => {
   return(
-    <alert>
+    <div className={`alert ${props.type}`}>
       <AlertTitle>{props.title}</AlertTitle>
-      {props.body}
-    </alert>
+      {props.message}
+    </div>
   )
 }
 
