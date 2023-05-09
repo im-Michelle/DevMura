@@ -1,4 +1,4 @@
-import { NavBarFeed } from "../../components/Navbar-Feed/NavBar"
+import { NavBarFeed } from "../../components/Navbar-Feed"
 
 
 export const Feed = () => {
