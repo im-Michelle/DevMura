@@ -32,14 +32,12 @@ const LogoImage = styled.img`
   height: 40px;
   margin-right: 10px;
 
-  /*
-  @media (max-width: 948px) {
-    display: none;
-  }
-  */
-
   @media (max-width: 449px) {
     margin-right: 20px;
+  }
+
+  @media (max-width: 390px) {
+    margin-left: 5rem;
   }
 `;
 
@@ -57,6 +55,10 @@ const SearchInput = styled.input`
   @media (max-width: 449px) {
     width: 150px;
   }
+
+  @media (max-width: 390px) {
+    width: 180px;
+  }
 `;
 
 const CenterLinks = styled.div`
@@ -67,6 +69,41 @@ const CenterLinks = styled.div`
   @media (max-width: 940px) {
     justify-content: center;
     gap: 2rem;
+  }
+
+  @media (max-width: 768px) {
+    margin-left: 4rem;
+  }
+  @media (max-width: 939px) {
+    margin-left: 4rem;
+  }
+`;
+
+const StyledMenu = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: ${colors.primaryText};
+
+  .img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .text {
+    font-size: 13px;
+  }
+
+  @media (max-width: 449px) {
+    &.link-menu {
+      margin-top: 7px;
+      margin-left: 6px;
+    }
+  }
+
+  @media (max-width: 390px) {
+    margin-right: 4rem;
   }
 `;
 
@@ -86,13 +123,37 @@ const StyledLink = styled(Link)`
     font-size: 13px;
   }
 
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: ${colors.primaryText};
+    border-bottom: 2px solid ${colors.contrast};
+    left: 5px;
+  }
+
+  &:hover::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: ${colors.primaryText};
+    bottom: -2px;
+    left: -100%;
+    transition: all 0.3s ease;
+  }
+
+  &:hover::before {
+    left: 0;
+  }
+
   @media (max-width: 1330px) {
     &.link-responsive {
       display: none;
     }
   }
 
-  @media (max-width: 449px) {
+  @media (max-width: 540px) {
     &.link-messages {
       display: none;
     }
@@ -106,8 +167,11 @@ const ProfilePhoto = styled.img`
   border-radius: 100%;
 
   @media (max-width: 449px) {
+    margin-left: 30px;
+  }
 
-
+  @media (max-width: 390px) {
+    display: none;
   }
 `;
 
@@ -131,16 +195,37 @@ const DropdownContent = styled.div`
   padding: 40px;
   margin-top: 1.5rem;
   display: ${(props) => (props.open ? 'block' : 'none')};
+
+  @media (max-width: 390px) {
+    margin-right:4.2rem;
+    padding: 80px;
+  }
 `;
 
 const DropdownItem = styled(Link)`
   display: block;
   text-decoration: none;
-  color: #444;
+  color: ${colors.background};
   padding: 10px;
   font-size: 16px;
   white-space: nowrap;
+
+  &:hover {
+    color: ${colors.contrast};
+  }
+
+  @media (max-width: 390px) {
+    font-size: 30px;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+
+    &:hover {
+      color: ${colors.contrast};
+    }
+  }
 `;
+
+
 
 export const NavBarFeed = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -180,9 +265,9 @@ export const NavBarFeed = () => {
             <ProfilePhoto src="img-profile.png" alt="profile-photo" />
             <DropdownMenu>
               <DropdownButton onClick={toggleDropdown}>
-                <StyledLink to="/messages" className="link-style link-messages">
+                <StyledMenu className="link-menu">
                   <img className="img" src="../public/icons/menu.png" alt="Menu" />
-                </StyledLink>
+                </StyledMenu>
               </DropdownButton>
               <DropdownContent open={dropdownOpen}>
                 <DropdownItem to="/profile">View Profile</DropdownItem>
