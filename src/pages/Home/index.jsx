@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 import TestiMonialCard from "../../components/Card";
 
 import { colors } from "../../ui/colors";
+import { NavBarFeed } from "../../components/Navbar-feed";
 
 const Main = styled.main`
   width: 100%;
