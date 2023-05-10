@@ -3,9 +3,12 @@ import "./Home.css";
 import NavbarDefault from "../../components/Navbar-Default";
 import styled from "@emotion/styled";
 import TestiMonialCard from "../../components/Card";
+import TextField from '@mui/material/TextField';
 
 import { colors } from "../../ui/colors";
 import { Link } from "react-router-dom";
+import { Box, Button } from "@mui/material";
+import SendIcon from '@mui/icons-material/Send';
 
 const Main = styled.main`
   width: 100%;
@@ -270,7 +273,65 @@ const Devmura = styled.section`
   gap: 20px;
   padding: 60px 0;
 `
+const HomeFooter = styled.footer`
+  width: 100%;
+  height: fit-content;
+  background-color: ${colors.new};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 60px 0;
+  @media (min-width: 768px){
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 6rem;
+  }
+  h2{
+    color: ${colors.primaryText};
+    width: 90%;
+    text-align: center;
+    font-size: 2rem;
+    margin: auto;
+    @media (min-width: 768px){
+      width: 50%;
+      text-align: left;
+      font-size: 2rem;
+    }
+  }
+  p{
+    color: ${colors.secondaryText};
+    width: 100%;
+    text-align: center;
+    font-size: 1.0rem;
+    margin: auto;
+  }
+`
+const CustomBox = styled(Box)`
+  background-color: ${colors.new};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`
+const InputMui = styled(TextField)`
+  max-width: 800px;
+  color: ${colors.primaryText};
+  border-radius: 10px;
+  height: 60px;
+  input{
+    color: ${colors.primaryText};
+  }
+  label{
+    color: ${colors.primaryText};
+  }
+`
+const ButtonMui = styled(Button)`
+  color: ${colors.primaryText};
+  border-radius: 0 10px 10px 0;
 
+`
 const Home = () => {
   return (
     <>
@@ -308,7 +369,6 @@ const Home = () => {
             </h2>
           </Card>
         </PlatformDescription>
-
         <Features>
           <h2>Features </h2>
           <FeaturesDiv>
@@ -343,7 +403,6 @@ const Home = () => {
 
           </FeaturesDiv>
         </Features>
-
         <Tecnologies>
           <h2>Trusted by the world’s leading organizations.</h2>
           <ul>
@@ -356,44 +415,90 @@ const Home = () => {
             </li>
           </ul>
         </Tecnologies>
-
         <Testimonials>
           <h2>What developers are saying about DevMura</h2>
           <TestimonialsCards>
            <TestiMonialCard 
            img="https://images.pexels.com/photos/1656684/pexels-photo-1656684.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
            name="John Doe"
-           descripotin="DevMura has been a game-changer for me. I've connected with talented fullstack developers from around the world, collaborated on exciting projects, and expanded my knowledge through insightful discussions. It's a thriving community that fosters growth and empowers developers to achieve their full potential."
+           description="DevMura has been a game-changer for me. I've connected with talented fullstack developers from around the world, collaborated on exciting projects, and expanded my knowledge through insightful discussions. It's a thriving community that fosters growth and empowers developers to achieve their full potential."
            />
            <TestiMonialCard 
            img="https://images.pexels.com/photos/12659913/pexels-photo-12659913.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
            name="Steve Bell"
-           descripotin="DevMura has become my go-to platform for networking with fellow fullstack developers. The community is incredibly supportive, and I've received valuable feedback on my projects. It's an excellent resource for finding collaboration opportunities and staying up-to-date with the latest trends in the industry."
+           description="DevMura has become my go-to platform for networking with fellow fullstack developers. The community is incredibly supportive, and I've received valuable feedback on my projects. It's an excellent resource for finding collaboration opportunities and staying up-to-date with the latest trends in the industry."
            />
            <TestiMonialCard 
            img="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
            name="Jane Smith"
-           descripotin="Being a part of DevMura has been an enriching experience. The platform provides a dedicated space for fullstack developers to connect and learn from each other. The discussions are insightful, and the resources available have helped me enhance my skills. I highly recommend DevMura to any fullstack developer looking to grow both personally and professionally."
+           description="Being a part of DevMura has been an enriching experience. The platform provides a dedicated space for fullstack developers to connect and learn from each other. The discussions are insightful, and the resources available have helped me enhance my skills. I highly recommend DevMura to any fullstack developer looking to grow both personally and professionally."
            />
            <TestiMonialCard 
            img="https://images.pexels.com/photos/1727003/pexels-photo-1727003.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
            name="Miranda Miller"
-           descripotin="DevMura has exceeded my expectations. It has opened doors to new opportunities and allowed me to collaborate with talented fullstack developers who share similar passions. The platform's intuitive interface and active community make it easy to connect and engage in meaningful conversations. I'm grateful for the connections and friendships I've made through DevMura."
+           description="DevMura has exceeded my expectations. It has opened doors to new opportunities and allowed me to collaborate with talented fullstack developers who share similar passions. The platform's intuitive interface and active community make it easy to connect and engage in meaningful conversations. I'm grateful for the connections and friendships I've made through DevMura."
            />
            </TestimonialsCards>
         </Testimonials>
-
         <CallToAction>
           <CallToActionH2>Join Now and become part of the vibrant fullstack community!</CallToActionH2>
           <CallToActionH22>Get Started Today and unlock a world of opportunities for fullstack developers!</CallToActionH22>
           <CallToActionButton to="/">Join Now</CallToActionButton>
         </CallToAction>
-
-
-
         <Devmura>
           <img src="img/icono-logo-blanco.svg" alt="" />
         </Devmura>
+        <HomeFooter>
+          <div>
+            <h2>DevMura</h2>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/">About</Link>
+              </li>
+              <li>
+                <Link to="/">Contact</Link>
+              </li>
+              <li>
+                <Link to="/">Terms of Service</Link>
+              </li>
+              <li>
+                <Link to="/">Privacy Policy</Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2>Connect</h2>
+            <ul>
+              <li>
+                <Link to="/">Facebook</Link>
+              </li>
+              <li>
+                <Link to="/">Twitter</Link>
+              </li>
+              <li>
+                <Link to="/">LinkedIn</Link>
+              </li>
+              <li>
+                <Link to="/">Instagram</Link>
+              </li>
+            </ul>
+          </div>
+          <div>
+            <h2>Subscribe</h2>
+            <p>Sign up with your email address to receive news and updates.</p>
+            <form action="">
+              <CustomBox sx={{ display: 'flex', alignItems: 'flex-end' }}>
+              <InputMui id="standard-basic" label="email" variant="standard"  required/>
+              <ButtonMui variant="contained" type="submit"  endIcon={<SendIcon />}>Send</ButtonMui>
+              </CustomBox>
+            </form>
+          </div>
+
+
+        </HomeFooter>
 
         
 
