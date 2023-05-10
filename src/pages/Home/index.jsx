@@ -96,7 +96,7 @@ const Tecnologies = styled.section`
   height: fit-content;
   background-color: ${colors.new};
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 20px;
@@ -106,6 +106,25 @@ const Tecnologies = styled.section`
     width: 90%;
     text-align: center;
     font-size: 2rem;
+  }
+  li{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    @media (min-width: 953px) {
+      flex-direction: row;
+      flex-wrap: wrap;
+      width: 100%;
+      gap: 6rem;
+    }
+  }
+  img{
+    width: 200px;
+    height: 200px;
+    aspect-ratio: 3/2;
+    object-fit: cover;
   }
 `
 const Testimonials = styled.section`
@@ -176,6 +195,81 @@ const CallToActionButton = styled(Link)`
     color: #ffffff;
   }
 `;
+const Features = styled.section`
+  width: 100%;
+  height: fit-content;
+  background-color: ${colors.new};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 60px 0;
+  h2{
+    color: ${colors.primaryText};
+    width: 90%;
+    text-align: center;
+    font-size: 2rem;
+  }
+`
+const FeaturesDiv = styled.div`
+    box-shadow: 0px 0px 10px 0px #0000005e;
+    width: 90%;
+    max-width: 1700px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    padding: 60px 0;
+    flex-wrap: wrap;
+`
+const FeaturesCard = styled.div`
+  width: 90%;
+  max-width: 400px;
+  height: fit-content;
+  background-color: ${colors.new};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 60px 0;
+  h2{
+    color: ${colors.primaryText};
+    width: 90%;
+    text-align: center;
+    font-size: 2rem;
+  }
+  p{
+    color: ${colors.secondaryText};
+    width: 90%;
+    text-align: center;
+    font-size: 1.5rem;
+  }
+  img{
+    width: 200px;
+    height: 200px;
+    aspect-ratio: 3/2;
+    object-fit: cover;
+    filter: invert(1);
+  }
+`
+const Devmura = styled.section`
+  width: 100%;
+  height: fit-content;
+  background-image: url("img/pexels-steve-johnson-12594043.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 60px 0;
+`
 
 const Home = () => {
   return (
@@ -215,11 +309,50 @@ const Home = () => {
           </Card>
         </PlatformDescription>
 
+        <Features>
+          <h2>Features </h2>
+          <FeaturesDiv>
+            <FeaturesCard>
+              <img src="https://www.svgrepo.com/show/447223/admin-users.svg" alt="" />
+              <h2>User Profiles</h2>
+              <p>
+                Create your personalized profile and showcase your skills and experience.
+              </p>
+            </FeaturesCard>
+            <FeaturesCard>
+              <img src="https://www.svgrepo.com/show/447388/groups.svg" alt="" />
+              <h2>Thematic Groups</h2>
+              <p>
+                Join groups focused on specific technologies, frameworks, or interests.
+              </p>
+            </FeaturesCard>
+            <FeaturesCard>
+              <img src="https://www.svgrepo.com/show/447380/format-status.svg" alt="" />
+              <h2>Real-time Chat</h2>
+              <p>
+                Engage in live discussions and exchange ideas with fellow fullstack developers.
+              </p>
+            </FeaturesCard>
+            <FeaturesCard>
+              <img src="https://www.svgrepo.com/show/447539/welcome-write-blog.svg" alt="" />
+              <h2>Project Collaboration</h2>
+              <p>
+              Find collaborators for your projects and work together seamlessly.
+              </p>
+            </FeaturesCard>
+
+          </FeaturesDiv>
+        </Features>
+
         <Tecnologies>
-          <h2>Accelerate high-quality software development. </h2>
+          <h2>Trusted by the world’s leading organizations.</h2>
           <ul>
             <li>
-              <img src="./img/tecnologies/html5.png" alt="" />
+              <img src="https://www.svgrepo.com/show/354068/microsoft.svg" alt="microsoft" />
+              <img src="https://www.svgrepo.com/show/303123/bmw-logo.svg" alt="bmw" />
+              <img src="https://www.svgrepo.com/show/303303/oracle-6-logo.svg" alt="oracle" />
+              <img src="https://www.svgrepo.com/show/303125/apple-logo.svg" alt="apple" />
+              <img src="https://www.svgrepo.com/show/303246/google-1-1-logo.svg" alt="google" />
             </li>
           </ul>
         </Tecnologies>
@@ -255,6 +388,14 @@ const Home = () => {
           <CallToActionH22>Get Started Today and unlock a world of opportunities for fullstack developers!</CallToActionH22>
           <CallToActionButton to="/">Join Now</CallToActionButton>
         </CallToAction>
+
+
+
+        <Devmura>
+          <img src="img/icono-logo-blanco.svg" alt="" />
+        </Devmura>
+
+        
 
       </Main>
     </>
