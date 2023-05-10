@@ -7,7 +7,7 @@ import { CardActionArea, CardActions } from '@mui/material';
 
 import { colors } from "../../ui/colors";
 
-const  TestiMonialCard = ({img, name, descripotin }) => {
+const  TestiMonialCard = ({img, name, description }) => {
   return (
     <Card sx={{ maxWidth: 345 , backgroundColor: `${colors.new}`}}>
       <CardActionArea>
@@ -22,7 +22,7 @@ const  TestiMonialCard = ({img, name, descripotin }) => {
             {name}
           </Typography>
           <Typography variant="body2" color="text.secondary" sx={{color: "white"}}>
-            { descripotin}
+            { description}
           </Typography>
         </CardContent>
       </CardActionArea>
