@@ -1,7 +1,7 @@
 import './App.css'
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import Home from './pages/Home'
-import SocialFed from './pages/Social-feed'
+import SocialFeed from './pages/Social-feed'
 
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' element={ <Home/>} />
-        <Route path='*' element={ <SocialFed/>} />
+        <Route path='*' element={ <SocialFeed/>} />
         
 
       </Routes>

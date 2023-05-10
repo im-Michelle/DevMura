@@ -2,7 +2,7 @@ import './avatar.css'
 
 const Avatar = (props) =>{  
     return(
-        <img className='avatar' src={props.profile_image}  />
+        <img className='avatar' src={"props.profile_image"}  />
     )
 }
 
