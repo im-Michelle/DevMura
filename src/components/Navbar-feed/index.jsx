@@ -4,14 +4,11 @@ import { Link } from 'react-router-dom';
 import { colors } from "../../ui/colors";
 
 
-<<<<<<< HEAD
-=======
 const Nav = styled.nav`
   position: fixed;
   z-index: 100;
   width: 100%;
 `;
->>>>>>> dfc6828b9d39837d4b965377f0ba12e8c909e579
 
 const NavBarContainer = styled.div`
   display: flex;
