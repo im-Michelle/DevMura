@@ -7,7 +7,7 @@ const NavBarContainer = styled.div`
   display: flex;
   justify-content: center;
   padding: 10px;
-  background-color: ${colors.background};
+  background-color: ${colors.new};
 `;
 
 const LogoContainer = styled.div`
@@ -25,14 +25,14 @@ const LogoImage = styled.img`
   height: 40px;
   margin-right: 10px;
 
+  /*
   @media (max-width: 948px) {
     display: none;
   }
+  */
 
   @media (max-width: 449px) {
-    width: 20px;
-    height: 30px;
-    margin-right: 5px;
+    margin-right: 20px;
   }
 `;
 
@@ -41,7 +41,7 @@ const SearchInput = styled.input`
   border: none;
   border-radius: 5px;
   width: 300px;
-  background-color: ${colors.primaryText};
+  background-color: ${colors.secondaryText};
 
   @media (max-width: 600px) {
     width: 200px;
@@ -147,41 +147,46 @@ export const NavBarFeed = () => {
   };
   return (
     <NavBarContainer>
+
       <div>
         <LogoContainer>
           <LogoImage src="ruta_del_logo.png" alt="Logo de la empresa" />
           <SearchInput type="text" placeholder="Buscar" />
         </LogoContainer>
       </div>
-      <CenterLinks>
-        <StyledLink to="/home" className="link-style link-responsive">
-          <img className="img" src="https://img.icons8.com/material-outlined/24/000000/home--v2.png" alt="Home" />
-          <span className="text">Home</span>
-        </StyledLink>
-        <StyledLink to="/groups" className="link-style link-responsive">
-          <img className="img" src="https://img.icons8.com/android/24/000000/groups.png" alt="Groups" />
-          <span className="text">Groups</span>
-        </StyledLink>
-        <StyledLink to="/notifications" className="link-style link-responsive">
-          <img className="img" src="https://img.icons8.com/material/24/null/bell--v1.png" alt="Notifications" />
-          <span className="text">Notifications</span>
-        </StyledLink>
-        <StyledLink to="/messages" className="link-style link-messages">
-          <img className="img" src="https://img.icons8.com/material/24/null/filled-message--v1.png" alt="Messages" />
-          <span className="text">Messages</span>
-        </StyledLink>
-        <ProfilePhoto src="img-profile.png" alt="profile-photo" />
-        <DropdownMenu>
-          <DropdownButton onClick={toggleDropdown}>
-            <MeText>Me</MeText>
-          </DropdownButton>
-          <DropdownContent open={dropdownOpen}>
-            <DropdownItem to="/profile">View Profile</DropdownItem>
-            <DropdownItem to="/settings">Settings</DropdownItem>
-            <DropdownItem to="/logout">Sign Out</DropdownItem>
-          </DropdownContent>
-        </DropdownMenu>
-      </CenterLinks>
+
+      <div>
+        <CenterLinks>
+          <StyledLink to="/home" className="link-style link-responsive">
+            <img className="img" src="https://img.icons8.com/material-outlined/24/000000/home--v2.png" alt="Home" />
+            <span className="text">Home</span>
+          </StyledLink>
+          <StyledLink to="/groups" className="link-style link-responsive">
+            <img className="img" src="https://img.icons8.com/android/24/000000/groups.png" alt="Groups" />
+            <span className="text">Groups</span>
+          </StyledLink>
+          <StyledLink to="/notifications" className="link-style link-responsive">
+            <img className="img" src="https://img.icons8.com/material/24/null/bell--v1.png" alt="Notifications" />
+            <span className="text">Notifications</span>
+          </StyledLink>
+          <StyledLink to="/messages" className="link-style link-messages">
+            <img className="img" src="https://img.icons8.com/material/24/null/filled-message--v1.png" alt="Messages" />
+            <span className="text">Messages</span>
+          </StyledLink>
+          <ProfilePhoto src="img-profile.png" alt="profile-photo" />
+          <DropdownMenu>
+            <DropdownButton onClick={toggleDropdown}>
+              <MeText>Me</MeText>
+            </DropdownButton>
+            <DropdownContent open={dropdownOpen}>
+              <DropdownItem to="/profile">View Profile</DropdownItem>
+              <DropdownItem to="/settings">Settings</DropdownItem>
+              <DropdownItem to="/logout">Sign Out</DropdownItem>
+            </DropdownContent>
+          </DropdownMenu>
+        </CenterLinks>
+      </div>
+
     </NavBarContainer>
   );
 };
