@@ -84,6 +84,13 @@ const StyledLink = styled(Link)`
       display: none;
     }
   }
+
+  @media (max-width: 449px) {
+    &.link-messages {
+      
+    }
+  }
+  
 `;
 
 const ProfilePhoto = styled.img`
@@ -92,8 +99,7 @@ const ProfilePhoto = styled.img`
   border-radius: 100%;
 
   @media (max-width: 449px) {
-    width: 30px;
-    height: 30px;
+    display: none;
   }
 `;
 
@@ -160,13 +166,13 @@ export const NavBarFeed = () => {
           <img className="img" src="https://img.icons8.com/material/24/null/bell--v1.png" alt="Notifications" />
           <span className="text">Notifications</span>
         </StyledLink>
-        <StyledLink to="/messages" className="link-style">
+        <StyledLink to="/messages" className="link-style link-messages">
           <img className="img" src="https://img.icons8.com/material/24/null/filled-message--v1.png" alt="Messages" />
           <span className="text">Messages</span>
         </StyledLink>
+        <ProfilePhoto src="img-profile.png" alt="profile-photo" />
         <DropdownMenu>
           <DropdownButton onClick={toggleDropdown}>
-            <ProfilePhoto src="img-profile.png" alt="profile-photo" />
             <MeText>Me</MeText>
           </DropdownButton>
           <DropdownContent open={dropdownOpen}>
