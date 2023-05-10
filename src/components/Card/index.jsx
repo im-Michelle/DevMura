@@ -5,21 +5,23 @@ import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, CardActions } from '@mui/material';
 
+import { colors } from "../../ui/colors";
+
 const  TestiMonialCard = ({img, name, descripotin }) => {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345 , backgroundColor: `${colors.new}`}}>
       <CardActionArea>
         <CardMedia
           component="img"
-          height="240"
+          height="300"
           image={img}
           alt={name}
         />
         <CardContent>
-          <Typography gutterBottom variant="h5" component="div">
+          <Typography gutterBottom variant="h5" component="div" sx={{color: "white"}}>
             {name}
           </Typography>
-          <Typography variant="body2" color="text.secondary">
+          <Typography variant="body2" color="text.secondary" sx={{color: "white"}}>
             { descripotin}
           </Typography>
         </CardContent>

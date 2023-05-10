@@ -5,6 +5,7 @@ import styled from "@emotion/styled";
 import TestiMonialCard from "../../components/Card";
 
 import { colors } from "../../ui/colors";
+import { Link } from "react-router-dom";
 
 const Main = styled.main`
   width: 100%;
@@ -40,13 +41,13 @@ const Header = styled.header`
 const PlatformDescription = styled.section`
   width: 100%;
   height: fit-content;
-  background-color: ${colors.background};
+  background-color: ${colors.new};
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 20px;
-  padding: 60px 0;
+  padding: 5vh 0;
   @media (min-width: 953px) {
     flex-direction: row;
     flex-wrap: wrap;
@@ -72,10 +73,12 @@ const Card = styled.div`
   }
   @media (min-width:  953px) {
     width: 30%;
-    height: 500px;
+    height: fit-content;
   }
   img {
     width: 100%;
+    height: 100%;
+    object-fit: cover;
     border-radius: 20px;
     display: block;
   }
@@ -91,7 +94,7 @@ const Card = styled.div`
 const Tecnologies = styled.section`
   width: 100%;
   height: fit-content;
-  background-color: ${colors.background};
+  background-color: ${colors.new};
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -108,7 +111,7 @@ const Tecnologies = styled.section`
 const Testimonials = styled.section`
   width: 100%;
   height: fit-content;
-  background-color: ${colors.background};
+  background-color: ${colors.new};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -133,6 +136,46 @@ const TestimonialsCards = styled.div`
     padding: 60px 0;
     flex-wrap: wrap;
 `
+const CallToAction = styled.section`
+  width: 100%;
+  height: fit-content;
+  background-color: ${colors.new};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 60px 0;
+`
+const CallToActionH2 = styled.h2`
+  color: ${colors.primaryText};
+  width: 90%;
+  text-align: left;
+  font-size: 4rem;
+ 
+`
+const CallToActionH22 = styled.h2`
+  color: ${colors.secondaryText};
+  width: 90%;
+  text-align: left;
+  font-size: 2rem;
+`
+const CallToActionButton = styled(Link)`
+  background-color: ${colors.contrast};
+  width: 90%;
+  max-width: 800px;
+  text-align: center;
+  color: ${colors.primaryText};
+  padding: 20px 40px;
+  border-radius: 10px;
+  font-size: 2rem;
+  text-decoration: none;
+  transition: all 0.5s ease-in-out;
+  &:hover{
+    background-color: #c23d48;
+    color: #ffffff;
+  }
+`;
 
 const Home = () => {
   return (
@@ -206,6 +249,13 @@ const Home = () => {
            />
            </TestimonialsCards>
         </Testimonials>
+
+        <CallToAction>
+          <CallToActionH2>Join Now and become part of the vibrant fullstack community!</CallToActionH2>
+          <CallToActionH22>Get Started Today and unlock a world of opportunities for fullstack developers!</CallToActionH22>
+          <CallToActionButton to="/">Join Now</CallToActionButton>
+        </CallToAction>
+
       </Main>
     </>
   );
