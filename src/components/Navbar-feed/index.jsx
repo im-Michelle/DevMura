@@ -4,6 +4,14 @@ import { Link } from 'react-router-dom';
 import { colors } from "../../ui/colors";
 
 
+<<<<<<< HEAD
+=======
+const Nav = styled.nav`
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+`;
+>>>>>>> dfc6828b9d39837d4b965377f0ba12e8c909e579
 
 const NavBarContainer = styled.div`
   display: flex;
@@ -43,7 +51,7 @@ const SearchInput = styled.input`
   border: none;
   border-radius: 5px;
   width: 300px;
-  background-color: ${colors.secondaryText};
+  background-color: ${colors.primaryText};
 
   @media (max-width: 600px) {
     width: 200px;
@@ -70,7 +78,7 @@ const StyledLink = styled(Link)`
   flex-direction: column;
   align-items: center;
   text-decoration: none;
-  color: #000;
+  color: ${colors.primaryText};
 
   .img {
     width: 30px;
@@ -137,11 +145,6 @@ const DropdownItem = styled(Link)`
   white-space: nowrap;
 `;
 
-const MeText = styled.span`
-  margin-top: 5px;
-  font-size: 15px;
-`;
-
 export const NavBarFeed = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -149,47 +152,51 @@ export const NavBarFeed = () => {
     setDropdownOpen(!dropdownOpen);
   };
   return (
-    <NavBarContainer>
+    <Nav>
+      <NavBarContainer>
 
-      <div>
-        <LogoContainer>
-          <LogoImage src="ruta_del_logo.png" alt="Logo de la empresa" />
-          <SearchInput type="text" placeholder="Buscar" />
-        </LogoContainer>
-      </div>
+        <div>
+          <LogoContainer>
+            <LogoImage src="../public/img/icono-dm-blanco.svg" alt="Logo" />
+            <SearchInput type="text" placeholder="Search" />
+          </LogoContainer>
+        </div>
 
-      <div>
-        <CenterLinks>
-          <StyledLink to="/home" className="link-style link-responsive">
-            <img className="img" src="https://img.icons8.com/material-outlined/24/000000/home--v2.png" alt="Home" />
-            <span className="text">Home</span>
-          </StyledLink>
-          <StyledLink to="/groups" className="link-style link-responsive">
-            <img className="img" src="https://img.icons8.com/android/24/000000/groups.png" alt="Groups" />
-            <span className="text">Groups</span>
-          </StyledLink>
-          <StyledLink to="/notifications" className="link-style link-responsive">
-            <img className="img" src="https://img.icons8.com/material/24/null/bell--v1.png" alt="Notifications" />
-            <span className="text">Notifications</span>
-          </StyledLink>
-          <StyledLink to="/messages" className="link-style link-messages">
-            <img className="img" src="https://img.icons8.com/material/24/null/filled-message--v1.png" alt="Messages" />
-            <span className="text">Messages</span>
-          </StyledLink>
-          <ProfilePhoto src="img-profile.png" alt="profile-photo" />
-          <DropdownMenu>
-            <DropdownButton onClick={toggleDropdown}>
-              <MeText>Me</MeText>
-            </DropdownButton>
-            <DropdownContent open={dropdownOpen}>
-              <DropdownItem to="/profile">View Profile</DropdownItem>
-              <DropdownItem to="/settings">Settings</DropdownItem>
-              <DropdownItem to="/logout">Sign Out</DropdownItem>
-            </DropdownContent>
-          </DropdownMenu>
-        </CenterLinks>
-      </div>
+        <div>
+          <CenterLinks>
+            <StyledLink to="/home" className="link-style link-responsive">
+              <img className="img" src="../public/icons/home-light-blue.png" alt="Home" />
+              <span className="text">Home</span>
+            </StyledLink>
+            <StyledLink to="/groups" className="link-style link-responsive">
+              <img className="img" src="../public/icons/groups-red.png" alt="Groups" />
+              <span className="text">Groups</span>
+            </StyledLink>
+            <StyledLink to="/notifications" className="link-style link-responsive">
+              <img className="img" src="../public/icons/green-bell.png" alt="Notifications" />
+              <span className="text">Notifications</span>
+            </StyledLink>
+            <StyledLink to="/messages" className="link-style link-messages">
+              <img className="img" src="../public/icons/messages.png" alt="Messages" />
+              <span className="text">Messages</span>
+            </StyledLink>
+            <ProfilePhoto src="img-profile.png" alt="profile-photo" />
+            <DropdownMenu>
+              <DropdownButton onClick={toggleDropdown}>
+                <StyledLink to="/messages" className="link-style link-messages">
+                  <img className="img" src="../public/icons/menu.png" alt="Menu" />
+                </StyledLink>
+              </DropdownButton>
+              <DropdownContent open={dropdownOpen}>
+                <DropdownItem to="/profile">View Profile</DropdownItem>
+                <DropdownItem to="/settings">Settings</DropdownItem>
+                <DropdownItem to="/logout">Sign Out</DropdownItem>
+              </DropdownContent>
+            </DropdownMenu>
+          </CenterLinks>
+        </div>
 
-    </NavBarContainer>
+      </NavBarContainer>
+    </Nav>
   );
 };
