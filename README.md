@@ -1,5 +1,5 @@
 # DevMura
-Para esta pagina se utilizo [GitHub Pages](https://im-michelle.github.io/DevMura/) para el despliegue.
+Para esta pagina se utilizo [Vercel](dev-mura.vercel.app) para el despliegue.
 
 ## Tecnologias utilizadas en este proyecto.
 
