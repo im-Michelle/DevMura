@@ -3,6 +3,8 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { colors } from "../../ui/colors";
 
+
+
 const NavBarContainer = styled.div`
   display: flex;
   justify-content: center;
@@ -87,7 +89,7 @@ const StyledLink = styled(Link)`
 
   @media (max-width: 449px) {
     &.link-messages {
-      
+      display: none;
     }
   }
   
@@ -99,7 +101,8 @@ const ProfilePhoto = styled.img`
   border-radius: 100%;
 
   @media (max-width: 449px) {
-    display: none;
+
+
   }
 `;
 
@@ -162,8 +165,8 @@ export const NavBarFeed = () => {
           <img className="img" src="https://img.icons8.com/android/24/000000/groups.png" alt="Groups" />
           <span className="text">Groups</span>
         </StyledLink>
-        <StyledLink to="/notifications" className="link-style link-responsive">
-          <img className="img" src="https://img.icons8.com/material/24/null/bell--v1.png" alt="Notifications" />
+        <StyledLink to="/notifications" className="link-style link-responsive ">
+          <img className="img notification" src="https://img.icons8.com/material/24/null/bell--v1.png" alt="Notifications" />
           <span className="text">Notifications</span>
         </StyledLink>
         <StyledLink to="/messages" className="link-style link-messages">

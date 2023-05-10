@@ -54,8 +54,7 @@ const PlatformDescription = styled.section`
   }
 `;
 const Card = styled.div`
-  background-color: ${colors.secondaryText};
-  border-radius: 20px;
+  /* background-color: ${colors.navy}; */
   height: fit-content;
   width: 90%;
   display: flex;
@@ -64,19 +63,29 @@ const Card = styled.div`
   align-items: center;
   gap: 20px;
   padding: 20px;
+  position: relative;
+  transition: all 0.5s ease-in-out;
+  box-shadow: 0px 0px 10px 0px #0000005e;
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 0px 10px 0px #0000005e;
+  }
   @media (min-width:  953px) {
     width: 30%;
-    height: 400px;
+    height: 500px;
   }
   img {
-    width: 200px;
+    width: 100%;
     border-radius: 20px;
+    display: block;
   }
   h2 {
     color: ${colors.primaryText};
     width: 90%;
     text-align: center;
     font-size: 2rem;
+    position: relative;
+    
   }
 `;
 const Tecnologies = styled.section`
@@ -178,22 +187,22 @@ const Home = () => {
            <TestiMonialCard 
            img="https://images.pexels.com/photos/1656684/pexels-photo-1656684.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
            name="John Doe"
-           descripotin="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum."
+           descripotin="DevMura has been a game-changer for me. I've connected with talented fullstack developers from around the world, collaborated on exciting projects, and expanded my knowledge through insightful discussions. It's a thriving community that fosters growth and empowers developers to achieve their full potential."
            />
            <TestiMonialCard 
            img="https://images.pexels.com/photos/12659913/pexels-photo-12659913.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
            name="Steve Bell"
-           descripotin="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum."
+           descripotin="DevMura has become my go-to platform for networking with fellow fullstack developers. The community is incredibly supportive, and I've received valuable feedback on my projects. It's an excellent resource for finding collaboration opportunities and staying up-to-date with the latest trends in the industry."
            />
            <TestiMonialCard 
            img="https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
            name="Jane Smith"
-           descripotin="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum."
+           descripotin="Being a part of DevMura has been an enriching experience. The platform provides a dedicated space for fullstack developers to connect and learn from each other. The discussions are insightful, and the resources available have helped me enhance my skills. I highly recommend DevMura to any fullstack developer looking to grow both personally and professionally."
            />
            <TestiMonialCard 
            img="https://images.pexels.com/photos/1727003/pexels-photo-1727003.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
            name="Miranda Miller"
-           descripotin="Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum."
+           descripotin="DevMura has exceeded my expectations. It has opened doors to new opportunities and allowed me to collaborate with talented fullstack developers who share similar passions. The platform's intuitive interface and active community make it easy to connect and engage in meaningful conversations. I'm grateful for the connections and friendships I've made through DevMura."
            />
            </TestimonialsCards>
         </Testimonials>
