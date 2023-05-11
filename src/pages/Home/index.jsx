@@ -295,6 +295,7 @@ const HomeFooter = styled.footer`
     text-align: center;
     font-size: 2rem;
     margin: auto;
+    padding-bottom: 1rem;
     @media (min-width: 768px){
       width: 50%;
       text-align: left;
@@ -307,6 +308,14 @@ const HomeFooter = styled.footer`
     text-align: center;
     font-size: 1.0rem;
     margin: auto;
+  }
+  ul{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
   }
 `
 const CustomBox = styled(Box)`
@@ -330,7 +339,34 @@ const InputMui = styled(TextField)`
 const ButtonMui = styled(Button)`
   color: ${colors.primaryText};
   border-radius: 0 10px 10px 0;
-
+`
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: ${colors.primaryText};
+  &:hover{
+    background-color: ${colors.contrast};
+    color: ${colors.primaryText};
+  }
+`
+const SVGsocial = styled.img`
+  width: 40px;
+  height: 40px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  filter: invert(1);
+  transition: all 0.5s ease-in-out;
+  &:hover{
+    transform: scale(1.2);
+  }
+  @media (min-width: 768px){
+    width: 60px;
+    height: 60px;
+  }
+`
+const CustomUl = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 4rem;
 `
 const Home = () => {
   return (
@@ -453,38 +489,38 @@ const Home = () => {
             <h2>DevMura</h2>
             <ul>
               <li>
-                <Link to="/">Home</Link>
+                <StyledLink to="/">Home</StyledLink>
               </li>
               <li>
-                <Link to="/">About</Link>
+                <StyledLink to="/">About</StyledLink>
               </li>
               <li>
-                <Link to="/">Contact</Link>
+                <StyledLink to="/">Contact</StyledLink>
               </li>
               <li>
-                <Link to="/">Terms of Service</Link>
+                <StyledLink to="/">Terms of Service</StyledLink>
               </li>
               <li>
-                <Link to="/">Privacy Policy</Link>
+                <StyledLink to="/">Privacy Policy</StyledLink>
               </li>
             </ul>
           </div>
           <div>
             <h2>Connect</h2>
-            <ul>
+            <CustomUl>
               <li>
-                <Link to="/">Facebook</Link>
+                <Link to="/"><SVGsocial src="https://www.svgrepo.com/show/509967/github.svg" alt="" /></Link>
               </li>
               <li>
-                <Link to="/">Twitter</Link>
+                <Link to="/"><SVGsocial src="https://www.svgrepo.com/show/509968/gitlab.svg" alt="" /></Link>
               </li>
               <li>
-                <Link to="/">LinkedIn</Link>
+                <Link to="/"><SVGsocial src="https://www.svgrepo.com/show/510026/instagram.svg" alt="" /></Link>
               </li>
               <li>
-                <Link to="/">Instagram</Link>
+                <Link to="/"><SVGsocial src="https://www.svgrepo.com/show/510045/linkedin.svg" alt="" /></Link>
               </li>
-            </ul>
+            </CustomUl>
           </div>
           <div>
             <h2>Subscribe</h2>
