@@ -532,12 +532,7 @@ const Home = () => {
               </CustomBox>
             </form>
           </div>
-
-
         </HomeFooter>
-
-        
-
       </Main>
     </>
   );
