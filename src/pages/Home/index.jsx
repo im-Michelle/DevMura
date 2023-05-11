@@ -368,6 +368,7 @@ const CustomUl = styled.div`
   flex-direction: row;
   gap: 4rem;
 `
+
 const Home = () => {
   return (
     <>
