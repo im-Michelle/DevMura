@@ -490,7 +490,7 @@ const Home = () => {
             <h2>DevMura</h2>
             <ul>
               <li>
-                <StyledLink to="/">Home</StyledLink>
+                <StyledLink to="/feed">Home</StyledLink>
               </li>
               <li>
                 <StyledLink to="/">About</StyledLink>
