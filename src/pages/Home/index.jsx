@@ -10,6 +10,9 @@ import { Link } from "react-router-dom";
 import { Box, Button } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
 
+
+import CustomButton from "../../components/Button/index";
+
 const Main = styled.main`
   width: 100%;
 `;
@@ -480,7 +483,8 @@ const Home = () => {
         <CallToAction>
           <CallToActionH2>Join Now and become part of the vibrant fullstack community!</CallToActionH2>
           <CallToActionH22>Get Started Today and unlock a world of opportunities for fullstack developers!</CallToActionH22>
-          <CallToActionButton to="/">Join Now</CallToActionButton>
+          <CustomButton onClick={'#'} backgrdColor={colors.new}>Join Now</CustomButton>
+          {/* <CallToActionButton to="/">Join Now</CallToActionButton> */}
         </CallToAction>
         <Devmura>
           <img src="img/icono-logo-blanco.svg" alt="" />

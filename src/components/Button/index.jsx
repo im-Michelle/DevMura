@@ -1,16 +1,16 @@
-import './Boton.css'
+import './Button.css'
 import React from 'react'
 
-const Boton = (onClick, children) =>{
+const CustomButton = ({onClick, children, backgrdColor}) =>{
     return(
         <>
-            <button className='btn' onClick={onClick}>{children}</button>
+            <button className='btnCustom' onClick={onClick} style={{backgroundColor: backgrdColor}}>{children}</button>
         </>
     )
 
 }
 
-export default Boton;
+export default CustomButton;
 
 
 
