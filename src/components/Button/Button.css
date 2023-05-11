@@ -1,0 +1,35 @@
+.btn{
+    width: 300px;
+    height: 100px;
+    border: none;
+    color: white;
+    border-radius: 4px;
+    transition: ease-out 0.3s;
+    font-size: 2rem;
+    outline: none;
+    border: 3px solid aqua;
+    position: relative;
+    z-index: 1;
+}
+.btn:hover{
+    color: azure;
+    cursor: pointer;
+}
+.btn::before{
+    transition: 0.5s all ease;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    right: 50%;
+    bottom: 0;
+    opacity: 0;
+    content: "";;
+    background-color: aqua;
+}
+.btn:hover::before{
+    transition: 0.5s all ease;
+    left: 0;
+    right: 0;
+    opacity: 1;
+    z-index: -1;
+}
