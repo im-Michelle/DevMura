@@ -6,7 +6,7 @@ import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 
 
-export const RadioGroup = ({
+export const DevRadioGroup = ({
     options,
     defaultValue,
     handleChange,
@@ -23,7 +23,7 @@ export const RadioGroup = ({
                 onChange={handleChange}
             >
                 {options && options.map((option,idx) => (
-                    <FormControlLabel value={option.value} control={<Radio />} label={option.label} />
+                    <FormControlLabel key={idx} value={option.value} control={<Radio />} label={option.label} />
                 ))}
             </RadioGroup>
         </FormControl>
