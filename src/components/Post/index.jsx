@@ -6,6 +6,7 @@ import BookmarkIcon from '@mui/icons-material/Bookmark';
 import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import { useState } from "react";
 import FavoriteIcon from '@mui/icons-material/Favorite';
+import { Link } from 'react-router-dom';
 
 const PostContainer = styled.div`
   display: flex;
@@ -38,10 +39,15 @@ const ProfilesPost = styled.div`
   margin-right: 10px;
   margin-left: 10px;
 `;
-const Name = styled.h1`
+const Name = styled(Link)`
   font-size: 1.5rem;
   font-weight: 700;
   margin: 0;
+  color: ${colors.primaryText};
+  text-decoration: none;
+  &:hover {
+    color: ${colors.secondaryText};
+  }
 `;
 const Role = styled.h2`
   font-size: 1rem;
@@ -104,7 +110,7 @@ const IconosLike = styled.div`
   width: 50%;
 `;
 
-const Post = ({ key, name, role, userName, time, img, bodyText, postImg }) => {
+const Post = ({ id, name, role, userName, time, img, bodyText, postImg }) => {
 
   const [like, setLike] = useState(false);
 
@@ -113,11 +119,11 @@ const Post = ({ key, name, role, userName, time, img, bodyText, postImg }) => {
 
   
   return (
-    <PostContainer id={key}>
+    <PostContainer id={id} key={id}>
       <PostEncabezado>
         <ProfileImg src={img} alt={name} />
         <ProfilesPost>
-          <Name>{name}</Name>
+          <Name to={`/user/${id}`} >{name}</Name>
           <Role>{role}</Role>
           <UserName>{userName}</UserName>
           <Time>{time}</Time>
@@ -130,7 +136,7 @@ const Post = ({ key, name, role, userName, time, img, bodyText, postImg }) => {
 
       <PostFooter>
         <IconosLike>
-          { like ? <FavoriteIcon  fontSize="large" style={{color: `${colors.contrast}`}}  onClick={() => setLike(!like)} /> : <FavoriteBorderIcon fontSize="large"  onClick={() => setLike(!like)} />}
+          { like ? <FavoriteIcon  fontSize="large" style={{color: `${colors.contrast} `}}  onClick={() => setLike(!like)} /> : <FavoriteBorderIcon fontSize="large"  onClick={() => setLike(!like)} />}
           {/* <FavoriteBorderIcon fontSize="large"  /> */}
              
           <ChatBubbleIcon fontSize="large"/>

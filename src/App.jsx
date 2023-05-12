@@ -19,6 +19,7 @@ function App() {
         <Route path='sign-in' element={ <SignUp/>} />
         <Route path='abaout-us' element={ <SignUp/>} />
         <Route path='profile' element={ <ProfilePage/>} />
+        <Route path='user/:id' element={ <ProfilePage/>} />
         <Route path='*' element={ <SocialFeed/>} />
       </Routes>
     </Router>

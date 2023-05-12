@@ -5,12 +5,11 @@ import Header from "./components/Header";
 import { Link } from "react-router-dom";
 import Post from "../../components/Post";
 import { posts } from "../../data/posts";
+import AddPost from "./components/AddPost";
 
 
 
 let publicaciones = posts
-
-console.log(publicaciones)
 
 const Main = styled.main`
   display: flex;
@@ -46,12 +45,15 @@ const SocialFeed = () => {
             userName="@susygonzalez"
             img="https://images.pexels.com/photos/7841717/pexels-photo-7841717.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
           />
+
+          <AddPost />
             <Link to="/social-feed/1">Ver mas</Link>
 
             {publicaciones.map((post)=>{
                 return(
                     <Post
-                        key={post.id}
+                        key={post.key}
+                        id={post.key}
                         name={post.name}
                         role={post.role}
                         userName={post.userName}
