@@ -4,7 +4,6 @@ import Home from './pages/Home'
 import SocialFeed from './pages/Social-feed'
 import SignUp from './pages/Sign-up'
 
-
 function App() {
   
   return (
@@ -13,8 +12,6 @@ function App() {
         <Route path='/' element={ <Home/>} />
         <Route path='/sign-up' element={ <SignUp/>} />
         <Route path='*' element={ <SocialFeed/>} />
-        
-
       </Routes>
 
     </Router>
