@@ -1,21 +1,22 @@
-.btn{
+.btnCustom{
     width: 300px;
     height: 100px;
     border: none;
     color: white;
-    border-radius: 4px;
+    border-radius: 10px;
     transition: ease-out 0.3s;
     font-size: 2rem;
     outline: none;
-    border: 3px solid aqua;
+    border: 3px solid #E63946;
     position: relative;
     z-index: 1;
+    background-color: #171A22;
 }
-.btn:hover{
+.btnCustom:hover{
     color: azure;
     cursor: pointer;
 }
-.btn::before{
+.btnCustom::before{
     transition: 0.5s all ease;
     position: absolute;
     top: 0;
@@ -24,9 +25,9 @@
     bottom: 0;
     opacity: 0;
     content: "";;
-    background-color: aqua;
+    background-color: #E63946;
 }
-.btn:hover::before{
+.btnCustom:hover::before{
     transition: 0.5s all ease;
     left: 0;
     right: 0;

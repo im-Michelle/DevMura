@@ -10,7 +10,11 @@ function App() {
     <Router>
       <Routes>
         <Route path='/' element={ <Home/>} />
+        <Route path='/feed' element={ <SocialFeed/>} />
+        <Route path='/chat' element={ <SignUp/>} />
         <Route path='/sign-up' element={ <SignUp/>} />
+        <Route path='/sign-in' element={ <SignUp/>} />
+        <Route path='/abaout-us' element={ <SignUp/>} />
         <Route path='*' element={ <SocialFeed/>} />
       </Routes>
 
