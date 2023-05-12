@@ -1,15 +1,19 @@
 # DevMura
-Para esta pagina se utilizo [Vercel](dev-mura.vercel.app) para el despliegue.
+Para esta pagina se utilizo [Vercel](https://dev-mura.vercel.app/) para el despliegue.
 
 ## Tecnologias utilizadas en este proyecto.
 
 ### Front
 
-[![My Skills](https://skillicons.dev/icons?i=html,css,js,vite,react&theme=light)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=html,css,js,vite,react,emotion,materialui,styledcomponents&theme=light)](https://skillicons.dev) 
 
 ## Back
 
-[![My Skills](https://skillicons.dev/icons?i=java,spring&theme=light)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=java,spring,mysql&theme=light)](https://skillicons.dev)
+
+## Miscellaneous
+
+[![My Skills](https://skillicons.dev/icons?i=vercel,vscode,discord,idea,md,postman,github,git&theme=light)](https://skillicons.dev)
 
 ## Descripción
 
