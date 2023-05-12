@@ -1,12 +1,9 @@
-* {
-    box-sizing: border-box;
-}
 
-body {
+.body {
     background: #1D3557;
 }
 
-main {
+.bodyChangeProfile {
     max-width: 800px;
     width: 90%;
     margin: auto;

@@ -10,8 +10,7 @@ import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 
 const ChangeProfile = () => {
     return (
-        <main>
-
+        <div className="bodyChangeProfile">
             <Formulario action="">
                 <div>
                     <Label htmlFor="name">Name</Label>
@@ -37,7 +36,7 @@ const ChangeProfile = () => {
                 </div>
             </Formulario>
 
-        </main>
+        </div>
     )
 }
 

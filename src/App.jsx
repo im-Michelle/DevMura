@@ -23,7 +23,7 @@ function App() {
         <Route path='profile' element={ <ProfilePage/>} />
         <Route path='user/:id' element={ <ProfilePage/>} />
         <Route path='*' element={ <SocialFeed/>} />
-        <Route path='/changeprofile' element={ <ChangeProfile/> } />
+        <Route path='/changeprofile' element={ <ChangeProfile/> } /> 
       </Routes>
     </Router>
   )
