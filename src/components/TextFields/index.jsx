@@ -1,10 +1,33 @@
-import React from 'react'
-import '../TextFields/textfield.css'
+import React, { useState } from 'react';
+import '../TextFields/textfield.css';
 import { TextField } from '@mui/material';
-export const TextFields = () => {
+import Grid from '@mui/material/Unstable_Grid2';
+
+export const TextFields = ({ typeInput, helper }) => {
+
+
+
   return (
     <>
-        <TextField id="standard-basic" label="Standard" variant="standard" />
+      <p >
+        User: 
+      </p>
+      <Grid container spacing={3}>
+        <Grid xs={12} md={4} xl={4} className="textfieldGrid" >
+          <TextField
+            id="filled-error-helper-text"
+            type={typeInput}
+            label="Email"
+            variant="filled"
+            helperText={helper}
+            fullWidth
+            required
+            className="textfields"
+          />
+        </Grid>
+      </Grid>
+
+
     </>
   )
 }

@@ -14,7 +14,8 @@ const NavBarContainer = styled.div`
   display: flex;
   justify-content: center;
   padding: 10px;
-  background-color: ${colors.new};
+  background-color: #171a22d5;
+  backdrop-filter: blur(5px);
 `;
 
 const LogoContainer = styled.div`
