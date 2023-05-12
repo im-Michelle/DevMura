@@ -20,11 +20,11 @@ function App() {
         <Route path='chat' element={ <SignUp/>} />
         <Route path='sign-up' element={ <SignUp/>} />
         <Route path='sign-in' element={ <SignUp/>} />
-        <Route path='/abaout-us' element={ <AboutUs />} />
+        <Route path='abaout-us' element={ <AboutUs />} />
         <Route path='profile' element={ <ProfilePage/>} />
         <Route path='user/:id' element={ <ProfilePage/>} />
         <Route path='*' element={ <SocialFeed/>} />
-        <Route path='/changeprofile' element={ <ChangeProfile/> } />
+        <Route path='changeprofile' element={ <ChangeProfile/> } />
       </Routes>
     </Router>
   )
