@@ -286,7 +286,7 @@ const HomeFooter = styled.footer`
   justify-content: center;
   gap: 20px;
   padding: 60px 0;
-  @media (min-width: 768px){
+  @media (min-width: 958px){
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-start;
