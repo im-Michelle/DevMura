@@ -240,7 +240,7 @@ export const NavBarFeed = () => {
 
         <div>
           <LogoContainer>
-            <LogoImage src="../public/img/icono-dm-blanco.svg" alt="Logo" />
+            <LogoImage src="/img/icono-dm-blanco.svg" alt="Logo" />
             <SearchInput type="text" placeholder="Search" />
           </LogoContainer>
         </div>
@@ -248,26 +248,26 @@ export const NavBarFeed = () => {
         <div>
           <CenterLinks>
             <StyledLink to="/home" className="link-style link-responsive">
-              <img className="img" src="../public/icons/home-light-blue.png" alt="Home" />
+              <img className="img" src="/icons/home-light-blue.png" alt="Home" />
               <span className="text">Home</span>
             </StyledLink>
             <StyledLink to="/groups" className="link-style link-responsive">
-              <img className="img" src="../public/icons/groups-red.png" alt="Groups" />
+              <img className="img" src="/icons/groups-red.png" alt="Groups" />
               <span className="text">Groups</span>
             </StyledLink>
             <StyledLink to="/notifications" className="link-style link-responsive">
-              <img className="img" src="../public/icons/green-bell.png" alt="Notifications" />
+              <img className="img" src="/icons/green-bell.png" alt="Notifications" />
               <span className="text">Notifications</span>
             </StyledLink>
             <StyledLink to="/messages" className="link-style link-messages">
-              <img className="img" src="../public/icons/messages.png" alt="Messages" />
+              <img className="img" src="/icons/messages.png" alt="Messages" />
               <span className="text">Messages</span>
             </StyledLink>
             <ProfilePhoto src="img-profile.png" alt="profile-photo" />
             <DropdownMenu>
               <DropdownButton onClick={toggleDropdown}>
                 <StyledMenu className="link-menu">
-                  <img className="img" src="../public/icons/menu.png" alt="Menu" />
+                  <img className="img" src="/icons/menu.png" alt="Menu" />
                 </StyledMenu>
               </DropdownButton>
               <DropdownContent open={dropdownOpen}>
