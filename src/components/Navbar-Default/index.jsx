@@ -166,7 +166,7 @@ const NavbarDefault = () => {
     <Nav>
       <NavContainer>
         <Buttons>
-          <StyledLink4 to="/sing-in">Sign in</StyledLink4>
+          <StyledLink4 to="/sign-in">Sign in</StyledLink4>
           <StyledLink to="/sign-up">Sign up</StyledLink>
         </Buttons>
 
