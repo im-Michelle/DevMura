@@ -1,4 +1,4 @@
-export const posts = () => [
+export const posts = [
     {
         key: 1,
         name: 'Juanito Banana',
@@ -6,8 +6,8 @@ export const posts = () => [
         userName: "juanito6000",
         time: "hace 1 hora",
         img: "https://images.pexels.com/photos/4275717/pexels-photo-4275717.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        bodyText: "Me gusta el stack MERN"
-
+        bodyText: "Me gusta el stack MERN y hacer unos buenos momos bien belicos pero exageradamente chidos",
+        postImg: "https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
     {
         key: 2,
@@ -34,7 +34,8 @@ export const posts = () => [
         userName: "sophie.design",
         time: "hace 45 minutos",
         img: "https://images.pexels.com/photos/594421/pexels-photo-594421.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        bodyText: "Explorando nuevas tendencias de diseño para aplicaciones móviles."
+        bodyText: "Explorando nuevas tendencias de diseño para aplicaciones móviles.",
+        postImg: "https://images.pexels.com/photos/16144099/pexels-photo-16144099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
     {
         key: 5,
@@ -43,7 +44,8 @@ export const posts = () => [
         userName: "raj.codes",
         time: "hace 1 hora",
         img: "https://images.pexels.com/photos/718978/pexels-photo-718978.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        bodyText: "Compartiendo mi experiencia con el framework Angular. #angular"
+        bodyText: "Compartiendo mi experiencia con el framework Angular. #angular",
+        postImg: "https://images.pexels.com/photos/15312822/pexels-photo-15312822.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
     {
         key: 6,
@@ -61,7 +63,8 @@ export const posts = () => [
         userName: "michael.ops",
         time: "hace 3 horas",
         img: "https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        bodyText: "Automatizando despliegues con Jenkins y Docker. #devops"
+        bodyText: "Automatizando despliegues con Jenkins y Docker. #devops",
+        postImg: "https://images.pexels.com/photos/16772184/pexels-photo-16772184.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
     {
         key: 8,

@@ -4,6 +4,13 @@ import { colors } from "../../ui/colors";
 import Header from "./components/Header";
 import { Link } from "react-router-dom";
 import Post from "../../components/Post";
+import { posts } from "../../data/posts";
+
+
+
+let publicaciones = posts
+
+console.log(publicaciones)
 
 const Main = styled.main`
   display: flex;
@@ -41,51 +48,23 @@ const SocialFeed = () => {
           />
             <Link to="/social-feed/1">Ver mas</Link>
 
-            < Post
-            key={1}
-            name="Rodrigo"
-            role="Frontend Developer"
-            userName="@rodrigodev"
-            time="1h"
-            img="https://images.pexels.com/photos/4275717/pexels-photo-4275717.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            bodyText="Lorem ius fugit aliquid ut amet autem. Vero quaerat culpa accusantium voluptate animi in quia sequi?"
-            />
-            < Post
-            key={2}
-            name="Julio"
-            role="Fullstack Developer"
-            userName="@Miguel"
-            time="1h"
-            img="https://images.pexels.com/photos/9950569/pexels-photo-9950569.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            bodyText="Lorem ius fugit aliquid ut amet autem. Vero quaerat culpa accusantium voluptate animi in quia sequi?"
-            />
-            < Post
-            key={3}
-            name="Rodrigo"
-            role="Frontend Developer"
-            userName="@rodrigodev"
-            time="1h"
-            img="https://images.pexels.com/photos/4275717/pexels-photo-4275717.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            bodyText="Lorem ius fugit aliquid ut amet autem. Vero quaerat culpa accusantium voluptate animi in quia sequi?"
-            />
-            < Post
-            key={4}
-            name="Rodrigo"
-            role="Frontend Developer"
-            userName="@rodrigodev"
-            time="1h"
-            img="https://images.pexels.com/photos/4275717/pexels-photo-4275717.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            bodyText="Lorem ius fugit aliquid ut amet autem. Vero quaerat culpa accusantium voluptate animi in quia sequi?"
-            />
-            < Post
-            key={5}
-            name="Rodrigo"
-            role="Frontend Developer"
-            userName="@rodrigodev"
-            time="1h"
-            img="https://images.pexels.com/photos/4275717/pexels-photo-4275717.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-            bodyText="Lorem ius fugit aliquid ut amet autem. Vero quaerat culpa accusantium voluptate animi in quia sequi?"
-            />
+            {publicaciones.map((post)=>{
+                return(
+                    <Post
+                        key={post.id}
+                        name={post.name}
+                        role={post.role}
+                        userName={post.userName}
+                        time={post.time}
+                        img={post.img}
+                        bodyText={post.bodyText}
+                        postImg={post.postImg}
+                    />
+                )
+            })}
+           
+
+
             
         </MainFeed>
       </Main>

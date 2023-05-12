@@ -163,8 +163,9 @@ const StyledLink = styled(Link)`
 `;
 
 const ProfilePhoto = styled.img`
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
   border-radius: 100%;
 
   @media (max-width: 449px) {
@@ -263,7 +264,7 @@ export const NavBarFeed = () => {
               <img className="img" src="/icons/messages.png" alt="Messages" />
               <span className="text">Messages</span>
             </StyledLink>
-            <ProfilePhoto src="img-profile.png" alt="profile-photo" />
+            <ProfilePhoto src="https://images.pexels.com/photos/7841717/pexels-photo-7841717.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="profile-photo" />
             <DropdownMenu>
               <DropdownButton onClick={toggleDropdown}>
                 <StyledMenu className="link-menu">
