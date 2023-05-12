@@ -1,8 +1,9 @@
 import './avatar.css'
+import {colors} from '../../../src/ui/colors'
 
-const Avatar = (props) =>{  
+const Avatar = (profilePic) =>{  
     return(
-        <img className='avatar' src={"props.profile_image"}  />
+        <img className='avatar' src={profilePic} style={{borderColor: colors.secondary}}/>
     )
 }
 
