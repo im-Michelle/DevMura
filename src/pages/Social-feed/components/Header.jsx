@@ -50,10 +50,10 @@ const Names = styled.div`
   gap: 1rem;
 `;
 
-const Header = ({ name, lastName, userName, img }) => {
+const Header = ({ name = "no data", lastName = "no data", userName = "no data", img = "../../../../public/img/placeholder.png"}, key) => {
   return (
     <>
-      <Main>
+      <Main id={key}>
         <ProfileImg src={img} alt={name} />
         <div>
           <UserName>{userName}</UserName>

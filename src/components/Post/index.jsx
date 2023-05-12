@@ -74,24 +74,20 @@ const BodyText = styled.p`
 
 
 
-const Post = () => {
+const Post = ( {key, name, role, userName, time, img, bodyText} ) => {
   return (
     <PostContainer>
       <PostEncabezado>
-        <ProfileImg src="https://images.pexels.com/photos/4275717/pexels-photo-4275717.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
+        <ProfileImg src={img} alt={name} />
         <ProfilesPost>
-          <Name>Pedro Paramo</Name>
-          <Role>Fullstack Developer</Role>
-          <UserName>@pedro</UserName>
-          <Time>hace 2 horas</Time>
+          <Name>{name}</Name>
+          <Role>{role}</Role>
+          <UserName>{userName}</UserName>
+          <Time>{time}</Time>
         </ProfilesPost>
       </PostEncabezado>
       <PostBody>
-        <BodyText>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum. Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, minus perspiciatis omnis ipsum officia neque aperiam suscipit accusantium illum unde eaque iusto iste magni reiciendis expedita esse doloribus quibusdam. Minus!
-        Aut, rerum. Nam iure accusamus omnis beatae consequatur dolore odio tempora, atque possimus dicta at hic soluta perspiciatis minus enim, rerum vel ipsam velit recusandae ad. Fugiat pariatur omnis temporibus.
-        Aspernatur eum mol ad odio ea modi ipsa sapiente. Error saepe dolore odit incidunt porro quia cumque, consequatur in eaque deserunt quisquam soluta?
-        Numquam sunt consequatur pariatur quibusdam. Incidunt at numquam ipsam cupiditate, recusandae, facere ex quo officiis amet modi porro temporibus autem ducimus assumenda aliquam vitae totam quidem quibusdam a itaque! Quae!
-        </BodyText>
+        <BodyText>{bodyText}</BodyText>
       </PostBody>
 
 
