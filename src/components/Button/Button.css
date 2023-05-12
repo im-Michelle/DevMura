@@ -1,4 +1,7 @@
 .btnCustom{
+    text-align: center;
+    text-decoration: none;
+    padding-top: .65em;
     width: 300px;
     height: 100px;
     border: none;
