@@ -1,16 +1,18 @@
-import './Boton.css'
+import { Link } from 'react-router-dom';
+import './Button.css'
+import React from 'react'
 
-const Boton = () =>{
-    
-    
+const CustomButton = ({onClick, children, backgrdColor}) =>{
     return(
-
-        <button className='button'>Boton</button>
-
+        <>
+            <Link to='/sign-in' className='btnCustom' onClick={onClick} style={{backgroundColor: backgrdColor}}>{children}</Link>
+            {/* <button className='btnCustom' onClick={onClick} style={{backgroundColor: backgrdColor}}>{children}</button> */}
+        </>
     )
 
 }
 
-export default Boton;
+export default CustomButton;
+
 
 

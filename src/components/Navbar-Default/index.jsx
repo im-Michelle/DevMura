@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import { Link } from "react-router-dom";
+import { colors } from "../../ui/colors";
 
 const Nav = styled.nav`
   width: 100%;
@@ -30,8 +31,9 @@ const StyledLink = styled(Link)`
   border-radius: 8px;
   padding: 4px 12px;
   text-decoration: none;
-  &hover {
-    color: none;
+  &:hover {
+    background-color: #ffffff11;
+    color: white;
   }
   @media (min-width: 768px) {
     font-size: 1.5rem;
@@ -115,7 +117,7 @@ const SyledLink2 = styled(Link)`
   font-size: 1.5rem;
   margin: 10px 0;
   &:hover {
-    color: #00aaff;
+    color: #ffffff;
   }
 `;
 const SyledLink3 = styled(Link)`
@@ -138,6 +140,9 @@ const StyledLink4 = styled(Link)`
   @media (min-width: 768px) {
     display: block;
   }
+  &:hover {
+    color: #dcdcdc;
+  }
 `;
 const Buttons = styled.div`
   display: flex;
@@ -147,7 +152,13 @@ const Buttons = styled.div`
 const StyledLink5 = styled(Link)`
   color: white;
   text-decoration: none;
-  font-size: 1rem;
+  font-size: 1.5rem;
+  &:hover{
+    color: #ffffff;
+    text-decoration: underline;
+    text-decoration-thickness: 4px;
+    text-decoration-color: ${colors.contrast};
+  }
 `;
 
 const NavbarDefault = () => {
@@ -155,7 +166,7 @@ const NavbarDefault = () => {
     <Nav>
       <NavContainer>
         <Buttons>
-          <StyledLink4 to="/sing-in">Sign in</StyledLink4>
+          <StyledLink4 to="/sign-in">Sign in</StyledLink4>
           <StyledLink to="/sign-up">Sign up</StyledLink>
         </Buttons>
 

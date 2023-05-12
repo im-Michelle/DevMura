@@ -3,11 +3,19 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { colors } from "../../ui/colors";
 
+
+const Nav = styled.nav`
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+`;
+
 const NavBarContainer = styled.div`
   display: flex;
   justify-content: center;
   padding: 10px;
-  background-color: ${colors.background};
+  background-color: #171a22d5;
+  backdrop-filter: blur(5px);
 `;
 
 const LogoContainer = styled.div`
@@ -25,14 +33,12 @@ const LogoImage = styled.img`
   height: 40px;
   margin-right: 10px;
 
-  @media (max-width: 948px) {
-    display: none;
+  @media (max-width: 449px) {
+    margin-right: 20px;
   }
 
-  @media (max-width: 449px) {
-    width: 20px;
-    height: 30px;
-    margin-right: 5px;
+  @media (max-width: 390px) {
+    margin-left: 5rem;
   }
 `;
 
@@ -50,6 +56,10 @@ const SearchInput = styled.input`
   @media (max-width: 449px) {
     width: 150px;
   }
+
+  @media (max-width: 390px) {
+    width: 180px;
+  }
 `;
 
 const CenterLinks = styled.div`
@@ -61,14 +71,21 @@ const CenterLinks = styled.div`
     justify-content: center;
     gap: 2rem;
   }
+
+  @media (max-width: 768px) {
+    margin-left: 4rem;
+  }
+  @media (max-width: 939px) {
+    margin-left: 4rem;
+  }
 `;
 
-const StyledLink = styled(Link)`
+const StyledMenu = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
   text-decoration: none;
-  color: #000;
+  color: ${colors.primaryText};
 
   .img {
     width: 30px;
@@ -79,21 +96,84 @@ const StyledLink = styled(Link)`
     font-size: 13px;
   }
 
+  @media (max-width: 449px) {
+    &.link-menu {
+      margin-top: 7px;
+      margin-left: 6px;
+    }
+  }
+
+  @media (max-width: 390px) {
+    margin-right: 4rem;
+  }
+`;
+
+const StyledLink = styled(Link)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: ${colors.primaryText};
+
+  .img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .text {
+    font-size: 13px;
+  }
+
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+
+  &:hover {
+    color: ${colors.primaryText};
+    border-bottom: 2px solid ${colors.contrast};
+    left: 5px;
+  }
+
+  &:hover::before {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: ${colors.primaryText};
+    bottom: -2px;
+    left: -100%;
+    transition: all 0.3s ease;
+  }
+
+  &:hover::before {
+    left: 0;
+  }
+
   @media (max-width: 1330px) {
     &.link-responsive {
       display: none;
     }
   }
+
+  @media (max-width: 540px) {
+    &.link-messages {
+      display: none;
+    }
+  }
+  
 `;
 
 const ProfilePhoto = styled.img`
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
   border-radius: 100%;
 
   @media (max-width: 449px) {
-    width: 30px;
-    height: 30px;
+    margin-left: 30px;
+  }
+
+  @media (max-width: 390px) {
+    display: none;
   }
 `;
 
@@ -117,21 +197,37 @@ const DropdownContent = styled.div`
   padding: 40px;
   margin-top: 1.5rem;
   display: ${(props) => (props.open ? 'block' : 'none')};
+
+  @media (max-width: 390px) {
+    margin-right:4.2rem;
+    padding: 80px;
+  }
 `;
 
 const DropdownItem = styled(Link)`
   display: block;
   text-decoration: none;
-  color: #444;
+  color: ${colors.background};
   padding: 10px;
   font-size: 16px;
   white-space: nowrap;
+
+  &:hover {
+    color: ${colors.contrast};
+  }
+
+  @media (max-width: 390px) {
+    font-size: 30px;
+    padding: 15px;
+    border-bottom: 1px solid #ccc;
+
+    &:hover {
+      color: ${colors.contrast};
+    }
+  }
 `;
 
-const MeText = styled.span`
-  margin-top: 5px;
-  font-size: 15px;
-`;
+
 
 export const NavBarFeed = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -140,42 +236,51 @@ export const NavBarFeed = () => {
     setDropdownOpen(!dropdownOpen);
   };
   return (
-    <NavBarContainer>
-      <div>
-        <LogoContainer>
-          <LogoImage src="ruta_del_logo.png" alt="Logo de la empresa" />
-          <SearchInput type="text" placeholder="Buscar" />
-        </LogoContainer>
-      </div>
-      <CenterLinks>
-        <StyledLink to="/home" className="link-style link-responsive">
-          <img className="img" src="https://img.icons8.com/material-outlined/24/000000/home--v2.png" alt="Home" />
-          <span className="text">Home</span>
-        </StyledLink>
-        <StyledLink to="/groups" className="link-style link-responsive">
-          <img className="img" src="https://img.icons8.com/android/24/000000/groups.png" alt="Groups" />
-          <span className="text">Groups</span>
-        </StyledLink>
-        <StyledLink to="/notifications" className="link-style link-responsive">
-          <img className="img" src="https://img.icons8.com/material/24/null/bell--v1.png" alt="Notifications" />
-          <span className="text">Notifications</span>
-        </StyledLink>
-        <StyledLink to="/messages" className="link-style">
-          <img className="img" src="https://img.icons8.com/material/24/null/filled-message--v1.png" alt="Messages" />
-          <span className="text">Messages</span>
-        </StyledLink>
-        <DropdownMenu>
-          <DropdownButton onClick={toggleDropdown}>
-            <ProfilePhoto src="img-profile.png" alt="profile-photo" />
-            <MeText>Me</MeText>
-          </DropdownButton>
-          <DropdownContent open={dropdownOpen}>
-            <DropdownItem to="/profile">View Profile</DropdownItem>
-            <DropdownItem to="/settings">Settings</DropdownItem>
-            <DropdownItem to="/logout">Sign Out</DropdownItem>
-          </DropdownContent>
-        </DropdownMenu>
-      </CenterLinks>
-    </NavBarContainer>
+    <Nav>
+      <NavBarContainer>
+
+        <div>
+          <LogoContainer>
+            <LogoImage src="/img/icono-dm-blanco.svg" alt="Logo" />
+            <SearchInput type="text" placeholder="Search" />
+          </LogoContainer>
+        </div>
+
+        <div>
+          <CenterLinks>
+            <StyledLink to="/home" className="link-style link-responsive">
+              <img className="img" src="/icons/home-light-blue.png" alt="Home" />
+              <span className="text">Home</span>
+            </StyledLink>
+            <StyledLink to="/groups" className="link-style link-responsive">
+              <img className="img" src="/icons/groups-red.png" alt="Groups" />
+              <span className="text">Groups</span>
+            </StyledLink>
+            <StyledLink to="/notifications" className="link-style link-responsive">
+              <img className="img" src="/icons/green-bell.png" alt="Notifications" />
+              <span className="text">Notifications</span>
+            </StyledLink>
+            <StyledLink to="/messages" className="link-style link-messages">
+              <img className="img" src="/icons/messages.png" alt="Messages" />
+              <span className="text">Messages</span>
+            </StyledLink>
+            <ProfilePhoto src="https://images.pexels.com/photos/7841717/pexels-photo-7841717.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="profile-photo" />
+            <DropdownMenu>
+              <DropdownButton onClick={toggleDropdown}>
+                <StyledMenu className="link-menu">
+                  <img className="img" src="/icons/menu.png" alt="Menu" />
+                </StyledMenu>
+              </DropdownButton>
+              <DropdownContent open={dropdownOpen}>
+                <DropdownItem to="/profile">View Profile</DropdownItem>
+                <DropdownItem to="/settings">Settings</DropdownItem>
+                <DropdownItem to="/logout">Sign Out</DropdownItem>
+              </DropdownContent>
+            </DropdownMenu>
+          </CenterLinks>
+        </div>
+
+      </NavBarContainer>
+    </Nav>
   );
 };

@@ -8,6 +8,9 @@ a{
     text-decoration: none;
     color: white;
 }
+a:hover{
+  color: white;
+}
 li{
     list-style: none;
 }
@@ -22,20 +25,20 @@ body{
   /* Firefox */
   * {
     scrollbar-width: auto;
-    scrollbar-color: #000000 #ffffff;
+    scrollbar-color: #000000 #171A22;
   }
 
   /* Chrome, Edge, and Safari */
   *::-webkit-scrollbar {
-    width: 10px;
+    width: 12px;
   }
 
   *::-webkit-scrollbar-track {
-    background: #ffffff;
+    background: #171A22;
   }
 
   *::-webkit-scrollbar-thumb {
-    background-color: #000000;
-    border-radius: 0px;
+    background-color: #F1FAEE;
+    border-radius: 6px;
   }
   
