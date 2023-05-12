@@ -1,4 +1,20 @@
 .avatar {
-    height: 50px;
+    height: 200px;
     border-radius: 50%; 
+    /* display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 90%;
+    max-width: 700px;
+    height: max-content;
+    margin: 0 auto;
+    background-image: url("https://images.pexels.com/photos/16144099/pexels-photo-16144099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"); */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 2px solid;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    margin-top: 100px; 
 }

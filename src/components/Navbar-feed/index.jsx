@@ -14,7 +14,8 @@ const NavBarContainer = styled.div`
   display: flex;
   justify-content: center;
   padding: 10px;
-  background-color: ${colors.new};
+  background-color: #171a22d5;
+  backdrop-filter: blur(5px);
 `;
 
 const LogoContainer = styled.div`
@@ -162,8 +163,9 @@ const StyledLink = styled(Link)`
 `;
 
 const ProfilePhoto = styled.img`
-  width: 40px;
-  height: 40px;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
   border-radius: 100%;
 
   @media (max-width: 449px) {
@@ -239,7 +241,7 @@ export const NavBarFeed = () => {
 
         <div>
           <LogoContainer>
-            <LogoImage src="../public/img/icono-dm-blanco.svg" alt="Logo" />
+            <LogoImage src="/img/icono-dm-blanco.svg" alt="Logo" />
             <SearchInput type="text" placeholder="Search" />
           </LogoContainer>
         </div>
@@ -247,26 +249,26 @@ export const NavBarFeed = () => {
         <div>
           <CenterLinks>
             <StyledLink to="/home" className="link-style link-responsive">
-              <img className="img" src="../public/icons/home-light-blue.png" alt="Home" />
+              <img className="img" src="/icons/home-light-blue.png" alt="Home" />
               <span className="text">Home</span>
             </StyledLink>
             <StyledLink to="/groups" className="link-style link-responsive">
-              <img className="img" src="../public/icons/groups-red.png" alt="Groups" />
+              <img className="img" src="/icons/groups-red.png" alt="Groups" />
               <span className="text">Groups</span>
             </StyledLink>
             <StyledLink to="/notifications" className="link-style link-responsive">
-              <img className="img" src="../public/icons/green-bell.png" alt="Notifications" />
+              <img className="img" src="/icons/green-bell.png" alt="Notifications" />
               <span className="text">Notifications</span>
             </StyledLink>
             <StyledLink to="/messages" className="link-style link-messages">
-              <img className="img" src="../public/icons/messages.png" alt="Messages" />
+              <img className="img" src="/icons/messages.png" alt="Messages" />
               <span className="text">Messages</span>
             </StyledLink>
-            <ProfilePhoto src="img-profile.png" alt="profile-photo" />
+            <ProfilePhoto src="https://images.pexels.com/photos/7841717/pexels-photo-7841717.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="profile-photo" />
             <DropdownMenu>
               <DropdownButton onClick={toggleDropdown}>
                 <StyledMenu className="link-menu">
-                  <img className="img" src="../public/icons/menu.png" alt="Menu" />
+                  <img className="img" src="/icons/menu.png" alt="Menu" />
                 </StyledMenu>
               </DropdownButton>
               <DropdownContent open={dropdownOpen}>
