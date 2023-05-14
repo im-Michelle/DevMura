@@ -35,8 +35,8 @@ const MainFeed = styled.main`
 const SocialFeed = () => {
   return (
     <>
+      <NewNavBarFeed/>
       <Main>
-        <NewNavBarFeed/>
         <MainFeed>
           <Header
             key="1"
