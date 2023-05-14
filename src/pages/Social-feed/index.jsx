@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import Post from "../../components/Post";
 import { posts } from "../../data/posts";
 import AddPost from "./components/AddPost";
+import { NavBarFeedTest } from "../../components/Navbar-Feed/index2";
 
 
 
@@ -35,7 +36,7 @@ const MainFeed = styled.main`
 const SocialFeed = () => {
   return (
     <>
-      <NavBarFeed />
+      <NavBarFeedTest />
       <Main>
         <MainFeed>
           <Header
