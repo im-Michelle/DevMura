@@ -4,7 +4,7 @@ import Header from '../Social-feed/components/Header'
 import { colors } from '../../ui/colors';
 /* import styled from "@emotion/styled"; */
 import styled from 'styled-components';
-import { NavBarFeed } from '../../components/Navbar-Feed/index2';
+import { NavBarFeed} from "../../components/Navbar-Feed/index";
 
 const Main = styled.div`
     border: 3px solid purple;
