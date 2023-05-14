@@ -105,7 +105,7 @@ const LinkImg2 = styled.img`
 
 const TextImg2 = styled.span`
     margin-top: 4px;
-    font-size: 12px;
+    font-size: .8rem;
 `;
 
 const DropdownContent = styled.div`
@@ -147,7 +147,8 @@ const DropdownItem = styled(Link)`
   }
 
   @media (max-width: 768px) {
-    font-size: 14px;
+    font-size: 17px;
+    color: #ffffff;
   }
 `;
 

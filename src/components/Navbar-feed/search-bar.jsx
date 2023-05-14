@@ -48,6 +48,7 @@ const SearchInput = styled.input`
   padding-left: 1rem;
   border: none;
   background-color: #3232323b;
+  color: #ffffff;
   backdrop-filter: blur(5px);
   transition: width 0.3s ease, font-size 0.3s ease;
 
