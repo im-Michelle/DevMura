@@ -7,17 +7,18 @@ import FeedRoutesComponent from './routes-feed';
 import SearchBar from './search-bar';
 
 const Nav = styled.nav`
-    padding: 0;
-    margin: 0;
-    width: 100%;
-    height: 7vh;
-    background-color: #ff1111;
-    position: fixed;
-    z-index: 100;
+  padding: 0;
+  margin: 0;
+  width: 100%;
+  height: 7vh;
+  background-color: #3232323b;
+  backdrop-filter: blur(5px);
+  position: fixed;
+  z-index: 100;
 `;
 
+
 const NavContainer = styled.div`
-    background-color: #11ff11;
     width: 100%;
     max-width: 70%;
     height: 7vh;
@@ -40,7 +41,6 @@ const Logo = styled.div`
     width: 100%;
     max-width: 40%;
     height: 5vh;
-    background-color: #11ffff;
     display: flex;
     justify-content: space-around;
 
@@ -54,20 +54,20 @@ const Logo = styled.div`
 `;
 
 const LogoContainer = styled.div`
-  width: 100%;
-  max-height: 100%;
-  max-width: 10%;
-  display: flex;
-  display-content: center;
-  align-content: center;
-  background-color: ${colors.navy};
+    width: 100%;
+    max-height: 100%;
+    max-width: 10%;
+    display: flex;
+    display-content: center;
+    align-content: center;
 
-@media (max-width: 1000px) {
-    max-width: 20%;
-}
-@media (max-width: 500px) {
-    max-width: 20%;
-}
+    @media (max-width: 1000px) {
+        max-width: 20%;
+    }
+    @media (max-width: 760px) {
+        max-width: 20%;
+        margin-left: 1rem;
+    }
 `;
 
 const LogoImage = styled.img`
@@ -81,7 +81,6 @@ const NavRoutes = styled.div`
     width: 100%;
     max-width: 55%;
     height: 5vh;
-    background-color: #ff11f1;
     display:flex;
     flex-direction: row;
     justify-content: space-around;
@@ -95,12 +94,7 @@ const NavRoutes = styled.div`
 `;
 
 
-
-
-
-
-
-export const NavBarFeedTest = () => {
+export const NavBarFeed = () => {
 
     return (
         <Nav>

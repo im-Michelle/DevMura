@@ -229,7 +229,7 @@ const DropdownItem = styled(Link)`
 
 
 
-export const NavBarFeed = () => {
+export const OldNavBarFeed = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
 
   const toggleDropdown = () => {

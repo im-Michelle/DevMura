@@ -10,7 +10,6 @@ display: flex;
 flex-direction: row;
 justify-content: space-around;
 align-items: center;
-background-color: #442244;
 gap: 1rem;
 
 @media (max-width: 768px) {
@@ -55,7 +54,7 @@ const FeedRoutesComponent = () => {
         <>
 
 <FeedRoutes>
-                        <StyledLink to="/sign-up">
+                        <StyledLink to="/feed">
                             <LinkImg src="/icons/home-light-blue.png" alt="Home" />
                             <TextImg>Home</TextImg>
                         </StyledLink>

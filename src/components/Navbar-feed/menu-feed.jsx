@@ -15,7 +15,6 @@ const DropdownMenu = styled.div`
   width: 100%;
   max-width: 10%;
   height: 5vh;
-  background-color: #882255;
   display: flex;
 
   @media (max-width: 768px) {
@@ -32,7 +31,6 @@ const DropdownImgLink = styled(Link)`
     width: 100%;
     max-width: 90%;
     height: 9vh;
-    background-color: #111111;
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -51,7 +49,6 @@ const MiniMenuContainer = styled.div`
     flex-direction: row;
     
     justify-content: space-around;
-    background-color: #443111;
 `;
 
 const DropdownImg = styled.img`
@@ -116,13 +113,19 @@ const DropdownContent = styled.div`
   position: absolute;
   top: 100%;
   right: 0;
-  background-color: #ffffff;
+  background-color: #3232323b;
+  backdrop-filter: blur(5px);
   border-radius: 5px;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
   margin-top: 0.5rem;
   display: ${(props) => (props.open ? 'block' : 'none')};
 
+
+  @media (max-width: 1470px) {
+    background-color: ${colors.new};
+  }
   @media (max-width: 768px) {
+    background-color: ${colors.new};
     width: 100%;
     max-width: 100%;
     right: auto;
@@ -133,7 +136,7 @@ const DropdownContent = styled.div`
 const DropdownItem = styled(Link)`
   display: block;
   text-decoration: none;
-  color: ${colors.background};
+  color: ${colors.primaryText};
   padding: 0.6rem;
   font-size: 16px;
   display: flex;

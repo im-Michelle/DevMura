@@ -20,8 +20,7 @@ const SearchContainer = styled.div`
   border-radius: 5px;
   display: flex;
   align-items: center;
-  margin-left: 0.5rem;
-  background-color: #443322;
+  margin-left: 1rem; 
 
 @media (max-width: 500px) {
     max-width: 70%;
@@ -47,7 +46,8 @@ const SearchInput = styled.input`
   max-height: 100%;
   padding-left: 1rem;
   border: none;
-  background-color: #aaaa11;
+  background-color: #3232323b;
+  backdrop-filter: blur(5px);
   transition: width 0.3s ease, font-size 0.3s ease;
 
   @media (max-width: 500px) {
@@ -64,7 +64,6 @@ const SearchInput = styled.input`
 const SearchBar = () => {
   return (
     <SearchContainer>
-      <SearchImage src="public/icons/search.png" alt="Search" />
       <SearchInput type="text" placeholder="Search" />
     </SearchContainer>
   );

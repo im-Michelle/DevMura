@@ -20,7 +20,7 @@ function App() {
         <Route path='chat' element={ <SignUp/>} />
         <Route path='sign-up' element={ <SignUp/>} />
         <Route path='sign-in' element={ <SignUp/>} />
-        <Route path='abaout-us' element={ <AboutUs />} />
+        <Route path='about-us' element={ <AboutUs />} />
         <Route path='profile' element={ <ProfilePage/>} />
         <Route path='user/:id' element={ <ProfilePage/>} />
         <Route path='*' element={ <SocialFeed/>} />
