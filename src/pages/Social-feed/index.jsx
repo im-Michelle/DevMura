@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 import Post from "../../components/Post";
 import { posts } from "../../data/posts";
 import AddPost from "./components/AddPost";
+import { NavBarFeed } from "../../components/Navbar-Feed";
 
 
 
@@ -35,6 +36,7 @@ const SocialFeed = () => {
   return (
     <>
       <Main>
+        <NavBarFeed/>
         <MainFeed>
           <Header
             key="1"

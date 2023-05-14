@@ -1,7 +1,4 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
-import styled from 'styled-components'
-import { colors } from '../../ui/colors';
+import styled from 'styled-components';
 import Menu from './menu-feed';
 import FeedRoutesComponent from './routes-feed';
 import SearchBar from './search-bar';

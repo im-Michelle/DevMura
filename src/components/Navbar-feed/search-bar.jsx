@@ -1,4 +1,3 @@
-import React from 'react';
 import styled, { keyframes } from 'styled-components';
 
 const growAnimation = keyframes`
@@ -27,6 +26,7 @@ const SearchContainer = styled.div`
 }
 `;
 
+/*
 const SearchImage = styled.img`
   max-width: 10%;
   height: 60%;
@@ -36,9 +36,10 @@ const SearchImage = styled.img`
     height: 70%;
   }
   @media (max-width: 390px) {
-    max-width: 20%;
+    max-width: 2s0%;
   }
 `;
+*/
 
 const SearchInput = styled.input`
   width: 50%;

@@ -1,7 +1,4 @@
-import React from 'react'
-import Header from '../Social-feed/components/Header'
-
-import { colors } from '../../ui/colors';
+import Header from '../Social-feed/components/Header';
 /* import styled from "@emotion/styled"; */
 import styled from 'styled-components';
 
