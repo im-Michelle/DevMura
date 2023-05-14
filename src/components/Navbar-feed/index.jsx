@@ -1,3 +1,4 @@
+
 import styled from 'styled-components';
 import Menu from './menu-feed';
 import FeedRoutesComponent from './routes-feed';
@@ -91,7 +92,7 @@ const NavRoutes = styled.div`
 `;
 
 
-export const NavBarFeed = () => {
+export const NewNavBarFeed = () => {
 
     return (
         <Nav>
