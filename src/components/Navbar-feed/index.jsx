@@ -243,14 +243,14 @@ export const NavBarFeed = () => {
 
         <div>
           <LogoContainer>
-            <LogoImage to="home" src="" alt="Logo" />
+            <LogoImage to="/feed" src="" alt="Logo" />
             <SearchInput type="text" placeholder="Search" />
           </LogoContainer>
         </div>
 
         <div>
           <CenterLinks>
-            <StyledLink to="/home" className="link-style link-responsive">
+            <StyledLink to="/feed" className="link-style link-responsive">
               <img className="img" src="/icons/home-light-blue.png" alt="Home" />
               <span className="text">Home</span>
             </StyledLink>

@@ -16,6 +16,7 @@ function App() {
       <ScrollToTop/>
       <Routes>
         <Route path='/' element={ <Home/>} />
+        <Route path='home' element={ <Home/>} />
         <Route path='feed' element={ <SocialFeed/>} />
         <Route path='chat' element={ <SignUp/>} />
         <Route path='sign-up' element={ <SignUp/>} />

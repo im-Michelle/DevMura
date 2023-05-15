@@ -39,22 +39,18 @@ const StyledLink = styled(Link)`
     font-size: 1.5rem;
   }
 `;
-const Logo = styled.picture`
+const Logo = styled.div`
   height: 100px;
-  width: 200px;
+  width: 150px;
   margin: 0 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-
-  img {
-    width: 150px;
-  }
   ol {
     display: none;
   }
   @media (min-width: 938px) {
-    width: 400px;
+    width: 450px;
     ol{
       color: white;
       display: flex;
@@ -160,6 +156,10 @@ const StyledLink5 = styled(Link)`
     text-decoration-color: ${colors.contrast};
   }
 `;
+const LogoLink = styled.img`
+  width: 100%;
+  height: 100%;
+`
 
 const NavbarDefault = () => {
   return (
@@ -171,7 +171,9 @@ const NavbarDefault = () => {
         </Buttons>
 
         <Logo>
-          <img src="./img/icono-logo-blanco.svg" alt="" />
+          <Link to="/home">
+            <LogoLink  src="./img/icono-logo-blanco.svg"/>
+          </Link>
           <ol>
             <StyledLink5>Product</StyledLink5>
             <StyledLink5>Solutions</StyledLink5>
