@@ -500,7 +500,7 @@ const Home = () => {
                 <StyledLink to="/abaout-us">About</StyledLink>
               </li>
               <li>
-                <StyledLink to="/">Contact</StyledLink>
+                <StyledLink to="/contact-us">Contact Us</StyledLink>
               </li>
               <li>
                 <StyledLink to="/">Terms of Service</StyledLink>
