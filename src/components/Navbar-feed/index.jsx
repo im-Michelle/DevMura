@@ -22,16 +22,18 @@ const LogoContainer = styled.div`
   display: flex;
   align-items: center;
   margin-right: 20rem;
-
   @media (max-width: 940px) {
     margin-right: auto;
   }
 `;
 
-const LogoImage = styled.img`
-  width: 40px;
+const LogoImage = styled(Link)`
+  width: 100%;
   height: 40px;
   margin-right: 10px;
+  background-image: url("/img/icono-dm-blanco.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
 
   @media (max-width: 449px) {
     margin-right: 20px;
@@ -241,7 +243,7 @@ export const NavBarFeed = () => {
 
         <div>
           <LogoContainer>
-            <LogoImage src="/img/icono-dm-blanco.svg" alt="Logo" />
+            <LogoImage to="home" src="" alt="Logo" />
             <SearchInput type="text" placeholder="Search" />
           </LogoContainer>
         </div>
