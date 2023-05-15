@@ -1,4 +1,3 @@
-import { NavBarFeed } from "../../components/Navbar-feed";
 import styled from "styled-components";
 import { colors } from "../../ui/colors";
 import Header from "./components/Header";
@@ -6,6 +5,7 @@ import { Link } from "react-router-dom";
 import Post from "../../components/Post";
 import { posts } from "../../data/posts";
 import AddPost from "./components/AddPost";
+import { NewNavBarFeed } from "../../components/Navbar-feed";
 
 
 
@@ -35,7 +35,7 @@ const MainFeed = styled.main`
 const SocialFeed = () => {
   return (
     <>
-      <NavBarFeed />
+      <NewNavBarFeed/>
       <Main>
         <MainFeed>
           <Header

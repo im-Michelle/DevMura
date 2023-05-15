@@ -286,7 +286,7 @@ const HomeFooter = styled.footer`
   justify-content: center;
   gap: 20px;
   padding: 60px 0;
-  @media (min-width: 768px){
+  @media (min-width: 958px){
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-start;
@@ -497,10 +497,10 @@ const Home = () => {
                 <StyledLink to="/feed">Home</StyledLink>
               </li>
               <li>
-                <StyledLink to="/abaout-us">About</StyledLink>
+                <StyledLink to="/about-us">About</StyledLink>
               </li>
               <li>
-                <StyledLink to="/">Contact</StyledLink>
+                <StyledLink to="/contact-us">Contact Us</StyledLink>
               </li>
               <li>
                 <StyledLink to="/">Terms of Service</StyledLink>
