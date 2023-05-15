@@ -5,6 +5,7 @@ import SocialFeed from './pages/Social-feed'
 import SignUp from './pages/Sign-up'
 import ChangeProfile from './pages/ChangeProfile'
 import AboutUs from './pages/About-us'
+import ContactUs from './pages/Contact-us'
 
 import ProfilePage from './pages/Profile'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop'
@@ -25,6 +26,7 @@ function App() {
         <Route path='user/:id' element={ <ProfilePage/>} />
         <Route path='*' element={ <SocialFeed/>} />
         <Route path='/changeprofile' element={ <ChangeProfile/> } /> 
+        <Route path='contact-us' element={<ContactUs />} />
       </Routes>
     </Router>
   )
