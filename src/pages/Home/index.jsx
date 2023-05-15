@@ -497,7 +497,7 @@ const Home = () => {
                 <StyledLink to="/feed">Home</StyledLink>
               </li>
               <li>
-                <StyledLink to="/abaout-us">About</StyledLink>
+                <StyledLink to="/about-us">About</StyledLink>
               </li>
               <li>
                 <StyledLink to="/contact-us">Contact Us</StyledLink>

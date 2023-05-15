@@ -187,7 +187,7 @@ const ContactUs = () => {
 
                   <CustomTextField
                     name="message"
-                    label="Mensaje"
+                    label="Message"
                     variant="outlined"
                     multiline
                     rows={4}
@@ -200,7 +200,7 @@ const ContactUs = () => {
                     variant="contained"
                     color="primary"
                   >
-                    Enviar
+                    Submit
                   </SubmitButton>
                 </FormControl>
               </form>
