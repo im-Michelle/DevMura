@@ -1,72 +1,66 @@
-.card-container {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin-top: 3%;
-    margin-left: 2%;
-    margin-right: 2% ;
-    margin-bottom: 3%;
-  }
-
 .card {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    background-color: #A8DADC;
-    color: #163b59;
-    border-radius: 10px;
-    padding: 20px;
-    width: 300px;
-    height: 300px;
-    margin: 0 auto;
-  }
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  background-color: #A8DADC;
+  color: #163b59;
+  border-radius: 10px;
+  padding: 20px;
+  width: 300px;
+  height: 300px;
+  margin-right: 30px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
 
-  .header-container {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 0px;
-  }
-  
-  .image-container {
-    position: relative;
-    width: 170px;
-    height: 170px;
-    margin-right: 20px;
-  }
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0px;
+}
 
-  .image-container img{
-    position: absolute;
-    top: -20px;
-    left: -20px;
-    width: 150px;
-    height: 150px;
-    border-radius: 20%;
-    transform: rotate(-20deg);
-    filter: grayscale(100%);
-    transition: filter 0.3s ease-in-out;
-  }
+.image-container {
+  position: relative;
+  width: 170px;
+  height: 170px;
+  margin-right: 20px;
+}
 
-  .image-container:hover img{
-    filter: grayscale(0%);
-    transform: rotate(-10deg) translate(5px, 2px);
-  }
+.image-container img{
+  position: absolute;
+  top: -20px;
+  left: -45px;
+  width: 150px;
+  height: 150px;
+  border-radius: 20%;
+  transform: rotate(-20deg);
+  filter: grayscale(100%);
+  transition: filter 0.3s ease-in-out;
+  border: 2px solid #E63946;
+}
 
-  .title-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-  }
-  
-  .title-container h2 {
-    font-size: 1.5em;
-    margin: 0;
-  }
-  
-  .title-container h3 {
-    font-size: 1em;
-    margin: 0;
-    margin-top: 5px;
-  }
+.image-container:hover img{
+  filter: grayscale(0%);
+  transform: rotate(-10deg) translate(5px, 2px);
+}
+
+.title-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.title-container h2 {
+  font-size: 1em;
+  margin: 0;
+}
+
+.title-container h3 {
+  font-size: 1em;
+  margin: 0;
+  margin-top: 5px;
+}
