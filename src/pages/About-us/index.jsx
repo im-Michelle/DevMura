@@ -226,26 +226,30 @@ const AboutUs = () => {
                     <CardsOfCodeFusion>
                       <CardContainer>
                         <IndividualCards
-                          img="../../../public/img/img-AboutUs/Ale.png"
+                          img="img/img-AboutUs/ale.png"
                           name="Alejandra Chaparro"
+                          alt="Alejandra Chaparro"
                           rol="Java Developer"
                           description="Java programmer with experience in Scrum. Passionate about learning and design, focused on organizing and leading teams effectively. Always seeking new opportunities to grow and develop professionally."             
                         />
                         <IndividualCards
-                          img="../../../public/img/img-AboutUs/goyo.jfif"
+                          img="img/img-AboutUs/goyo.png"
                           name="Gregorio Espinoza"
+                          alt="Gregorio Espinoza"
                           rol="Software developer Jr. Trainee Intern"
                           description="Analytical, committed and persistent professional. Always ready to face new challenges with positive attitude and creativity. Fast learner and great team worker. Also, eager to learn new skills to improve my professional career."             
                         />
                         <IndividualCards
-                          img="../../../public/img/img-AboutUs/fati.png"
+                          img="img/img-AboutUs/fati.png"
                           name="Fatima Moreno"
+                          alt="Fatima Moreno"
                           rol="Java Developer"
                           description="En construcción"             
                         />
                         <IndividualCards
-                          img="../../../public/img/img-AboutUs/omar.png"
+                          img="img/img-AboutUs/omar.png"
                           name="Omar Michaca"
+                          alt="Omar Michaca"
                           rol="Java Developer"
                           description="
                           Versatile professional with adaptability, transitioning from Administration to Full Stack, bringing project management, problem-solving, and decision-making skills. Demonstrates analytical mindset and attention to detail. Excited about the exciting career change."             
@@ -253,26 +257,30 @@ const AboutUs = () => {
                       </CardContainer>
                       <CardContainer>
                         <IndividualCards
-                          img="../../../public/img/img-AboutUs/sofi.png"
+                          img="./img/img-AboutUs/sofi.png"
                           name="Sofia Gomez"
+                          alt="Sofia Gomez"
                           rol=" Web developer trainee"
                           description="Full stack development apprentice with a biology background, finds inspiration in merging novel technologies into nature-based solutions."             
                         />
                         <IndividualCards
                           img="Coming soon"
                           name="Michelle Trejo"
+                          alt="Coming soon"
                           rol="Java Developer"
                           description=" Java Developer with expertise in Spring Boot framework. Skilled in designing and building robust web applications, integrating databases, and optimizing performance. Strong knowledge of Spring Data, RESTful APIs, and secure authentication. Continuously learning and staying updated with the latest developments in software development."             
                         />
                           <IndividualCards
-                          img="../../../public/img/img-AboutUs/david.jpg"
+                          img="./img/img-AboutUs/david.jpg"
                           name="David Vazquez"
+                          alt="David Vazquez"
                           rol="Front-end developer"
                           description="En construcción"             
                         />  
                          <IndividualCards
                           img="Coming soon"
                           name="Alvaro González"
+                          alt="Coming soon"
                           rol="Java Developer"
                           description="En construcción"             
                         />
@@ -284,7 +292,7 @@ const AboutUs = () => {
                     <h2>DevMura</h2>
                     <ul>
                       <li>
-                        <StyledLink to="/feed">Home</StyledLink>
+                        <StyledLink to="/">Home</StyledLink>
                       </li>
                       <li>
                         <StyledLink to="/about-us">About</StyledLink>
