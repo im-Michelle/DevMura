@@ -148,7 +148,7 @@ const Buttons = styled.div`
 const StyledLink5 = styled(Link)`
   color: white;
   text-decoration: none;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   &:hover{
     color: #ffffff;
     text-decoration: underline;
