@@ -1,10 +1,6 @@
-import React from 'react'
-import Header from '../Social-feed/components/Header'
-
-import { colors } from '../../ui/colors';
+import Header from '../Social-feed/components/Header';
 /* import styled from "@emotion/styled"; */
 import styled from 'styled-components';
-import { NavBarFeed } from '../../components/Navbar-feed';
 
 const Main = styled.div`
     border: 3px solid purple;
@@ -17,7 +13,6 @@ const ProfilePage = () => {
   return (
     <>
         <ContainerForNAvBAr>
-            <NavBarFeed/>
         </ContainerForNAvBAr>
         <Main>
             <Header 
