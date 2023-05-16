@@ -56,9 +56,8 @@ const LogoContainer = styled.div`
     max-height: 100%;
     max-width: 10%;
     display: flex;
-    display-content: center;
+    justify-content: center;
     align-content: center;
-
     @media (max-width: 1000px) {
         max-width: 20%;
     }
