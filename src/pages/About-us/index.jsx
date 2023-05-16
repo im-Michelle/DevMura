@@ -226,28 +226,28 @@ const AboutUs = () => {
                     <CardsOfCodeFusion>
                       <CardContainer>
                         <IndividualCards
-                          img="/img/img-AboutUs/Ale.png"
+                          img="img/img-AboutUs/ale.png"
                           name="Alejandra Chaparro"
                           alt="Alejandra Chaparro"
                           rol="Java Developer"
                           description="Java programmer with experience in Scrum. Passionate about learning and design, focused on organizing and leading teams effectively. Always seeking new opportunities to grow and develop professionally."             
                         />
                         <IndividualCards
-                          img="/img/img-AboutUs/goyo.png"
+                          img="img/img-AboutUs/goyo.png"
                           name="Gregorio Espinoza"
                           alt="Gregorio Espinoza"
                           rol="Software developer Jr. Trainee Intern"
                           description="Analytical, committed and persistent professional. Always ready to face new challenges with positive attitude and creativity. Fast learner and great team worker. Also, eager to learn new skills to improve my professional career."             
                         />
                         <IndividualCards
-                          img="/img/img-AboutUs/fati.png"
+                          img="img/img-AboutUs/fati.png"
                           name="Fatima Moreno"
                           alt="Fatima Moreno"
                           rol="Java Developer"
                           description="En construcción"             
                         />
                         <IndividualCards
-                          img="/img/img-AboutUs/omar.png"
+                          img="img/img-AboutUs/omar.png"
                           name="Omar Michaca"
                           alt="Omar Michaca"
                           rol="Java Developer"
@@ -257,7 +257,7 @@ const AboutUs = () => {
                       </CardContainer>
                       <CardContainer>
                         <IndividualCards
-                          img="/img/img-AboutUs/sofi.png"
+                          img="img/img-AboutUs/sofi.png"
                           name="Sofia Gomez"
                           alt="Sofia Gomez"
                           rol=" Web developer trainee"
@@ -271,7 +271,7 @@ const AboutUs = () => {
                           description=" Java Developer with expertise in Spring Boot framework. Skilled in designing and building robust web applications, integrating databases, and optimizing performance. Strong knowledge of Spring Data, RESTful APIs, and secure authentication. Continuously learning and staying updated with the latest developments in software development."             
                         />
                           <IndividualCards
-                          img="/img/img-AboutUs/david.jpg"
+                          img="img/img-AboutUs/david.jpg"
                           name="David Vazquez"
                           alt="David Vazquez"
                           rol="Front-end developer"
