@@ -4,8 +4,10 @@ import "./AboutUs.css";
 import "../../components/CardAboutUs/cardAbout.css"
 
 import styled from "@emotion/styled";
-
 import { colors } from "../../ui/colors";
+import { Link } from "react-router-dom";
+import { Box, Button } from "@mui/material";
+import SendIcon from '@mui/icons-material/Send';
 import IndividualCards from "../../components/CardAboutUs/IndividualCards";
 import CardContainer from "../../components/CardAboutUs/CardContainer";
 
@@ -125,6 +127,82 @@ const CardsOfCodeFusion = styled.section`
     flex-wrap: wrap;
     
 `
+const Footer = styled.footer`
+  width: 100%;
+  height: fit-content;
+  background-color: ${colors.new};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 60px 0;
+  @media (min-width: 958px){
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 6rem;
+  }
+  h2{
+    color: ${colors.primaryText};
+    width: 90%;
+    text-align: center;
+    font-size: 2rem;
+    margin: auto;
+    padding-bottom: 1rem;
+    @media (min-width: 768px){
+      width: 50%;
+      text-align: left;
+      font-size: 2rem;
+    }
+  }
+  p{
+    color: ${colors.secondaryText};
+    width: 100%;
+    text-align: center;
+    font-size: 1.0rem;
+    margin: auto;
+  }
+  ul{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+  }
+`
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: ${colors.primaryText};
+  &:hover{
+    background-color: ${colors.contrast};
+    color: ${colors.primaryText};
+  }
+`
+
+const CustomUl = styled.div`
+  display: flex;
+  flex-direction: row;
+  gap: 4rem;
+`
+
+const SVGsocial = styled.img`
+  width: 40px;
+  height: 40px;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  filter: invert(1);
+  transition: all 0.5s ease-in-out;
+  &:hover{
+    transform: scale(1.2);
+  }
+  @media (min-width: 768px){
+    width: 60px;
+    height: 60px;
+  }
+`
 
 const AboutUs = () => {
     return(
@@ -162,13 +240,13 @@ const AboutUs = () => {
                         <IndividualCards
                           img="../../../public/img/img-AboutUs/fati.png"
                           name="Fatima Moreno"
-                          rol="Product owner"
-                          description=" "             
+                          rol="Java Developer"
+                          description="En construcción"             
                         />
                         <IndividualCards
                           img="../../../public/img/img-AboutUs/omar.png"
                           name="Omar Michaca"
-                          rol="Product owner"
+                          rol="Java Developer"
                           description="
                           Versatile professional with adaptability, transitioning from Administration to Full Stack, bringing project management, problem-solving, and decision-making skills. Demonstrates analytical mindset and attention to detail. Excited about the exciting career change."             
                         />
@@ -181,26 +259,66 @@ const AboutUs = () => {
                           description="Full stack development apprentice with a biology background, finds inspiration in merging novel technologies into nature-based solutions."             
                         />
                         <IndividualCards
-                          img="https://i1.sndcdn.com/artworks-h8POPWJhl5r53DTW-BoDziw-t500x500.jpg"
+                          img="Coming soon"
                           name="Michelle Trejo"
-                          rol="Product owner"
-                          description=" "             
+                          rol="Java Developer"
+                          description=" Java Developer with expertise in Spring Boot framework. Skilled in designing and building robust web applications, integrating databases, and optimizing performance. Strong knowledge of Spring Data, RESTful APIs, and secure authentication. Continuously learning and staying updated with the latest developments in software development."             
                         />
                           <IndividualCards
-                          img="https://images.alphacoders.com/116/1168233.png"
+                          img="../../../public/img/img-AboutUs/david.jpg"
                           name="David Vazquez"
-                          rol="Product owner"
-                          description=" "             
+                          rol="Front-end developer"
+                          description="En construcción"             
                         />  
                          <IndividualCards
-                          img="https://super-ficcion.com/wp-content/uploads/2021/12/DCs-Nightwing-Filmdrehbuch-ist-eine-Ur-Rache-Geschichte2webp-780x470.webp"
+                          img="Coming soon"
                           name="Alvaro González"
-                          rol="Product owner"
-                          description="."             
+                          rol="Java Developer"
+                          description="En construcción"             
                         />
                       </CardContainer>
                     </CardsOfCodeFusion>
                 </AboutCodeFusion>
+                <Footer>
+                  <div>
+                    <h2>DevMura</h2>
+                    <ul>
+                      <li>
+                        <StyledLink to="/feed">Home</StyledLink>
+                      </li>
+                      <li>
+                        <StyledLink to="/about-us">About</StyledLink>
+                      </li>
+                      <li>
+                        <StyledLink to="/contact-us">Contact Us</StyledLink>
+                      </li>
+                      <li>
+                        <StyledLink to="/">Terms of Service</StyledLink>
+                      </li>
+                      <li>
+                        <StyledLink to="/">Privacy Policy</StyledLink>
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <h2>Connect</h2>
+                    <CustomUl>
+                      <li>
+                        <Link to="/"><SVGsocial src="https://www.svgrepo.com/show/509967/github.svg" alt="" /></Link>
+                      </li>
+                      <li>
+                        <Link to="/"><SVGsocial src="https://www.svgrepo.com/show/509968/gitlab.svg" alt="" /></Link>
+                      </li>
+                      <li>
+                        <Link to="/"><SVGsocial src="https://www.svgrepo.com/show/510026/instagram.svg" alt="" /></Link>
+                      </li>
+                      <li>
+                        <Link to="/"><SVGsocial src="https://www.svgrepo.com/show/510045/linkedin.svg" alt="" /></Link>
+                      </li>
+                    </CustomUl>
+                  </div>
+                  
+                </Footer>
             </Main>
         </>
     );

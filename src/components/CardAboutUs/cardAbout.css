@@ -38,6 +38,7 @@
   transform: rotate(-20deg);
   filter: grayscale(100%);
   transition: filter 0.3s ease-in-out;
+  border: 2px solid #E63946;
 }
 
 .image-container:hover img{
