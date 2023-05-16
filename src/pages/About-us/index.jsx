@@ -111,7 +111,7 @@ const AboutCodeFusion = styled.section`
     color: ${colors.primaryText};
     width: 90%;
     text-align: center;
-    font-size: 1.5rem;
+    font-size: 1.7rem;
   }
 `
 const CardsOfCodeFusion = styled.section`
@@ -182,19 +182,19 @@ const AboutUs = () => {
                         />
                         <IndividualCards
                           img="https://i1.sndcdn.com/artworks-h8POPWJhl5r53DTW-BoDziw-t500x500.jpg"
-                          name="Michelle"
+                          name="Michelle Trejo"
                           rol="Product owner"
                           description=" "             
                         />
                           <IndividualCards
                           img="https://images.alphacoders.com/116/1168233.png"
-                          name="David"
+                          name="David Vazquez"
                           rol="Product owner"
                           description=" "             
                         />  
                          <IndividualCards
                           img="https://super-ficcion.com/wp-content/uploads/2021/12/DCs-Nightwing-Filmdrehbuch-ist-eine-Ur-Rache-Geschichte2webp-780x470.webp"
-                          name="Alvaro"
+                          name="Alvaro González"
                           rol="Product owner"
                           description="."             
                         />

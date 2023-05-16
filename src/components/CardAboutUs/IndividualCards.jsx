@@ -10,7 +10,7 @@ const  IndividualCards = ({img, name, rol, description }) => {
           <img src={img} alt={name} />
         </div>
         <div className="title-container">
-          <h2 style={{ color: "#163b59", fontsize: "1.2em"}}> {name} </h2>
+          <h2 style={{ color: "#163b59"}}> {name} </h2>
           <h3> {rol} </h3>
         </div>
       </div>
