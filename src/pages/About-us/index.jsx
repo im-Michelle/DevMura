@@ -6,7 +6,8 @@ import "../../components/CardAboutUs/cardAbout.css"
 import styled from "@emotion/styled";
 
 import { colors } from "../../ui/colors";
-import IndividualCards from "../../components/CardAboutUs/CardAboutUs";
+import IndividualCards from "../../components/CardAboutUs/IndividualCards";
+import CardContainer from "../../components/CardAboutUs/CardContainer";
 
 const Main = styled.main`
   width: 100%;
@@ -110,7 +111,7 @@ const AboutCodeFusion = styled.section`
     color: ${colors.primaryText};
     width: 90%;
     text-align: center;
-    font-size: 2rem;
+    font-size: 1.5rem;
   }
 `
 const CardsOfCodeFusion = styled.section`
@@ -138,74 +139,66 @@ const AboutUs = () => {
                         <h2> DevMura </h2>
                         <p> Our project is a social network designed for people who are learning to program. We offer an online platform where users can connect with other programming learners to share knowledge, resources, and projects. Our goal is to create an interactive online community where users can collaborate and improve their programming skills to advance their careers in technology. </p> 
                     </AboutDevMuraDiv>
+                    <SloganDevMura>
+                      <p> Connected through code: With DevMura, discover your fullstack development community. </p>
+                    </SloganDevMura>
                 </AboutDevMura>
-                <SloganDevMura>
-                    <p> Connected through code: With DevMura, discover your fullstack development community. </p>
-                </SloganDevMura>
                 <AboutCodeFusion>
                     <h2> Get to know us </h2>
                     <CardsOfCodeFusion>
-                        <div class="card-container">
-                            <IndividualCards
-                            img="https://i.pinimg.com/originals/92/04/8b/92048b481309ee9268fba08ac1462c7f.jpg"
-                            name="Bachira Meguru"
-                            rol="Product owner"
-                            description="My name is Bachira and I am a passionate student of Java software development. I first became interested in this language during my university studies, where I had the opportunity to take some courses in object-oriented programming and databases with Java."             
-                            />
-                            <IndividualCards
-                            img="https://www.egames.news/__export/1673217138620/sites/debate/img/2023/01/08/vash_trigun_stampede_2_crop1673217083610.jpg_1939896235.jpg"
-                            name="Vash Stampede"
-                            rol="Product owner"
-                            description="My name is Bachira and I am a passionate student of Java software development. I first became interested in this language during my university studies, where I had the opportunity to take some courses in object-oriented programming and databases with Java."             
-                            />
-                            <IndividualCards
-                            img="https://i.pinimg.com/736x/ed/5f/cf/ed5fcfaa0b7e6fe6860f9b0cdba494ab.jpg"
-                            name="Buda"
-                            rol="Product owner"
-                            description="My name is Bachira and I am a passionate student of Java software development. I first became interested in this language during my university studies, where I had the opportunity to take some courses in object-oriented programming and databases with Java."             
-                            />
-                            <IndividualCards
-                            img="https://i.pinimg.com/originals/cf/f8/31/cff831a4147d4ee2ae3e19e9a15b5df7.jpg"
-                            name="Wyn"
-                            rol="Product owner"
-                            description="My name is Bachira and I am a passionate student of Java software development. I first became interested in this language during my university studies, where I had the opportunity to take some courses in object-oriented programming and databases with Java."             
-                            />
-                        </div>
-                        <div class="card-container">
-                            <IndividualCards
-                            img="https://pbs.twimg.com/profile_images/1015582761585803265/lZxIBMhS_400x400.jpg"
-                            name="akashi seijuro"
-                            rol="Product owner"
-                            description="My name is Bachira and I am a passionate student of Java software development. I first became interested in this language during my university studies, where I had the opportunity to take some courses in object-oriented programming and databases with Java."             
-                            />
-                            <IndividualCards
-                            img="https://i1.sndcdn.com/artworks-h8POPWJhl5r53DTW-BoDziw-t500x500.jpg"
-                            name="itadori yuji"
-                            rol="Product owner"
-                            description="My name is Bachira and I am a passionate student of Java software development. I first became interested in this language during my university studies, where I had the opportunity to take some courses in object-oriented programming and databases with Java."             
-                            />
-                            <IndividualCards
-                            img="https://images.alphacoders.com/116/1168233.png"
-                            name="Thoma"
-                            rol="Product owner"
-                            description="My name is Bachira and I am a passionate student of Java software development. I first became interested in this language during my university studies, where I had the opportunity to take some courses in object-oriented programming and databases with Java."             
-                            />  
-
-                        <div class="card-container">
-                            <IndividualCards
-                            img="https://super-ficcion.com/wp-content/uploads/2021/12/DCs-Nightwing-Filmdrehbuch-ist-eine-Ur-Rache-Geschichte2webp-780x470.webp"
-                            name="nightwing"
-                            rol="Product owner"
-                            description="My name is Bachira and I am a passionate student of Java software development. I first became interested in this language during my university studies, where I had the opportunity to take some courses in object-oriented programming and databases with Java."             
-                            />
-                            <IndividualCards
-                            img="https://somoskudasai.com/wp-content/uploads/2022/12/portada_nier-reincarnation-11.jpg"
-                            name="2b"
-                            rol="Product owner"
-                            description="My name is Bachira and I am a passionate student of Java software development. I first became interested in this language during my university studies, where I had the opportunity to take some courses in object-oriented programming and databases with Java."             
-                            />
-                        </div>
-                        </div>
+                      <CardContainer>
+                        <IndividualCards
+                          img="../../../public/img/img-AboutUs/Ale.png"
+                          name="Alejandra Chaparro"
+                          rol="Java Developer"
+                          description="Java programmer with experience in Scrum. Passionate about learning and design, focused on organizing and leading teams effectively. Always seeking new opportunities to grow and develop professionally."             
+                        />
+                        <IndividualCards
+                          img="../../../public/img/img-AboutUs/goyo.jfif"
+                          name="Gregorio Espinoza"
+                          rol="Software developer Jr. Trainee Intern"
+                          description="Analytical, committed and persistent professional. Always ready to face new challenges with positive attitude and creativity. Fast learner and great team worker. Also, eager to learn new skills to improve my professional career."             
+                        />
+                        <IndividualCards
+                          img="../../../public/img/img-AboutUs/fati.png"
+                          name="Fatima Moreno"
+                          rol="Product owner"
+                          description=" "             
+                        />
+                        <IndividualCards
+                          img="../../../public/img/img-AboutUs/omar.png"
+                          name="Omar Michaca"
+                          rol="Product owner"
+                          description="
+                          Versatile professional with adaptability, transitioning from Administration to Full Stack, bringing project management, problem-solving, and decision-making skills. Demonstrates analytical mindset and attention to detail. Excited about the exciting career change."             
+                        />
+                      </CardContainer>
+                      <CardContainer>
+                        <IndividualCards
+                          img="../../../public/img/img-AboutUs/sofi.png"
+                          name="Sofia Gomez"
+                          rol=" Web developer trainee"
+                          description="Full stack development apprentice with a biology background, finds inspiration in merging novel technologies into nature-based solutions."             
+                        />
+                        <IndividualCards
+                          img="https://i1.sndcdn.com/artworks-h8POPWJhl5r53DTW-BoDziw-t500x500.jpg"
+                          name="Michelle"
+                          rol="Product owner"
+                          description=" "             
+                        />
+                          <IndividualCards
+                          img="https://images.alphacoders.com/116/1168233.png"
+                          name="David"
+                          rol="Product owner"
+                          description=" "             
+                        />  
+                         <IndividualCards
+                          img="https://super-ficcion.com/wp-content/uploads/2021/12/DCs-Nightwing-Filmdrehbuch-ist-eine-Ur-Rache-Geschichte2webp-780x470.webp"
+                          name="Alvaro"
+                          rol="Product owner"
+                          description="."             
+                        />
+                      </CardContainer>
                     </CardsOfCodeFusion>
                 </AboutCodeFusion>
             </Main>
