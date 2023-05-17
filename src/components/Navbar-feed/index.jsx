@@ -15,7 +15,6 @@ const Nav = styled.nav`
   z-index: 100;
 `;
 
-
 const NavContainer = styled.div`
     width: 100%;
     max-width: 70%;
@@ -98,7 +97,7 @@ export const NewNavBarFeed = () => {
             <NavContainer>
                 <Logo>
                     <LogoContainer>
-                        <LogoImage src="public\img\icono-dm-blanco.svg" alt="Logo" />
+                        <LogoImage src="img\icono-dm-blanco.svg" alt="Logo" />
                     </LogoContainer>
                     <SearchBar />
                 </Logo>
