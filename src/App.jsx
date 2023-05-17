@@ -6,9 +6,10 @@ import SignUp from './pages/Sign-up'
 import ChangeProfile from './pages/ChangeProfile'
 import AboutUs from './pages/About-us'
 import ContactUs from './pages/Contact-us'
-
 import ProfilePage from './pages/Profile'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop'
+import TermsOfService from './pages/TermsOfService'
+import Privacy from './pages/Privacy'
 
 function App() {
   
@@ -28,6 +29,8 @@ function App() {
         <Route path='*' element={ <SocialFeed/>} />
         <Route path='/changeprofile' element={ <ChangeProfile/> } /> 
         <Route path='contact-us' element={<ContactUs />} />
+        <Route path='terms-of-service' element={<TermsOfService />} />
+        <Route path='privacy' element={<Privacy />} />
       </Routes>
     </Router>
   )
