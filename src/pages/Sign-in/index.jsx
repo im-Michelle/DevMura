@@ -11,13 +11,12 @@ import { useState } from "react";
 import { IconButton, InputAdornment } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
-
 const Main = styled.main`
   width: 100%;
   height: max-content;
   background-color: ${colors.new};
   display: flex;
-  flex-direction: row-reverse;
+  flex-direction: row;
   justify-content: center;
   align-items: center;
 `;
@@ -47,12 +46,11 @@ const Form = styled(Box)`
     font-size: 2rem;
   }
 `;
-
 const FormImg = styled.div`
   display: flex;
   width: 60%;
   height: 100vh;
-  background-image: url("https://images.pexels.com/photos/3435272/pexels-photo-3435272.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-image: url("https://images.pexels.com/photos/8721342/pexels-photo-8721342.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -76,11 +74,9 @@ const TextFieldStyled = styled(TextField)`
   .MuiInput-underline:before {
     border-bottom-color: ${colors.navy}; 
   }
-
   .MuiInput-underline:hover:not(.Mui-disabled):before {
     border-bottom-color: ${colors.vibrantBlue}; 
   }
-
   .MuiInput-underline:after {
     border-bottom-color: ${colors.primaryText}; 
   }
@@ -93,12 +89,10 @@ const TextFieldStyled = styled(TextField)`
   .MuiInputLabel-root {
     color: ${colors.vibrantBlue};
   }
-
   .MuiInputLabel-root.Mui-focused {
     color: ${colors.lightBlue}; 
   }
 `;
-
 const SignIn = () => {
   const [formValues, setFormValues] = useState({});
   const [showPassword, setShowPassword] = useState(false);
