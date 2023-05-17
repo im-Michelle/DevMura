@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
 import Home from './pages/Home'
 import SocialFeed from './pages/Social-feed'
 import SignUp from './pages/Sign-up'
+import SignIn from './pages/Sign-in'
 import ChangeProfile from './pages/ChangeProfile'
 import AboutUs from './pages/About-us'
 import ContactUs from './pages/Contact-us'
@@ -21,7 +22,7 @@ function App() {
         <Route path='feed' element={ <SocialFeed/>} />
         <Route path='chat' element={ <SignUp/>} />
         <Route path='sign-up' element={ <SignUp/>} />
-        <Route path='sign-in' element={ <SignUp/>} />
+        <Route path='sign-in' element={ <SignIn/>} />
         <Route path='about-us' element={ <AboutUs />} />
         <Route path='profile' element={ <ProfilePage/>} />
         <Route path='user/:id' element={ <ProfilePage/>} />
