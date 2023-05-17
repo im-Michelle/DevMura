@@ -8,8 +8,6 @@ import Snackbar from '@mui/material/Snackbar';
 import FormControl from '@mui/material/FormControl';
 import styled from "@emotion/styled";
 import { colors } from "../../ui/colors";
-
-import Typography from '@mui/material/Typography';
 import Footer from '../../components/Footer';
 
 const Main = styled.main`
@@ -110,7 +108,6 @@ const ContactUs = () => {
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const validateInputs = () => {
-    // Validar que los campos no estén vacíos y que el correo electrónico sea válido
     if (name.trim() === '' || email.trim() === '' || phone.trim() === '' || message.trim() === '') {
       setValidationError(true);
       return false;
@@ -122,20 +119,32 @@ const ContactUs = () => {
       return false;
     }
 
+    const nameRegex = /^[a-zA-Z áíóúé]+$/;
+    if (!nameRegex.test(name)) {
+      setValidationError(true);
+      return false;
+    }
+
+    const phoneRegex = /^[0-9]+$/;
+    if (!phoneRegex.test(phone)) {
+      setValidationError(true);
+      return false;
+    }
+
     setValidationError(false);
     return true;
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
 
     if (!validateInputs()) {
+      event.preventDefault();
       return;
+    } else {
+      return
     }
 
-    // Aquí puedes agregar la lógica para enviar los datos del formulario por correo electrónico
-    // Puedes utilizar una librería o servicio de envío de correos electrónicos como Nodemailer o SendGrid
-
+  
     setSubmitSuccess(true);
     setName('');
     setEmail('');
@@ -159,7 +168,7 @@ const ContactUs = () => {
               <StyledH4> How can we help you? We are DevMura and we are here for you! </StyledH4>
             </HeaderDiv>
 
-            <FormContainer fullWidth  maxWidth="sm">
+            <FormContainer fullwidth="true"  maxWidth="sm">
               <form action="https://formsubmit.co/sofia.gmagk@gmail.com" method="POST">
                 <FormControl fullWidth sx={{ m: 1 }} >
                   <CustomTextField
@@ -168,6 +177,7 @@ const ContactUs = () => {
                     variant="outlined"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    required
                   />
 
                   <CustomTextField
@@ -176,6 +186,7 @@ const ContactUs = () => {
                     variant="outlined"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    required
                   />
 
                   <CustomTextField
@@ -184,6 +195,7 @@ const ContactUs = () => {
                     variant="outlined"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
+                    required
                   />
 
                   <CustomTextField
@@ -194,12 +206,14 @@ const ContactUs = () => {
                     rows={4}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
+                    required
                   />
 
                   <SubmitButton
                     type="submit"
                     variant="contained"
                     color="primary"
+                    onClick={handleSubmit}
                   >
                     Submit
                   </SubmitButton>
@@ -211,7 +225,7 @@ const ContactUs = () => {
                 open={validationError}
                 autoHideDuration={4000}
                 onClose={() => setValidationError(false)}
-              message="Por favor, complete todos los campos correctamente"
+                message="Por favor, complete todos los campos correctamente"
             />
             
             <Snackbar
@@ -219,6 +233,7 @@ const ContactUs = () => {
               autoHideDuration={4000}
               onClose={handleSnackbarClose}
               message="¡Mensaje enviado con éxito!"
+              severity="success"
             />
           </FormContainer>
 
