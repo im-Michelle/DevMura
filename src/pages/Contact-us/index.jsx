@@ -10,6 +10,7 @@ import styled from "@emotion/styled";
 import { colors } from "../../ui/colors";
 
 import Typography from '@mui/material/Typography';
+import Footer from '../../components/Footer';
 
 const Main = styled.main`
   width: 100%;
@@ -220,6 +221,8 @@ const ContactUs = () => {
               message="¡Mensaje enviado con éxito!"
             />
           </FormContainer>
+
+          <Footer/>
         </Main>
     </>
   );    
