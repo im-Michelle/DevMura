@@ -118,7 +118,7 @@ const Footer = () => {
                 <StyledLink to="/contact-us">Contact Us</StyledLink>
               </li>
               <li>
-                <StyledLink to="/">Terms of Service</StyledLink>
+                <StyledLink to="/terms-of-service">Terms of Service</StyledLink>
               </li>
               <li>
                 <StyledLink to="/">Privacy Policy</StyledLink>
