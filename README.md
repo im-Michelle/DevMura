@@ -1,3 +1,5 @@
+<image src="./public/img/img-readme.png" alt="Imagen de devmura">
+
 # DevMura
 Para esta pagina se utilizo [Vercel](https://dev-mura.vercel.app/) para el despliegue.
 
