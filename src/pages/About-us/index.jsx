@@ -2,7 +2,7 @@ import React from "react";
 import NavbarDefault from "../../components/Navbar-Default";
 import "./AboutUs.css";
 import "../../components/CardAboutUs/cardAbout.css"
-
+import Footer from "../../components/Footer";
 import styled from "@emotion/styled";
 import { colors } from "../../ui/colors";
 import { Link } from "react-router-dom";
@@ -10,6 +10,8 @@ import { Box, Button } from "@mui/material";
 import SendIcon from '@mui/icons-material/Send';
 import IndividualCards from "../../components/CardAboutUs/IndividualCards";
 import CardContainer from "../../components/CardAboutUs/CardContainer";
+
+
 
 const Main = styled.main`
   width: 100%;
@@ -127,51 +129,6 @@ const CardsOfCodeFusion = styled.section`
     flex-wrap: wrap;
     
 `
-const Footer = styled.footer`
-  width: 100%;
-  height: fit-content;
-  background-color: ${colors.new};
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  padding: 60px 0;
-  @media (min-width: 958px){
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: flex-start;
-    gap: 6rem;
-  }
-  h2{
-    color: ${colors.primaryText};
-    width: 90%;
-    text-align: center;
-    font-size: 2rem;
-    margin: auto;
-    padding-bottom: 1rem;
-    @media (min-width: 768px){
-      width: 50%;
-      text-align: left;
-      font-size: 2rem;
-    }
-  }
-  p{
-    color: ${colors.secondaryText};
-    width: 100%;
-    text-align: center;
-    font-size: 1.0rem;
-    margin: auto;
-  }
-  ul{
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-  }
-`
 
 const StyledLink = styled(Link)`
   text-decoration: none;
@@ -226,7 +183,7 @@ const AboutUs = () => {
                     <CardsOfCodeFusion>
                       <CardContainer>
                         <IndividualCards
-                          img="img/img-AboutUs/ale.png"
+                          img="img/img-AboutUs/Ale.png"
                           name="Alejandra Chaparro"
                           alt="Alejandra Chaparro"
                           rol="Java Developer"
@@ -287,46 +244,7 @@ const AboutUs = () => {
                       </CardContainer>
                     </CardsOfCodeFusion>
                 </AboutCodeFusion>
-                <Footer>
-                  <div>
-                    <h2>DevMura</h2>
-                    <ul>
-                      <li>
-                        <StyledLink to="/">Home</StyledLink>
-                      </li>
-                      <li>
-                        <StyledLink to="/about-us">About</StyledLink>
-                      </li>
-                      <li>
-                        <StyledLink to="/contact-us">Contact Us</StyledLink>
-                      </li>
-                      <li>
-                        <StyledLink to="/">Terms of Service</StyledLink>
-                      </li>
-                      <li>
-                        <StyledLink to="/">Privacy Policy</StyledLink>
-                      </li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h2>Connect</h2>
-                    <CustomUl>
-                      <li>
-                        <Link to="/"><SVGsocial src="https://www.svgrepo.com/show/509967/github.svg" alt="" /></Link>
-                      </li>
-                      <li>
-                        <Link to="/"><SVGsocial src="https://www.svgrepo.com/show/509968/gitlab.svg" alt="" /></Link>
-                      </li>
-                      <li>
-                        <Link to="/"><SVGsocial src="https://www.svgrepo.com/show/510026/instagram.svg" alt="" /></Link>
-                      </li>
-                      <li>
-                        <Link to="/"><SVGsocial src="https://www.svgrepo.com/show/510045/linkedin.svg" alt="" /></Link>
-                      </li>
-                    </CustomUl>
-                  </div>
-                  
-                </Footer>
+                <Footer />
             </Main>
         </>
     );

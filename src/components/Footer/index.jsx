@@ -121,7 +121,7 @@ const Footer = () => {
                 <StyledLink to="/terms-of-service">Terms of Service</StyledLink>
               </li>
               <li>
-                <StyledLink to="/">Privacy Policy</StyledLink>
+                <StyledLink to="/privacy-policy">Privacy Policy</StyledLink>
               </li>
             </ul>
           </div>
