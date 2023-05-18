@@ -13,7 +13,7 @@ const Privacy = () => {
         <>
             <NavbarDefault />
             <Main>
-                <TitleHead titulo="Privacy Policy" imageUrl="./img/background-Privacy.jpg"/>
+                <TitleHead titulo="Privacy Policy" imageUrl="https://images.pexels.com/photos/8720593/pexels-photo-8720593.jpeg"/>
                 <Footer />
             </Main>
         </>

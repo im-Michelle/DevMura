@@ -155,28 +155,24 @@ const AboutUs = () => {
                         <IndividualCards
                           img="img/img-AboutUs/Ale.png"
                           name="Alejandra Chaparro"
-                          alt="Alejandra Chaparro"
                           rol="Java Developer"
                           description="Java programmer with experience in Scrum. Passionate about learning and design, focused on organizing and leading teams effectively. Always seeking new opportunities to grow and develop professionally."             
                         />
                         <IndividualCards
                           img="img/img-AboutUs/goyo.png"
                           name="Gregorio Espinoza"
-                          alt="Gregorio Espinoza"
                           rol="Software developer Jr. Trainee Intern"
                           description="Analytical, committed and persistent professional. Always ready to face new challenges with positive attitude and creativity. Fast learner and great team worker. Also, eager to learn new skills to improve my professional career."             
                         />
                         <IndividualCards
                           img="img/img-AboutUs/fati.png"
                           name="Fatima Moreno"
-                          alt="Fatima Moreno"
-                          rol="Java Developer"
-                          description="En construcción"             
+                          rol="Full Stack Trainee"
+                          description="Passionate about programming languages, teamwork, and eager to learn new things."             
                         />
                         <IndividualCards
                           img="img/img-AboutUs/omar.png"
                           name="Omar Michaca"
-                          alt="Omar Michaca"
                           rol="Java Developer"
                           description="
                           Versatile professional with adaptability, transitioning from Administration to Full Stack, bringing project management, problem-solving, and decision-making skills. Demonstrates analytical mindset and attention to detail. Excited about the exciting career change."             
@@ -186,30 +182,26 @@ const AboutUs = () => {
                         <IndividualCards
                           img="img/img-AboutUs/sofi.png"
                           name="Sofia Gomez"
-                          alt="Sofia Gomez"
                           rol=" Web developer trainee"
                           description="Full stack development apprentice with a biology background, finds inspiration in merging novel technologies into nature-based solutions."             
                         />
                         <IndividualCards
-                          img="Coming soon"
+                          img="https://avatars.githubusercontent.com/u/92353536?v=4"
                           name="Michelle Trejo"
-                          alt="Coming soon"
                           rol="Java Developer"
                           description=" Java Developer with expertise in Spring Boot framework. Skilled in designing and building robust web applications, integrating databases, and optimizing performance. Strong knowledge of Spring Data, RESTful APIs, and secure authentication. Continuously learning and staying updated with the latest developments in software development."             
                         />
                           <IndividualCards
                           img="img/img-AboutUs/david.jpg"
                           name="David Vazquez"
-                          alt="David Vazquez"
                           rol="Front-end developer"
-                          description="En construcción"             
+                          description="As a front-end developer, I create attractive and functional user interfaces for web and mobile applications. I use HTML, CSS, and JavaScript to bring designs to life, ensuring a great user experience. I work with frameworks like React and collaborate with designers and back-end developers. Continuous learning keeps me up to date with the latest trends and technologies."             
                         />  
                          <IndividualCards
-                          img="Coming soon"
+                          img="https://images.pexels.com/photos/211122/pexels-photo-211122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                           name="Alvaro González"
-                          alt="Coming soon"
-                          rol="Java Developer"
-                          description="En construcción"             
+                          rol="Web developer trainee"
+                          description="Full stack development apprentice with a physio therapy background, with the vision to creat amazing development solutions"             
                         />
                       </CardContainer>
                     </CardsOfCodeFusion>
