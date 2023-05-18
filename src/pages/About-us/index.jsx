@@ -1,5 +1,6 @@
 import React from "react";
 import NavbarDefault from "../../components/Navbar-Default";
+import TitleHead from "../../components/TitleHead";
 import "./AboutUs.css";
 import "../../components/CardAboutUs/cardAbout.css"
 import Footer from "../../components/Footer";
@@ -15,35 +16,6 @@ import CardContainer from "../../components/CardAboutUs/CardContainer";
 
 const Main = styled.main`
   width: 100%;
-`;
-
-const Header = styled.header`
-  width: 100%;
-  height: 90vh;
-  background-image: url("./img/background-AboutUs.png");
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  h1 {
-    background-color: #00000097;
-    font-size: 4rem;
-    color: ${colors.primaryText};
-    text-align: center;
-    width: 90%;
-    max-width: 800px;
-  }
-  h2 {
-    font-size: 2rem;
-    color: ${colors.secondaryText};
-    text-align: center;
-    width: 90%;
-    max-width: 800px;
-  }
 `;
 
 const AboutDevMura = styled.section`
@@ -166,9 +138,7 @@ const AboutUs = () => {
         <>
             <NavbarDefault />
             <Main>
-                <Header>
-                    <h1> About us </h1>
-                </Header>
+                <TitleHead titulo="About Us" imageUrl="./img/background-AboutUs.png"/>
                 <AboutDevMura>
                     <AboutDevMuraDiv>
                         <h2> DevMura </h2>
