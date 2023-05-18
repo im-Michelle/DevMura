@@ -102,37 +102,6 @@ const CardsOfCodeFusion = styled.section`
     
 `
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: ${colors.primaryText};
-  &:hover{
-    background-color: ${colors.contrast};
-    color: ${colors.primaryText};
-  }
-`
-
-const CustomUl = styled.div`
-  display: flex;
-  flex-direction: row;
-  gap: 4rem;
-`
-
-const SVGsocial = styled.img`
-  width: 40px;
-  height: 40px;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  filter: invert(1);
-  transition: all 0.5s ease-in-out;
-  &:hover{
-    transform: scale(1.2);
-  }
-  @media (min-width: 768px){
-    width: 60px;
-    height: 60px;
-  }
-`
-
 const AboutUs = () => {
     return(
         <>

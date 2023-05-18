@@ -20,21 +20,30 @@ const ContentPrivacy = styled.section`
   justify-content: center;
   gap: 20px;
   padding: 60px 0;
-  h2{
+  hyphens: auto;
+  lang: en;
+
+  h2 {
     color: ${colors.primaryText};
     width: 90%;
     text-align: center;
     font-size: 2rem;
-    margin-left: 10px;
+    margin-left: 2%;
+
+    @media (max-width: 768px) {  /* Ajusta el ancho (768px) según tus necesidades */
+      font-size: 1.5rem;  /* Tamaño de fuente más pequeño para dispositivos móviles */
+    }
   }
-  p{
+
+  p {
     color: ${colors.primaryText};
     width: 70%;
     text-align: center;
     font-size: 1.3rem;
     flex: 1;
   }
-`
+`;
+
 
 const DivsWithInformation = styled.section`
     box-shadow: 0px 0px 10px 0px #0000005e;
