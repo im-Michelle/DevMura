@@ -135,7 +135,7 @@ const Footer = () => {
                 <Link to="/"><SVGsocial src="https://www.svgrepo.com/show/509968/gitlab.svg" alt="" /></Link>
               </li>
               <li>
-                <Link to="/"><SVGsocial src="https://www.svgrepo.com/show/510026/instagram.svg" alt="" /></Link>
+                <Link to="https://www.instagram.com/devm.ura/" target="_blank"><SVGsocial src="https://www.svgrepo.com/show/510026/instagram.svg" alt="" /></Link>
               </li>
               <li>
                 <Link to="/"><SVGsocial src="https://www.svgrepo.com/show/510045/linkedin.svg" alt="" /></Link>

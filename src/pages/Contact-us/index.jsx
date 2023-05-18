@@ -133,7 +133,7 @@ const ContactUs = () => {
     <>
         <NavbarDefault/>
         <Main>
-            <TitleHead titulo="Contact us" imageUrl="./img/background-AboutUs.png"/>
+            <TitleHead titulo="Contact us" imageUrl="https://images.pexels.com/photos/7689133/pexels-photo-7689133.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"/>
             <HeaderDiv>
               <StyledH3> Get in touch </StyledH3>
               <StyledH4> How can we help you? We are DevMura and we are here for you! </StyledH4>
