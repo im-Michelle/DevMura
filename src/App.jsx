@@ -11,6 +11,7 @@ import ContactUs from './pages/Contact-us'
 import ProfilePage from './pages/Profile'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop'
 import TermsOfService from './pages/TermsOfService'
+import PrivacyPolicy from './pages/Privacy'
 import ErroPage from './pages/ErroPage'
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
         <Route path='/about-us' element={ <AboutUs />} />
         <Route path='/contact-us' element={<ContactUs />} />
         <Route path='/terms-of-service' element={<TermsOfService />} />
+        <Route path='/privacy-policy' element={<PrivacyPolicy />} />
         <Route path='/feed' element={ <SocialFeed/>} />
         <Route path='/chat' element={ <SignUp/>} />
         <Route path='/profile' element={ <ProfilePage/>} />

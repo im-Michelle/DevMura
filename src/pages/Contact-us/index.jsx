@@ -9,39 +9,12 @@ import FormControl from '@mui/material/FormControl';
 import styled from "@emotion/styled";
 import { colors } from "../../ui/colors";
 import Footer from '../../components/Footer';
+import TitleHead from "../../components/TitleHead";
+
 
 const Main = styled.main`
   width: 100%;
   background-color: ${colors.new};
-`;
-
-const Header = styled.header`
-  width: 100%;
-  height: 90vh;
-  background-image: url("./img/background-AboutUs.png");
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  h1 {
-    background-color: #00000097;
-    font-size: 4rem;
-    color: ${colors.primaryText};
-    text-align: center;
-    width: 90%;
-    max-width: 800px;
-  }
-  h2 {
-    font-size: 2rem;
-    color: ${colors.secondaryText};
-    text-align: center;
-    width: 90%;
-    max-width: 800px;
-  }
 `;
 
 const FormContainer = styled(Container)`
@@ -160,9 +133,7 @@ const ContactUs = () => {
     <>
         <NavbarDefault/>
         <Main>
-            <Header>
-              <h1> Contact us </h1>
-            </Header>
+            <TitleHead titulo="Contact us" imageUrl="./img/background-AboutUs.png"/>
             <HeaderDiv>
               <StyledH3> Get in touch </StyledH3>
               <StyledH4> How can we help you? We are DevMura and we are here for you! </StyledH4>
