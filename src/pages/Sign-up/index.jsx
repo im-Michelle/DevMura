@@ -82,28 +82,28 @@ const TextFieldStyled = styled(TextField)`
     color: ${colors.primaryText};
   }
   .MuiInput-underline:before {
-    border-bottom-color: ${colors.navy}; 
+    border-bottom-color: ${colors.navy};
   }
 
   .MuiInput-underline:hover:not(.Mui-disabled):before {
-    border-bottom-color: ${colors.vibrantBlue}; 
+    border-bottom-color: ${colors.vibrantBlue};
   }
 
   .MuiInput-underline:after {
-    border-bottom-color: ${colors.primaryText}; 
+    border-bottom-color: ${colors.primaryText};
   }
   .MuiFormHelperText-root {
-    color: ${colors.secondaryText}; 
+    color: ${colors.secondaryText};
   }
   .MuiFormLabel-root.Mui-error {
-    color: ${colors.contrast}; 
+    color: ${colors.contrast};
   }
   .MuiInputLabel-root {
     color: ${colors.primaryText};
   }
 
   .MuiInputLabel-root.Mui-focused {
-    color: ${colors.lightBlue}; 
+    color: ${colors.lightBlue};
   }
 `;
 const MessageLogin = styled.p`
@@ -119,15 +119,26 @@ const MessageLogin = styled.p`
 
 const SignUp = () => {
   const [formValues, setFormValues] = useState({});
+
+  // use state para ver el password
   const [showPassword, setShowPassword] = useState(false);
 
+  // boton para el submit
+  const [buttonActive, setButtonActive] = useState(true);
+
+  // boton para aceptar los terminos y condiciones
+  const [terms, setTerms] = useState(false);
+
+  // valores de los inputs
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
   const [userName, setUserName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [age, setAge] = useState("");
+  const [gender, setGender] = useState("");
 
+  // validadores de los inputs
   const [isValidName, setIsValidName] = useState(true);
   const [isValidLastName, setIsValidLastName] = useState(true);
   const [isValidUserName, setIsValidUserName] = useState(true);
@@ -135,99 +146,144 @@ const SignUp = () => {
   const [isValidPassword, setIsValidPassword] = useState(true);
   const [isValidAge, setIsValidAge] = useState(true);
 
-
-  const handleInputNameChange = (e) =>{
+  // validadores de los inputs
+  const handleInputNameChange = (e) => {
     const inputValue = e.target.value;
     const regeName = "^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\\s]+$";
-    if(inputValue.length < 3 || inputValue.length > 50 || !inputValue.match(regeName)){
+    if (
+      inputValue.length < 3 ||
+      inputValue.length > 50 ||
+      !inputValue.match(regeName)
+    ) {
       setIsValidName(false);
-      setName(inputValue)
-    }else{
+      setName(inputValue);
+    } else {
       setIsValidName(true);
-      setName(inputValue)
+      setName(inputValue);
     }
-  }
+  };
 
-  const handleInputLastNameChange = (e) =>{
+  const handleInputLastNameChange = (e) => {
     const inputValue = e.target.value;
-    const regexLastName = "^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\s-]+$";
-
-    if(inputValue.length < 3 || inputValue.length > 50 || !inputValue.match(regexLastName)){
+    const regexLastName = "^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜs-]+$";
+    if (
+      inputValue.length < 3 ||
+      inputValue.length > 50 ||
+      !inputValue.match(regexLastName)
+    ) {
       setIsValidLastName(false);
-      setLastName(inputValue)
-    }else{
+      setLastName(inputValue);
+    } else {
       setIsValidLastName(true);
-      setLastName(inputValue)
+      setLastName(inputValue);
     }
-  }
-  const handleInputUserNameChange = (e) =>{
+  };
+
+  const handleInputUserNameChange = (e) => {
     const inputValue = e.target.value;
     const regexUserName = "^[a-zA-Z0-9._-]{3,16}$";
-    if(inputValue.length < 3 || inputValue.length > 50 || !inputValue.match(regexUserName)){
+    if (
+      inputValue.length < 3 ||
+      inputValue.length > 50 ||
+      !inputValue.match(regexUserName)
+    ) {
       setIsValidUserName(false);
-      setUserName(inputValue)
-    }else{
+      setUserName(inputValue);
+    } else {
       setIsValidUserName(true);
-      setUserName(inputValue)
+      setUserName(inputValue);
     }
-  }
-  const handleInputEmailChange = (e) =>{
+  };
+
+  const handleInputEmailChange = (e) => {
     const inputValue = e.target.value;
     const regexEmail = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
-
-    if(inputValue.length < 3 || inputValue.length > 50 || !inputValue.match(regexEmail)){
+    if (
+      inputValue.length < 3 ||
+      inputValue.length > 50 ||
+      !inputValue.match(regexEmail)
+    ) {
       setIsValidEmail(false);
-      setEmail(inputValue)
-    }else{
+      setEmail(inputValue);
+    } else {
       setIsValidEmail(true);
-      setEmail(inputValue)
+      setEmail(inputValue);
     }
-  }
+  };
 
-  const handleInputPasswordChange = (e) =>{
+  const handleInputPasswordChange = (e) => {
     const inputValue = e.target.value;
-    const regexPassword = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
-
-    if(inputValue.length < 3 || inputValue.length > 50 || !inputValue.match(regexPassword)){
+    const regexPassword =
+      "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+    if (
+      inputValue.length < 3 ||
+      inputValue.length > 50 ||
+      !inputValue.match(regexPassword)
+    ) {
       setIsValidPassword(false);
-      setPassword(inputValue)
-    }else{
+      setPassword(inputValue);
+    } else {
       setIsValidPassword(true);
-      setPassword(inputValue)
+      setPassword(inputValue);
     }
-  }
+  };
 
-  const handleInputAgeChange = (e) =>{
+  const handleInputAgeChange = (e) => {
     const inputValue = e.target.value;
     const regexAge = "^[0-9]{2,3}$";
-
-    if(inputValue < 18 ||  !inputValue.match(regexAge) || inputValue > 130){
+    if (inputValue < 18 || !inputValue.match(regexAge) || inputValue > 130) {
       setIsValidAge(false);
-      setAge(inputValue)
-    }else{
+      setAge(inputValue);
+    } else {
       setIsValidAge(true);
-      setAge(inputValue)
+      setAge(inputValue);
     }
-  }
+  };
+
+  const handleActiveButton = () => {
+    if (
+      isValidName &&
+      isValidLastName &&
+      isValidUserName &&
+      isValidEmail &&
+      isValidPassword &&
+      isValidAge &&
+      terms
+    ) {
+      setButtonActive(false);
+    } else {
+      setButtonActive(true);
+    }
+  };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     console.log(formValues);
   };
+
   const handleSubmmit = () => {
-    if (isValidName && isValidLastName && isValidUserName && isValidEmail && isValidPassword && isValidAge) {
+    if (
+      isValidName &&
+      isValidLastName &&
+      isValidUserName &&
+      isValidEmail &&
+      isValidPassword &&
+      isValidAge &&
+      terms
+    ) {
       console.log("Formulario enviado");
     } else {
       console.log("Formulario no enviado");
     }
   };
-  const inputAdornment = (
-    <InputAdornment position="end">
-      <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
-        {showPassword ? <VisibilityOff /> : <Visibility />}
-      </IconButton>
-    </InputAdornment>
-  );
+  const handleTerms = () => {
+    if (terms) {
+      setTerms(false);
+    } else {
+      setTerms(true);
+    }
+  };
+
   return (
     <>
       <Main>
@@ -239,6 +295,7 @@ const SignUp = () => {
           noValidate
           autoComplete="off"
           onSubmit={handleFormSubmit}
+          onChange={handleActiveButton}
         >
           <h1>Sign Up to DevMura</h1>
           <TextFieldStyled
@@ -247,8 +304,8 @@ const SignUp = () => {
             label="Name"
             variant="standard"
             value={name}
-            helperText={ isValidName ? "" : "Invalid name" }
-            error={ !isValidName}
+            helperText={isValidName ? "" : "Invalid name"}
+            error={!isValidName}
             required
             inputProps={{ style: { textTransform: "capitalize" } }}
             onChange={handleInputNameChange}
@@ -292,7 +349,11 @@ const SignUp = () => {
             label="Password"
             variant="standard"
             type={showPassword ? "text" : "password"}
-            helperText={isValidPassword ? "Password: at least 8 characters with uppercase, lowercase, numbers, and special characters." : "Invalid password"}
+            helperText={
+              isValidPassword
+                ? "Password: at least 8 characters with uppercase, lowercase, numbers, and special characters."
+                : "Invalid password"
+            }
             error={!isValidPassword}
             value={password}
             onChange={handleInputPasswordChange}
@@ -316,14 +377,13 @@ const SignUp = () => {
             label="Age"
             variant="standard"
             type="Number"
-            helperText={ isValidAge ? "" : "Invalid age" }
+            helperText={isValidAge ? "" : "Invalid age"}
             required
             min="18"
             max="100"
             value={age}
             onChange={handleInputAgeChange}
             error={!isValidAge}
-
           />
           <FormLabel
             id="formLabel"
@@ -361,19 +421,24 @@ const SignUp = () => {
             control={<Checkbox style={{ color: colors.primaryText }} />}
             label="Creating an account means you're okay with our Terms of Service, Privacy Policy, and our default Notificacion Settings."
             style={{ color: colors.primaryText }}
+            value={terms}
+            onChange={handleTerms}
           />
           <Stack direction="row" /* spacing={2} */>
-            <Button  variant="contained" type="submit" endIcon={<SendIcon />} onClick={handleSubmmit} disabled >
+            <Button
+              variant="contained"
+              type="submit"
+              endIcon={<SendIcon />}
+              onClick={handleSubmmit}
+              disabled={buttonActive}
+            >
               Send
             </Button>
           </Stack>
-
           <MessageLogin>
             Already have an account? <a href="/sign-in">Sign in</a>
           </MessageLogin>
-
         </Form>
-
         <FormImg>
           <img src="/img/icono-logo-blanco.svg" alt="" />
         </FormImg>
