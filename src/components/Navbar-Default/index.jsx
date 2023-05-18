@@ -159,6 +159,7 @@ const StyledLink5 = styled(Link)`
 const LogoLink = styled.img`
   width: 100%;
   height: 100%;
+  max-width: 200px;
 `
 
 const NavbarDefault = () => {
@@ -174,22 +175,22 @@ const NavbarDefault = () => {
           <Link to="/home">
             <LogoLink  src="./img/icono-logo-blanco.svg"/>
           </Link>
-          <ol>
+          {/* <ol>
             <StyledLink5>Product</StyledLink5>
             <StyledLink5>Solutions</StyledLink5>
             <StyledLink5>Pricing</StyledLink5>
-          </ol>
+          </ol> */}
         </Logo>
 
         <Input type="checkbox" id="checkbox" />
         <Label htmlFor="checkbox"></Label>
 
         <Products>
-          <ol>
+          {/* <ol>
             <SyledLink2>Product</SyledLink2>
             <SyledLink2>Solutions</SyledLink2>
             <SyledLink2>Pricing</SyledLink2>
-          </ol>
+          </ol> */}
           <SyledLink3 to="/sign-up">Sign up</SyledLink3>
         </Products>
       </NavContainer>
