@@ -2,12 +2,13 @@ import styled from "styled-components";
 import { colors } from "../../../ui/colors";
 import * as React from "react";
 
+
 const AddPostContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: ${colors.white};
-  width: 100%;
+  width: 90%;
   max-width: 700px;
   gap: 30px;
   padding: 20px;
@@ -18,8 +19,12 @@ const AddPostContainer = styled.div`
 
 
 const AddPost = () => {
+  const [text, setText] = React.useState('');
+  const addEmoji = (emoji) => () => setText(`${text}${emoji}`);
   return (
-    <AddPostContainer>
+    <AddPostContainer> 
+      
+      
       
     </AddPostContainer>
   );

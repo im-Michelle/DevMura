@@ -145,11 +145,12 @@ const SignUp = () => {
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [isValidPassword, setIsValidPassword] = useState(true);
   const [isValidAge, setIsValidAge] = useState(true);
+  const [isValidGender, setIsValidGender] = useState(false);
 
   // validadores de los inputs
   const handleInputNameChange = (e) => {
     const inputValue = e.target.value;
-    const regeName = "^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜ\\s]+$";
+    const regeName = "^[A-Za-záéíóúüñÁÉÍÓÚÜÑ]+(?: [A-Za-záéíóúüñÁÉÍÓÚÜÑ]+)*$";
     if (
       inputValue.length < 3 ||
       inputValue.length > 50 ||
@@ -165,7 +166,8 @@ const SignUp = () => {
 
   const handleInputLastNameChange = (e) => {
     const inputValue = e.target.value;
-    const regexLastName = "^[a-zA-ZáéíóúÁÉÍÓÚñÑüÜs-]+$";
+    const regexLastName =
+      "^[A-Za-záéíóúüñÁÉÍÓÚÜÑ]+(?: [A-Za-záéíóúüñÁÉÍÓÚÜÑ]+)*$";
     if (
       inputValue.length < 3 ||
       inputValue.length > 50 ||
@@ -446,5 +448,4 @@ const SignUp = () => {
     </>
   );
 };
-
 export default SignUp;
