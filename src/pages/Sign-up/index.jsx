@@ -108,6 +108,25 @@ const SignUp = () => {
   const [formValues, setFormValues] = useState({});
   const [showPassword, setShowPassword] = useState(false);
 
+  const [name, setName] = useState("");
+  const [isValidName, setIsValidName] = useState(true);
+
+
+  const handleInputChange = (e) =>{
+    const inputValue = e.target.value;
+    
+    if(inputValue.length < 3 || inputValue.length > 50 ){
+      setIsValidName(false);
+      setName(inputValue)
+    }else{
+      setIsValidName(true);
+      setName(inputValue)
+    }
+
+    /* setIsValidName(isValidName);
+    setName(inputValue); */
+  }
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
     console.log(formValues);
@@ -140,9 +159,12 @@ const SignUp = () => {
             type="text"
             label="Name"
             variant="standard"
-            helperText="Please enter your name"
+            value={name}
+            helperText={ isValidName ? "Please enter your name" : "Invalid name" }
+            error={ !isValidName}
             required
             inputProps={{ style: { textTransform: "capitalize" } }}
+            onChange={handleInputChange}
           />
           <TextFieldStyled
             id="standard-basic"
@@ -245,7 +267,7 @@ const SignUp = () => {
             >
               Delete
             </Button>
-            <Button variant="contained" type="submit" endIcon={<SendIcon />}>
+            <Button  variant="contained" type="submit" endIcon={<SendIcon />}>
               Send
             </Button>
           </Stack>

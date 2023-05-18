@@ -20,7 +20,7 @@ const Main = styled.main`
   padding-top: 10vh;
   min-height: 100vh;
 `;
-const MainFeed = styled.main`
+export const MainFeed = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -73,5 +73,6 @@ const SocialFeed = () => {
     </>
   );
 };
+
 
 export default SocialFeed;
