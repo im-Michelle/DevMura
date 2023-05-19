@@ -22,14 +22,12 @@ const ContentPrivacy = styled.section`
   padding: 60px 0;
   hyphens: auto;
   lang: en;
-
   h2 {
     color: ${colors.primaryText};
     width: 90%;
     text-align: center;
     font-size: 2rem;
     margin-left: 2%;
-
     @media (max-width: 768px) {  /* Ajusta el ancho (768px) según tus necesidades */
       font-size: 1.5rem;  /* Tamaño de fuente más pequeño para dispositivos móviles */
     }
