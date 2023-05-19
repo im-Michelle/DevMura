@@ -10,9 +10,6 @@ import ContactUs from './pages/Contact-us'
 
 import ProfilePage from './pages/Profile'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop'
-import TermsOfService from './pages/TermsOfService'
-import PrivacyPolicy from './pages/Privacy'
-import ErroPage from './pages/ErroPage'
 
 function App() {
   
@@ -20,20 +17,18 @@ function App() {
     <Router>
       <ScrollToTop/>
       <Routes>
-        <Route path='/' element={ <Home/>} exact/>
-        <Route path='/home' element={ <Home/>} />
-        <Route path='/sign-up' element={ <SignUp/>} />
-        <Route path='/sign-in' element={ <SignIn/>} />
-        <Route path='/about-us' element={ <AboutUs />} />
-        <Route path='/contact-us' element={<ContactUs />} />
-        <Route path='/terms-of-service' element={<TermsOfService />} />
-        <Route path='/privacy-policy' element={<PrivacyPolicy />} />
-        <Route path='/feed' element={ <SocialFeed/>} />
-        <Route path='/chat' element={ <SignUp/>} />
-        <Route path='/profile' element={ <ProfilePage/>} />
-        <Route path='/user/:id' element={ <ProfilePage/>} />
+        <Route path='/' element={ <Home/>} />
+        <Route path='home' element={ <Home/>} />
+        <Route path='feed' element={ <SocialFeed/>} />
+        <Route path='chat' element={ <SignUp/>} />
+        <Route path='sign-up' element={ <SignUp/>} />
+        <Route path='sign-in' element={ <SignIn/>} />
+        <Route path='about-us' element={ <AboutUs />} />
+        <Route path='profile' element={ <ProfilePage/>} />
+        <Route path='user/:id' element={ <ProfilePage/>} />
+        <Route path='*' element={ <SocialFeed/>} />
         <Route path='/changeprofile' element={ <ChangeProfile/> } /> 
-        <Route path='*' element={ <ErroPage/>} />
+        <Route path='contact-us' element={<ContactUs />} />
       </Routes>
     </Router>
   )

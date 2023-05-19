@@ -96,6 +96,46 @@ const TextFieldStyled = styled(TextField)`
 const SignIn = () => {
   const [formValues, setFormValues] = useState({});
   const [showPassword, setShowPassword] = useState(false);
+  //Inputs
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  //Validacion de inputs
+  const [isValidEmail, setIsValidEmail] = useState(true);
+  const [isValidPassword, setIsValidPassword] = useState(true);
+
+  const handleInputEmailChange = (e) => {
+    const inputValue = e.target.value;
+    const regexEmail = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+    if (
+      inputValue.length < 3 ||
+      inputValue.length > 50 ||
+      !inputValue.match(regexEmail)
+    ) {
+      setIsValidEmail(false);
+      setEmail(inputValue);
+    } else {
+      setIsValidEmail(true);
+      setEmail(inputValue);
+    }
+  };
+
+  const handleInputPasswordChange = (e) => {
+    const inputValue = e.target.value;
+    const regexPassword =
+      "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+    if (
+      inputValue.length < 3 ||
+      inputValue.length > 50 ||
+      !inputValue.match(regexPassword)
+    ) {
+      setIsValidPassword(false);
+      setPassword(inputValue);
+    } else {
+      setIsValidPassword(true);
+      setPassword(inputValue);
+    }
+  };
+
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -130,18 +170,28 @@ const SignIn = () => {
             label="Email"
             type="email"
             variant="standard"
-            helperText="Please enter your email"
+            value={email}
+            error={!isValidEmail}
+            helperText={isValidEmail ? "" : "Invalid email"}
             required
+            onChange={handleInputEmailChange}
           />
           <TextFieldStyled
             id="standard-basic"
             label="Password"
             variant="standard"
             type={showPassword ? "text" : "password"}
-            helperText="Please enter your password"
-            required
-            InputProps={{
-              endAdornment: (
+            helperText={
+                isValidPassword
+                  ? "Password: at least 8 characters with uppercase, lowercase, numbers, and special characters."
+                  : "Invalid password"
+              }
+              error={!isValidPassword}
+              value={password}
+              onChange={handleInputPasswordChange}
+              required
+              InputProps={{
+                endAdornment: (
                 <InputAdornment position="end">
                   <IconButton
                     onClick={() => setShowPassword(!showPassword)}
