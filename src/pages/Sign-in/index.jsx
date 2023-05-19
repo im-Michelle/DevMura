@@ -3,6 +3,7 @@ import styled from "@emotion/styled";
 import { colors } from "../../ui/colors";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+
 import Button from "@mui/material/Button";
 import DeleteIcon from "@mui/icons-material/Delete";
 import SendIcon from "@mui/icons-material/Send";
@@ -11,12 +12,13 @@ import { useState } from "react";
 import { IconButton, InputAdornment } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+
 const Main = styled.main`
   width: 100%;
   height: max-content;
   background-color: ${colors.new};
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   justify-content: center;
   align-items: center;
 `;
@@ -46,11 +48,12 @@ const Form = styled(Box)`
     font-size: 2rem;
   }
 `;
+
 const FormImg = styled.div`
   display: flex;
   width: 60%;
   height: 100vh;
-  background-image: url("https://images.pexels.com/photos/8721342/pexels-photo-8721342.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  background-image: url("https://images.pexels.com/photos/3435272/pexels-photo-3435272.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -74,9 +77,11 @@ const TextFieldStyled = styled(TextField)`
   .MuiInput-underline:before {
     border-bottom-color: ${colors.navy}; 
   }
+
   .MuiInput-underline:hover:not(.Mui-disabled):before {
     border-bottom-color: ${colors.vibrantBlue}; 
   }
+
   .MuiInput-underline:after {
     border-bottom-color: ${colors.primaryText}; 
   }
@@ -89,53 +94,15 @@ const TextFieldStyled = styled(TextField)`
   .MuiInputLabel-root {
     color: ${colors.vibrantBlue};
   }
+
   .MuiInputLabel-root.Mui-focused {
     color: ${colors.lightBlue}; 
   }
 `;
+
 const SignIn = () => {
   const [formValues, setFormValues] = useState({});
   const [showPassword, setShowPassword] = useState(false);
-  //Inputs
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  //Validacion de inputs
-  const [isValidEmail, setIsValidEmail] = useState(true);
-  const [isValidPassword, setIsValidPassword] = useState(true);
-
-  const handleInputEmailChange = (e) => {
-    const inputValue = e.target.value;
-    const regexEmail = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
-    if (
-      inputValue.length < 3 ||
-      inputValue.length > 50 ||
-      !inputValue.match(regexEmail)
-    ) {
-      setIsValidEmail(false);
-      setEmail(inputValue);
-    } else {
-      setIsValidEmail(true);
-      setEmail(inputValue);
-    }
-  };
-
-  const handleInputPasswordChange = (e) => {
-    const inputValue = e.target.value;
-    const regexPassword =
-      "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
-    if (
-      inputValue.length < 3 ||
-      inputValue.length > 50 ||
-      !inputValue.match(regexPassword)
-    ) {
-      setIsValidPassword(false);
-      setPassword(inputValue);
-    } else {
-      setIsValidPassword(true);
-      setPassword(inputValue);
-    }
-  };
-
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
@@ -170,28 +137,18 @@ const SignIn = () => {
             label="Email"
             type="email"
             variant="standard"
-            value={email}
-            error={!isValidEmail}
-            helperText={isValidEmail ? "" : "Invalid email"}
+            helperText="Please enter your email"
             required
-            onChange={handleInputEmailChange}
           />
           <TextFieldStyled
             id="standard-basic"
             label="Password"
             variant="standard"
             type={showPassword ? "text" : "password"}
-            helperText={
-                isValidPassword
-                  ? "Password: at least 8 characters with uppercase, lowercase, numbers, and special characters."
-                  : "Invalid password"
-              }
-              error={!isValidPassword}
-              value={password}
-              onChange={handleInputPasswordChange}
-              required
-              InputProps={{
-                endAdornment: (
+            helperText="Please enter your password"
+            required
+            InputProps={{
+              endAdornment: (
                 <InputAdornment position="end">
                   <IconButton
                     onClick={() => setShowPassword(!showPassword)}
