@@ -80,7 +80,6 @@ const NavRoutes = styled.div`
     display:flex;
     flex-direction: row;
     justify-content: space-around;
-
     @media (max-width: 1000px) {
         max-width: 50%;
     }
