@@ -8,7 +8,6 @@ import { LearningInterests } from './components/LearningInterests';
 import { ProgramingLeng } from './components/ProgramingLeng';
 import { PersonalDescription } from './components/PersonalDescription';
 
-
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import MailIcon from '@mui/icons-material/Mail';
 
@@ -28,10 +27,29 @@ const MainAll = styled.main`
 `;
 
 const GroupIcon = styled.div`
+  width: 100%;
+  flex-direction: row;
   display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 5rem;
 `;
 const EachIcon = styled.div`
-  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  background-color: #A8DADC;
+  align-items: center;
+
+  transition: all 0.3s ease-out;
+  &:hover{
+    transform: scale(1.1);
+    background-color: ${colors.contrast};
+    box-shadow: 0 0 15px ${colors.contrast};
+    color: ${colors.primaryText};
+    cursor: pointer;
+  };
 `;
 
 const ExtraInfo = styled.div`
@@ -63,12 +81,13 @@ const ProfilePage = () => {
 
               <GroupIcon>
                 <EachIcon>
-                  <PersonAddIcon color='primary'fontSize='large'/>
+                  <PersonAddIcon fontSize='large'/>
                 </EachIcon>
                 <EachIcon>
-                  <MailIcon color='primary'fontSize='large'/>
+                  <MailIcon fontSize='large' />
                 </EachIcon>
               </GroupIcon>
+
 
               {publicaciones.map((post)=>{
                 return(
