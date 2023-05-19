@@ -140,7 +140,7 @@ const ContactUs = () => {
             </HeaderDiv>
 
             <FormContainer fullwidth="true"  maxWidth="sm">
-              <form action="https://formsubmit.co/sofia.gmagk@gmail.com" method="POST">
+              <form action="https://formsubmit.co/codefusiondevmura@gmail.com" method="POST">
                 <FormControl fullWidth sx={{ m: 1 }} >
                   <CustomTextField
                     name="name"
@@ -190,7 +190,6 @@ const ContactUs = () => {
                   </SubmitButton>
                 </FormControl>
               </form>
-              
 
               <Snackbar
                 open={validationError}

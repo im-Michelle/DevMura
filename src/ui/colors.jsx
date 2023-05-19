@@ -7,5 +7,6 @@ export const colors = {
     lightBlue: "#A8DADC",
     contrast: "#E63946",
     new:  "#171A22",
+    cards: "#A3C1C5",
 };
 

@@ -32,7 +32,7 @@ const AboutDevMura = styled.section`
     color: ${colors.primaryText};
     width: 90%;
     text-align: center;
-    font-size: 2rem;
+    font-size: 5rem;
   }
   p{
     color: ${colors.primaryText};
@@ -102,6 +102,70 @@ const CardsOfCodeFusion = styled.section`
     
 `
 
+const AboutValues = styled.section`
+  width: 100%;
+  height: fit-content;
+  background-color: ${colors.new};
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  padding: 60px 0;
+  h2{
+    color: ${colors.primaryText};
+    width: 90%;
+    text-align: center;
+    font-size: 2.3rem;
+  }
+  p{
+    color: ${colors.primaryText};
+    width: 70%;
+    text-align: center;
+    font-size: 1.3rem;
+  }
+`
+
+const AboutOurValuesDiv = styled.section`
+    width: 100%;
+    max-width: 1700px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1px;
+    background-color: ${colors.primaryText};
+`
+
+const OurValues = styled.section`
+    width: 100%;
+    max-width: 1700px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex: 1;  
+    @media (max-width: 768px) {
+      flex-direction: column;
+      text-align: center;
+    }  
+`
+
+const ValuesText = styled.header`
+  width: 100%;
+  height: 80vh;
+  background-image: url(${props => props.imageUrl});
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
 const AboutUs = () => {
     return(
         <>
@@ -114,9 +178,31 @@ const AboutUs = () => {
                         <p> Our project is a social network designed for people who are learning to program. We offer an online platform where users can connect with other programming learners to share knowledge, resources, and projects. Our goal is to create an interactive online community where users can collaborate and improve their programming skills to advance their careers in technology. </p> 
                     </AboutDevMuraDiv>
                     <SloganDevMura>
-                      <p> Connected through code: With DevMura, discover your fullstack development community. </p>
+                      <p> Connected through code: With DevMura, discover your fullstack development community </p>
                     </SloganDevMura>
                 </AboutDevMura>
+
+                <AboutValues>
+                  <h2> Our Values</h2>
+                  <AboutOurValuesDiv>
+                    <OurValues>
+                      <ValuesText imageUrl="https://images.pexels.com/photos/8108099/pexels-photo-8108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"> <h2> Community and Collaboration </h2> </ValuesText>
+                    </OurValues>
+                    <OurValues>
+                      <ValuesText imageUrl="https://images.pexels.com/photos/8108099/pexels-photo-8108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"> <h2> Respect </h2> </ValuesText>
+                    </OurValues>
+                    <OurValues>
+                      <ValuesText imageUrl="https://images.pexels.com/photos/8108099/pexels-photo-8108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"> <h2> Innovation </h2> </ValuesText>
+                    </OurValues>
+                    <OurValues>
+                      <ValuesText imageUrl="https://images.pexels.com/photos/8108099/pexels-photo-8108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"> <h2> Security and Privacy </h2> </ValuesText>
+                    </OurValues>
+                    <OurValues>
+                      <ValuesText imageUrl="https://images.pexels.com/photos/8108099/pexels-photo-8108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"> <h2> Honesty </h2> </ValuesText>
+                    </OurValues>
+                  </AboutOurValuesDiv>
+                </AboutValues>
+
                 <AboutCodeFusion>
                     <h2> Get to know us </h2>
                     <CardsOfCodeFusion>
@@ -124,13 +210,13 @@ const AboutUs = () => {
                         <IndividualCards
                           img="img/img-AboutUs/Ale.png"
                           name="Alejandra Chaparro"
-                          rol="Java Developer"
+                          rol="Full Stack Java Developer"
                           description="Java programmer with experience in Scrum. Passionate about learning and design, focused on organizing and leading teams effectively. Always seeking new opportunities to grow and develop professionally."             
                         />
                         <IndividualCards
                           img="img/img-AboutUs/goyo.png"
                           name="Gregorio Espinoza"
-                          rol="Software developer Jr. Trainee Intern"
+                          rol="Software Developer Jr. Trainee Intern"
                           description="Analytical, committed and persistent professional. Always ready to face new challenges with positive attitude and creativity. Fast learner and great team worker. Also, eager to learn new skills to improve my professional career."             
                         />
                         <IndividualCards
@@ -151,7 +237,7 @@ const AboutUs = () => {
                         <IndividualCards
                           img="img/img-AboutUs/sofi.png"
                           name="Sofia Gomez"
-                          rol=" Web developer trainee"
+                          rol=" Web Developer trainee"
                           description="Full stack development apprentice with a biology background, finds inspiration in merging novel technologies into nature-based solutions."             
                         />
                         <IndividualCards
@@ -163,13 +249,13 @@ const AboutUs = () => {
                           <IndividualCards
                           img="img/img-AboutUs/david.jpg"
                           name="David Vazquez"
-                          rol="Front-end developer"
+                          rol="Front-end Developer"
                           description="As a front-end developer, I create attractive and functional user interfaces for web and mobile applications. I use HTML, CSS, and JavaScript to bring designs to life, ensuring a great user experience. I work with frameworks like React and collaborate with designers and back-end developers. Continuous learning keeps me up to date with the latest trends and technologies."             
                         />  
                          <IndividualCards
-                          img="https://images.pexels.com/photos/211122/pexels-photo-211122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                          img="https://preview.redd.it/3x46-yo-alexeto-ft-alexelcapo-2-v0-g0wrey67zyb91.jpg?auto=webp&s=aeff6a2f983e3c25a87d161f8a6e542d4c480b81"
                           name="Alvaro González"
-                          rol="Web developer trainee"
+                          rol="Web Developer Trainee"
                           description="Full stack development apprentice with a physio therapy background, with the vision to creat amazing development solutions"             
                         />
                       </CardContainer>
