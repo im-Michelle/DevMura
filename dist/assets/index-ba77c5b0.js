@@ -314,24 +314,28 @@ Error generating stack: `+i.message+`
   align-items: center;
   justify-content: center;
   gap: 20px;
-  padding: 60px 0;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   @media (min-width: 958px){
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-start;
     gap: 6rem;
+    padding: 60px 0;
   }
   h2{
     color: ${R.primaryText};
+    text-align: center;
     width: 90%;
     text-align: center;
     font-size: 2rem;
     margin: auto;
     padding-bottom: 1rem;
     @media (min-width: 768px){
-      width: 50%;
+      width: 100%;
       text-align: left;
       font-size: 2rem;
+      text-align: center;
     }
   }
   p{
@@ -348,6 +352,7 @@ Error generating stack: `+i.message+`
     align-items: center;
     justify-content: center;
     gap: 10px;
+    text-align: center;
   }
 `,VR=Y(Ap)`
   background-color: ${R.new};
@@ -393,7 +398,7 @@ Error generating stack: `+i.message+`
   display: flex;
   flex-direction: row;
   gap: 4rem;
-`,_a=()=>c.jsxs(HR,{children:[c.jsxs("div",{children:[c.jsx("h2",{children:"DevMura"}),c.jsxs("ul",{children:[c.jsx("li",{children:c.jsx(gi,{to:"/feed",children:"Home"})}),c.jsx("li",{children:c.jsx(gi,{to:"/about-us",children:"About"})}),c.jsx("li",{children:c.jsx(gi,{to:"/contact-us",children:"Contact Us"})}),c.jsx("li",{children:c.jsx(gi,{to:"/terms-of-service",children:"Terms of Service"})}),c.jsx("li",{children:c.jsx(gi,{to:"/privacy-policy",children:"Privacy Policy"})})]})]}),c.jsxs("div",{children:[c.jsx("h2",{children:"Connect"}),c.jsxs(YR,{children:[c.jsx("li",{children:c.jsx(tt,{to:"/",children:c.jsx(as,{src:"https://www.svgrepo.com/show/509967/github.svg",alt:""})})}),c.jsx("li",{children:c.jsx(tt,{to:"/",children:c.jsx(as,{src:"https://www.svgrepo.com/show/509968/gitlab.svg",alt:""})})}),c.jsx("li",{children:c.jsx(tt,{to:"https://www.instagram.com/devm.ura/",target:"_blank",children:c.jsx(as,{src:"https://www.svgrepo.com/show/510026/instagram.svg",alt:""})})}),c.jsx("li",{children:c.jsx(tt,{to:"/",children:c.jsx(as,{src:"https://www.svgrepo.com/show/510045/linkedin.svg",alt:""})})})]})]}),c.jsxs("div",{children:[c.jsx("h2",{children:"Subscribe"}),c.jsx("p",{children:"Sign up with your email address to receive news and updates."}),c.jsx("form",{action:"",children:c.jsxs(VR,{sx:{display:"flex",alignItems:"flex-end"},children:[c.jsx(GR,{id:"standard-basic",label:"email",variant:"standard",required:!0}),c.jsx(KR,{variant:"contained",type:"submit",endIcon:c.jsx(zu,{}),children:"Send"})]})})]})]}),qR=Y.main`
+`,_a=()=>c.jsxs(HR,{children:[c.jsxs("div",{children:[c.jsx("h2",{children:"DevMura"}),c.jsxs("ul",{children:[c.jsx("li",{children:c.jsx(gi,{to:"/feed",children:"Home"})}),c.jsx("li",{children:c.jsx(gi,{to:"/about-us",children:"About"})}),c.jsx("li",{children:c.jsx(gi,{to:"/contact-us",children:"Contact Us"})}),c.jsx("li",{children:c.jsx(gi,{to:"/terms-of-service",children:"Terms of Service"})}),c.jsx("li",{children:c.jsx(gi,{to:"/privacy-policy",children:"Privacy Policy"})})]})]}),c.jsxs("div",{children:[c.jsx("h2",{children:"Connect"}),c.jsxs(YR,{children:[c.jsx("li",{children:c.jsx(tt,{to:"/",children:c.jsx(as,{src:"https://www.svgrepo.com/show/509967/github.svg",alt:""})})}),c.jsx("li",{children:c.jsx(tt,{to:"/",children:c.jsx(as,{src:"https://www.svgrepo.com/show/509968/gitlab.svg",alt:""})})}),c.jsx("li",{children:c.jsx(tt,{to:"https://www.instagram.com/devm.ura/",target:"_blank",children:c.jsx(as,{src:"https://www.svgrepo.com/show/510026/instagram.svg",alt:""})})}),c.jsx("li",{children:c.jsx(tt,{to:"/",children:c.jsx(as,{src:"https://www.svgrepo.com/show/510045/linkedin.svg",alt:""})})})]})]}),c.jsxs("div",{children:[c.jsx("h2",{children:"Subscribe"}),c.jsx("p",{children:"Sign up with your email address to receive news and updates"}),c.jsx("form",{action:"",children:c.jsxs(VR,{sx:{display:"flex",alignItems:"flex-end"},children:[c.jsx(GR,{id:"standard-basic",label:"email",variant:"standard",required:!0}),c.jsx(KR,{variant:"contained",type:"submit",endIcon:c.jsx(zu,{}),children:"Send"})]})})]})]}),qR=Y.main`
   width: 100%;
 `,XR=Y.header`
   width: 100%;
@@ -482,12 +487,13 @@ Error generating stack: `+i.message+`
   align-items: center;
   justify-content: center;
   gap: 20px;
-  padding: 60px 0;
+  padding: 100px 0;
   h2 {
     color: ${R.primaryText};
     width: 90%;
     text-align: center;
     font-size: 2rem;
+    padding-bottom: 5rem;
   }
   li{
     display: flex;
