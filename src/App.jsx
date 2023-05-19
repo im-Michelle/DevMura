@@ -20,18 +20,6 @@ function App() {
     <Router>
       <ScrollToTop/>
       <Routes>
-<<<<<<< HEAD
-        <Route path='/' element={ <Home/>} />
-        <Route path='home' element={ <Home/>} />
-        <Route path='feed' element={ <SocialFeed/>} />
-        <Route path='chat' element={ <SignUp/>} />
-        <Route path='sign-up' element={ <SignUp/>} />
-        <Route path='sign-in' element={ <SignUp/>} />
-        <Route path='about-us' element={ <AboutUs />} />
-        <Route path='/profile' element={ <ProfilePage/>} />
-        <Route path='user/:id' element={ <ProfilePage/>} />
-        <Route path='*' element={ <SocialFeed/>} />
-=======
         <Route path='/' element={ <Home/>} exact/>
         <Route path='/home' element={ <Home/>} />
         <Route path='/sign-up' element={ <SignUp/>} />
@@ -44,7 +32,6 @@ function App() {
         <Route path='/chat' element={ <SignUp/>} />
         <Route path='/profile' element={ <ProfilePage/>} />
         <Route path='/user/:id' element={ <ProfilePage/>} />
->>>>>>> 0ab98d0c4f29b0215461f7943c01e8cfb8cfda88
         <Route path='/changeprofile' element={ <ChangeProfile/> } /> 
         <Route path='*' element={ <ErroPage/>} />
       </Routes>
