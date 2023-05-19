@@ -106,12 +106,13 @@ const Tecnologies = styled.section`
   align-items: center;
   justify-content: center;
   gap: 20px;
-  padding: 60px 0;
+  padding: 100px 0;
   h2 {
     color: ${colors.primaryText};
     width: 90%;
     text-align: center;
     font-size: 2rem;
+    padding-bottom: 5rem;
   }
   li{
     display: flex;
