@@ -5,7 +5,7 @@ import React from 'react'
 const CustomButton = ({onClick, children, backgrdColor}) =>{
     return(
         <>
-            <Link to='/sign-up' className='btnCustom' onClick={onClick} style={{backgroundColor: backgrdColor}}>{children}</Link>
+            <Link to='/sign-in' className='btnCustom'  style={{backgroundColor: backgrdColor}}>{children}</Link>
             {/* <button className='btnCustom' onClick={onClick} style={{backgroundColor: backgrdColor}}>{children}</button> */}
         </>
     )

@@ -47,8 +47,6 @@ const SocialFeed = () => {
           />
 
           <AddPost />
-            <Link to="/social-feed/1">Ver mas</Link>
-
             {publicaciones.map((post)=>{
                 return(
                     <Post
