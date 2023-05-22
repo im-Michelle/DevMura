@@ -1146,7 +1146,7 @@ height: 30px;
     @media (max-width: 768px) {
         max-width: 20%;
     }
-`,xx=()=>c.jsx(e_,{children:c.jsxs(t_,{children:[c.jsxs(n_,{children:[c.jsx(r_,{children:c.jsx(o_,{src:"img\\icono-dm-blanco.svg",alt:"Logo"})}),c.jsx(JI,{})]}),c.jsxs(i_,{children:[c.jsx(qI,{}),c.jsx(KI,{})]})]})});let a_=Cl;const s_=te.main`
+`,xx=()=>c.jsx(e_,{children:c.jsxs(t_,{children:[c.jsxs(n_,{children:[c.jsx(r_,{children:c.jsx(o_,{src:"/img/icono-dm-blanco.svg",alt:"Logo"})}),c.jsx(JI,{})]}),c.jsxs(i_,{children:[c.jsx(qI,{}),c.jsx(KI,{})]})]})});let a_=Cl;const s_=te.main`
   display: flex;
   flex-direction: column;
   align-items: center;

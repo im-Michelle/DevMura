@@ -96,7 +96,7 @@ export const NewNavBarFeed = () => {
             <NavContainer>
                 <Logo>
                     <LogoContainer>
-                        <LogoImage src="img\icono-dm-blanco.svg" alt="Logo" />
+                        <LogoImage src="/img/icono-dm-blanco.svg" alt="Logo" />
                     </LogoContainer>
                     <SearchBar />
                 </Logo>
