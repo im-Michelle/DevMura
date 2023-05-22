@@ -62,7 +62,7 @@ const FeedRoutesComponent = () => {
                         <StyledLink to="/feed">
                             <LinkImg src="/icons/home-light-blue.png" alt="Home" />
                         </StyledLink>
-                        <StyledLink to="/sign-up">
+                        <StyledLink to="/groups">
                             <LinkImg src="/icons/groups-red.png" alt="Groups" />
                         </StyledLink>
                         <StyledLink to="/sign-up">
