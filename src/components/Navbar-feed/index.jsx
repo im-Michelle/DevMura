@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import Menu from './menu-feed';
 import FeedRoutesComponent from './routes-feed';
 import SearchBar from './search-bar';
+import { Link } from 'react-router-dom'
 
 const Nav = styled.nav`
   padding: 0;
@@ -50,7 +51,7 @@ const Logo = styled.div`
     }
 `;
 
-const LogoContainer = styled.div`
+const LogoContainer = styled(Link)`
     width: 100%;
     max-height: 100%;
     max-width: 10%;
@@ -95,8 +96,8 @@ export const NewNavBarFeed = () => {
         <Nav>
             <NavContainer>
                 <Logo>
-                    <LogoContainer>
-                        <LogoImage src="img\icono-dm-blanco.svg" alt="Logo" />
+                    <LogoContainer to="/feed">
+                        <LogoImage src="/img/icono-dm-blanco.svg" alt="Logo" />
                     </LogoContainer>
                     <SearchBar />
                 </Logo>
