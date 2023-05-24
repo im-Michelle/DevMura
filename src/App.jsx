@@ -37,7 +37,7 @@ function App() {
         <Route path='/profile' element={ <ProfilePage/>} />
         <Route path='/user/:id' element={ <ProfilePage/>} />
         <Route path='/changeprofile' element={ <ChangeProfile/> } /> 
-        <Route path='*' element={ <ErroPage/>} />
+        <Route path='contact-us' element={<ContactUs />} />
       </Routes>
     </Router>
   )
