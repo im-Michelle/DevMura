@@ -1,31 +1,92 @@
 import Header from '../Social-feed/components/Header';
-/* import styled from "@emotion/styled"; */
 import styled from 'styled-components';
+import { NewNavBarFeed } from '../../components/Navbar-feed';
+import { colors } from '../../ui/colors';
+import { MainFeed } from '../Social-feed';
 
-const Main = styled.div`
-    border: 3px solid purple;
+import { LearningInterests } from './components/LearningInterests';
+import { ProgramingLeng } from './components/ProgramingLeng';
+import { PersonalDescription } from './components/PersonalDescription';
+
+
+import PersonAddIcon from '@mui/icons-material/PersonAdd';
+import MailIcon from '@mui/icons-material/Mail';
+
+import Post from '../../components/Post';
+import { posts } from "../../data/posts";
+
+let publicaciones = posts;
+
+const MainAll = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: ${colors.new};
+  width: 100%;
+  padding-top: 10vh;
+  min-height: 100vh;
 `;
-const ContainerForNAvBAr =styled.div`
-    margin-bottom: 5em;
-    border: .001px solid black;
+
+const GroupIcon = styled.div`
+  display: flex;
 `;
+const EachIcon = styled.div`
+  padding: 2rem;
+`;
+
+const ExtraInfo = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+
+
+
 const ProfilePage = () => {
   return (
     <>
-        <ContainerForNAvBAr>
-        </ContainerForNAvBAr>
-        <Main>
-            <Header 
-                name="Susana"
-                lastName="Gonzalez"
-                userName="@susygonzalez"
-                img="https://images.pexels.com/photos/7841717/pexels-photo-7841717.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                />
-                Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro, at eligendi inventore amet soluta officiis aspernatur asperiores harum accusamus, iusto veniam reiciendis ex a aliquam provident explicabo, culpa qui! Veniam.
-                Consectetur vitae quod quo velit nulla dolor dicta illo accusamus modi nihil explicabo cumque corrupti sed labore quis ea, temporibus, animi rem iusto natus, dolorum sit! Corrupti voluptatibus illo voluptas?
-                Ab labore asperiores velit ad consequuntur quaerat sed aut doloribus quasi? Assumenda ipsam hic incidunt eius architecto culpa consectetur voluptas dolor, nisi ipsa animi ea, quas illo quisquam reiciendis voluptate.
-               eaque minus! Obcaecati accusantium id sint molestias inventore ullam laboriosam blanditiis numquam eius. Quas provident rem id beatae obcaecati deserunt voluptatem iusto neque. Sequi, inventore?
-        </Main>
+        <NewNavBarFeed/>
+        <MainAll>
+          <MainFeed>
+              <Header 
+                  name="Susana"
+                  lastName="Gonzalez"
+                  userName="@susygonzalez"
+                  img="https://images.pexels.com/photos/7841717/pexels-photo-7841717.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  />
+              <PersonalDescription/>
+
+              <ExtraInfo>
+                <ProgramingLeng/>
+                <LearningInterests/>
+              </ExtraInfo>
+
+              <GroupIcon>
+                <EachIcon>
+                  <PersonAddIcon color='primary'fontSize='large'/>
+                </EachIcon>
+                <EachIcon>
+                  <MailIcon color='primary'fontSize='large'/>
+                </EachIcon>
+              </GroupIcon>
+
+              {publicaciones.map((post)=>{
+                return(
+                    <Post
+                        key={post.key}
+                        id={post.key}
+                        name={post.name}
+                        role={post.role}
+                        userName={post.userName}
+                        time={post.time}
+                        img={post.img}
+                        bodyText={post.bodyText}
+                        postImg={post.postImg}
+                    />
+                )
+            })}
+          </MainFeed>
+        </MainAll>
     </>
   )
 }

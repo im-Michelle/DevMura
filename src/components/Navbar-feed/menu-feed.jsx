@@ -16,7 +16,7 @@ const DropdownMenu = styled.div`
   max-width: 10%;
   height: 5vh;
   display: flex;
-
+    
   @media (max-width: 768px) {
     max-width: 100%;
     justify-content: center;
@@ -162,6 +162,7 @@ const StyledMenu = styled(Link)`
   .img {
     width: 30px;
     height: 30px;
+    margin: auto;
   }
 
   .text {

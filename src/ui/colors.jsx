@@ -1,17 +1,12 @@
 export const colors = {
     background: "#000509",
-    primaryText: "#F1FAEE",
+    primaryText: "#dee6e9",
     secondaryText: "#bbbbbb",
     navy: "#1D3557",
     vibrantBlue: "#457B9D",
     lightBlue: "#A8DADC",
     contrast: "#E63946",
-    new: "#171A22",
-    blueBackground: "#39B8E1",
-    grayBackground: "#313233",
-    white: "#FFFFFF",
-    lightGray: "#828282",
-    greenBackground: "#37474F",
-    originalBackground: "#263238"
+    new:  "#171A22",
+    cards: "#A3C1C5",
 };
 

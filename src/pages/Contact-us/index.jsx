@@ -8,42 +8,13 @@ import Snackbar from '@mui/material/Snackbar';
 import FormControl from '@mui/material/FormControl';
 import styled from "@emotion/styled";
 import { colors } from "../../ui/colors";
-
-import Typography from '@mui/material/Typography';
 import Footer from '../../components/Footer';
+import TitleHead from "../../components/TitleHead";
+
 
 const Main = styled.main`
   width: 100%;
   background-color: ${colors.new};
-`;
-
-const Header = styled.header`
-  width: 100%;
-  height: 90vh;
-  background-image: url("./img/background-AboutUs.png");
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  h1 {
-    background-color: #00000097;
-    font-size: 4rem;
-    color: ${colors.primaryText};
-    text-align: center;
-    width: 90%;
-    max-width: 800px;
-  }
-  h2 {
-    font-size: 2rem;
-    color: ${colors.secondaryText};
-    text-align: center;
-    width: 90%;
-    max-width: 800px;
-  }
 `;
 
 const FormContainer = styled(Container)`
@@ -110,7 +81,6 @@ const ContactUs = () => {
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const validateInputs = () => {
-    // Validar que los campos no estén vacíos y que el correo electrónico sea válido
     if (name.trim() === '' || email.trim() === '' || phone.trim() === '' || message.trim() === '') {
       setValidationError(true);
       return false;
@@ -122,20 +92,32 @@ const ContactUs = () => {
       return false;
     }
 
+    const nameRegex = /^[a-zA-Z áíóúé]+$/;
+    if (!nameRegex.test(name)) {
+      setValidationError(true);
+      return false;
+    }
+
+    const phoneRegex = /^[0-9]+$/;
+    if (!phoneRegex.test(phone)) {
+      setValidationError(true);
+      return false;
+    }
+
     setValidationError(false);
     return true;
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault();
 
     if (!validateInputs()) {
+      event.preventDefault();
       return;
+    } else {
+      return
     }
 
-    // Aquí puedes agregar la lógica para enviar los datos del formulario por correo electrónico
-    // Puedes utilizar una librería o servicio de envío de correos electrónicos como Nodemailer o SendGrid
-
+  
     setSubmitSuccess(true);
     setName('');
     setEmail('');
@@ -151,16 +133,14 @@ const ContactUs = () => {
     <>
         <NavbarDefault/>
         <Main>
-            <Header>
-              <h1> Contact us </h1>
-            </Header>
+            <TitleHead titulo="Contact us" imageUrl="https://images.pexels.com/photos/7689133/pexels-photo-7689133.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"/>
             <HeaderDiv>
               <StyledH3> Get in touch </StyledH3>
               <StyledH4> How can we help you? We are DevMura and we are here for you! </StyledH4>
             </HeaderDiv>
 
-            <FormContainer fullWidth  maxWidth="sm">
-              <form action="https://formsubmit.co/sofia.gmagk@gmail.com" method="POST">
+            <FormContainer fullwidth="true"  maxWidth="sm">
+              <form action="https://formsubmit.co/codefusiondevmura@gmail.com" method="POST">
                 <FormControl fullWidth sx={{ m: 1 }} >
                   <CustomTextField
                     name="name"
@@ -168,6 +148,7 @@ const ContactUs = () => {
                     variant="outlined"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
+                    required
                   />
 
                   <CustomTextField
@@ -176,6 +157,7 @@ const ContactUs = () => {
                     variant="outlined"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    required
                   />
 
                   <CustomTextField
@@ -184,6 +166,7 @@ const ContactUs = () => {
                     variant="outlined"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
+                    required
                   />
 
                   <CustomTextField
@@ -194,24 +177,25 @@ const ContactUs = () => {
                     rows={4}
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
+                    required
                   />
 
                   <SubmitButton
                     type="submit"
                     variant="contained"
                     color="primary"
+                    onClick={handleSubmit}
                   >
                     Submit
                   </SubmitButton>
                 </FormControl>
               </form>
-              
 
               <Snackbar
                 open={validationError}
                 autoHideDuration={4000}
                 onClose={() => setValidationError(false)}
-              message="Por favor, complete todos los campos correctamente"
+                message="Por favor, complete todos los campos correctamente"
             />
             
             <Snackbar
@@ -219,6 +203,7 @@ const ContactUs = () => {
               autoHideDuration={4000}
               onClose={handleSnackbarClose}
               message="¡Mensaje enviado con éxito!"
+              severity="success"
             />
           </FormContainer>
 

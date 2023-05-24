@@ -28,13 +28,15 @@ const Main = styled.main`
 `;
 const Form = styled(Box)`
   width: 40%;
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
+  overflow-y: auto;
   background-color: ${colors.white};
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  @media (max-width: 799px) {
+  @media (max-width: 1313px) {
     width: 100%;
   }
   h1 {
@@ -52,11 +54,12 @@ const Form = styled(Box)`
     font-size: 2rem;
   }
 `;
-
 const FormImg = styled.div`
   display: flex;
   width: 60%;
-  height: 100vh;
+  height: auto;
+  min-height: 100vh;
+  overflow-y: hidden;
   background-image: url("https://images.pexels.com/photos/3435272/pexels-photo-3435272.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
   background-repeat: no-repeat;
   background-size: cover;
@@ -65,9 +68,9 @@ const FormImg = styled.div`
   justify-content: center;
   align-items: center;
   img {
-    width: 80%;
+    width: 100%;
   }
-  @media (max-width: 799px) {
+  @media (max-width: 1313px) {
     display: none;
   }
 `;
@@ -79,101 +82,283 @@ const TextFieldStyled = styled(TextField)`
     color: ${colors.primaryText};
   }
   .MuiInput-underline:before {
-    border-bottom-color: ${colors.navy}; 
+    border-bottom-color: ${colors.navy};
   }
 
   .MuiInput-underline:hover:not(.Mui-disabled):before {
-    border-bottom-color: ${colors.vibrantBlue}; 
+    border-bottom-color: ${colors.vibrantBlue};
   }
 
   .MuiInput-underline:after {
-    border-bottom-color: ${colors.primaryText}; 
+    border-bottom-color: ${colors.primaryText};
   }
   .MuiFormHelperText-root {
-    color: ${colors.secondaryText}; 
+    color: ${colors.secondaryText};
   }
   .MuiFormLabel-root.Mui-error {
-    color: ${colors.contrast}; 
+    color: ${colors.contrast};
   }
   .MuiInputLabel-root {
-    color: ${colors.vibrantBlue};
+    color: ${colors.primaryText};
   }
 
   .MuiInputLabel-root.Mui-focused {
-    color: ${colors.lightBlue}; 
+    color: ${colors.lightBlue};
+  }
+`;
+const MessageLogin = styled.p`
+  color: ${colors.primaryText};
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  a {
+    color: ${colors.vibrantBlue};
+    text-decoration: none;
   }
 `;
 
 const SignUp = () => {
   const [formValues, setFormValues] = useState({});
+
+  // use state para ver el password
   const [showPassword, setShowPassword] = useState(false);
+
+  // boton para el submit
+  const [buttonActive, setButtonActive] = useState(true);
+
+  // boton para aceptar los terminos y condiciones
+  const [terms, setTerms] = useState(false);
+
+  // valores de los inputs
+  const [name, setName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [userName, setUserName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [age, setAge] = useState("");
+  const [gender, setGender] = useState("");
+
+  // validadores de los inputs
+  const [isValidName, setIsValidName] = useState(true);
+  const [isValidLastName, setIsValidLastName] = useState(true);
+  const [isValidUserName, setIsValidUserName] = useState(true);
+  const [isValidEmail, setIsValidEmail] = useState(true);
+  const [isValidPassword, setIsValidPassword] = useState(true);
+  const [isValidAge, setIsValidAge] = useState(true);
+  const [isValidGender, setIsValidGender] = useState(false);
+
+  // validadores de los inputs
+  const handleInputNameChange = (e) => {
+    const inputValue = e.target.value;
+    const regeName = "^[A-Za-záéíóúüñÁÉÍÓÚÜÑ]+(?: [A-Za-záéíóúüñÁÉÍÓÚÜÑ]+)*$";
+    if (
+      inputValue.length < 3 ||
+      inputValue.length > 50 ||
+      !inputValue.match(regeName)
+    ) {
+      setIsValidName(false);
+      setName(inputValue);
+    } else {
+      setIsValidName(true);
+      setName(inputValue);
+    }
+  };
+
+  const handleInputLastNameChange = (e) => {
+    const inputValue = e.target.value;
+    const regexLastName =
+      "^[A-Za-záéíóúüñÁÉÍÓÚÜÑ]+(?: [A-Za-záéíóúüñÁÉÍÓÚÜÑ]+)*$";
+    if (
+      inputValue.length < 3 ||
+      inputValue.length > 50 ||
+      !inputValue.match(regexLastName)
+    ) {
+      setIsValidLastName(false);
+      setLastName(inputValue);
+    } else {
+      setIsValidLastName(true);
+      setLastName(inputValue);
+    }
+  };
+
+  const handleInputUserNameChange = (e) => {
+    const inputValue = e.target.value;
+    const regexUserName = "^[a-zA-Z0-9._-]{3,16}$";
+    if (
+      inputValue.length < 3 ||
+      inputValue.length > 50 ||
+      !inputValue.match(regexUserName)
+    ) {
+      setIsValidUserName(false);
+      setUserName(inputValue);
+    } else {
+      setIsValidUserName(true);
+      setUserName(inputValue);
+    }
+  };
+
+  const handleInputEmailChange = (e) => {
+    const inputValue = e.target.value;
+    const regexEmail = "^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$";
+    if (
+      inputValue.length < 3 ||
+      inputValue.length > 50 ||
+      !inputValue.match(regexEmail)
+    ) {
+      setIsValidEmail(false);
+      setEmail(inputValue);
+    } else {
+      setIsValidEmail(true);
+      setEmail(inputValue);
+    }
+  };
+
+  const handleInputPasswordChange = (e) => {
+    const inputValue = e.target.value;
+    const regexPassword =
+      "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
+    if (
+      inputValue.length < 3 ||
+      inputValue.length > 50 ||
+      !inputValue.match(regexPassword)
+    ) {
+      setIsValidPassword(false);
+      setPassword(inputValue);
+    } else {
+      setIsValidPassword(true);
+      setPassword(inputValue);
+    }
+  };
+
+  const handleInputAgeChange = (e) => {
+    const inputValue = e.target.value;
+    const regexAge = "^[0-9]{2,3}$";
+    if (inputValue < 18 || !inputValue.match(regexAge) || inputValue > 130) {
+      setIsValidAge(false);
+      setAge(inputValue);
+    } else {
+      setIsValidAge(true);
+      setAge(inputValue);
+    }
+  };
+
+  const handleActiveButton = () => {
+    if (
+      isValidName &&
+      isValidLastName &&
+      isValidUserName &&
+      isValidEmail &&
+      isValidPassword &&
+      isValidAge &&
+      terms
+    ) {
+      setButtonActive(false);
+    } else {
+      setButtonActive(true);
+    }
+  };
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
     console.log(formValues);
   };
-  const handleFormReset = () => {
-    setFormValues({});
+
+  const handleSubmmit = () => {
+    if (
+      isValidName &&
+      isValidLastName &&
+      isValidUserName &&
+      isValidEmail &&
+      isValidPassword &&
+      isValidAge &&
+      terms
+    ) {
+      console.log("Formulario enviado");
+    } else {
+      console.log("Formulario no enviado");
+    }
   };
-  const inputAdornment = (
-    <InputAdornment position="end">
-      <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
-        {showPassword ? <VisibilityOff /> : <Visibility />}
-      </IconButton>
-    </InputAdornment>
-  );
+  const handleTerms = () => {
+    if (terms) {
+      setTerms(false);
+    } else {
+      setTerms(true);
+    }
+  };
+
   return (
     <>
       <Main>
         <Form
           component="form"
           sx={{
-            "& > :not(style)": { m: 1, width: "60%" },
+            "& > :not(style)": { m: 1, width: "90%" },
           }}
           noValidate
           autoComplete="off"
           onSubmit={handleFormSubmit}
+          onChange={handleActiveButton}
         >
           <h1>Sign Up to DevMura</h1>
           <TextFieldStyled
-            id="standard-basic"
+            id="name"
             type="text"
             label="Name"
             variant="standard"
-            helperText="Please enter your name"
+            value={name}
+            helperText={isValidName ? "" : "Invalid name"}
+            error={!isValidName}
             required
             inputProps={{ style: { textTransform: "capitalize" } }}
+            onChange={handleInputNameChange}
           />
           <TextFieldStyled
-            id="standard-basic"
+            id="lastName"
             type="text"
             label="Last Name"
             variant="standard"
-            helperText="Please enter your Last Name"
+            value={lastName}
+            helperText={isValidLastName ? "" : "Invalid last name"}
+            error={!isValidLastName}
             required
+            inputProps={{ style: { textTransform: "capitalize" } }}
+            onChange={handleInputLastNameChange}
           />
           <TextFieldStyled
-            id="standard-basic"
+            id="userName"
             label="Username"
             type="text"
             variant="standard"
-            helperText="Please enter your username"
+            value={userName}
+            onChange={handleInputUserNameChange}
+            error={!isValidUserName}
+            helperText={isValidUserName ? "" : "Invalid username"}
             required
           />
           <TextFieldStyled
-            id="standard-basic"
+            id="email"
             label="Email"
             type="email"
             variant="standard"
-            helperText="Please enter your email"
+            value={email}
+            error={!isValidEmail}
+            helperText={isValidEmail ? "" : "Invalid email"}
             required
+            onChange={handleInputEmailChange}
           />
           <TextFieldStyled
-            id="standard-basic"
+            id="password"
             label="Password"
             variant="standard"
             type={showPassword ? "text" : "password"}
-            helperText="Please enter your password"
+            helperText={
+              isValidPassword
+                ? "Password: at least 8 characters with uppercase, lowercase, numbers, and special characters."
+                : "Invalid password"
+            }
+            error={!isValidPassword}
+            value={password}
+            onChange={handleInputPasswordChange}
             required
             InputProps={{
               endAdornment: (
@@ -190,19 +375,22 @@ const SignUp = () => {
             }}
           />
           <TextFieldStyled
-            id="standard-basic"
+            id="age"
             label="Age"
             variant="standard"
             type="Number"
-            helperText="Please enter your age"
+            helperText={isValidAge ? "" : "Invalid age"}
             required
             min="18"
             max="100"
+            value={age}
+            onChange={handleInputAgeChange}
+            error={!isValidAge}
           />
           <FormLabel
-            id="demo-row-radio-buttons-group-label"
+            id="formLabel"
             required
-            style={{ color: colors.vibrantBlue }}
+            style={{ color: colors.primaryText }}
           >
             Gender
           </FormLabel>
@@ -213,44 +401,46 @@ const SignUp = () => {
           >
             <FormControlLabel
               value="female"
-              control={<Radio style={{ color: colors.vibrantBlue }} />}
+              control={<Radio style={{ color: colors.primaryText }} />}
               label="Female"
-              style={{ color: colors.vibrantBlue }}
+              style={{ color: colors.primaryText }}
             />
             <FormControlLabel
               value="male"
-              control={<Radio style={{ color: colors.vibrantBlue }} />}
+              control={<Radio style={{ color: colors.primaryText }} />}
               label="Male"
-              style={{ color: colors.vibrantBlue }}
+              style={{ color: colors.primaryText }}
             />
             <FormControlLabel
               value="other"
-              control={<Radio style={{ color: colors.vibrantBlue }} />}
+              control={<Radio style={{ color: colors.primaryText }} />}
               label="Other"
-              style={{ color: colors.vibrantBlue }}
+              style={{ color: colors.primaryText }}
             />
           </RadioGroup>
           <FormControlLabel
             required
-            control={<Checkbox style={{ color: colors.vibrantBlue }} />}
+            control={<Checkbox style={{ color: colors.primaryText }} />}
             label="Creating an account means you're okay with our Terms of Service, Privacy Policy, and our default Notificacion Settings."
-            style={{ color: colors.vibrantBlue }}
+            style={{ color: colors.primaryText }}
+            value={terms}
+            onChange={handleTerms}
           />
-          <Stack direction="row" spacing={2}>
+          <Stack direction="row" /* spacing={2} */>
             <Button
-              variant="outlined"
-              type="reset"
-              onClick={handleFormReset}
-              startIcon={<DeleteIcon />}
+              variant="contained"
+              type="submit"
+              endIcon={<SendIcon />}
+              onClick={handleSubmmit}
+              disabled={buttonActive}
             >
-              Delete
-            </Button>
-            <Button variant="contained" type="submit" endIcon={<SendIcon />}>
               Send
             </Button>
           </Stack>
+          <MessageLogin>
+            Already have an account? <a href="/sign-in">Sign in</a>
+          </MessageLogin>
         </Form>
-
         <FormImg>
           <img src="/img/icono-logo-blanco.svg" alt="" />
         </FormImg>
@@ -258,5 +448,4 @@ const SignUp = () => {
     </>
   );
 };
-
 export default SignUp;

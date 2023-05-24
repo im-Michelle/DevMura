@@ -1,8 +1,9 @@
 import React from "react";
 import NavbarDefault from "../../components/Navbar-Default";
+import TitleHead from "../../components/TitleHead";
 import "./AboutUs.css";
 import "../../components/CardAboutUs/cardAbout.css"
-
+import Footer from "../../components/Footer";
 import styled from "@emotion/styled";
 import { colors } from "../../ui/colors";
 import { Link } from "react-router-dom";
@@ -11,37 +12,10 @@ import SendIcon from '@mui/icons-material/Send';
 import IndividualCards from "../../components/CardAboutUs/IndividualCards";
 import CardContainer from "../../components/CardAboutUs/CardContainer";
 
+
+
 const Main = styled.main`
   width: 100%;
-`;
-
-const Header = styled.header`
-  width: 100%;
-  height: 90vh;
-  background-image: url("./img/background-AboutUs.png");
-  background-attachment: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  h1 {
-    background-color: #00000097;
-    font-size: 4rem;
-    color: ${colors.primaryText};
-    text-align: center;
-    width: 90%;
-    max-width: 800px;
-  }
-  h2 {
-    font-size: 2rem;
-    color: ${colors.secondaryText};
-    text-align: center;
-    width: 90%;
-    max-width: 800px;
-  }
 `;
 
 const AboutDevMura = styled.section`
@@ -58,7 +32,7 @@ const AboutDevMura = styled.section`
     color: ${colors.primaryText};
     width: 90%;
     text-align: center;
-    font-size: 2rem;
+    font-size: 5rem;
   }
   p{
     color: ${colors.primaryText};
@@ -127,7 +101,8 @@ const CardsOfCodeFusion = styled.section`
     flex-wrap: wrap;
     
 `
-const Footer = styled.footer`
+
+const AboutValues = styled.section`
   width: 100%;
   height: fit-content;
   background-color: ${colors.new};
@@ -137,114 +112,121 @@ const Footer = styled.footer`
   justify-content: center;
   gap: 20px;
   padding: 60px 0;
-  @media (min-width: 958px){
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: flex-start;
-    gap: 6rem;
-  }
   h2{
     color: ${colors.primaryText};
     width: 90%;
     text-align: center;
-    font-size: 2rem;
-    margin: auto;
-    padding-bottom: 1rem;
-    @media (min-width: 768px){
-      width: 50%;
-      text-align: left;
-      font-size: 2rem;
-    }
+    font-size: 2.3rem;
   }
   p{
-    color: ${colors.secondaryText};
-    width: 100%;
+    color: ${colors.primaryText};
+    width: 70%;
     text-align: center;
-    font-size: 1.0rem;
-    margin: auto;
+    font-size: 1.3rem;
   }
-  ul{
+`
+
+const AboutOurValuesDiv = styled.section`
     width: 100%;
+    max-width: 1700px;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    gap: 10px;
-  }
+    flex-wrap: wrap;
+    gap: 1px;
+    background-color: ${colors.primaryText};
 `
 
-const StyledLink = styled(Link)`
-  text-decoration: none;
-  color: ${colors.primaryText};
-  &:hover{
-    background-color: ${colors.contrast};
-    color: ${colors.primaryText};
-  }
+const OurValues = styled.section`
+    width: 100%;
+    max-width: 1700px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex: 1;  
+    @media (max-width: 768px) {
+      flex-direction: column;
+      text-align: center;
+    }  
 `
 
-const CustomUl = styled.div`
+const ValuesText = styled.header`
+  width: 100%;
+  height: 80vh;
+  background-image: url(${props => props.imageUrl});
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
   display: flex;
-  flex-direction: row;
-  gap: 4rem;
-`
-
-const SVGsocial = styled.img`
-  width: 40px;
-  height: 40px;
-  aspect-ratio: 1/1;
-  object-fit: cover;
-  filter: invert(1);
-  transition: all 0.5s ease-in-out;
-  &:hover{
-    transform: scale(1.2);
-  }
-  @media (min-width: 768px){
-    width: 60px;
-    height: 60px;
-  }
-`
+  justify-content: center;
+  align-items: center;
+`;
 
 const AboutUs = () => {
     return(
         <>
             <NavbarDefault />
             <Main>
-                <Header>
-                    <h1> About us </h1>
-                </Header>
+                <TitleHead titulo="About Us" imageUrl="./img/background-AboutUs.png"/>
                 <AboutDevMura>
                     <AboutDevMuraDiv>
                         <h2> DevMura </h2>
                         <p> Our project is a social network designed for people who are learning to program. We offer an online platform where users can connect with other programming learners to share knowledge, resources, and projects. Our goal is to create an interactive online community where users can collaborate and improve their programming skills to advance their careers in technology. </p> 
                     </AboutDevMuraDiv>
                     <SloganDevMura>
-                      <p> Connected through code: With DevMura, discover your fullstack development community. </p>
+                      <p> Connected through code: With DevMura, discover your fullstack development community </p>
                     </SloganDevMura>
                 </AboutDevMura>
+
+                <AboutValues>
+                  <h2> Our Values</h2>
+                  <AboutOurValuesDiv>
+                    <OurValues>
+                      <ValuesText imageUrl="https://images.pexels.com/photos/8108099/pexels-photo-8108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"> <h2> Community and Collaboration </h2> </ValuesText>
+                    </OurValues>
+                    <OurValues>
+                      <ValuesText imageUrl="https://images.pexels.com/photos/8108099/pexels-photo-8108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"> <h2> Respect </h2> </ValuesText>
+                    </OurValues>
+                    <OurValues>
+                      <ValuesText imageUrl="https://images.pexels.com/photos/8108099/pexels-photo-8108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"> <h2> Innovation </h2> </ValuesText>
+                    </OurValues>
+                    <OurValues>
+                      <ValuesText imageUrl="https://images.pexels.com/photos/8108099/pexels-photo-8108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"> <h2> Security and Privacy </h2> </ValuesText>
+                    </OurValues>
+                    <OurValues>
+                      <ValuesText imageUrl="https://images.pexels.com/photos/8108099/pexels-photo-8108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"> <h2> Honesty </h2> </ValuesText>
+                    </OurValues>
+                  </AboutOurValuesDiv>
+                </AboutValues>
+
                 <AboutCodeFusion>
                     <h2> Get to know us </h2>
                     <CardsOfCodeFusion>
                       <CardContainer>
                         <IndividualCards
-                          img="../../../public/img/img-AboutUs/Ale.png"
+                          img="img/img-AboutUs/Ale.png"
                           name="Alejandra Chaparro"
-                          rol="Java Developer"
+                          rol="Full Stack Java Developer"
                           description="Java programmer with experience in Scrum. Passionate about learning and design, focused on organizing and leading teams effectively. Always seeking new opportunities to grow and develop professionally."             
                         />
                         <IndividualCards
-                          img="../../../public/img/img-AboutUs/goyo.jfif"
+                          img="img/img-AboutUs/goyo.png"
                           name="Gregorio Espinoza"
-                          rol="Software developer Jr. Trainee Intern"
+                          rol="Software Developer Jr. Trainee Intern"
                           description="Analytical, committed and persistent professional. Always ready to face new challenges with positive attitude and creativity. Fast learner and great team worker. Also, eager to learn new skills to improve my professional career."             
                         />
                         <IndividualCards
-                          img="../../../public/img/img-AboutUs/fati.png"
+                          img="img/img-AboutUs/fati.png"
                           name="Fatima Moreno"
-                          rol="Java Developer"
-                          description="En construcción"             
+                          rol="Full Stack Trainee"
+                          description="Passionate about programming languages, teamwork, and eager to learn new things."             
                         />
                         <IndividualCards
-                          img="../../../public/img/img-AboutUs/omar.png"
+                          img="img/img-AboutUs/omar.png"
                           name="Omar Michaca"
                           rol="Java Developer"
                           description="
@@ -253,72 +235,33 @@ const AboutUs = () => {
                       </CardContainer>
                       <CardContainer>
                         <IndividualCards
-                          img="../../../public/img/img-AboutUs/sofi.png"
+                          img="img/img-AboutUs/sofi.png"
                           name="Sofia Gomez"
-                          rol=" Web developer trainee"
+                          rol=" Web Developer trainee"
                           description="Full stack development apprentice with a biology background, finds inspiration in merging novel technologies into nature-based solutions."             
                         />
                         <IndividualCards
-                          img="Coming soon"
+                          img="https://avatars.githubusercontent.com/u/92353536?v=4"
                           name="Michelle Trejo"
                           rol="Java Developer"
                           description=" Java Developer with expertise in Spring Boot framework. Skilled in designing and building robust web applications, integrating databases, and optimizing performance. Strong knowledge of Spring Data, RESTful APIs, and secure authentication. Continuously learning and staying updated with the latest developments in software development."             
                         />
                           <IndividualCards
-                          img="../../../public/img/img-AboutUs/david.jpg"
+                          img="img/img-AboutUs/david.jpg"
                           name="David Vazquez"
-                          rol="Front-end developer"
-                          description="En construcción"             
+                          rol="Front-end Developer"
+                          description="As a front-end developer, I create attractive and functional user interfaces for web and mobile applications. I use HTML, CSS, and JavaScript to bring designs to life, ensuring a great user experience. I work with frameworks like React and collaborate with designers and back-end developers. Continuous learning keeps me up to date with the latest trends and technologies."             
                         />  
                          <IndividualCards
-                          img="Coming soon"
+                          img="https://preview.redd.it/3x46-yo-alexeto-ft-alexelcapo-2-v0-g0wrey67zyb91.jpg?auto=webp&s=aeff6a2f983e3c25a87d161f8a6e542d4c480b81"
                           name="Alvaro González"
-                          rol="Java Developer"
-                          description="En construcción"             
+                          rol="Web Developer Trainee"
+                          description="Full stack development apprentice with a physio therapy background, with the vision to creat amazing development solutions"             
                         />
                       </CardContainer>
                     </CardsOfCodeFusion>
                 </AboutCodeFusion>
-                <Footer>
-                  <div>
-                    <h2>DevMura</h2>
-                    <ul>
-                      <li>
-                        <StyledLink to="/feed">Home</StyledLink>
-                      </li>
-                      <li>
-                        <StyledLink to="/about-us">About</StyledLink>
-                      </li>
-                      <li>
-                        <StyledLink to="/contact-us">Contact Us</StyledLink>
-                      </li>
-                      <li>
-                        <StyledLink to="/">Terms of Service</StyledLink>
-                      </li>
-                      <li>
-                        <StyledLink to="/">Privacy Policy</StyledLink>
-                      </li>
-                    </ul>
-                  </div>
-                  <div>
-                    <h2>Connect</h2>
-                    <CustomUl>
-                      <li>
-                        <Link to="/"><SVGsocial src="https://www.svgrepo.com/show/509967/github.svg" alt="" /></Link>
-                      </li>
-                      <li>
-                        <Link to="/"><SVGsocial src="https://www.svgrepo.com/show/509968/gitlab.svg" alt="" /></Link>
-                      </li>
-                      <li>
-                        <Link to="/"><SVGsocial src="https://www.svgrepo.com/show/510026/instagram.svg" alt="" /></Link>
-                      </li>
-                      <li>
-                        <Link to="/"><SVGsocial src="https://www.svgrepo.com/show/510045/linkedin.svg" alt="" /></Link>
-                      </li>
-                    </CustomUl>
-                  </div>
-                  
-                </Footer>
+                <Footer />
             </Main>
         </>
     );

@@ -1,20 +1,21 @@
 import * as React from 'react';
 import "./cardAbout.css";
 
-const  IndividualCards = ({img, name, rol, description }) => {
+import { colors } from "../../ui/colors";
+const  IndividualCards = ({img, name, rol, description}) => {
   return (  
     
-    <div className="card" style={{ maxWidth: 345, backgroundColor: "#A8DADC"}}>
+    <div className="card" style={{ maxWidth: 345, backgroundColor: `${colors.cards}`}}>
       <div className="header-container">
         <div className="image-container">
           <img src={img} alt={name} />
         </div>
         <div className="title-container">
-          <h2 style={{ color: "#163b59"}}> {name} </h2>
-          <h3> {rol} </h3>
+          <h2 style={{ color: `${colors.primaryText}`}}> {name} </h2>
+          <h3 style={{ color: `${colors.navy}`}}> {rol}  </h3>
         </div>
       </div>
-      <p>{description}</p>
+      <p style={{ color: `${colors.background}`}}>{description}</p>
     </div>    
   );
 }

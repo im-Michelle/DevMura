@@ -20,7 +20,7 @@ const Main = styled.main`
   padding-top: 10vh;
   min-height: 100vh;
 `;
-const MainFeed = styled.main`
+export const MainFeed = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,8 +47,6 @@ const SocialFeed = () => {
           />
 
           <AddPost />
-            <Link to="/social-feed/1">Ver mas</Link>
-
             {publicaciones.map((post)=>{
                 return(
                     <Post
@@ -73,5 +71,6 @@ const SocialFeed = () => {
     </>
   );
 };
+
 
 export default SocialFeed;

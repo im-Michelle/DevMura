@@ -15,24 +15,28 @@ const HomeFooter = styled.footer`
   align-items: center;
   justify-content: center;
   gap: 20px;
-  padding: 60px 0;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
   @media (min-width: 958px){
     flex-direction: row;
     justify-content: space-around;
     align-items: flex-start;
     gap: 6rem;
+    padding: 60px 0;
   }
   h2{
     color: ${colors.primaryText};
+    text-align: center;
     width: 90%;
     text-align: center;
     font-size: 2rem;
     margin: auto;
     padding-bottom: 1rem;
     @media (min-width: 768px){
-      width: 50%;
+      width: 100%;
       text-align: left;
       font-size: 2rem;
+      text-align: center;
     }
   }
   p{
@@ -49,6 +53,7 @@ const HomeFooter = styled.footer`
     align-items: center;
     justify-content: center;
     gap: 10px;
+    text-align: center;
   }
 `
 const CustomBox = styled(Box)`
@@ -118,10 +123,10 @@ const Footer = () => {
                 <StyledLink to="/contact-us">Contact Us</StyledLink>
               </li>
               <li>
-                <StyledLink to="/">Terms of Service</StyledLink>
+                <StyledLink to="/terms-of-service">Terms of Service</StyledLink>
               </li>
               <li>
-                <StyledLink to="/">Privacy Policy</StyledLink>
+                <StyledLink to="/privacy-policy">Privacy Policy</StyledLink>
               </li>
             </ul>
           </div>
@@ -135,7 +140,7 @@ const Footer = () => {
                 <Link to="/"><SVGsocial src="https://www.svgrepo.com/show/509968/gitlab.svg" alt="" /></Link>
               </li>
               <li>
-                <Link to="/"><SVGsocial src="https://www.svgrepo.com/show/510026/instagram.svg" alt="" /></Link>
+                <Link to="https://www.instagram.com/devm.ura/" target="_blank"><SVGsocial src="https://www.svgrepo.com/show/510026/instagram.svg" alt="" /></Link>
               </li>
               <li>
                 <Link to="/"><SVGsocial src="https://www.svgrepo.com/show/510045/linkedin.svg" alt="" /></Link>
@@ -144,7 +149,7 @@ const Footer = () => {
           </div>
           <div>
             <h2>Subscribe</h2>
-            <p>Sign up with your email address to receive news and updates.</p>
+            <p>Sign up with your email address to receive news and updates</p>
             <form action="">
               <CustomBox sx={{ display: 'flex', alignItems: 'flex-end' }}>
               <InputMui id="standard-basic" label="email" variant="standard"  required/>
