@@ -8,7 +8,7 @@ const ChatBackground = styled.div`
 
 const ChatMessageList = ({ messageList }) => {
     const messagesToRender = messageList.map(item => {
-        return <ChatMessage key={item.id} message={item.message} self={item.self}/>
+        return <ChatMessage key={item.id} message={item.message} self={item.self} avatarUrl={item.avatarUrl} />
     });
     console.log(messagesToRender)
     return(

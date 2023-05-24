@@ -1,8 +1,8 @@
 import IconButton from "@mui/material/IconButton";
 import SendIcon from "@mui/icons-material/Send";
 import AttachFileIcon from '@mui/icons-material/AttachFile';
-import styled from 'styled-components'
-import {colors} from '../../../src/ui/colors'
+import styled from 'styled-components';
+import {colors} from '../../../src/ui/colors';
 import { createTheme, ThemeProvider  } from '@mui/material/styles';
 
 const MessageInput = styled.input`
@@ -33,10 +33,7 @@ const theme = createTheme({
 const ChatMessageInput = () => {
     return(
         <ThemeProvider theme={theme}>
-            <MessageInputRow>
-                <IconButton>
-                    <AttachFileIcon color="neutral"/>
-                </IconButton>
+            <MessageInputRow>               
                 <MessageInput/>
                 <IconButton>
                     <SendIcon color="primary"/>

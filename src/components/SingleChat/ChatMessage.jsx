@@ -1,5 +1,6 @@
 import styled, { css } from 'styled-components'
 import {colors} from '../../../src/ui/colors'
+import Avatar from '../avatar';
 
 const RowChatMessage = styled.div`
     display: flex;
@@ -29,9 +30,10 @@ const MessageParagraph = styled.p`
     text-align: inherit;
     margin: 0;
 `;
-const ChatMessage = ({ message, self }) => {
+const ChatMessage = ({ message, self, avatarUrl }) => {
     return(
         <RowChatMessage $self={self}>
+           {self ? null : <Avatar profilePic={avatarUrl}></Avatar>}
             <MessageContainer $self={self}>
                 <MessageParagraph>{message}</MessageParagraph>
             </MessageContainer>
