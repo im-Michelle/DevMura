@@ -1,5 +1,4 @@
 import { NewNavBarFeed } from "../../components/Navbar-feed";
-import SingleChat from "../../components/SingleChat";
 import styled from "styled-components";
 import { colors } from "../../ui/colors";
 import BubbleChat from "../../components/BubleChat";
@@ -57,9 +56,6 @@ const Chats = () => {
                     <BubbleChat/>
                 </ChatsMenu>
                 
-                
-               
-
             </Containedor>
         </Main>
     );    
