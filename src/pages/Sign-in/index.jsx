@@ -11,6 +11,8 @@ import { useState } from "react";
 import { IconButton, InputAdornment } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import { Link as LinkReactRouter } from "react-router-dom";
+
 const Main = styled.main`
   width: 100%;
   height: max-content;
@@ -93,6 +95,16 @@ const TextFieldStyled = styled(TextField)`
     color: ${colors.lightBlue}; 
   }
 `;
+const MessageLogin = styled.p`
+  color: ${colors.primaryText};
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  a {
+    color: ${colors.vibrantBlue};
+    text-decoration: none;
+  }
+`;
 const SignIn = () => {
   const [formValues, setFormValues] = useState({});
   const [showPassword, setShowPassword] = useState(false);
@@ -167,6 +179,9 @@ const SignIn = () => {
               Send
             </Button>
           </Stack>
+          <MessageLogin>
+            New to DevMura? <LinkReactRouter to="/sign-up">Create an account</LinkReactRouter>
+          </MessageLogin>
         </Form>
 
         <FormImg>
