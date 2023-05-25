@@ -4,11 +4,8 @@ import NavbarDefault from "../../components/Navbar-Default";
 import styled from "@emotion/styled";
 import TestiMonialCard from "../../components/Card";
 
-
 import { colors } from "../../ui/colors";
 import { Link } from "react-router-dom";
-
-
 
 import CustomButton from "../../components/Button/index";
 import Footer from "../../components/Footer";

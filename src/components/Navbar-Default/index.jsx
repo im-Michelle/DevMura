@@ -97,7 +97,8 @@ const Products = styled.div`
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 50vh;
+  height: fit-content;
+  padding: 50px 0;
   border-radius: 20px;
   ol {
     display: flex;

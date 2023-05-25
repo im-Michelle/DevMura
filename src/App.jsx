@@ -13,9 +13,11 @@ import ScrollToTop from './components/ScrollToTop/ScrollToTop'
 import TermsOfService from './pages/TermsOfService'
 import PrivacyPolicy from './pages/Privacy'
 import ErroPage from './pages/ErroPage'
+import { Groups } from './pages/Groups'
+import { GroupPage } from './pages/GroupPage'
+import Chats from './pages/Chats'
 
 function App() {
-  
   return (
     <Router>
       <ScrollToTop/>
@@ -29,10 +31,13 @@ function App() {
         <Route path='/terms-of-service' element={<TermsOfService />} />
         <Route path='/privacy-policy' element={<PrivacyPolicy />} />
         <Route path='/feed' element={ <SocialFeed/>} />
-        <Route path='/chat' element={ <SignUp/>} />
+        <Route path='/groups' element={ <Groups/>} />
+        <Route path='/groups/:id' element={<GroupPage/>} />
+        <Route path='/chats' element={ <Chats/>} />
         <Route path='/profile' element={ <ProfilePage/>} />
         <Route path='/user/:id' element={ <ProfilePage/>} />
         <Route path='/changeprofile' element={ <ChangeProfile/> } /> 
+        <Route path='contact-us' element={<ContactUs />} />
         <Route path='*' element={ <ErroPage/>} />
       </Routes>
     </Router>

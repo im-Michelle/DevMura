@@ -9,11 +9,11 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormLabel from "@mui/material/FormLabel";
 import Button from "@mui/material/Button";
-import DeleteIcon from "@mui/icons-material/Delete";
+import { Link as LinkReactRouter } from "react-router-dom";
 import SendIcon from "@mui/icons-material/Send";
 import Stack from "@mui/material/Stack";
 import { useState } from "react";
-import { IconButton, InputAdornment } from "@mui/material";
+import { IconButton, InputAdornment, Link } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 
@@ -438,7 +438,7 @@ const SignUp = () => {
             </Button>
           </Stack>
           <MessageLogin>
-            Already have an account? <a href="/sign-in">Sign in</a>
+            Already have an account? <LinkReactRouter to="/sign-in">Sign in</LinkReactRouter>
           </MessageLogin>
         </Form>
         <FormImg>

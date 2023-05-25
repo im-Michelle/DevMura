@@ -47,7 +47,7 @@ const MiniMenuContainer = styled.div`
     height: 12vh;
     display: flex;
     flex-direction: row;
-    
+   
     justify-content: space-around;
 `;
 
@@ -57,7 +57,7 @@ const DropdownImg = styled.img`
     height: 80%;
     border-radius: 50%;
     object-fit: cover;
-
+  
     @media (max-width: 768px) {
         max-width: 100%;
         width: 100%;
@@ -77,7 +77,7 @@ const DropdownImg = styled.img`
 const DropFeedRoutes = styled.div`
     display: flex;
     align-items: center;
-
+    
     @media (max-width: 768px) {
 
         gap: 1rem;
@@ -156,6 +156,7 @@ const StyledMenu = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  
   text-decoration: none;
   color: ${colors.primaryText};
 
@@ -202,7 +203,7 @@ const Menu = () => {
                                 <LinkImg2 src="/icons/green-bell.png" alt="Notifications" />
                                 <TextImg2>Notifications</TextImg2>
                             </StyledLink2>
-                            <StyledLink2 to="/sign-up">
+                            <StyledLink2 to="/chats">
                                 <LinkImg2 src="/icons/messages.png" alt="Messages" />
                                 <TextImg2>Messages</TextImg2>
                             </StyledLink2>
