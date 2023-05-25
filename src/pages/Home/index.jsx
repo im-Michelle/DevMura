@@ -69,7 +69,7 @@ const Card = styled.div`
   justify-content: center;
   align-items: center;
   gap: 20px;
-  padding: 20px;
+  //padding: 20px;
   position: relative;
   transition: all 0.5s ease-in-out;
   box-shadow: 0px 0px 10px 0px #0000005e;
@@ -94,7 +94,6 @@ const Card = styled.div`
     text-align: center;
     font-size: 2rem;
     position: relative;
-    
   }
 `;
 const Tecnologies = styled.section`
@@ -128,10 +127,10 @@ const Tecnologies = styled.section`
     }
   }
   img{
-    width: 200px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     aspect-ratio: 3/2;
-    object-fit: cover;
+    object-fit: cover; 
   }
 `
 const Testimonials = styled.section`
@@ -149,7 +148,6 @@ const Testimonials = styled.section`
     width: 90%;
     text-align: center;
     font-size: 2rem;
-
   }
 `
 const TestimonialsCards = styled.div`
@@ -228,7 +226,7 @@ const FeaturesDiv = styled.div`
     align-items: center;
     justify-content: center;
     gap: 20px;
-    padding: 60px 0;
+    //padding: 60px 0;
     flex-wrap: wrap;
 `
 const FeaturesCard = styled.div`

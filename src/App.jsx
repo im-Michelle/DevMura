@@ -13,6 +13,8 @@ import ScrollToTop from './components/ScrollToTop/ScrollToTop'
 import TermsOfService from './pages/TermsOfService'
 import PrivacyPolicy from './pages/Privacy'
 import ErroPage from './pages/ErroPage'
+import { Groups } from './pages/Groups'
+import { GroupPage } from './pages/GroupPage'
 
 function App() {
   
@@ -29,11 +31,13 @@ function App() {
         <Route path='/terms-of-service' element={<TermsOfService />} />
         <Route path='/privacy-policy' element={<PrivacyPolicy />} />
         <Route path='/feed' element={ <SocialFeed/>} />
+        <Route path='/groups' element={ <Groups/>} />
+        <Route path='/groups/:id' element={<GroupPage/>} />
         <Route path='/chat' element={ <SignUp/>} />
         <Route path='/profile' element={ <ProfilePage/>} />
         <Route path='/user/:id' element={ <ProfilePage/>} />
         <Route path='/changeprofile' element={ <ChangeProfile/> } /> 
-        <Route path='*' element={ <ErroPage/>} />
+        <Route path='contact-us' element={<ContactUs />} />
       </Routes>
     </Router>
   )
