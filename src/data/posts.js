@@ -7,7 +7,7 @@ export const posts = [
         time: "hace 1 hora",
         img: "https://images.pexels.com/photos/4275717/pexels-photo-4275717.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         bodyText: "Me gusta el stack MERN y hacer unos buenos momos bien belicos pero exageradamente chidos",
-        postImg: "https://images.pexels.com/photos/3802510/pexels-photo-3802510.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        postImg: "https://images.pexels.com/photos/1181676/pexels-photo-1181676.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
     {
         key: 2,
@@ -35,7 +35,7 @@ export const posts = [
         time: "hace 45 minutos",
         img: "https://images.pexels.com/photos/594421/pexels-photo-594421.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         bodyText: "Explorando nuevas tendencias de diseño para aplicaciones móviles.",
-        postImg: "https://images.pexels.com/photos/16144099/pexels-photo-16144099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        postImg: "https://images.pexels.com/photos/5474296/pexels-photo-5474296.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
     {
         key: 5,
@@ -45,7 +45,7 @@ export const posts = [
         time: "hace 1 hora",
         img: "https://images.pexels.com/photos/718978/pexels-photo-718978.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         bodyText: "Compartiendo mi experiencia con el framework Angular. #angular",
-        postImg: "https://images.pexels.com/photos/15312822/pexels-photo-15312822.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        postImg: "https://images.pexels.com/photos/16129728/pexels-photo-16129728/free-photo-of-hombre-escritorio-sentado-ordenador.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
     {
         key: 6,
@@ -64,7 +64,7 @@ export const posts = [
         time: "hace 3 horas",
         img: "https://images.pexels.com/photos/1681010/pexels-photo-1681010.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         bodyText: "Automatizando despliegues con Jenkins y Docker. #devops",
-        postImg: "https://images.pexels.com/photos/16772184/pexels-photo-16772184.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+        postImg: "https://images.pexels.com/photos/879109/pexels-photo-879109.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
     },
     {
         key: 8,
