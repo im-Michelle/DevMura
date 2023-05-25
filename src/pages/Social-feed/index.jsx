@@ -36,14 +36,11 @@ const SocialFeed = () => {
 
   const [pruebaPost, setPruebaPost] = useState(publicaciones)
 
-  
   /* const getPosts = async () => {
     const response = await fetch("http://localhost:3001/posts");
     const data = await response.json();
     setPosts(data);
   }; */
-
- 
 
   return (
     <>
@@ -96,8 +93,7 @@ const SocialFeed = () => {
                     />
                 )
             } )}
-            
-                 
+                   
         </MainFeed>
       </Main>
     </>
