@@ -40,25 +40,27 @@ const ProfilesPost = styled.div`
   margin-left: 10px;
 `;
 const Name = styled(Link)`
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 700;
   margin: 0;
   color: ${colors.primaryText};
   text-decoration: none;
+  transition: 0.1s ease-in-out;
   &:hover {
     color: ${colors.secondaryText};
   }
 `;
 const Role = styled.h2`
-  font-size: 1rem;
-  font-weight: 400;
-  margin: 0;
-`;
-const UserName = styled.h3`
   font-size: 0.8rem;
   font-weight: 400;
   margin: 0;
   color: ${colors.secondaryText};
+`;
+  
+const UserName = styled.h3`
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0;
 `;
 const Time = styled.h4`
   font-size: 0.8rem;
@@ -116,16 +118,14 @@ const Post = ({ id, name, role, userName, time, img, bodyText, postImg }) => {
 
   const [bookmark, setBookmark] = useState(false);
 
-
-  
   return (
     <PostContainer id={id} key={id}>
       <PostEncabezado>
         <ProfileImg src={img ? img : "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"}   alt={name} />
         <ProfilesPost>
           <Name to={`/user/${id}`} >{name}</Name>
-          <Role>{role}</Role>
           <UserName>{userName}</UserName>
+          <Role>{role}</Role>
           <Time>{time}</Time>
         </ProfilesPost>
       </PostEncabezado>
@@ -136,12 +136,9 @@ const Post = ({ id, name, role, userName, time, img, bodyText, postImg }) => {
 
       <PostFooter>
         <IconosLike>
-          { like ? <FavoriteIcon  fontSize="large" style={{color: `${colors.contrast} `}}  onClick={() => setLike(!like)} /> : <FavoriteBorderIcon fontSize="large"  onClick={() => setLike(!like)} />}
-          {/* <FavoriteBorderIcon fontSize="large"  /> */}
-             
+          { like ? <FavoriteIcon  fontSize="large" style={{color: `${colors.contrast} `}}  onClick={() => setLike(!like)} /> : <FavoriteBorderIcon fontSize="large"  onClick={() => setLike(!like)} />}     
           <ChatBubbleIcon fontSize="large"/>
         </IconosLike>
-
         <div>
         {bookmark ? <BookmarkIcon fontSize="large" onClick={() => setBookmark(!bookmark)} /> : <BookmarkBorderIcon fontSize="large" onClick={() => setBookmark(!bookmark)} />}
         </div>
