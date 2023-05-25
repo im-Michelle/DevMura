@@ -68,7 +68,7 @@ const FeedRoutesComponent = () => {
                         <StyledLink to="/sign-up">
                             <LinkImg src="/icons/green-bell.png" alt="Notifications" />
                         </StyledLink>
-                        <StyledLink to="/sign-up">
+                        <StyledLink to="/chats">
                             <LinkImg src="/icons/messages.png" alt="Messages" />
                         </StyledLink>
                         <StyledLink to="/profile">
