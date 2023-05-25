@@ -12,14 +12,14 @@ const RowChatMessage = styled.div`
 `;
 const MessageContainer = styled.div`
     flex: 2;
-    background-color: ${colors.grayBackground};
+    background-color: ${colors.contrast};
     color: ${colors.lightGray};
     border-radius: 25px;
     margin: 10px;
     padding: 10px;
 
     ${props => props.$self && css`
-        background-color: ${colors.blueBackground};
+        background-color: ${colors.background};
         color: ${colors.white}
     `}
 `;

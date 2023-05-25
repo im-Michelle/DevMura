@@ -33,6 +33,7 @@ export const MainFeed = styled.main`
 `;
 
 const SocialFeed = () => {
+  
   return (
     <>
       <NewNavBarFeed/>
