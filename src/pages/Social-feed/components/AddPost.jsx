@@ -88,7 +88,7 @@ const ContainerImg = styled.div`
 `;
 
 
-const AddPost = () => {
+const AddPost = ({ id, name, lastName, role, userName, img }) => {
   const [activeButton, setActiveButton] = React.useState(true);
   const [showButtons, setShowButtons] = React.useState(false);
   const [showImgInput, setShowImgInput] = React.useState(false);
@@ -109,16 +109,15 @@ const AddPost = () => {
   const sendPost = () => {
     let newPost ={
       key: Date.now(),
-      name: "User",
-      role: "Student",
-      userName: "Juanito",
-      time: "1h",
-      img: "",
+      name: `${name} ${lastName}`,
+      role: `${role}`,
+      userName: `${userName}`,
+      time: "just now",
+      img: `${img}`,
       bodyText: post,
       postImg: "",
     }
     posts.unshift(newPost);
-    console.log(posts);
     setPost("");
     setShowButtons(false);
     setShowImgInput(false);

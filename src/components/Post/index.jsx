@@ -121,7 +121,7 @@ const Post = ({ id, name, role, userName, time, img, bodyText, postImg }) => {
   return (
     <PostContainer id={id} key={id}>
       <PostEncabezado>
-        <ProfileImg src={!id ? "img" : {img}}   alt={name} />
+        <ProfileImg src={img ? img : "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"}   alt={name} />
         <ProfilesPost>
           <Name to={`/user/${id}`} >{name}</Name>
           <Role>{role}</Role>

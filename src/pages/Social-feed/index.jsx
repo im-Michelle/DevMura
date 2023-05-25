@@ -6,8 +6,8 @@ import Post from "../../components/Post";
 import { posts } from "../../data/posts";
 import AddPost from "./components/AddPost";
 import { NewNavBarFeed } from "../../components/Navbar-feed";
-
-
+import { user } from "../../data/user";
+import { useState } from "react";
 
 let publicaciones = posts
 
@@ -33,22 +33,39 @@ export const MainFeed = styled.main`
 `;
 
 const SocialFeed = () => {
+
+  const [pruebaPost, setPruebaPost] = useState(publicaciones)
+
   
+  /* const getPosts = async () => {
+    const response = await fetch("http://localhost:3001/posts");
+    const data = await response.json();
+    setPosts(data);
+  }; */
+
+ 
+
   return (
     <>
       <NewNavBarFeed/>
       <Main>
         <MainFeed>
           <Header
-            key="1"
-            name="Susana"
-            lastName="Gonzalez"
-            userName="@susygonzalez"
-            img="https://images.pexels.com/photos/7841717/pexels-photo-7841717.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            key={user.id}
+            name={user.name}
+            lastName={user.lastName}
+            userName={user.userName}
+            img={user.img}
           />
 
-          <AddPost />
-            {publicaciones.map((post)=>{
+          <AddPost 
+            name={user.name}
+            lastName={user.lastName}
+            role={user.role}
+            userName={user.userName}
+            img={user.img}
+          />
+            {/* {publicaciones.map((post)=>{
                 return(
                     <Post
                         key={post.key}
@@ -62,11 +79,25 @@ const SocialFeed = () => {
                         postImg={post.postImg}
                     />
                 )
-            })}
-           
+            })} */}
 
-
+            {pruebaPost.map((post)=>{
+                return(
+                    <Post
+                        key={post.key}
+                        id={post.key}
+                        name={post.name}
+                        role={post.role}
+                        userName={post.userName}
+                        time={post.time}
+                        img={post.img}
+                        bodyText={post.bodyText}
+                        postImg={post.postImg}
+                    />
+                )
+            } )}
             
+                 
         </MainFeed>
       </Main>
     </>
