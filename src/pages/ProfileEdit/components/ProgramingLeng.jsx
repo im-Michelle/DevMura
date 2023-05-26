@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../../ui/colors";
 
-import { user1 } from "../../../data/user";
+import { user } from "../../../data/user";
 
 import { IconsDic } from "../../../Utilities/IconDictionary/iconsD";
 
@@ -39,7 +39,7 @@ export const ProgramingLeng = () =>{
             <Programing>
                 <LabelIcons>Lenguages I know</LabelIcons>
                 <OrderIcons>
-                    {user1.languages.map(
+                    {user.languages.map(
                         (lenguaje) => {
                             if((lenguaje) in IconsDic){
                                 return(

@@ -4,7 +4,7 @@ import { NewNavBarFeed } from '../../components/Navbar-feed';
 import { colors } from '../../ui/colors';
 import { MainFeed } from '../Social-feed';
 
-import { user1 } from '../../data/user';
+import { user } from '../../data/user';
 
 import { LearningInterests } from './components/LearningInterests';
 import { ProgramingLeng } from './components/ProgramingLeng';
@@ -66,20 +66,17 @@ const ExtraInfo = styled.div`
 
 
 
-
-
-
-const ProfilePage = () => {
+const ProfilePageEdit = () => {
   return (
     <>
         <NewNavBarFeed/>
         <MainAll>
           <MainFeed>
               <Header 
-                  name= {user1.name}
-                  lastName={user1.lastName}
-                  userName={user1.userName}
-                  img={user1.img}
+                  name= {user.name}
+                  lastName={user.lastName}
+                  userName={user.userName}
+                  img={user.img}
                   />
               <PersonalDescription/>
 
@@ -88,15 +85,6 @@ const ProfilePage = () => {
                 <ProgramingLeng/>
                 <LearningInterests/>
               </ExtraInfo>
-
-              <GroupIcon>
-                <EachIcon>
-                  <PersonAddIcon fontSize='large'/>
-                </EachIcon>
-                <EachIcon>
-                  <MailIcon fontSize='large' />
-                </EachIcon>
-              </GroupIcon>
 
 
               {publicaciones.map((post)=>{
@@ -120,4 +108,4 @@ const ProfilePage = () => {
   )
 }
 
-export default ProfilePage;
+export default ProfilePageEdit;
