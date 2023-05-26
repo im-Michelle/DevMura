@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../../ui/colors";
 
-import { user1 } from "../../../data/user";
+import { user } from "../../../data/user";
 
 const PersonalInfo = styled.div`
   color: ${colors.primaryText};
@@ -10,7 +10,7 @@ const PersonalInfo = styled.div`
 export const PersonalDescription = () => {
     return(
     <PersonalInfo>
-        {user1.description}
+        {user.description}
     </PersonalInfo>
     );
 };
