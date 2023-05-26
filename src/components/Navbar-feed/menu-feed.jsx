@@ -30,9 +30,9 @@ const DropdownMenu = styled.div`
 
 const DropdownImgLink = styled(Link)`
     width: 100%;
-    max-width: 70%;
-    max-height: 80%;
-    height: 9vh;
+    max-width: 75%;
+    max-height: 75%;
+    height: 100%;
     display: flex;
     align-items: center;
     text-decoration: none;
