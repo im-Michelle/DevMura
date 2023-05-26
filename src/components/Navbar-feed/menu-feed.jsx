@@ -177,7 +177,7 @@ const StyledMenu = styled(Link)`
   }
 `;
 
-export const Menu = () => {
+const Menu = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const toggleDropdown = () => {
@@ -223,3 +223,5 @@ export const Menu = () => {
         </>
     );
 };
+
+export default Menu;
