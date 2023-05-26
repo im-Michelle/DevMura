@@ -3,7 +3,7 @@ import { colors } from '../../../ui/colors';
 import { IconsDic } from '../../../Utilities/IconDictionary/iconsD';
 
 
-import { user1 } from '../../../data/user';
+import { user } from '../../../data/user';
 
 const Interests = styled.div`
   color: ${colors.primaryText};
@@ -41,7 +41,7 @@ export const LearningInterests = () =>{
         <Interests>
           <LabelIcons>Lenguages of interest</LabelIcons>
           <OrderIcons>
-            {user1.learnignLanguages.map(
+            {user.learnignLanguages.map(
                       (lenguaje) => {
                           return(
                           <ImportedIcon>
