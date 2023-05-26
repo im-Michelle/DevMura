@@ -21,7 +21,8 @@ const Main = styled.main`
     width: 100%;
     text-align: left;
     padding-left: 1vw;
-    font-size: 2.5rem;
+    /* font-size: 2.5rem; */
+    -webkit-text-size-adjust: 100%;
     font-weight: 500;
     margin-bottom: 2rem;
     color: ${colors.primaryText};
@@ -39,7 +40,8 @@ const MainText = styled.article`
   margin-bottom: 2rem;
   color: ${colors.primaryText};
   @media (min-width: 768px) {
-    font-size: 2.5rem;
+    /* font-size: 2.5rem; */
+    -webkit-text-size-adjust: 100%;
   }
   ol {
     list-style: upper-alpha;

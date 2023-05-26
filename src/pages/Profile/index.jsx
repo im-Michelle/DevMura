@@ -4,6 +4,8 @@ import { NewNavBarFeed } from '../../components/Navbar-feed';
 import { colors } from '../../ui/colors';
 import { MainFeed } from '../Social-feed';
 
+import { user } from '../../data/user';
+
 import { LearningInterests } from './components/LearningInterests';
 import { ProgramingLeng } from './components/ProgramingLeng';
 import { PersonalDescription } from './components/PersonalDescription';
@@ -13,6 +15,7 @@ import MailIcon from '@mui/icons-material/Mail';
 
 import Post from '../../components/Post';
 import { posts } from "../../data/posts";
+import { Label } from '@mui/icons-material';
 
 let publicaciones = posts;
 
@@ -55,7 +58,13 @@ const EachIcon = styled.div`
 const ExtraInfo = styled.div`
   display: flex;
   justify-content: center;
+
+  position: relative;
+
 `;
+
+
+
 
 
 
@@ -67,14 +76,15 @@ const ProfilePage = () => {
         <MainAll>
           <MainFeed>
               <Header 
-                  name="Susana"
-                  lastName="Gonzalez"
-                  userName="@susygonzalez"
-                  img="https://images.pexels.com/photos/7841717/pexels-photo-7841717.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  name= {user.name}
+                  lastName={user.lastName}
+                  userName={user.userName}
+                  img={user.img}
                   />
               <PersonalDescription/>
 
               <ExtraInfo>
+              
                 <ProgramingLeng/>
                 <LearningInterests/>
               </ExtraInfo>

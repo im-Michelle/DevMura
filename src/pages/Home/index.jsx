@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 
 import CustomButton from "../../components/Button/index";
 import Footer from "../../components/Footer";
+import { maxHeight } from "@mui/system";
 
 const Main = styled.main`
   width: 100%;
@@ -350,7 +351,7 @@ const Home = () => {
           <ul>
             <li>
               <img src="https://www.svgrepo.com/show/354068/microsoft.svg" alt="microsoft" />
-              <img src="https://www.svgrepo.com/show/303123/bmw-logo.svg" alt="bmw" />
+              <img src="https://www.svgrepo.com/show/303123/bmw-logo.svg" alt="bmw"/>
               <img src="https://www.svgrepo.com/show/303303/oracle-6-logo.svg" alt="oracle" />
               <img src="https://www.svgrepo.com/show/303125/apple-logo.svg" alt="apple" />
               <img src="https://www.svgrepo.com/show/303246/google-1-1-logo.svg" alt="google" />

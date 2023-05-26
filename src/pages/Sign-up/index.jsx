@@ -10,7 +10,6 @@ import RadioGroup from "@mui/material/RadioGroup";
 import FormLabel from "@mui/material/FormLabel";
 import Button from "@mui/material/Button";
 import { Link as LinkReactRouter } from "react-router-dom";
-import SendIcon from "@mui/icons-material/Send";
 import Stack from "@mui/material/Stack";
 import { useState } from "react";
 import { IconButton, InputAdornment, Link } from "@mui/material";
@@ -430,11 +429,10 @@ const SignUp = () => {
             <Button
               variant="contained"
               type="submit"
-              endIcon={<SendIcon />}
               onClick={handleSubmmit}
               disabled={buttonActive}
             >
-              Send
+              Sign Up
             </Button>
           </Stack>
           <MessageLogin>
