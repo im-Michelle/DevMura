@@ -431,6 +431,7 @@ const SignUp = () => {
               type="submit"
               onClick={handleSubmmit}
               disabled={buttonActive}
+              sx={{ backgroundColor:'#E63946',":hover":{backgroundColor:'#1D3557' } }} 
             >
               Sign Up
             </Button>
