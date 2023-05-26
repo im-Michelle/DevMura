@@ -134,7 +134,7 @@ const AboutOurValuesDiv = styled.section`
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 1px;
+    gap: 1.8px;
     background-color: ${colors.primaryText};
 `
 
@@ -267,7 +267,7 @@ const AboutUs = () => {
                           gitHub="https://github.com/DaveOval"
                         />  
                          <IndividualCards
-                          img="https://images.pexels.com/photos/117602/pexels-photo-117602.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                          img="https://cdn.discordapp.com/attachments/1100907913037484092/1111534255311421461/1685080711703__DSC0417.jpg"
                           name="Alvaro González"
                           rol="Web Developer Trainee"
                           description="Full stack development apprentice with a physio therapy background, with the vision to creat amazing development solutions"             
