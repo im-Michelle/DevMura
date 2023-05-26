@@ -4,8 +4,6 @@ import { NewNavBarFeed } from "../../components/Navbar-feed"
 import { groups } from "../../data/groups";
 import { colors } from "../../ui/colors";
 
-let  mygroups= groups;
-
 const GroupMain = styled.div`
     display: flex;
     flex-direction: column;
@@ -18,20 +16,22 @@ const GroupMain = styled.div`
 
 
 export const GroupPage = () => {
-    return (
-      <>
-        <NewNavBarFeed />
-        <GroupMain>
-          {mygroups.map((group) => (
-            <GroupBody
-              key={group.key}
-              id={group.key}
-              name={group.name}
-              members={group.members}
-              back_img={group.back_img}
-            />
-          ))}
-        </GroupMain>
-      </>
-    );
-  };
+  const group = groups.find((group) => group.key === 1);
+
+  return (
+    <>
+      <NewNavBarFeed />
+      <GroupMain>
+        {group && (
+          <GroupBody
+            key={group.key}
+            id={group.key}
+            name={group.name}
+            members={group.members}
+            back_img={group.back_img}
+          />
+        )}
+      </GroupMain>
+    </>
+  );
+};
