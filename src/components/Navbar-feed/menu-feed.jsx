@@ -29,10 +29,10 @@ const DropdownMenu = styled.div`
 `;
 
 const DropdownImgLink = styled(Link)`
-    width: 100%;
     max-width: 75%;
     max-height: 75%;
-    height: 100%;
+    width: 150px;
+    height: 150px;
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -40,11 +40,11 @@ const DropdownImgLink = styled(Link)`
     color: ${colors.primaryText};
 
     @media (max-width: 768px) {
-        max-width: 10%;
+        max-width: 3rem;
         max-height: 3rem;
-        width: 4rem;
-        height: 100%;
-        margin-top: 1rem;
+        width: 50px;
+        height: 50px;
+        margin-top: 25px;
     }
 `;
 
