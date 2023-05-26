@@ -11,7 +11,7 @@ const  IndividualCards = ({img, name, rol, description, linkedIn, gitHub}) => {
     <div className="card" style={{ maxWidth: 345, backgroundColor: `${colors.cards}`}}>
       <div className="header-container">
         <div className="image-container">
-          <img src={img} alt={name} />
+          <img src={img} alt={name} style={{ objectFit: 'cover'}}/>
         </div>
         <div className="title-container">
           <h2 style={{ color: `${colors.navy}` , fontWeight: 'bold'}}> {name} </h2>

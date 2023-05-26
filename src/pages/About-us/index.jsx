@@ -164,6 +164,7 @@ const ValuesText = styled.header`
   display: flex;
   justify-content: center;
   align-items: center;
+  
 `;
 
 const AboutUs = () => {
