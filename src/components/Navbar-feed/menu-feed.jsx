@@ -203,7 +203,7 @@ const Menu = () => {
                                 <LinkImg2 src="/icons/groups-red.png" alt="Groups" />
                                 <TextImg2>Groups</TextImg2>
                             </StyledLink2>
-                            <StyledLink2 to="/sign-up">
+                            <StyledLink2 to="*">
                                 <LinkImg2 src="/icons/green-bell.png" alt="Notifications" />
                                 <TextImg2>Notifications</TextImg2>
                             </StyledLink2>
