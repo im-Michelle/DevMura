@@ -29,14 +29,12 @@ const DropdownMenu = styled.div`
 `;
 
 const DropdownImgLink = styled(Link)`
-    max-width: 75%;
-    max-height: 75%;
     width: 150px;
-    height: 150px;
+    height: 70px;
     display: flex;
     align-items: center;
     text-decoration: none;
-    margin: 10px;
+    margin-top: 30px;
     color: ${colors.primaryText};
 
     @media (max-width: 768px) {
