@@ -8,6 +8,7 @@ import AddPost from "./components/AddPost";
 import { NewNavBarFeed } from "../../components/Navbar-feed";
 import { user } from "../../data/user";
 import { useState } from "react";
+import FooterFeed from "../../components/Footer-feed";
 
 let publicaciones = posts
 
@@ -28,9 +29,21 @@ export const MainFeed = styled.main`
   width: 100%;
   max-width: 700px;
   gap: 30px;
+  margin-left: 13em;
+  @media (max-width: 1100px) {
+    margin-left: 0em;
+  }
   
   /* border: 1px solid red; //red */
 `;
+
+const FeedContainer = styled.main`
+  display: flex;
+  position: relative;
+  @media (max-width: 1100px) {
+    display: block;
+  }
+`
 
 const SocialFeed = () => {
 
@@ -46,55 +59,57 @@ const SocialFeed = () => {
     <>
       <NewNavBarFeed/>
       <Main>
-        <MainFeed>
-          <Header
-            key={user.id}
-            name={user.name}
-            lastName={user.lastName}
-            userName={user.userName}
-            img={user.img}
-          />
+        <FeedContainer>
+          <MainFeed>
+            <Header
+              key={user.id}
+              name={user.name}
+              lastName={user.lastName}
+              userName={user.userName}
+              img={user.img}
+            />
 
-          <AddPost 
-            name={user.name}
-            lastName={user.lastName}
-            role={user.role}
-            userName={user.userName}
-            img={user.img}
-          />
-            {/* {publicaciones.map((post)=>{
-                return(
-                    <Post
-                        key={post.key}
-                        id={post.key}
-                        name={post.name}
-                        role={post.role}
-                        userName={post.userName}
-                        time={post.time}
-                        img={post.img}
-                        bodyText={post.bodyText}
-                        postImg={post.postImg}
-                    />
-                )
-            })} */}
+            <AddPost 
+              name={user.name}
+              lastName={user.lastName}
+              role={user.role}
+              userName={user.userName}
+              img={user.img}
+            />
+              {/* {publicaciones.map((post)=>{
+                  return(
+                      <Post
+                          key={post.key}
+                          id={post.key}
+                          name={post.name}
+                          role={post.role}
+                          userName={post.userName}
+                          time={post.time}
+                          img={post.img}
+                          bodyText={post.bodyText}
+                          postImg={post.postImg}
+                      />
+                  )
+              })} */}
 
-            {pruebaPost.map((post)=>{
-                return(
-                    <Post
-                        key={post.key}
-                        id={post.key}
-                        name={post.name}
-                        role={post.role}
-                        userName={post.userName}
-                        time={post.time}
-                        img={post.img}
-                        bodyText={post.bodyText}
-                        postImg={post.postImg}
-                    />
-                )
-            } )}
-                   
-        </MainFeed>
+              {pruebaPost.map((post)=>{
+                  return(
+                      <Post
+                          key={post.key}
+                          id={post.key}
+                          name={post.name}
+                          role={post.role}
+                          userName={post.userName}
+                          time={post.time}
+                          img={post.img}
+                          bodyText={post.bodyText}
+                          postImg={post.postImg}
+                      />
+                  )
+              } )}
+          </MainFeed>
+          <FooterFeed></FooterFeed>
+        </FeedContainer>
       </Main>
     </>
   );
