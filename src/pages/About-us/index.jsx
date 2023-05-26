@@ -155,7 +155,7 @@ const OurValues = styled.section`
 
 const ValuesText = styled.header`
   width: 100%;
-  height: 80vh;
+  height: 90vh;
   background-image: url(${props => props.imageUrl});
   background-attachment: fixed;
   background-repeat: no-repeat;
@@ -171,7 +171,7 @@ const AboutUs = () => {
         <>
             <NavbarDefault />
             <Main>
-                <TitleHead titulo="About Us" imageUrl="./img/background-AboutUs.png"/>
+                <TitleHead titulo="About Us" imageUrl="https://images.pexels.com/photos/12194164/pexels-photo-12194164.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"/>
                 <AboutDevMura>
                     <AboutDevMuraDiv>
                         <h2> DevMura </h2>

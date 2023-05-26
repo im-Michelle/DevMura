@@ -1,5 +1,7 @@
 import './App.css'
+import React, { useState, useEffect } from 'react';
 import {BrowserRouter as Router, Routes, Route} from "react-router-dom"
+import Loading from './components/Loader';
 import Home from './pages/Home'
 import SocialFeed from './pages/Social-feed'
 import SignUp from './pages/Sign-up'
@@ -18,6 +20,19 @@ import { GroupPage } from './pages/GroupPage'
 import Chats from './pages/Chats'
 
 function App() {
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    // Simula una carga de datos o cualquier proceso asíncrono
+    setTimeout(() => {
+      setIsLoading(false);
+    }, 2000);
+  }, []);
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
     <Router>
       <ScrollToTop/>
