@@ -212,25 +212,33 @@ const AboutUs = () => {
                           name="Alejandra Chaparro"
                           rol="Full Stack Java Developer"
                           description="Java programmer with experience in Scrum. Passionate about learning and design, focused on organizing and leading teams effectively. Always seeking new opportunities to grow and develop professionally."             
+                          linkedIn="https://www.linkedin.com/in/alejandra-patricia-chaparro-matias-3274a4267/" 
+                          gitHub="https://github.com/Tenshik0"
                         />
                         <IndividualCards
                           img="img/img-AboutUs/goyo.png"
                           name="Gregorio Espinoza"
                           rol="Software Developer Jr. Trainee Intern"
-                          description="Analytical, committed and persistent professional. Always ready to face new challenges with positive attitude and creativity. Fast learner and great team worker. Also, eager to learn new skills to improve my professional career."             
+                          description="Analytical, committed and persistent professional. Always ready to face new challenges with positive attitude and creativity. Fast learner and great team worker. Also, eager to learn new skills to improve my professional career."
+                          linkedIn="https://www.linkedin.com/in/jose-gregorio-espinoza-figueroa/" 
+                          gitHub="https://github.com/Goyo2205"             
                         />
                         <IndividualCards
                           img="img/img-AboutUs/fati.png"
                           name="Fatima Moreno"
                           rol="Full Stack Trainee"
-                          description="Passionate about programming languages, teamwork, and eager to learn new things."             
+                          description="Passionate about programming languages, teamwork, and eager to learn new things."
+                          linkedIn="https://www.linkedin.com/in/fatima-moreno-diaz/" 
+                          gitHub="https://github.com/fatimamordiaz"             
                         />
                         <IndividualCards
                           img="img/img-AboutUs/omar.png"
                           name="Omar Michaca"
                           rol="Java Developer"
                           description="
-                          Versatile professional with adaptability, transitioning from Administration to Full Stack, bringing project management, problem-solving, and decision-making skills. Demonstrates analytical mindset and attention to detail. Excited about the exciting career change."             
+                          Versatile professional with adaptability, transitioning from Administration to Full Stack, bringing project management, problem-solving, and decision-making skills. Demonstrates analytical mindset and attention to detail. Excited about the exciting career change."
+                          linkedIn="https://www.linkedin.com/in/omar-fernando-michaca-vera-bb8367228/" 
+                          gitHub="https://github.com/omarfmv0496"             
                         />
                       </CardContainer>
                       <CardContainer>
@@ -239,24 +247,32 @@ const AboutUs = () => {
                           name="Sofia Gomez"
                           rol=" Web Developer trainee"
                           description="Full stack development apprentice with a biology background, finds inspiration in merging novel technologies into nature-based solutions."             
+                          linkedIn="https://www.linkedin.com/in/sofía-gómez-5311a7272/" 
+                          gitHub="https://github.com/sofiigmag"
                         />
                         <IndividualCards
                           img="https://avatars.githubusercontent.com/u/92353536?v=4"
                           name="Michelle Trejo"
                           rol="Java Developer"
                           description=" Java Developer with expertise in Spring Boot framework. Skilled in designing and building robust web applications, integrating databases, and optimizing performance. Strong knowledge of Spring Data, RESTful APIs, and secure authentication. Continuously learning and staying updated with the latest developments in software development."             
+                          linkedIn="https://www.linkedin.com/in/im-michelle/" 
+                          gitHub="https://github.com/im-Michelle"
                         />
                           <IndividualCards
                           img="img/img-AboutUs/david.jpg"
                           name="David Vazquez"
                           rol="Front-end Developer"
                           description="As a front-end developer, I create attractive and functional user interfaces for web and mobile applications. I use HTML, CSS, and JavaScript to bring designs to life, ensuring a great user experience. I work with frameworks like React and collaborate with designers and back-end developers. Continuous learning keeps me up to date with the latest trends and technologies."             
+                          linkedIn="https://www.linkedin.com/in/david-vazquez-developer/" 
+                          gitHub="https://github.com/DaveOval"
                         />  
                          <IndividualCards
-                          img="https://preview.redd.it/3x46-yo-alexeto-ft-alexelcapo-2-v0-g0wrey67zyb91.jpg?auto=webp&s=aeff6a2f983e3c25a87d161f8a6e542d4c480b81"
+                          img="https://images.pexels.com/photos/117602/pexels-photo-117602.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
                           name="Alvaro González"
                           rol="Web Developer Trainee"
                           description="Full stack development apprentice with a physio therapy background, with the vision to creat amazing development solutions"             
+                          linkedIn="https://www.linkedin.com/in/alejandra-patricia-chaparro-matias-3274a4267/" 
+                          gitHub="https://github.com/AlvaroGO32"
                         />
                       </CardContainer>
                     </CardsOfCodeFusion>

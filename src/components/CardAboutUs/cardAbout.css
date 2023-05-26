@@ -13,6 +13,12 @@
   margin-left: 10px;
 }
 
+.icon-container {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
+}
+
 .header-container {
   display: flex;
   align-items: center;
