@@ -26,7 +26,7 @@ function App() {
     // Simula una carga de datos o cualquier proceso asíncrono
     setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 1500);
   }, []);
 
   if (isLoading) {
@@ -55,9 +55,9 @@ function App() {
         <Route path='*' element={ <ErroPage/>} />
       </Routes>
     </Router>
-  )
-}
+  );
+};
 
-export default App
+export default App;
 
 
