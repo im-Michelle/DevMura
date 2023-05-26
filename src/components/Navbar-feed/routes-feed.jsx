@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { colors } from "../../ui/colors";
+import { user } from '../../data/user';
 
 const FeedRoutes = styled.ol`
 width: 100%;
@@ -72,7 +73,7 @@ const FeedRoutesComponent = () => {
                             <LinkImg src="/icons/messages.png" alt="Messages" />
                         </StyledLink>
                         <StyledLink to="/profile">
-                            <LinkImg src="https://images.pexels.com/photos/7841717/pexels-photo-7841717.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" className='profile-photo' alt="Me" />
+                            <LinkImg src={user.img} className='profile-photo' alt="Me" />
                         </StyledLink>
                     </FeedRoutes>
         </>
