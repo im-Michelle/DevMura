@@ -11,4 +11,6 @@ export const user = {
     location: 'Ottawa, Canada',
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
     languages: ['JavaScript', 'HTML', 'CSS', 'TypeScript', 'NodeJS', 'React'],
+    learnignLanguages: ['Python', 'PHP'],
+
 }
