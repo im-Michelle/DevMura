@@ -185,6 +185,7 @@ const ContactUs = () => {
                     variant="contained"
                     color="primary"
                     onClick={handleSubmit}
+                    sx={{ backgroundColor:'#E63946',":hover":{backgroundColor:'#1D3557' } }}
                   >
                     Submit
                   </SubmitButton>
