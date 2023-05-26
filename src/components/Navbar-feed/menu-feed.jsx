@@ -52,11 +52,12 @@ const MiniMenuContainer = styled.div`
 `;
 
 const DropdownImg = styled.img`
-    width: 100%;
-    max-width: 35%;
-    height: 80%;
+    width: 3rem;
+    max-width: 30%;
+    height: 3rem;
     border-radius: 50%;
     object-fit: cover;
+    margin-left: 1rem;
   
     @media (max-width: 768px) {
         max-width: 100%;
@@ -163,7 +164,8 @@ const StyledMenu = styled(Link)`
   .img {
     width: 30px;
     height: 30px;
-    margin: auto;
+    object-fit: cover;
+
   }
 
   .text {
