@@ -7,6 +7,7 @@ import { NewNavBarFeed } from "../../components/Navbar-feed";
 import { user } from "../../data/user";
 import { useState } from "react";
 import Post from "../../components/Post";
+import FooterFeed from "../../components/Footer-feed";
 
 import { getAllPost } from "../../service/postService";
 import { useEffect } from "react";
@@ -28,9 +29,21 @@ export const MainFeed = styled.main`
   width: 100%;
   max-width: 700px;
   gap: 30px;
+  margin-left: 13em;
+  @media (max-width: 1100px) {
+    margin-left: 0em;
+  }
   
   /* border: 1px solid red; //red */
 `;
+
+const FeedContainer = styled.main`
+  display: flex;
+  position: relative;
+  @media (max-width: 1100px) {
+    display: block;
+  }
+`
 
 const SocialFeed = () => {
 
@@ -54,14 +67,15 @@ const SocialFeed = () => {
     <>
       <NewNavBarFeed/>
       <Main>
-        <MainFeed>
-          <Header
-            key={user.id}
-            name={user.name}
-            lastName={user.lastName}
-            userName={user.userName}
-            img={user.img}
-          />
+        <FeedContainer>
+          <MainFeed>
+            <Header
+              key={user.id}
+              name={user.name}
+              lastName={user.lastName}
+              userName={user.userName}
+              img={user.img}
+            />
 
           <AddPost 
             name={user.name}
@@ -89,6 +103,7 @@ const SocialFeed = () => {
             )
           })}          
         </MainFeed>
+        </FeedContainer>
       </Main>
     </>
   );

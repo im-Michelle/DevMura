@@ -14,6 +14,7 @@ export const user = {
     learnignLanguages: ['Python', 'PHP'],
 
 }
+
 export const user1 = {
     id: 1,
     name: 'Juanito',

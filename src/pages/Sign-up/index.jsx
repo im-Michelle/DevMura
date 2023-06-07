@@ -146,6 +146,41 @@ const SignUp = () => {
   const [isValidAge, setIsValidAge] = useState(true);
   const [isValidGender, setIsValidGender] = useState(false);
 
+  const [passwordErrors, setPasswordErrors] = useState([]);
+
+  // Validadores del password uno por uno
+
+  const validateLength = (inputValue) => {
+    if (inputValue.length < 8) {
+      return 'At least 8 characters are required.';
+    }
+    return '';
+  };
+  
+  const validateUppercase = (inputValue) => {
+    const regexUppercase = /^(?=.*[A-Z])/;
+    if (!regexUppercase.test(inputValue)) {
+      return 'At least one uppercase letter is required.';
+    }
+    return '';
+  };
+  
+  const validateNumber = (inputValue) => {
+    const regexNumber = /^(?=.*\d)/;
+    if (!regexNumber.test(inputValue)) {
+      return 'At least one number is required.';
+    }
+    return '';
+  };
+  
+  const validateSpecialCharacter = (inputValue) => {
+    const regexSpecialCharacter = /^(?=.*[@$!%*?&])/;
+    if (!regexSpecialCharacter.test(inputValue)) {
+      return 'At least one special character is required.';
+    }
+    return '';
+  };
+
   // validadores de los inputs
   const handleInputNameChange = (e) => {
     const inputValue = e.target.value;
@@ -214,19 +249,16 @@ const SignUp = () => {
 
   const handleInputPasswordChange = (e) => {
     const inputValue = e.target.value;
-    const regexPassword =
-      "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
-    if (
-      inputValue.length < 3 ||
-      inputValue.length > 50 ||
-      !inputValue.match(regexPassword)
-    ) {
-      setIsValidPassword(false);
-      setPassword(inputValue);
-    } else {
-      setIsValidPassword(true);
-      setPassword(inputValue);
-    }
+    const errors = [
+      validateLength(inputValue),
+      validateUppercase(inputValue),
+      validateNumber(inputValue),
+      validateSpecialCharacter(inputValue)
+    ].filter(error => error !== '');
+  
+    setIsValidPassword(errors.length === 0);
+    setPassword(inputValue);
+    setPasswordErrors(errors);
   };
 
   const handleInputAgeChange = (e) => {
@@ -353,7 +385,7 @@ const SignUp = () => {
             helperText={
               isValidPassword
                 ? "Password: at least 8 characters with uppercase, lowercase, numbers, and special characters."
-                : "Invalid password"
+                : passwordErrors.join(' ')
             }
             error={!isValidPassword}
             value={password}
@@ -431,6 +463,7 @@ const SignUp = () => {
               type="submit"
               onClick={handleSubmmit}
               disabled={buttonActive}
+              sx={{ backgroundColor:'#E63946',":hover":{backgroundColor:'#1D3557' } }} 
             >
               Sign Up
             </Button>

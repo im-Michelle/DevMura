@@ -15,7 +15,6 @@ import MailIcon from '@mui/icons-material/Mail';
 
 import Post from '../../components/Post';
 import { posts } from "../../data/posts";
-import { Label } from '@mui/icons-material';
 
 let publicaciones = posts;
 
@@ -62,11 +61,6 @@ const ExtraInfo = styled.div`
   position: relative;
 
 `;
-
-
-
-
-
 
 
 const ProfilePage = () => {

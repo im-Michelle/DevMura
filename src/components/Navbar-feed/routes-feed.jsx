@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { colors } from "../../ui/colors";
 import { user } from '../../data/user';
 
 
@@ -29,7 +28,6 @@ display: flex;
 align-content: center;
 align-items: center;
 text-decoration: none;
-color: ${colors.primaryText};
 
 animation: all 0.8s ease-in;
 :hover {
@@ -66,7 +64,7 @@ const FeedRoutesComponent = () => {
                         <StyledLink to="/groups">
                             <LinkImg src="/icons/groups-red.png" alt="Groups" />
                         </StyledLink>
-                        <StyledLink to="/sign-up">
+                        <StyledLink to="*">
                             <LinkImg src="/icons/green-bell.png" alt="Notifications" />
                         </StyledLink>
                         <StyledLink to="/chats">
