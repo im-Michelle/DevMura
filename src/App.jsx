@@ -8,7 +8,6 @@ import SignUp from './pages/Sign-up'
 import SignIn from './pages/Sign-in'
 import AboutUs from './pages/About-us'
 import ContactUs from './pages/Contact-us'
-
 import ProfilePage from './pages/Profile'
 import ProfilePageEdit from './pages/ProfileEdit'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop'
@@ -26,7 +25,7 @@ function App() {
     // Simula una carga de datos o cualquier proceso asíncrono
     setTimeout(() => {
       setIsLoading(false);
-    }, 2000);
+    }, 2);
   }, []);
 
   if (isLoading) {

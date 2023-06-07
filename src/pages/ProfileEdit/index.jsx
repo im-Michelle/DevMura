@@ -63,29 +63,23 @@ const ExtraInfo = styled.div`
 
 `;
 
-
-
-
 const ProfilePageEdit = () => {
   return (
     <>
         <NewNavBarFeed/>
         <MainAll>
           <MainFeed>
-              <Header 
+              <Header
                   name= {user.name}
                   lastName={user.lastName}
                   userName={user.userName}
                   img={user.img}
                   />
               <PersonalDescription/>
-
-              <ExtraInfo>
-              
+              <ExtraInfo>         
                 <ProgramingLeng/>
                 <LearningInterests/>
               </ExtraInfo>
-
 
               {publicaciones.map((post)=>{
                 return(

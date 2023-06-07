@@ -2,14 +2,14 @@ import styled from "styled-components";
 import { colors } from "../../ui/colors";
 import Header from "./components/Header";
 import { Link } from "react-router-dom";
-import Post from "../../components/Post";
-import { posts } from "../../data/posts";
 import AddPost from "./components/AddPost";
 import { NewNavBarFeed } from "../../components/Navbar-feed";
 import { user } from "../../data/user";
 import { useState } from "react";
+import Post from "../../components/Post";
 
-let publicaciones = posts
+import { getAllPost } from "../../service/postService";
+import { useEffect } from "react";
 
 const Main = styled.main`
   display: flex;
@@ -34,13 +34,21 @@ export const MainFeed = styled.main`
 
 const SocialFeed = () => {
 
-  const [pruebaPost, setPruebaPost] = useState(publicaciones)
+  const [posts, getPosts] = useState([])
 
-  /* const getPosts = async () => {
-    const response = await fetch("http://localhost:3001/posts");
-    const data = await response.json();
-    setPosts(data);
-  }; */
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try{
+        console.log("fetching posts")
+        const posts = await getAllPost()
+        getPosts(posts)
+      }catch(error){
+        console.error(error)
+      }
+    }
+    fetchPosts()
+  }, [])
+
 
   return (
     <>
@@ -62,43 +70,31 @@ const SocialFeed = () => {
             userName={user.userName}
             img={user.img}
           />
-            {/* {publicaciones.map((post)=>{
-                return(
-                    <Post
-                        key={post.key}
-                        id={post.key}
-                        name={post.name}
-                        role={post.role}
-                        userName={post.userName}
-                        time={post.time}
-                        img={post.img}
-                        bodyText={post.bodyText}
-                        postImg={post.postImg}
-                    />
-                )
-            })} */}
 
-            {pruebaPost.map((post)=>{
-                return(
-                    <Post
-                        key={post.key}
-                        id={post.key}
-                        name={post.name}
-                        role={post.role}
-                        userName={post.userName}
-                        time={post.time}
-                        img={post.img}
-                        bodyText={post.bodyText}
-                        postImg={post.postImg}
-                    />
-                )
-            } )}
-                   
+          {posts.map((post) => {
+            return(
+              <Post 
+                id={post.id}
+                key={post.id}
+                firstName={post.user.name}
+                lastName={post.user.lastName}
+                userName={post.user.username}
+                time={post.createdAt}
+                //role={post['user'].profile['role']}
+                bodyText={post.postBody}
+                //img={post.user.profile.img}
+                userId={post.user.id}
+                postImg={post.imgSource}
+                />
+            )
+          })}          
         </MainFeed>
       </Main>
     </>
   );
 };
 
-
 export default SocialFeed;
+
+
+
