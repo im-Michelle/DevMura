@@ -8,7 +8,6 @@ import SignUp from './pages/Sign-up'
 import SignIn from './pages/Sign-in'
 import AboutUs from './pages/About-us'
 import ContactUs from './pages/Contact-us'
-
 import ProfilePage from './pages/Profile'
 import ProfilePageEdit from './pages/ProfileEdit'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop'
