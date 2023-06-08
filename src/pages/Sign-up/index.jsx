@@ -359,7 +359,7 @@ const SignUp = () => {
   };
 
   const getCountries = async () => {
-    let response = await fetch("http://localhost:8080/api/country/all");
+    let response = await fetch("http://localhost:8080/api/country");
 
     let parsedResponse = await response.json();
 
