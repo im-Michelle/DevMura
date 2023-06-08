@@ -64,7 +64,6 @@ const SocialFeed = () => {
     fetchPosts()
   }, [])
 
-
   return (
     <>
       <NewNavBarFeed/>
