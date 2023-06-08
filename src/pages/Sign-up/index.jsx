@@ -11,12 +11,11 @@ import FormLabel from "@mui/material/FormLabel";
 import Button from "@mui/material/Button";
 import { Link as LinkReactRouter } from "react-router-dom";
 import Stack from "@mui/material/Stack";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { IconButton, InputAdornment, Link } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Autocomplete from '@mui/material/Autocomplete';
-import { countrys } from "./countries";
 import { userRegister } from "../../service/userRegister";
 
 const Main = styled.main`
@@ -170,6 +169,8 @@ const SignUp = () => {
   const [isValidPassword, setIsValidPassword] = useState(true);
   const [isValidAge, setIsValidAge] = useState(true);
   //const [isValidGender, setIsValidGender] = useState(false);
+
+  const [countries,setCountries] = useState([]);
 
   const [passwordErrors, setPasswordErrors] = useState([]);
 
@@ -357,6 +358,18 @@ const SignUp = () => {
     }
   };
 
+  const getCountries = async () => {
+    let response = await fetch("http://localhost:8080/api/country/all");
+
+    let parsedResponse = await response.json();
+
+    setCountries(parsedResponse.map(c => { return { "label": c.name, "id": c.id }}));
+  }
+
+  useEffect(()=> {
+    getCountries();
+  },[])
+
   return (
     <>
       <Main>
@@ -462,7 +475,7 @@ const SignUp = () => {
             disablePortal
             id="paises"
             variant="standard"
-            options={countrys}
+            options={countries}
             value={selectedCountry}
             onChange={handleInputCountryChange}
             renderInput={(params) => <TextFieldStyled {...params} label="Country" />}
