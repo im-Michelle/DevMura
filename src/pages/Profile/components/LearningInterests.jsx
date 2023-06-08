@@ -7,7 +7,7 @@ import { user1 } from '../../../data/user';
 
 const Interests = styled.div`
   color: ${colors.primaryText};
-  padding: 3rem;
+  padding: 1rem;
   align-items: center;
   width: 100%;
   flex-direction: column;
@@ -19,7 +19,7 @@ const Interests = styled.div`
 
 const LabelIcons = styled.div`
   position: absolute;
-  top: 50px;
+  top: 0;
 `;
 const OrderIcons = styled.div`
     display: flex;

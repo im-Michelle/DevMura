@@ -13,7 +13,6 @@ const Main = styled.header`
   max-width: 700px;
   height: max-content;
   margin: 0 auto;
-  /* background-image: url(${user.backGroundIMG}); */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

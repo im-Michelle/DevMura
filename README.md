@@ -11,11 +11,11 @@ Para esta pagina se utilizo [Vercel](https://dev-mura.vercel.app/) para el despl
 
 ## Back
 
-[![My Skills](https://skillicons.dev/icons?i=java,spring,mysql&theme=light)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=java,spring,mysql,bash&theme=light)](https://skillicons.dev)
 
 ## Miscellaneous
 
-[![My Skills](https://skillicons.dev/icons?i=vercel,vscode,discord,idea,md,postman,github,git&theme=light)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=vercel,vscode,discord,idea,md,postman,github,git,figma&theme=light)](https://skillicons.dev)
 
 ## Descripción
 

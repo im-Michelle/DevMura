@@ -2,15 +2,16 @@ import styled from "styled-components";
 import { colors } from "../../ui/colors";
 import Header from "./components/Header";
 import { Link } from "react-router-dom";
-import Post from "../../components/Post";
-import { posts } from "../../data/posts";
 import AddPost from "./components/AddPost";
 import { NewNavBarFeed } from "../../components/Navbar-feed";
 import { user } from "../../data/user";
 import { useState } from "react";
+import Post from "../../components/Post";
 import FooterFeed from "../../components/Footer-feed";
 
-let publicaciones = posts
+import { getAllPost } from "../../service/postService";
+import { useEffect } from "react";
+import LoaderFeed from "../../components/LoaderFeed";
 
 const Main = styled.main`
   display: flex;
@@ -33,8 +34,6 @@ export const MainFeed = styled.main`
   @media (max-width: 1100px) {
     margin-left: 0em;
   }
-  
-  /* border: 1px solid red; //red */
 `;
 
 const FeedContainer = styled.main`
@@ -47,13 +46,23 @@ const FeedContainer = styled.main`
 
 const SocialFeed = () => {
 
-  const [pruebaPost, setPruebaPost] = useState(publicaciones)
+  const [posts, getPosts] = useState([])
+  const [loader, setLoader] = useState(true)
 
-  /* const getPosts = async () => {
-    const response = await fetch("http://localhost:3001/posts");
-    const data = await response.json();
-    setPosts(data);
-  }; */
+  useEffect(() => {
+    const fetchPosts = async () => {
+      try{
+        console.log("fetching posts")
+        const posts = await getAllPost()
+        console.log(posts)
+        getPosts(posts)
+        setLoader(false)
+      }catch(error){
+        console.error(error)
+      }
+    }
+    fetchPosts()
+  }, [])
 
   return (
     <>
@@ -70,51 +79,40 @@ const SocialFeed = () => {
               backGroundIMG={user.backGroundIMG}
             />
 
-            <AddPost 
-              name={user.name}
-              lastName={user.lastName}
-              role={user.role}
-              userName={user.userName}
-              img={user.img}
-            />
-              {/* {publicaciones.map((post)=>{
-                  return(
-                      <Post
-                          key={post.key}
-                          id={post.key}
-                          name={post.name}
-                          role={post.role}
-                          userName={post.userName}
-                          time={post.time}
-                          img={post.img}
-                          bodyText={post.bodyText}
-                          postImg={post.postImg}
-                      />
-                  )
-              })} */}
+          <AddPost 
+            name={user.name}
+            lastName={user.lastName}
+            role={user.role}
+            userName={user.userName}
+            img={user.img}
+          />
 
-              {pruebaPost.map((post)=>{
-                  return(
-                      <Post
-                          key={post.key}
-                          id={post.key}
-                          name={post.name}
-                          role={post.role}
-                          userName={post.userName}
-                          time={post.time}
-                          img={post.img}
-                          bodyText={post.bodyText}
-                          postImg={post.postImg}
-                      />
-                  )
-              } )}
-          </MainFeed>
-          <FooterFeed></FooterFeed>
+          {loader ? <LoaderFeed/> : posts.map((post) => {
+            return (
+              <Post 
+                id={post.id}
+                key={post.id}
+                firstName={post.user.name}
+                lastName={post.user.lastName}
+                userName={post.user.username}
+                time={post.createdAt}
+                role={post.user.profile && post.user.profile.role}
+                bodyText={post.postBody}
+                img={post.user.profile && post.user.profile.img}
+                userId={post.user.id}
+                postImg={post.imgSource}
+              />
+            );
+          })}
+        </MainFeed>
+        <FooterFeed></FooterFeed>
         </FeedContainer>
       </Main>
     </>
   );
 };
 
-
 export default SocialFeed;
+
+
+

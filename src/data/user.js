@@ -10,7 +10,7 @@ export const user = {
     age: 33,
     location: 'Ottawa, Canada',
     description: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum.",
-    languages: ['JavaScript', 'HTML', 'CSS', 'TypeScript', 'NodeJS', 'React'],
+    languages: ['JavaScript', 'HTML', 'CSS', 'TypeScript', 'NodeJS', 'React', 'JavaScript', 'HTML', 'CSS', 'TypeScript', 'NodeJS', 'React'],
     learnignLanguages: ['Python', 'PHP'],
 
 }

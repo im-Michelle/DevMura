@@ -6,9 +6,6 @@ import { SiPhp, SiPython, SiTypescript, SiCsswizardry} from 'react-icons/si';
 import { BsFiletypeXml } from 'react-icons/bs';
 
 
-
-
-
 export const IconsDic = {
     Java: <FaJava/>,
     JavaScript: <IoLogoJavascript/>,
