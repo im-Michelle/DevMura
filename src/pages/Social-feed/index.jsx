@@ -76,6 +76,7 @@ const SocialFeed = () => {
               lastName={user.lastName}
               userName={user.userName}
               img={user.img}
+              backGroundIMG={user.backGroundIMG}
             />
 
           <AddPost 
