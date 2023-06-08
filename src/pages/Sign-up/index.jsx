@@ -18,6 +18,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Autocomplete from '@mui/material/Autocomplete';
 import { userRegister } from "../../service/Posts/userRegister";
+import { getCountries } from "../../service/Gets/countryService"
 
 const Main = styled.main`
   width: 100%;
@@ -362,17 +363,14 @@ const SignUp = () => {
     }
   };
 
-  const getCountries = async () => {
-    let response = await fetch("http://localhost:8080/api/country");
-
-    let parsedResponse = await response.json();
-
-    setCountries(parsedResponse.map(c => { return { "label": c.name, "id": c.id }}));
-  }
-
-  useEffect(()=> {
-    getCountries();
-  },[])
+  useEffect(() => {
+    const fetchCountries = async () => {
+      const countries = await getCountries();
+      setCountries(countries);
+    };
+  
+    fetchCountries();
+  }, []);
 
   return (
     <>
