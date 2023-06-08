@@ -155,7 +155,6 @@ export default Post;
 
 Post.defaultProps = {
   name: "No name",
-  role: "No role to show",
   userName: "No userName to show",
   time: "time",
   img: "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",

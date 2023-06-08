@@ -1,7 +1,6 @@
 import { BASE_URL } from "./config";
 import axios from "axios";
 
-
 export const getAllPost = async () =>{
     try{
         const response = await axios.get(`${BASE_URL}/post/all`,);
@@ -12,6 +11,9 @@ export const getAllPost = async () =>{
         return []
     }
 }
+
+
+
 
 
 

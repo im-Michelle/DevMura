@@ -13,10 +13,10 @@ import { PersonalDescription } from './components/PersonalDescription';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import MailIcon from '@mui/icons-material/Mail';
 
-import Post from '../../components/Post';
-import { posts } from "../../data/posts";
 
-let publicaciones = posts;
+import { getUserByID } from '../../service/userService';
+import { useEffect, useState } from 'react';
+
 
 const MainAll = styled.main`
   display: flex;
@@ -62,23 +62,35 @@ const ExtraInfo = styled.div`
 
 `;
 
-
 const ProfilePage = () => {
+
+  const userPath = window.location.pathname.split("/")[2];
+
+  const [user, setUser] = useState({})
+
+  useEffect(() => {
+    getUserByID(userPath).then((response) => {
+      setUser(response.data);
+    });
+  }, []);
+
+
   return (
     <>
         <NewNavBarFeed/>
         <MainAll>
           <MainFeed>
               <Header 
-                  name= {user1.name}
-                  lastName={user1.lastName}
-                  userName={user1.userName}
-                  img={user1.img}
+                  name= {user.name}
+                  lastName={user.lastName}
+                  userName={user.username}
+                  img={user.profile && user.profile.img}
                   />
-              <PersonalDescription/>
+              <PersonalDescription
+                  description={user.profile && user.profile.bio}
+              />
 
               <ExtraInfo>
-              
                 <ProgramingLeng/>
                 <LearningInterests/>
               </ExtraInfo>
@@ -93,7 +105,7 @@ const ProfilePage = () => {
               </GroupIcon>
 
 
-              {publicaciones.map((post)=>{
+              {/* {publicaciones.map((post)=>{
                 return(
                     <Post
                         key={post.key}
@@ -107,7 +119,7 @@ const ProfilePage = () => {
                         postImg={post.postImg}
                     />
                 )
-            })}
+            })} */}
           </MainFeed>
         </MainAll>
     </>
