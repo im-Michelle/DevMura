@@ -341,7 +341,7 @@ const SignUp = () => {
       isValidAge &&
       terms
     ) {
-      userRegister(name, lastName, age, email, userName, password, gender ,selectedCountry)
+      userRegister(name, lastName, age, email, userName, password, gender ,selectedCountry.id)
       console.log("Formulario enviado");
     } else {
       console.log("Formulario no enviado");

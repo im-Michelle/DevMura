@@ -13,6 +13,7 @@ import axios from "axios";
  * @param {country} country 
  */
 export const userRegister = async (name, lastName, age, email, username, password, gender ,country) =>{
+    console.log({name, lastName, age, email, username, password, gender, country})
     try{
         const response = await axios.post(`${BASE_URL}/users`, {
             name: name,
@@ -21,8 +22,8 @@ export const userRegister = async (name, lastName, age, email, username, passwor
             email: email,
             username: username,
             password: password,
-            gender: 2,
-            country: country,
+            gender: {id: 3},
+            country: {id: 2},
         });
        console.log("Respuesta del servidor", response.data)
     }catch(error){
