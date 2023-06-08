@@ -13,7 +13,6 @@ const Main = styled.header`
   max-width: 700px;
   height: max-content;
   margin: 0 auto;
-  background-image: url(${user.backGroundIMG});
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -60,10 +59,14 @@ const Names = styled.div`
   backdrop-filter: blur(10px);
 `;
 
-const Header = ({ name = "no data", lastName = "no data", userName = "no data", img = "../../../../public/img/placeholder.png"}, backGround = "https://images.pexels.com/photos/16154489/pexels-photo-16154489/free-photo-of-arte-techo-arquitectura-viaje.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1") => {
+const Header = ({ name = "no data", lastName = "no data", userName = "no data", img = "../../../../public/img/placeholder.png", backGroundIMG = "no img"}, key) => {
+  const mainStyle = {
+    backgroundImage: `url(${backGroundIMG})`
+  }
+
   return (
     <>
-      <Main >
+      <Main style={mainStyle}>
         <ProfileImg src={img} alt={name} />
         <div>
           <UserName>{userName}</UserName>
