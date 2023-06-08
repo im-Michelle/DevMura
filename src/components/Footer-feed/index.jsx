@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components"; // Importa styled-components para usar StyledLink
 import Container from "@mui/material/Container";
+
+
 const FeedFooter = styled.div`
   position: sticky;
   top: 75px;
@@ -13,7 +15,7 @@ const FeedFooter = styled.div`
   align-items: center;
   justify-content: center;
   li {
-    font-size: 13px;
+    font-size: 15px;
   }
   @media (max-width: 1100px) {
     display: block;

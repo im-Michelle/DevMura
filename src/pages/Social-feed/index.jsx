@@ -105,7 +105,7 @@ const SocialFeed = () => {
             );
           })}
         </MainFeed>
-        <FooterFeed></FooterFeed>
+        <FooterFeed/>
         </FeedContainer>
       </Main>
     </>

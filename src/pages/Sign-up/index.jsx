@@ -15,6 +15,9 @@ import { useState } from "react";
 import { IconButton, InputAdornment, Link } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import Autocomplete from '@mui/material/Autocomplete';
+import { country } from "./countries";
+import { userRegister } from "../../service/userRegister";
 
 const Main = styled.main`
   width: 100%;
@@ -115,7 +118,28 @@ const MessageLogin = styled.p`
     text-decoration: none;
   }
 `;
+const CustomAutoComplete = styled(Autocomplete)`
+  color: ${colors.primaryText};
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  .MuiInput-underline:before {
+    border-bottom-color: ${colors.navy};
+  }
+  .MuiInput-underline:hover:not(.Mui-disabled):before {
+    border-bottom-color: ${colors.vibrantBlue};
+  }
+  .MuiInput-underline:after {
+    border-bottom-color: ${colors.primaryText};
+  }
+  .MuiFormHelperText-root {
+    color: ${colors.secondaryText};
+  }
+  .MuiFormLabel-root.Mui-error {
+    color: ${colors.contrast};
+  }
 
+`;
 const SignUp = () => {
   const [formValues, setFormValues] = useState({});
 
@@ -136,6 +160,7 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState("");
 
   // validadores de los inputs
   const [isValidName, setIsValidName] = useState(true);
@@ -144,7 +169,7 @@ const SignUp = () => {
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [isValidPassword, setIsValidPassword] = useState(true);
   const [isValidAge, setIsValidAge] = useState(true);
-  const [isValidGender, setIsValidGender] = useState(false);
+  //const [isValidGender, setIsValidGender] = useState(false);
 
   const [passwordErrors, setPasswordErrors] = useState([]);
 
@@ -272,6 +297,18 @@ const SignUp = () => {
       setAge(inputValue);
     }
   };
+  const handleInputCountryChange = (e, value) => {
+    if(value){
+      setSelectedCountry(value);
+    }else{
+      setSelectedCountry('');
+    }
+  };
+
+  const handleInputGenderChange = (e) => {
+    const inputValue = e.target.value;
+    setGender(inputValue);
+  };
 
   const handleActiveButton = () => {
     if (
@@ -283,7 +320,7 @@ const SignUp = () => {
       isValidAge &&
       terms
     ) {
-      setButtonActive(false);
+      setButtonActive(true);
     } else {
       setButtonActive(true);
     }
@@ -304,14 +341,26 @@ const SignUp = () => {
       isValidAge &&
       terms
     ) {
+      const UpdatedFormValues = {
+        age: /* parseInt(age) */ 24,
+        name: name,
+        lastName: lastName,
+        userName: userName,
+        email: email,
+        password: password,
+        country: /* country */ 5 ,
+        gender: gender,
+      };
+      userRegister(UpdatedFormValues)
       console.log("Formulario enviado");
+      //console.log(UpdatedFormValues);
     } else {
       console.log("Formulario no enviado");
     }
   };
   const handleTerms = () => {
-    if (terms) {
-      setTerms(false);
+    if (terms ) {
+      setTerms(true);
     } else {
       setTerms(true);
     }
@@ -418,6 +467,16 @@ const SignUp = () => {
             onChange={handleInputAgeChange}
             error={!isValidAge}
           />
+          <CustomAutoComplete
+            disablePortal
+            id="paises"
+            variant="standard"
+            options={country}
+            value={selectedCountry}
+            onChange={handleInputCountryChange}
+            renderInput={(params) => <TextFieldStyled {...params} label="Paises" />}
+            getOptionLabel={(option) => option.label}
+          />
           <FormLabel
             id="formLabel"
             required
@@ -435,17 +494,20 @@ const SignUp = () => {
               control={<Radio style={{ color: colors.primaryText }} />}
               label="Female"
               style={{ color: colors.primaryText }}
+              onChange={handleInputGenderChange}
             />
             <FormControlLabel
               value="male"
               control={<Radio style={{ color: colors.primaryText }} />}
               label="Male"
+              onChange={handleInputGenderChange}
               style={{ color: colors.primaryText }}
             />
             <FormControlLabel
               value="other"
               control={<Radio style={{ color: colors.primaryText }} />}
               label="Other"
+              onChange={handleInputGenderChange}
               style={{ color: colors.primaryText }}
             />
           </RadioGroup>
@@ -462,7 +524,8 @@ const SignUp = () => {
               variant="contained"
               type="submit"
               onClick={handleSubmmit}
-              disabled={buttonActive}
+              //! boton negado para que se active
+              disabled={!buttonActive}
               sx={{ backgroundColor:'#E63946',":hover":{backgroundColor:'#1D3557' } }} 
             >
               Sign Up
