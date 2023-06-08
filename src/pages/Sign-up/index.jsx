@@ -344,7 +344,7 @@ const SignUp = () => {
       userRegister(name, lastName, age, email, userName, password, gender ,selectedCountry.id)
       //console.log("Formulario enviado");
       alert("Usuario Registrado");
-      Window.location.href = "/sign-in";
+      //Window.location.href = "/sign-in";
     } else {
       console.log("Formulario no enviado");
     }
