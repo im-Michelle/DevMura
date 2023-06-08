@@ -342,7 +342,9 @@ const SignUp = () => {
       terms
     ) {
       userRegister(name, lastName, age, email, userName, password, gender ,selectedCountry.id)
-      console.log("Formulario enviado");
+      //console.log("Formulario enviado");
+      alert("Usuario Registrado");
+      Window.location.href = "/sign-in";
     } else {
       console.log("Formulario no enviado");
     }
@@ -479,21 +481,21 @@ const SignUp = () => {
             name="row-radio-buttons-group"
           >
             <FormControlLabel
-              value="female"
+              value={1}
               control={<Radio style={{ color: colors.primaryText }} />}
               label="Female"
               style={{ color: colors.primaryText }}
               onChange={handleInputGenderChange}
             />
             <FormControlLabel
-              value="male"
+              value={2}
               control={<Radio style={{ color: colors.primaryText }} />}
               label="Male"
               onChange={handleInputGenderChange}
               style={{ color: colors.primaryText }}
             />
             <FormControlLabel
-              value="other"
+              value={3}
               control={<Radio style={{ color: colors.primaryText }} />}
               label="Other"
               onChange={handleInputGenderChange}
