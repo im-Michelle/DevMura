@@ -16,7 +16,7 @@ import { IconButton, InputAdornment, Link } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Autocomplete from '@mui/material/Autocomplete';
-import { country } from "./countries";
+import { countrys } from "./countries";
 import { userRegister } from "../../service/userRegister";
 
 const Main = styled.main`
@@ -342,16 +342,16 @@ const SignUp = () => {
       terms
     ) {
       const UpdatedFormValues = {
-        age: /* parseInt(age) */ 24,
+        age: parseInt(age),
         name: name,
         lastName: lastName,
         userName: userName,
         email: email,
         password: password,
-        country: /* country */ 5 ,
+        country:  selectedCountry.id, 
         gender: gender,
       };
-      userRegister(UpdatedFormValues)
+      userRegister(UpdatedFormValues, name)
       console.log("Formulario enviado");
       //console.log(UpdatedFormValues);
     } else {
@@ -471,11 +471,11 @@ const SignUp = () => {
             disablePortal
             id="paises"
             variant="standard"
-            options={country}
+            options={countrys}
             value={selectedCountry}
             onChange={handleInputCountryChange}
-            renderInput={(params) => <TextFieldStyled {...params} label="Paises" />}
-            getOptionLabel={(option) => option.label}
+            renderInput={(params) => <TextFieldStyled {...params} label="Country" />}
+            //getOptionLabel={(option) => option.label}
           />
           <FormLabel
             id="formLabel"
