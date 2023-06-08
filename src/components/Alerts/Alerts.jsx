@@ -1,13 +1,13 @@
 import './alerts.css';
-import AlertTitle from '@mui/material/Alert/Alert';
+import { Alert, AlertTitle } from '@mui/material';
 
-const Alert = (props) => {
+const Alerts = ({type, title, message}) => {
   return(
-    <div className={`alert ${props.type}`}>
-      <AlertTitle>{props.title}</AlertTitle>
-      {props.message}
-    </div>
-  )
-}
+    <Alert severity={type}>
+      <AlertTitle>{title}</AlertTitle>
+      {message} - <strong>check it out!</strong>
+    </Alert>
+  );
+};
 
-export default Alert;
+export default Alerts;

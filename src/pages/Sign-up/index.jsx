@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { colors } from "../../ui/colors";
+import Alert from "../../components/Alerts/Alerts";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -16,7 +17,7 @@ import { IconButton, InputAdornment, Link } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Autocomplete from '@mui/material/Autocomplete';
-import { userRegister } from "../../service/userRegister";
+import { userRegister } from "../../service/Posts/userRegister";
 
 const Main = styled.main`
   width: 100%;
@@ -150,6 +151,9 @@ const SignUp = () => {
 
   // boton para aceptar los terminos y condiciones
   const [terms, setTerms] = useState(false);
+
+  // Alerts
+  const [alert, setAlert] = useState(null);
 
   // valores de los inputs
   const [name, setName] = useState("");
@@ -347,7 +351,7 @@ const SignUp = () => {
       alert("Usuario Registrado");
       //Window.location.href = "/sign-in";
     } else {
-      console.log("Formulario no enviado");
+      setAlert({ type: 'error', title: 'Error', message: 'An error occurred with the form' });
     }
   };
   const handleTerms = () => {
@@ -384,6 +388,10 @@ const SignUp = () => {
           onChange={handleActiveButton}
         >
           <h1>Sign Up to DevMura</h1>
+          {alert && (
+            <Alert type={alert.type} title={alert.title} message={alert.message} />
+          )}
+          
           <TextFieldStyled
             id="name"
             type="text"
