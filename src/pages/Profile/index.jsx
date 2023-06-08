@@ -14,7 +14,7 @@ import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import MailIcon from '@mui/icons-material/Mail';
 
 
-import { getUserByID } from '../../service/userService';
+import { getUserByID } from '../../service/Gets/userService';
 import { useEffect, useState } from 'react';
 
 
