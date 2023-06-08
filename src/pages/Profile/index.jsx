@@ -13,7 +13,8 @@ import { PersonalDescription } from './components/PersonalDescription';
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import MailIcon from '@mui/icons-material/Mail';
 
-
+import Post from '../../components/Post';
+import { posts } from "../../data/posts";
 
 let publicaciones = posts;
 
