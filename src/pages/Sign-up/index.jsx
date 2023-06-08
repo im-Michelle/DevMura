@@ -370,6 +370,10 @@ const SignUp = () => {
           onChange={handleActiveButton}
         >
           <h1>Sign Up to DevMura</h1>
+          <Alert type="error" title="Error" message="This is an error alert"/>
+          <Alert type="warning" title="Warning" message="This is a warning alert"/>
+          <Alert type="info" title="Info" message="This is an info alert"/>
+          <Alert type="success" title="Success" message="This is a success alert"/>
           <TextFieldStyled
             id="name"
             type="text"
