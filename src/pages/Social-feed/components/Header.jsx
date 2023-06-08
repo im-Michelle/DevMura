@@ -81,3 +81,12 @@ const Header = ({ name = "no data", lastName = "no data", userName = "no data", 
 };
 
 export default Header;
+
+Header.defaultProps = {
+  name: "no data",
+  lastName: "no data",
+  userName: "no data",
+  img: "../../../../public/img/placeholder.png",
+  backGroundIMG: "https://images.pexels.com/photos/15536927/pexels-photo-15536927/free-photo-of-ciudad-coches-punto-de-referencia-calle.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+};
+

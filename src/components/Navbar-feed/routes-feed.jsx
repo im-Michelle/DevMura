@@ -28,10 +28,9 @@ display: flex;
 align-content: center;
 align-items: center;
 text-decoration: none;
-
-animation: all 0.8s ease-in;
+transition: all 0.2s ease-in-out;
 :hover {
-    transform: scale(1.2);
+    transform: scale(1.1);
     filter: contrast(1.8);
 }
 
