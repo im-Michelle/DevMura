@@ -11,6 +11,7 @@ import FooterFeed from "../../components/Footer-feed";
 
 import { getAllPost } from "../../service/postService";
 import { useEffect } from "react";
+import LoaderFeed from "../../components/LoaderFeed";
 
 const Main = styled.main`
   display: flex;
@@ -33,8 +34,6 @@ export const MainFeed = styled.main`
   @media (max-width: 1100px) {
     margin-left: 0em;
   }
-  
-  /* border: 1px solid red; //red */
 `;
 
 const FeedContainer = styled.main`
@@ -48,13 +47,16 @@ const FeedContainer = styled.main`
 const SocialFeed = () => {
 
   const [posts, getPosts] = useState([])
+  const [loader, setLoader] = useState(true)
 
   useEffect(() => {
     const fetchPosts = async () => {
       try{
         console.log("fetching posts")
         const posts = await getAllPost()
+        console.log(posts)
         getPosts(posts)
+        setLoader(false)
       }catch(error){
         console.error(error)
       }
@@ -85,8 +87,8 @@ const SocialFeed = () => {
             img={user.img}
           />
 
-          {posts.map((post) => {
-            return(
+          {loader ? <LoaderFeed/> : posts.map((post) => {
+            return (
               <Post 
                 id={post.id}
                 key={post.id}
@@ -94,14 +96,14 @@ const SocialFeed = () => {
                 lastName={post.user.lastName}
                 userName={post.user.username}
                 time={post.createdAt}
-                //role={post['user'].profile['role']}
+                role={post.user.profile && post.user.profile.role}
                 bodyText={post.postBody}
-                //img={post.user.profile.img}
+                img={post.user.profile && post.user.profile.img}
                 userId={post.user.id}
                 postImg={post.imgSource}
-                />
-            )
-          })}          
+              />
+            );
+          })}
         </MainFeed>
         </FeedContainer>
       </Main>
