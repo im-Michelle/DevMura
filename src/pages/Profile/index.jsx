@@ -85,7 +85,7 @@ const ProfilePage = () => {
                   lastName={user.lastName}
                   userName={user.username}
                   img={user.profile && user.profile.img}
-                  /* backGroundIMG={user.backGroundIMG} */
+                  backGroundIMG={user.profile && user.profile.background}
                   />
               <PersonalDescription
                   description={user.profile && user.profile.bio}
