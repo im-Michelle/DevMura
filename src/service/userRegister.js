@@ -1,18 +1,33 @@
 import { BASE_URL } from "./config";
 import axios from "axios";
 
-
-export const userRegister = async (user, name) =>{
+/** 
+ *  Funcion para hacer post para crear un usuario
+ * @param {name} name 
+ * @param {lastName} lastName 
+ * @param {age} age 
+ * @param {email} email 
+ * @param {username} username 
+ * @param {password} password 
+ * @param {gender} gender
+ * @param {country} country 
+ */
+export const userRegister = async (name, lastName, age, email, username, password, gender ,country) =>{
+    console.log({name, lastName, age, email, username, password, gender, country})
     try{
-        const response = await axios.post(`${BASE_URL}/users`, user);
-        console.log("Aqui estoy xd")
-        console.log({name})
-        console.log("Aca otra vez")
-        console.log({user})
-        console.log(" USUARIO REGISTRADO :D" + user)
+        const response = await axios.post(`${BASE_URL}/users`, {
+            name: name,
+            lastName: lastName,
+            age: parseInt(age),
+            email: email,
+            username: username,
+            password: password,
+            gender: {id: 3},
+            country: {id: 2},
+        });
+       console.log("Respuesta del servidor", response.data)
     }catch(error){
-        console.log("Aca entro por que no jalo xd")
-        console.error(error)
+        console.error('Error al enviar la solicitud', error)
     }
 }
 
