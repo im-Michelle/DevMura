@@ -3,7 +3,7 @@ import axios from "axios";
 
 export const getUserByID = async (id) =>{
     try{
-        const response = await axios.get(`${BASE_URL}/user/find/${id}`,);
+        const response = await axios.get(`${BASE_URL}/users/${id}`,);
         const user = response
         return user
     }catch(e){

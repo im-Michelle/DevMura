@@ -74,6 +74,7 @@ const ProfilePageEdit = () => {
                   lastName={user.lastName}
                   userName={user.userName}
                   img={user.img}
+                  backGroundIMG={user.backGroundIMG}
                   />
               <PersonalDescription/>
               <ExtraInfo>         
