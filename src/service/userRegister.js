@@ -22,8 +22,8 @@ export const userRegister = async (name, lastName, age, email, username, passwor
             email: email,
             username: username,
             password: password,
-            gender: {id: 3},
-            country: {id: 2},
+            gender: {id: parseInt(gender)},
+            country: {id: country},
         });
        console.log("Respuesta del servidor", response.data)
     }catch(error){

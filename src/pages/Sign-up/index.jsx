@@ -12,12 +12,11 @@ import FormLabel from "@mui/material/FormLabel";
 import Button from "@mui/material/Button";
 import { Link as LinkReactRouter } from "react-router-dom";
 import Stack from "@mui/material/Stack";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { IconButton, InputAdornment, Link } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Autocomplete from '@mui/material/Autocomplete';
-import { countrys } from "./countries";
 import { userRegister } from "../../service/userRegister";
 
 const Main = styled.main`
@@ -174,6 +173,8 @@ const SignUp = () => {
   const [isValidPassword, setIsValidPassword] = useState(true);
   const [isValidAge, setIsValidAge] = useState(true);
   //const [isValidGender, setIsValidGender] = useState(false);
+
+  const [countries,setCountries] = useState([]);
 
   const [passwordErrors, setPasswordErrors] = useState([]);
 
@@ -346,7 +347,9 @@ const SignUp = () => {
       terms
     ) {
       userRegister(name, lastName, age, email, userName, password, gender ,selectedCountry.id)
-      console.log("Formulario enviado");
+      //console.log("Formulario enviado");
+      alert("Usuario Registrado");
+      //Window.location.href = "/sign-in";
     } else {
       setAlert({ type: 'error', title: 'Error', message: 'An error occurred with the form' });
     }
@@ -358,6 +361,18 @@ const SignUp = () => {
       setTerms(true);
     }
   };
+
+  const getCountries = async () => {
+    let response = await fetch("http://localhost:8080/api/country/all");
+
+    let parsedResponse = await response.json();
+
+    setCountries(parsedResponse.map(c => { return { "label": c.name, "id": c.id }}));
+  }
+
+  useEffect(()=> {
+    getCountries();
+  },[])
 
   return (
     <>
@@ -468,7 +483,7 @@ const SignUp = () => {
             disablePortal
             id="paises"
             variant="standard"
-            options={countrys}
+            options={countries}
             value={selectedCountry}
             onChange={handleInputCountryChange}
             renderInput={(params) => <TextFieldStyled {...params} label="Country" />}
@@ -487,21 +502,21 @@ const SignUp = () => {
             name="row-radio-buttons-group"
           >
             <FormControlLabel
-              value="female"
+              value={1}
               control={<Radio style={{ color: colors.primaryText }} />}
               label="Female"
               style={{ color: colors.primaryText }}
               onChange={handleInputGenderChange}
             />
             <FormControlLabel
-              value="male"
+              value={2}
               control={<Radio style={{ color: colors.primaryText }} />}
               label="Male"
               onChange={handleInputGenderChange}
               style={{ color: colors.primaryText }}
             />
             <FormControlLabel
-              value="other"
+              value={3}
               control={<Radio style={{ color: colors.primaryText }} />}
               label="Other"
               onChange={handleInputGenderChange}
