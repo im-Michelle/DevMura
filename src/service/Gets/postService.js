@@ -1,4 +1,4 @@
-import { BASE_URL } from "./config";
+import { BASE_URL } from "../config";
 import axios from "axios";
 
 export const getAllPost = async () =>{
@@ -11,9 +11,3 @@ export const getAllPost = async () =>{
         return []
     }
 }
-
-
-
-
-
-

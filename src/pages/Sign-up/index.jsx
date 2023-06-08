@@ -17,7 +17,7 @@ import { IconButton, InputAdornment, Link } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Autocomplete from '@mui/material/Autocomplete';
-import { userRegister } from "../../service/userRegister";
+import { userRegister } from "../../service/Posts/userRegister";
 
 const Main = styled.main`
   width: 100%;
@@ -363,7 +363,7 @@ const SignUp = () => {
   };
 
   const getCountries = async () => {
-    let response = await fetch("http://localhost:8080/api/country/all");
+    let response = await fetch("http://localhost:8080/api/country");
 
     let parsedResponse = await response.json();
 

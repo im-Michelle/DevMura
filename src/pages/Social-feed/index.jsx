@@ -9,7 +9,7 @@ import { useState } from "react";
 import Post from "../../components/Post";
 import FooterFeed from "../../components/Footer-feed";
 
-import { getAllPost } from "../../service/postService";
+import { getAllPost } from "../../service/Gets/postService";
 import { useEffect } from "react";
 import LoaderFeed from "../../components/LoaderFeed";
 
