@@ -360,9 +360,7 @@ const SignUp = () => {
 
   const getCountries = async () => {
     let response = await fetch("http://localhost:8080/api/country/all");
-
     let parsedResponse = await response.json();
-
     setCountries(parsedResponse.map(c => { return { "label": c.name, "id": c.id }}));
   }
 

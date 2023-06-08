@@ -1,10 +1,11 @@
 import React from "react";
-import styled from "styled-components"; // Importa styled-components para usar StyledLink
+import styled from "styled-components";
 import Container from "@mui/material/Container";
 
 
 const FeedFooter = styled.div`
-  position: sticky;
+  position: absolute;
+  z-index: 1;
   top: 75px;
   width: fit-content;
   height: fit-content;
