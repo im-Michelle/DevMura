@@ -7,7 +7,7 @@ import { IconsDic } from "../../../Utilities/IconDictionary/iconsD";
 
 const Programing = styled.div`
   color: ${colors.primaryText};
-  padding: 3rem; 
+  padding: 1rem; 
   align-items: center;
   width: 100%;
   flex-direction: column;
@@ -17,7 +17,8 @@ const Programing = styled.div`
 `;
 
 const LabelIcons = styled.div`
-
+    position: absolute;
+    top: 0;
 `;
 const OrderIcons = styled.div`
     display: flex;
@@ -57,9 +58,7 @@ export const ProgramingLeng = () =>{
                     )}
                 </OrderIcons>
             </Programing>
-        
         </>
-
     );
 };
 
