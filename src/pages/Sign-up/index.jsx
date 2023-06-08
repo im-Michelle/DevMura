@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { colors } from "../../ui/colors";
+import Alert from "../../components/Alerts/Alerts";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
