@@ -153,6 +153,9 @@ const SignUp = () => {
   // boton para aceptar los terminos y condiciones
   const [terms, setTerms] = useState(false);
 
+  // Alerts
+  const [alert, setAlert] = useState(null);
+
   // valores de los inputs
   const [name, setName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -345,7 +348,7 @@ const SignUp = () => {
       userRegister(name, lastName, age, email, userName, password, gender ,selectedCountry.id)
       console.log("Formulario enviado");
     } else {
-      console.log("Formulario no enviado");
+      setAlert({ type: 'error', title: 'Error', message: 'An error occurred with the form' });
     }
   };
   const handleTerms = () => {
@@ -370,10 +373,10 @@ const SignUp = () => {
           onChange={handleActiveButton}
         >
           <h1>Sign Up to DevMura</h1>
-          <Alert type="error" title="Error" message="This is an error alert"/>
-          <Alert type="warning" title="Warning" message="This is a warning alert"/>
-          <Alert type="info" title="Info" message="This is an info alert"/>
-          <Alert type="success" title="Success" message="This is a success alert"/>
+          {alert && (
+            <Alert type={alert.type} title={alert.title} message={alert.message} />
+          )}
+          
           <TextFieldStyled
             id="name"
             type="text"
