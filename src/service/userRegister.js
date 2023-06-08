@@ -5,9 +5,11 @@ import axios from "axios";
 export const userRegister = async (user) =>{
     try{
         const response = await axios.post(`${BASE_URL}/users`, user);
-        console.log(user)
+        console.log(user.age)
+        console.log(response.data)
+        console.log(" USUARIO REGISTRADO :D" + user)
     }catch(error){
-        console.error(e)
+        console.error(error)
     }
 }
 

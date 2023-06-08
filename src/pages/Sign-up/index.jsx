@@ -16,7 +16,8 @@ import { IconButton, InputAdornment, Link } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Autocomplete from '@mui/material/Autocomplete';
-import { countries } from "./countries";
+import { country } from "./countries";
+import { userRegister } from "../../service/userRegister";
 
 const Main = styled.main`
   width: 100%;
@@ -159,7 +160,7 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
-  const [country, setCountry] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState("");
 
   // validadores de los inputs
   const [isValidName, setIsValidName] = useState(true);
@@ -298,9 +299,9 @@ const SignUp = () => {
   };
   const handleInputCountryChange = (e, value) => {
     if(value){
-      setCountry(value.label);
+      setSelectedCountry(value);
     }else{
-      setCountry('');
+      setSelectedCountry('');
     }
   };
 
@@ -330,7 +331,6 @@ const SignUp = () => {
     console.log(formValues);
   };
 
-
   const handleSubmmit = () => {
     if (
       isValidName &&
@@ -341,18 +341,19 @@ const SignUp = () => {
       isValidAge &&
       terms
     ) {
-      setFormValues({
+      const UpdatedFormValues = {
+        age: /* parseInt(age) */ 24,
         name: name,
         lastName: lastName,
         userName: userName,
         email: email,
         password: password,
-        age: age,
-        country: country,
+        country: /* country */ 5 ,
         gender: gender,
-      });
+      };
+      userRegister(UpdatedFormValues)
       console.log("Formulario enviado");
-      console.log(formValues);
+      //console.log(UpdatedFormValues);
     } else {
       console.log("Formulario no enviado");
     }
@@ -468,13 +469,13 @@ const SignUp = () => {
           />
           <CustomAutoComplete
             disablePortal
-            id="countr"
+            id="paises"
             variant="standard"
-            options={countries}
-            value={country}
+            options={country}
+            value={selectedCountry}
             onChange={handleInputCountryChange}
-            renderInput={(params) => <TextFieldStyled {...params} label="Country" />}
-            
+            renderInput={(params) => <TextFieldStyled {...params} label="Paises" />}
+            getOptionLabel={(option) => option.label}
           />
           <FormLabel
             id="formLabel"
