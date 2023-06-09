@@ -48,7 +48,7 @@ function App() {
         <Route path='/groups' element={ <Groups/>} />
         <Route path='/groups/:id' element={<GroupPage/>} />
         <Route path='/chats' element={ <Chats/>} />
-        <Route path='/profile' element={ <ProfilePageEdit/>} />
+        <Route path='/profile' element={ <ProfilePage/>} />
         <Route path='/user/:id' element={ <ProfilePage/>} />
         <Route path='contact-us' element={<ContactUs />} />
         <Route path='*' element={ <ErroPage/>} />

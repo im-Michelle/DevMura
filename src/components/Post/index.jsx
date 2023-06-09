@@ -9,6 +9,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 
+
 const PostContainer = styled.div`
   display: flex;
   flex-direction: column;

@@ -20,6 +20,7 @@ import Autocomplete from '@mui/material/Autocomplete';
 import { userRegister } from "../../service/Posts/userRegister";
 import { getCountries } from "../../service/Gets/countryService"
 
+
 const Main = styled.main`
   width: 100%;
   height: max-content;
@@ -139,8 +140,16 @@ const CustomAutoComplete = styled(Autocomplete)`
   .MuiFormLabel-root.Mui-error {
     color: ${colors.contrast};
   }
+  .MuiInputLabel-root {
+    color: ${colors.primaryText};
+  }
+  .MuiInputLabel-root.Mui-focused {
+    color: ${colors.lightBlue};
+  }
+  
 
 `;
+
 const SignUp = () => {
   const [formValues, setFormValues] = useState({});
 
@@ -348,9 +357,7 @@ const SignUp = () => {
       terms
     ) {
       userRegister(name, lastName, age, email, userName, password, gender ,selectedCountry.id)
-      //console.log("Formulario enviado");
-      alert("Usuario Registrado");
-      //Window.location.href = "/sign-in";
+      console.log("Usuario Registrado");
     } else {
       setAlert({ type: 'error', title: 'Error', message: 'An error occurred with the form' });
     }
@@ -372,6 +379,7 @@ const SignUp = () => {
     fetchCountries();
   }, []);
 
+ 
   return (
     <>
       <Main>
@@ -480,12 +488,11 @@ const SignUp = () => {
           <CustomAutoComplete
             disablePortal
             id="paises"
-            variant="standard"
             options={countries}
             value={selectedCountry}
             onChange={handleInputCountryChange}
-            renderInput={(params) => <TextFieldStyled {...params} label="Country" />}
-            //getOptionLabel={(option) => option.label}
+            renderInput={(params) => <TextFieldStyled {...params} label="Country"variant="standard" required/>}
+            
           />
           <FormLabel
             id="formLabel"
