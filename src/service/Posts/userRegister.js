@@ -13,7 +13,6 @@ import axios from "axios";
  * @param {country} country 
  */
 export const userRegister = async (name, lastName, age, email, username, password, gender ,country) =>{
-    console.log({name, lastName, age, email, username, password, gender, country})
     try{
         const response = await axios.post(`${BASE_URL}/users`, {
             name: name,
@@ -30,5 +29,3 @@ export const userRegister = async (name, lastName, age, email, username, passwor
         console.error('Error al enviar la solicitud', error)
     }
 }
-
-//http://localhost:8080/api/users

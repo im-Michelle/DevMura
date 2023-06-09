@@ -28,7 +28,7 @@ display: flex;
 align-content: center;
 align-items: center;
 text-decoration: none;
-transition: all 0.2s ease-in-out;
+transition: all 0.08s ease-in-out;
 :hover {
     transform: scale(1.1);
     filter: contrast(1.8);

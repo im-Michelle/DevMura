@@ -59,15 +59,15 @@ const Names = styled.div`
   backdrop-filter: blur(10px);
 `;
 
-const Header = ({ name = "no data", lastName = "no data", userName = "no data", img = "../../../../public/img/placeholder.png", backGroundIMG = "no img"}, key) => {
+const Header = ({ name, lastName , userName, img, backGroundIMG}, key) => {
   const mainStyle = {
-    backgroundImage: `url(${backGroundIMG})`
+    backgroundImage: backGroundIMG ? `url(${backGroundIMG})` : `url(${"https://images.pexels.com/photos/15536927/pexels-photo-15536927/free-photo-of-ciudad-coches-punto-de-referencia-calle.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"})`,
   }
 
   return (
     <>
       <Main style={mainStyle}>
-        <ProfileImg src={img} alt={name} />
+        <ProfileImg src={ img ? img : ""  } alt={name} />
         <div>
           <UserName>{userName}</UserName>
           <Names>
@@ -86,7 +86,5 @@ Header.defaultProps = {
   name: "no data",
   lastName: "no data",
   userName: "no data",
-  img: "../../../../public/img/placeholder.png",
-  backGroundIMG: "https://images.pexels.com/photos/15536927/pexels-photo-15536927/free-photo-of-ciudad-coches-punto-de-referencia-calle.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
 };
 
