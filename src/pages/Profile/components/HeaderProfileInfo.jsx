@@ -30,7 +30,23 @@ const Role = styled.h2`
     margin-top: 0;
     color: #8a8a8a;
 `
-
+const Since = styled.p`
+    font-size: 1.0rem;
+    font-weight: 400;
+    margin-top: 0;
+    color: #8a8a8a;
+`
+const AboutMe = styled.p`
+    font-size: 2.0rem;
+    font-weight: 400;
+    margin-top: 0;
+`
+const Bio = styled.p`
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-top: 0;
+    width: 90%;
+`
 
 const HeaderProfileInfo = ({name, lastName , username ,role, location, createdAt ,bio}) =>{
 
@@ -40,9 +56,10 @@ const HeaderProfileInfo = ({name, lastName , username ,role, location, createdAt
             <Name>{name} {lastName}</Name>
             <UserName>@{username}</UserName>
             <Role>{role}</Role>
+            <Since>Member since  {date} </Since>
             <p>{bandera[location]}</p>
-            <p>Member since  {date} </p>
-            <p>{bio}</p>
+            <AboutMe>About me</AboutMe>
+            <Bio>{bio}</Bio>
         </InfoContainer>
     )
 }

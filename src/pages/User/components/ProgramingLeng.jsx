@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../../ui/colors";
-
 import { user1 } from "../../../data/user";
-
 import { IconsDic } from "../../../Utilities/IconDictionary/iconsD";
 
 const Programing = styled.div`

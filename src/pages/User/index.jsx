@@ -3,17 +3,10 @@ import styled from 'styled-components';
 import { NewNavBarFeed } from '../../components/Navbar-feed';
 import { colors } from '../../ui/colors';
 import { MainFeed } from '../Social-feed';
-
-import { user1 } from '../../data/user';
-
-import { LearningInterests } from './components/LearningInterests';
 import { ProgramingLeng } from './components/ProgramingLeng';
 import { PersonalDescription } from './components/PersonalDescription';
-
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import MailIcon from '@mui/icons-material/Mail';
-
-
 import { getUserByID } from '../../service/Gets/userService';
 import { useEffect, useState } from 'react';
 
@@ -43,7 +36,6 @@ const EachIcon = styled.div`
   border-radius: 50%;
   background-color: #A8DADC;
   align-items: center;
-
   transition: all 0.3s ease-out;
   &:hover{
     transform: scale(1.1);
@@ -68,12 +60,6 @@ const ProfilePage = () => {
 
   const [user, setUser] = useState({})
 
-  /* useEffect(() => {
-    getUserByID(userPath).then((response) => {
-      setUser(response.data);
-    });
-  }, []); */
-
 
   return (
     <>
@@ -93,7 +79,7 @@ const ProfilePage = () => {
 
               <ExtraInfo>
                 <ProgramingLeng/>
-                <LearningInterests/>
+          
               </ExtraInfo>
 
               <GroupIcon>
