@@ -47,6 +47,10 @@ const Bio = styled.p`
     margin-top: 0;
     width: 85%;
 `
+const CustomFlag = styled(Flag)`
+    width: 45px;
+    height: 45px;
+`
 
 const HeaderProfileInfo = ({name, lastName , username ,role, location, createdAt ,bio}) =>{
 
@@ -57,7 +61,7 @@ const HeaderProfileInfo = ({name, lastName , username ,role, location, createdAt
             <UserName>@{username}</UserName>
             <Role>{role}</Role>
             <Since>Member since  {date} </Since>
-            <Flag country={location} className='flag'/>   
+            <CustomFlag country={location} />   
             <AboutMe>About me</AboutMe>
             <Bio>{bio}</Bio>
         </InfoContainer>

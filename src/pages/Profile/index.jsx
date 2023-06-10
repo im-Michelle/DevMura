@@ -59,7 +59,7 @@ const ProfilePage = () => {
               linkGithub="https://www.linkedin.com/"
             />
             <Languages
-              languages={["HTML", "CSS", "JavaScript", "React", "Angular", "Vue", "Svelte", "Node", "Express", "MongoDB", "SQL", "Python", "Java", "C++", "CS", "C++", "Dart", "Flutter", "Go", "Django", "Docker",]}
+              languages={["HTML", "CSS", "JavaScript", "React", "Angular", "Vue", "Svelte", "Node", "Express", "MongoDB", "SQL", "Python", "Java", "C", "CS", "C++", "Dart", "Flutter", "Go", "Django", "Docker",]}
             />
         </MainAll>
         

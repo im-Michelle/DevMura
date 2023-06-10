@@ -25,6 +25,7 @@
     "react-bootstrap": "^2.7.4",
     "react-dom": "^18.2.0",
     "react-flag-kit": "^1.1.1",
+    "react-flagkit": "^2.0.4",
     "react-icons": "^4.8.0",
     "react-router": "^6.10.0",
     "react-router-dom": "^6.11.1",
