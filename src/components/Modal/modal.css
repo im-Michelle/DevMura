@@ -1,3 +1,18 @@
+.modal-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #171A22;
+    border: 2px solid #000;
+    box-shadow: 24px;
+    padding: 4px;
+    width: 45%;
+    height: 80%;
+    max-height: 80vh;
+    overflow: auto;
+  }
+
 #title{
     border-bottom: 1px solid gray;
     width: '100%';
