@@ -3,7 +3,7 @@ import Vip from './Vip';
 
 const Header = styled.div`
     width: 100%;
-    height: 150px;
+    height: 200px;
     border-radius: 10px 10px 0 0;
     position: relative;
 `
@@ -14,12 +14,12 @@ const HeaderIMG = styled.img`
     border-radius: 10px 10px 0 0;
 `
 const HeaderAvatar = styled.img`
-    width: 150px;
-    height: 150px;
+    width: 200px;
+    height: 200px;
     object-fit: cover;
     border-radius: 50%;
     position: absolute;
-    bottom: -45px;
+    bottom: -40px;
     left: 50%;
     transform: translateX(-50%);
 `

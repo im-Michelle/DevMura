@@ -92,14 +92,14 @@ const SocialFeed = () => {
               <Post 
                 id={post.id}
                 key={post.id}
-                firstName={post.user.name}
-                lastName={post.user.lastName}
-                userName={post.user.username}
+                firstName={post.name}
+                lastName={post.lastName}
+                userName={post.username}
                 time={post.createdAt}
-                role={post.user.profile && post.user.profile.role}
+                role={post.role}
                 bodyText={post.postBody}
-                img={post.user.profile && post.user.profile.img}
-                userId={post.user.id}
+                img={post.img}
+                userId={post.id}
                 postImg={post.imgSource}
               />
             );

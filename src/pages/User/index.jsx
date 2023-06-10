@@ -1,15 +1,11 @@
-import Header from '../Social-feed/components/Header';
 import styled from 'styled-components';
 import { NewNavBarFeed } from '../../components/Navbar-feed';
 import { colors } from '../../ui/colors';
-import { MainFeed } from '../Social-feed';
-import { ProgramingLeng } from './components/ProgramingLeng';
-import { PersonalDescription } from './components/PersonalDescription';
-import PersonAddIcon from '@mui/icons-material/PersonAdd';
-import MailIcon from '@mui/icons-material/Mail';
-import { getUserByID } from '../../service/Gets/userService';
-import { useEffect, useState } from 'react';
-
+import HeaderProfile from './components/HeaderProfileIMG';
+import HeaderProfileInfo from './components/HeaderProfileInfo';
+import Languages from './components/Languages';
+import SocialNetworks from './components/SocialNetworks';
+import FriendOrNotFriend from './components/Friend';
 
 const MainAll = styled.main`
   display: flex;
@@ -19,84 +15,57 @@ const MainAll = styled.main`
   width: 100%;
   padding-top: 10vh;
   min-height: 100vh;
+  gap: 3rem;
 `;
-
-const GroupIcon = styled.div`
-  width: 100%;
-  flex-direction: row;
+const ProfileContainer = styled.div`
   display: flex;
-  justify-content: space-evenly;
-  margin-bottom: 5rem;
-`;
-const EachIcon = styled.div`
-  display: flex;
-  justify-content: center;
-  height: 4rem;
-  width: 4rem;
-  border-radius: 50%;
-  background-color: #A8DADC;
+  flex-direction: column;
   align-items: center;
-  transition: all 0.3s ease-out;
-  &:hover{
-    transform: scale(1.1);
-    background-color: ${colors.contrast};
-    box-shadow: 0 0 15px ${colors.contrast};
-    color: ${colors.primaryText};
-    cursor: pointer;
-  };
-`;
-
-const ExtraInfo = styled.div`
-  display: flex;
-  justify-content: center;
-
+  width: 95%;
+  max-width: 800px;
+  border-radius: 10px;
+  box-shadow: 0 5px 8px #000000a2;
+  padding-bottom: 20px;
   position: relative;
-
 `;
 
-const ProfilePage = () => {
-
-  const userPath = window.location.pathname.split("/")[2];
-
-  const [user, setUser] = useState({})
-
+const UserPage = () => {
 
   return (
     <>
         <NewNavBarFeed/>
-        <MainAll>
-          <MainFeed>
-              <Header 
-                  name= {user.name}
-                  lastName={user.lastName}
-                  userName={user.username}
-                  img={user.profile && user.profile.img}
-                  backGroundIMG={user.profile && user.profile.background}
-                  />
-              <PersonalDescription
-                  description={user.profile && user.profile.bio}
-              />
-
-              <ExtraInfo>
-                <ProgramingLeng/>
-          
-              </ExtraInfo>
-
-              <GroupIcon>
-                <EachIcon>
-                  <PersonAddIcon fontSize='large'/>
-                </EachIcon>
-                <EachIcon>
-                  <MailIcon fontSize='large' />
-                </EachIcon>
-              </GroupIcon>
-
-
-           
-          </MainFeed>
+        <MainAll> 
+          <ProfileContainer>
+            <HeaderProfile
+              headerImg="https://images.pexels.com/photos/2387819/pexels-photo-2387819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              avatarImg="https://images.pexels.com/photos/10106827/pexels-photo-10106827.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            />
+            <HeaderProfileInfo
+              name="Usuario"
+              username="Por definir"
+              lastName="Pedro paramos"
+              role="Don chingon"
+              location={3}
+              createdAt="1999-10-10T00:00:00.000Z"
+              bio="Me gusta el perico y los excesos alv"
+            />
+            
+          </ProfileContainer>
+          <FriendOrNotFriend
+            friend={true}
+            linkToMessage="/message"
+          />
+            <SocialNetworks
+              linkLinkedin="https://www.linkedin.com/"
+              linkGithub="https://www.linkedin.com/"
+            />
+            <Languages
+              languages={[0, 1 , 3 , 4]}
+            />
         </MainAll>
+        
     </>
   )
 }
 
-export default ProfilePage;
+export default UserPage;
