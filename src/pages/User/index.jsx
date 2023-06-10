@@ -60,7 +60,7 @@ const UserPage = () => {
               linkGithub="https://www.linkedin.com/"
             />
             <Languages
-              languages={[0, 1 , 3 , 4]}
+              languages={["Express", "MongoDB", "SQL", "Python", "Java", "C++", "CS", "C++", "Dart", "Flutter", "Go", "Django", "Docker",]}
             />
         </MainAll>
         
