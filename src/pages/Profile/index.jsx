@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { NewNavBarFeed } from '../../components/Navbar-feed';
 import { colors } from '../../ui/colors';
@@ -7,6 +8,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import { Tooltip } from '@mui/material';
 import Languages from './components/Languages';
 import SocialNetworks from './components/SocialNetworks';
+import ModalProfile from '../../components/Modal/Modal';
+
 
 const MainAll = styled.main`
   display: flex;
@@ -32,6 +35,16 @@ const ProfileContainer = styled.div`
 
 const ProfilePage = () => {
 
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
+
   return (
     <>
         <NewNavBarFeed/>
@@ -42,8 +55,14 @@ const ProfilePage = () => {
               avatarImg="https://images.pexels.com/photos/10106827/pexels-photo-10106827.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
             />
             <Tooltip title="Edit Profile" placement="bottom-end">
-              <EditIcon style={{position: 'absolute', top: '10px', right: '10px', cursor: 'pointer'}}/>
+              <EditIcon
+                style={{ position: 'absolute', top: '10px', right: '10px', cursor: 'pointer' }}
+                onClick={handleOpenModal}
+              />
             </Tooltip>
+
+            <ModalProfile open={openModal} onClose={handleCloseModal} />
+            
             <HeaderProfileInfo
               name="Mari"
               username="mari_korz"
