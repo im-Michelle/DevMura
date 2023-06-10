@@ -13,11 +13,10 @@ const Container = styled.div`
 const LanguagesContainer = styled.div`
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
     width: 100%;
     gap: 1rem;
-    padding: 1rem;
     @media (min-width: 768px) {
         flex-direction: row;
     }

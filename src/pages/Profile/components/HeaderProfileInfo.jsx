@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import PropTypes from 'prop-types';
-import { bandera } from '../../../Utilities/FlagsDictionary';
 import moment from 'moment';
+import Flag from 'react-flagkit';
 
 const InfoContainer = styled.div`
     display: flex;
@@ -26,7 +26,7 @@ const UserName = styled.h2`
 `
 const Role = styled.h2`
     font-size: 1.5rem;
-    font-weight: 400;
+    font-weight: 500;
     margin-top: 0;
     color: #8a8a8a;
 `
@@ -37,17 +37,20 @@ const Since = styled.p`
     color: #8a8a8a;
 `
 const AboutMe = styled.p`
-    font-size: 2.0rem;
+    font-size: 1.8rem;
     font-weight: 400;
     margin-top: 0;
 `
 const Bio = styled.p`
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: 400;
     margin-top: 0;
-    width: 90%;
+    width: 85%;
 `
-
+const CustomFlag = styled(Flag)`
+    width: 45px;
+    height: 45px;
+`
 const HeaderProfileInfo = ({name, lastName , username ,role, location, createdAt ,bio}) =>{
 
     const date = moment(createdAt).fromNow();
@@ -57,7 +60,7 @@ const HeaderProfileInfo = ({name, lastName , username ,role, location, createdAt
             <UserName>@{username}</UserName>
             <Role>{role}</Role>
             <Since>Member since  {date} </Since>
-            <p>{bandera[location]}</p>
+            <CustomFlag country={location}/>         
             <AboutMe>About me</AboutMe>
             <Bio>{bio}</Bio>
         </InfoContainer>

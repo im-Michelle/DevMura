@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import Vip from './Vip';
 
 const Header = styled.div`
     width: 100%;
@@ -22,11 +23,19 @@ const HeaderAvatar = styled.img`
     left: 50%;
     transform: translateX(-50%);
 `
+const VipContainer = styled.div`
+    position: absolute;
+    top: 10px;
+    left: 10px;
+`
 
 
 const HeaderProfile = ({headerImg, avatarImg}) => {
     return (
         <Header>
+            <VipContainer>
+                <Vip /> 
+            </VipContainer>
             <HeaderIMG src={headerImg} alt="" />
             <HeaderAvatar src={avatarImg} alt="" />
         </Header>

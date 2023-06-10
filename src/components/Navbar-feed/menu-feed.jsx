@@ -144,7 +144,6 @@ const DropdownItem = styled(Link)`
   font-size: 16px;
   display: flex;
   justify-content: center;
-
   &:hover {
     color: ${colors.contrast};
   }

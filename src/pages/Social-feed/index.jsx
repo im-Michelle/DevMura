@@ -30,7 +30,6 @@ export const MainFeed = styled.main`
   width: 100%;
   max-width: 700px;
   gap: 30px;
-  margin-left: 13em;
   @media (max-width: 1100px) {
     margin-left: 0em;
   }
@@ -41,6 +40,15 @@ const FeedContainer = styled.main`
   position: relative;
   @media (max-width: 1100px) {
     display: block;
+  }
+`
+const FooterContainer = styled.div`
+  position: fixed;
+  top: 10vh;
+  width: 100%;
+  padding-left: 10vw;
+  @media (max-width: 1385px) {
+    display: none;
   }
 `
 
@@ -68,6 +76,9 @@ const SocialFeed = () => {
     <>
       <NewNavBarFeed/>
       <Main>
+      <FooterContainer>
+          <FooterFeed/>
+        </FooterContainer>
         <FeedContainer>
           <MainFeed>
             <Header
@@ -92,20 +103,19 @@ const SocialFeed = () => {
               <Post 
                 id={post.id}
                 key={post.id}
-                firstName={post.user.name}
-                lastName={post.user.lastName}
-                userName={post.user.username}
+                firstName={post.name}
+                lastName={post.lastName}
+                userName={post.username}
                 time={post.createdAt}
-                role={post.user.profile && post.user.profile.role}
+                role={post.role}
                 bodyText={post.postBody}
-                img={post.user.profile && post.user.profile.img}
-                userId={post.user.id}
+                img={post.img}
+                userId={post.id}
                 postImg={post.imgSource}
               />
             );
           })}
         </MainFeed>
-        <FooterFeed/>
         </FeedContainer>
       </Main>
     </>
