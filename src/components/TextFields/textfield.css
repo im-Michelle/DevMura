@@ -1,19 +1,35 @@
-.textfields {
-    background-color: #BBBBBB;
-    border-radius: 10px;
-    height: 54px;
-    width: 50px;
-}
-
-.textfieldGrid {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 300px;
-    
-}
-
-
-p {
-    text-align: left;
-
-}
+input {
+    color: "#dee6e9";
+  }
+  
+  label {
+    color: "#dee6e9";
+  }
+  
+  .MuiInput-underline:before {
+    border-bottom-color: "#1D3557";
+  }
+  
+  .MuiInput-underline:hover:not(.Mui-disabled):before {
+    border-bottom-color: "#457B9D";
+  }
+  
+  .MuiInput-underline:after {
+    border-bottom-color: "#dee6e9";
+  }
+  
+  .MuiFormHelperText-root {
+    color: "#bbbbbb";
+  }
+  
+  .MuiFormLabel-root.Mui-error {
+    color: "#E63946";
+  }
+  
+  .MuiInputLabel-root {
+    color: "#457B9D";
+  }
+  
+  .MuiInputLabel-root.Mui-focused {
+    color: "#A8DADC";
+  }
