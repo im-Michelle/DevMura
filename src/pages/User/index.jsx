@@ -45,7 +45,7 @@ const UserPage = () => {
               username="Por definir"
               lastName="Pedro paramos"
               role="Don chingon"
-              location={3}
+              location="US"
               createdAt="1999-10-10T00:00:00.000Z"
               bio="Me gusta el perico y los excesos alv"
             />

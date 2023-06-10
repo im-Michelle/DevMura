@@ -49,7 +49,7 @@ const ProfilePage = () => {
               username="mari_korz"
               lastName="Korz"
               role="Frontend Developer"
-              location={1}
+              location="US"
               createdAt="2021-10-10T00:00:00.000Z"
               bio="I'm a frontend developer with 2 years of experience in the industry. I'm currently working at a startup called DevMura, where I'm in charge of the frontend development of the platform."
             />

@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 import PropTypes from 'prop-types';
-import { bandera } from '../../../Utilities/FlagsDictionary';
 import moment from 'moment';
+import Flag from 'react-flagkit';
 
 const InfoContainer = styled.div`
     display: flex;
@@ -57,7 +57,7 @@ const HeaderProfileInfo = ({name, lastName , username ,role, location, createdAt
             <UserName>@{username}</UserName>
             <Role>{role}</Role>
             <Since>Member since  {date} </Since>
-            <p>{bandera[location]}</p>
+            <Flag country={location} className='flag'/>   
             <AboutMe>About me</AboutMe>
             <Bio>{bio}</Bio>
         </InfoContainer>

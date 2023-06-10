@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { languages } from "../../../Utilities/IconsDictionary";
 import { colors } from "../../../ui/colors";
 
 const IconContainer = styled.div`
