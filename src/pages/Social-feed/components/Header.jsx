@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import { colors } from "../../../ui/colors";
-import { user } from "../../../data/user";
-
 
 
 const Main = styled.header`
@@ -19,6 +17,7 @@ const Main = styled.header`
   border: 2px solid ${colors.secondary};
   border-radius: 10px;
   margin-bottom: 20px;
+  min-width: 300px;
 `;
 
 const ProfileImg = styled.img`
