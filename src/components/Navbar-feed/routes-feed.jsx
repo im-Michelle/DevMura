@@ -28,9 +28,13 @@ display: flex;
 align-content: center;
 align-items: center;
 text-decoration: none;
-transition: all 0.08s ease-in-out;
+transition: all 0.1s ease-in-out;
 :hover {
     transform: scale(1.1);
+    filter: contrast(1.8);
+}
+:active {
+    transform: scale(0.99);
     filter: contrast(1.8);
 }
 
@@ -46,7 +50,8 @@ object-fit: cover;
 
 &.profile-photo{
     border-radius: 50%;
-    height: 30px;
+    height: 35px;
+    width: 35px;
     object-fit: cover;
 }
 `;

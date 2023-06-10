@@ -9,7 +9,6 @@ import SignIn from './pages/Sign-in'
 import AboutUs from './pages/About-us'
 import ContactUs from './pages/Contact-us'
 import ProfilePage from './pages/Profile'
-import ProfilePageEdit from './pages/ProfileEdit'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop'
 import TermsOfService from './pages/TermsOfService'
 import PrivacyPolicy from './pages/Privacy'
@@ -17,6 +16,7 @@ import ErroPage from './pages/ErroPage'
 import { Groups } from './pages/Groups'
 import { GroupPage } from './pages/GroupPage'
 import Chats from './pages/Chats'
+import UserPage from './pages/User';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -49,7 +49,7 @@ function App() {
         <Route path='/groups/:id' element={<GroupPage/>} />
         <Route path='/chats' element={ <Chats/>} />
         <Route path='/profile' element={ <ProfilePage/>} />
-        <Route path='/user/:id' element={ <ProfilePage/>} />
+        <Route path='/user/:id' element={ <UserPage/>} />
         <Route path='contact-us' element={<ContactUs />} />
         <Route path='*' element={ <ErroPage/>} />
       </Routes>
