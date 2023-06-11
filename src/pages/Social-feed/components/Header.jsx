@@ -85,5 +85,6 @@ Header.defaultProps = {
   name: "no data",
   lastName: "no data",
   userName: "no data",
+  img: "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",
 };
 

@@ -12,6 +12,8 @@ import FooterFeed from "../../components/Footer-feed";
 import { getAllPost } from "../../service/Gets/postService";
 import { useEffect } from "react";
 import LoaderFeed from "../../components/LoaderFeed";
+import { readLocalStorage } from "../../Utilities/readLocalStorage";
+import { getOwnUser } from "../../service/Gets/getOwnUserService";
 
 const Main = styled.main`
   display: flex;
@@ -51,13 +53,32 @@ const FooterContainer = styled.div`
     display: none;
   }
 `
+const userLocalStorage = readLocalStorage();
 
 const SocialFeed = () => {
-
+  const [user, setUser] = useState(userLocalStorage)
   const [posts, getPosts] = useState([])
   const [loader, setLoader] = useState(true)
 
+
+  getOwnUser(  userLocalStorage.id, userLocalStorage.token);
+
   useEffect(() => {
+   const getMyUser = async () => {
+      try{
+        const user = await getOwnUser(userLocalStorage.id, userLocalStorage.token)
+        console.log(user)
+        setUser(user)
+      }catch(error){
+        console.error(error)
+      }
+    }
+    getMyUser()
+  }, [])
+
+
+
+  /* useEffect(() => {
     const fetchPosts = async () => {
       try{
         console.log("fetching posts")
@@ -70,7 +91,7 @@ const SocialFeed = () => {
       }
     }
     fetchPosts()
-  }, [])
+  }, []) */
 
   return (
     <>
