@@ -18,3 +18,51 @@
     width: '100%';
     margin: '0 auto'
 }
+
+.form{
+  padding: 10px;
+}
+
+.customDatePicker .MuiInputBase-root {
+  color: #457B9D;
+  border: #fff;
+  background-color: transparent;
+}
+
+.customDatePicker .MuiSvgIcon-root {
+  fill: #fff; 
+}
+
+.customDatePicker .MuiInputBase-root:hover {
+  background-color: transparent;
+}
+
+.customDatePicker .MuiInputBase-root.Mui-focused {
+  background-color: transparent;
+}
+
+.customDatePicker .MuiInputLabel-root {
+  color: #457B9D;
+}
+
+
+.button-container {
+  margin-top: 20px;
+  border-top: 1px solid gray;
+  padding-top: 15px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.custom-button {
+  color: white;
+
+}
+
+
+@media (max-width: 600px) { 
+  .modal-container {
+    width: 100%; 
+    max-width: none; 
+  }
+}

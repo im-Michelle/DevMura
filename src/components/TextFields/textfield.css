@@ -33,3 +33,7 @@ input {
   .MuiInputLabel-root.Mui-focused {
     color: "#A8DADC";
   }
+  .text-field-styled {
+    width: 100%;
+  }
+  

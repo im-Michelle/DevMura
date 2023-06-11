@@ -48,7 +48,7 @@ const TextFields = (props) => {
     </InputAdornment>
   );
 
-  return <TextFieldStyled {...rest} InputProps={rest.type === "password" ? { endAdornment: inputAdornment } : {}} />;
+  return <TextFieldStyled className="text-field-styled" {...rest} InputProps={rest.type === "password" ? { endAdornment: inputAdornment } : {}} />;
 };
 
 export default TextFields;
