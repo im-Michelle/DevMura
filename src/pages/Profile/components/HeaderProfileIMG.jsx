@@ -12,6 +12,7 @@ const HeaderIMG = styled.img`
     height: 100%;
     object-fit: cover;
     border-radius: 10px 10px 0 0;
+    filter: brightness(0.5);
 `
 const HeaderAvatar = styled.img`
     width: 150px;
@@ -27,10 +28,11 @@ const VipContainer = styled.div`
     position: absolute;
     top: 10px;
     left: 10px;
+    z-index: 10;
 `
 
 
-const HeaderProfile = ({headerImg, avatarImg}) => {
+const HeaderProfile = ({headerImg, avatarImg, role}) => {
     return (
         <Header>
             <VipContainer>

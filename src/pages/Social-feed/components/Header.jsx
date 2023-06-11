@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import { colors } from "../../../ui/colors";
 
-
 const Main = styled.header`
   display: flex;
   flex-direction: row;
@@ -66,7 +65,7 @@ const Header = ({ name, lastName , userName, img, backGroundIMG}, key) => {
   return (
     <>
       <Main style={mainStyle}>
-        <ProfileImg src={ img ? img : ""  } alt={name} />
+        <ProfileImg src={ img ? img : "https://images.pexels.com/photos/15536927/pexels-photo-15536927/free-photo-of-ciudad-coches-punto-de-referencia-calle.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"  } alt={name} />
         <div>
           <UserName>@{userName}</UserName>
           <Names>

@@ -1,5 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 
+
 const growAnimation = keyframes`
   from {
     width: 50%;

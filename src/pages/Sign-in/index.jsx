@@ -139,16 +139,18 @@ const SignIn = () => {
     setFormValid(Object.keys(errors).length === 0);
   }
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     validateForm();
     if(formValid){
       console.log(formValues)
       console.log("Form is valid");
-      login(formValues.username, formValues.password);
-      setTimeout(() => {
+      try{
+        await login(formValues.username, formValues.password);
         window.location.href = "/feed";
-      }, 2000);
+      }catch(error){
+        console.log(error);
+      }
     } 
   }
   return (
