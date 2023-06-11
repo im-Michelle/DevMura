@@ -146,7 +146,9 @@ const SignIn = () => {
       console.log(formValues)
       console.log("Form is valid");
       login(formValues.username, formValues.password);
-      window.location.href = "/feed";
+      setTimeout(() => {
+        window.location.href = "/feed";
+      }, 2000);
     } 
   }
   return (

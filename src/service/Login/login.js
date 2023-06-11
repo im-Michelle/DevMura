@@ -19,7 +19,7 @@ export const login = async (username, password) => {
         if(response.status !== 200) throw new Error(message || "Error en el login");
         const { message, ...dataWuthoutMessage } = response.data;
         console.log(dataWuthoutMessage)
-        localStorage.clear();
+        //localStorage.clear();
         localStorage.setItem("userDevmura", JSON.stringify(dataWuthoutMessage));
         return response;
     }catch(err){

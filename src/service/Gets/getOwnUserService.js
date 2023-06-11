@@ -3,10 +3,7 @@ import axios from "axios";
 
 
 export const getOwnUser = async ( ownId, token) =>{
-
-    console.log("Entro a la funcion")
     try{
-        console.log("Entro al try")
         const response = await axios.get(`${BASE_URL}/users/${ownId}`,{
             headers: {
                 Authorization: `Bearer ${token}`

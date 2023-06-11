@@ -68,7 +68,7 @@ const Header = ({ name, lastName , userName, img, backGroundIMG}, key) => {
       <Main style={mainStyle}>
         <ProfileImg src={ img ? img : ""  } alt={name} />
         <div>
-          <UserName>{userName}</UserName>
+          <UserName>@{userName}</UserName>
           <Names>
             <Name>{name}</Name>
             <LastName>{lastName}</LastName>
