@@ -4,7 +4,6 @@ import Header from "./components/Header";
 import { Link } from "react-router-dom";
 import AddPost from "./components/AddPost";
 import { NewNavBarFeed } from "../../components/Navbar-feed";
-import { user } from "../../data/user";
 import { useState } from "react";
 import Post from "../../components/Post";
 import FooterFeed from "../../components/Footer-feed";
@@ -55,8 +54,12 @@ const FooterContainer = styled.div`
 `
 const userLocalStorage = readLocalStorage();
 
+export const userImg = JSON.parse(localStorage.getItem("ownProfile"));
+
+
+
 const SocialFeed = () => {
-  const [user, setUser] = useState(userLocalStorage)
+  const [userProfile, setUser] = useState(userLocalStorage)
   const [posts, getPosts] = useState([])
   const [loader, setLoader] = useState(true)
 
@@ -74,7 +77,6 @@ const SocialFeed = () => {
     }
     getMyUser()
   }, [])
-
 
 
   /* useEffect(() => {
@@ -102,20 +104,20 @@ const SocialFeed = () => {
         <FeedContainer>
           <MainFeed>
             <Header
-              key={user.id}
-              name={user.name}
-              lastName={user.lastName}
-              userName={user.username}
-              img={user.img}
-              backGroundIMG={user.backGroundIMG}
+              key={userProfile.id}
+              name={userProfile.user && userProfile.user.name}
+              lastName={userProfile.user && userProfile.user.lastName}
+              userName={userProfile.user && userProfile.user.username}
+              img={userProfile.img}
+              backGroundIMG={userProfile.background}
             />
 
           <AddPost 
-            name={user.name}
-            lastName={user.lastName}
-            role={user.role}
-            userName={user.userName}
-            img={user.img}
+            name={userProfile.name}
+            lastName={userProfile.lastName}
+            role={userProfile.role}
+            userName={userProfile.userName}
+            img={userProfile.img}
           />
 
           {loader ? <LoaderFeed/> : posts.map((post) => {

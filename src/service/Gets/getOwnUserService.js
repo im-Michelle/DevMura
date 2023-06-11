@@ -4,12 +4,12 @@ import axios from "axios";
 
 export const getOwnUser = async ( ownId, token) =>{
     try{
-        const response = await axios.get(`${BASE_URL}/users/${ownId}`,{
+        const response = await axios.get(`${BASE_URL}/profiles/${ownId}`,{
             headers: {
                 Authorization: `Bearer ${token}`
             }
         });
-        localStorage.setItem("ownUser", JSON.stringify(response.data));
+        localStorage.setItem("ownProfile", JSON.stringify(response.data));
         return response.data;
     }catch(e){
         console.error("No user fetch", e);
