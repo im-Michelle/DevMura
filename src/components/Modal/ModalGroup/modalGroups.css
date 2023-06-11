@@ -1,4 +1,4 @@
-.modal-container {
+.modal-containerG {
   position: absolute;
   top: 50%;
   left: 50%;
@@ -8,7 +8,7 @@
   box-shadow: 24px;
   padding: 100px;
   width: 45%;
-  height: 80%;
+  height: 60%;
   max-height: 80vh;
   overflow: auto;
 }

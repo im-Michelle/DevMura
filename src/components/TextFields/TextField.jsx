@@ -8,6 +8,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import "./textfield.css"
 
 const TextFieldStyled = styled(TextField)`
+  margin-bottom: 10px;
   input {
     color: ${colors.primaryText};
     margin: 3px;

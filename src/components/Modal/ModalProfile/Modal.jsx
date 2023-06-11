@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import { styled } from '@mui/system';
@@ -12,7 +12,8 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import TextField from "@mui/material/TextField";
-
+import Chip from '@mui/material/Chip'
+import { withTheme } from 'styled-components';
 
 import { getCountries } from "../../../service/Gets/countryService"
 
@@ -44,7 +45,8 @@ const CustomAutoComplete = styled(Autocomplete)`
   }
 `;
 
-const TextFieldStyled = styled(TextField)`
+const TextFieldStyled = withTheme(styled(TextField)`
+  margin-bottom: 10px;
   input {
     color: ${colors.primaryText};
   }
@@ -75,40 +77,84 @@ const TextFieldStyled = styled(TextField)`
   .MuiInputLabel-root.Mui-focused {
     color: ${colors.lightBlue};
   }
+
+  @media (max-width: 600px) {
+    margin-left: 2px;
+  }
+
+  @media (min-width: 601px) {
+    margin-left: 15px;
+  }
+`);
+
+const LanguagesAutocomplete = styled(Autocomplete)`
+  input {
+    margin: 18px;
+  }
+
+  .MuiInputLabel-root {
+    color: ${colors.primaryText};
+  }
+
+  .MuiInputLabel-root.Mui-focused {
+    color: ${colors.lightBlue};
+  }
+
+  .MuiInputBase-root {
+    color: ${colors.primaryText};
+  }
+
+  .MuiInput-underline:before {
+    border-bottom-color: ${colors.navy};
+  }
+
+  .MuiInput-underline:hover:not(.Mui-disabled):before {
+    border-bottom-color: ${colors.vibrantBlue};
+  }
+
+  .MuiInput-underline:after {
+    border-bottom-color: ${colors.primaryText};
+  }
 `;
 
-const ModalProfile = ({ open, onClose, name, lastName }) => {
+const ModalProfile = ({ open, onClose, name, lastName, bio, role, setName }) => {
   // valores de los inputs
   const [age, setAge] = useState(null);
   const [birthday, setBirthday] = useState(null);
   const [gender, setGender] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("");
-  const [bio, setBio] = useState('');
+  const [github, setGitHub] = useState('');
+  const [linkedin, setLinkedin] = useState('');
+  const [imgProfile, setImgProfile] = useState('');
+  const [backgroundProfile, setBackgroundProfile] = useState('');
+  const [level, setLevel] = useState('');
   
   // validadores de los inputs
   const [isValidName, setIsValidName] = useState(true);
   const [isValidLastName, setIsValidLastName] = useState(true);
-  const [isValidAge, setIsValidAge] = useState(true);
   const [countries,setCountries] = useState([]);
   const [ageError, setAgeError] = useState('');
-
-
-  console.log("1",age);
+  const [isValidGit, setIsValidGit] = useState(true);
+  const [isValidLinkedin, setIsValidLinkedin] = useState(true);
+  const [isValidImgProfile, setIsValidImgProfile] = useState(true);
+  const [isValidBackgroundProfile, setIsValidBackgroundProfile] = useState(true);
+  const [isValidRole, setIsValidRole] = useState(true);
+  const [isValidBio, setIsValidBio] = useState(true);
 
   // validadores de los inputs
   const handleInputNameChange = (e) => {
-    const inputValue = e.target.value;
+    const newName = e.target.value;
     const regeName = "^[A-Za-záéíóúüñÁÉÍÓÚÜÑ]+(?: [A-Za-záéíóúüñÁÉÍÓÚÜÑ]+)*$";
     if (
-      inputValue.length < 3 ||
-      inputValue.length > 50 ||
-      !inputValue.match(regeName)
+      newName.length < 3 ||
+      newName.length > 50 ||
+      !newName.match(regeName)
     ) {
       setIsValidName(false);
-      setName(inputValue);
     } else {
       setIsValidName(true);
-      setName(inputValue);
+      setName(newName);
+      console.log(newName);
     }
   };
 
@@ -129,7 +175,91 @@ const ModalProfile = ({ open, onClose, name, lastName }) => {
     }
   };
 
-  console.log("2",age);
+  const handleInputGitHubChange = (e) => {
+    const inputValue = e.target.value;
+    const regexGitHub = 
+      "^[A-Za-záéíóúüñÁÉÍÓÚÜÑ0-9]+(?: [A-Za-záéíóúüñÁÉÍÓÚÜÑ0-9]+)*$";
+    if (
+      inputValue.length < 0 ||
+      inputValue.length > 50 ||
+      !inputValue.match(regexGitHub)
+    ) {
+      setIsValidGit(false);
+      setGitHub(inputValue);
+    } else {
+      setIsValidGit(true);
+      setGitHub(inputValue);
+    }
+  };
+
+  const handleInputLinkedInChange = (e) => {
+    const inputValue = e.target.value;
+    const regexLinkedIn = 
+      "^[A-Za-záéíóúüñÁÉÍÓÚÜÑ0-9]+(?: [A-Za-záéíóúüñÁÉÍÓÚÜÑ0-9]+)*$";
+    if (
+      inputValue.length < 0 ||
+      inputValue.length > 100 ||
+      !inputValue.match(regexLinkedIn)
+    ) {
+      setIsValidLinkedin(false);
+      setLinkedin(inputValue);
+    } else {
+      setIsValidLinkedin(true);
+      setLinkedin(inputValue);
+    }
+  };
+
+  const handleInputImgProfileChange = (e) => {
+    const inputValue = e.target.value;
+    const regexImgProfile = 
+      /^(?:https?:\/\/)?(?:www\.)?[A-Za-záéíóúüñÁÉÍÓÚÜÑ0-9.-]+\.[A-Za-záéíóúüñÁÉÍÓÚÜÑ]{2,}(?:\/[\w.-]*)*\/?$/i;
+    if (
+      inputValue.length < 10 ||
+      inputValue.length > 150 ||
+      !inputValue.match(regexImgProfile)
+    ) {
+      setIsValidImgProfile(false);
+      setImgProfile(inputValue);
+    } else {
+      setIsValidImgProfile(true);
+      setImgProfile(inputValue);
+    }
+};
+
+
+  const handleInputBackgroundProfileChange = (e) => {
+    const inputValue = e.target.value;
+    const regexBackgroundProfile = 
+      /^(?:https?:\/\/)?(?:www\.)?[A-Za-záéíóúüñÁÉÍÓÚÜÑ0-9.-]+\.[A-Za-záéíóúüñÁÉÍÓÚÜÑ]{2,}(?:\/[\w.-]*)*\/?$/i;
+    if (
+      inputValue.length < 0 ||
+      inputValue.length > 150 ||
+      !inputValue.match(regexBackgroundProfile)
+    ) {
+      setIsValidBackgroundProfile(false);
+      setBackgroundProfile(inputValue);
+    } else {
+      setIsValidBackgroundProfile(true);
+      setBackgroundProfile(inputValue);
+    }
+  };
+
+  const handleInputRoleChange = (e) => {
+    const inputValue = e.target.value;
+    const regexRole = 
+      "^[A-Za-záéíóúüñÁÉÍÓÚÜÑ]+(?: [A-Za-záéíóúüñÁÉÍÓÚÜÑ]+)*$";
+    if (
+      inputValue.length < 0 ||
+      inputValue.length > 100 ||
+      !inputValue.match(regexRole)
+    ) {
+      setIsValidRole(false);
+      setRole(inputValue);
+    } else {
+      setIsValiRole(true);
+      setRole(inputValue);
+    }
+  };
 
   const handleInputAgeChange = () => {
     if (birthday) {
@@ -173,8 +303,6 @@ const ModalProfile = ({ open, onClose, name, lastName }) => {
     { name: 'Assembly'},
     { name: 'AWS'},
   ];
-
-  console.log("3",age);
 
   return (
     <Modal
@@ -236,7 +364,7 @@ const ModalProfile = ({ open, onClose, name, lastName }) => {
               variant="standard"
               value={age ? age.toString() : ""}
               readOnly
-              sx={{ width: '20%', marginLeft: 10 }}
+              sx={{ width: '20%'}}
               helperText={ageError}
               error={ageError !== ''}
             />
@@ -251,13 +379,13 @@ const ModalProfile = ({ open, onClose, name, lastName }) => {
             renderInput={(params) => <TextFields {...params} label="Country"variant="standard" required/>}
           />
           
-          <Box className="multiline" sx={{ width: '80%' }}>
+          <Box className="multiline">
             <TextField
               id="outlined-multiline-static"
               label="Bio"
               multiline
               rows={4}
-              defaultValue="Bio here"
+              value={bio}
               sx={{
                 color: 'white',
                 width: '120%',
@@ -302,12 +430,92 @@ const ModalProfile = ({ open, onClose, name, lastName }) => {
             type="text"
             label="Github"
             variant="standard"
-            value={lastName}
-            helperText={isValidName ? '' : 'Invalid last name'}
-            error={!isValidName}
+            value={github}
+            helperText={isValidGit ? '' : 'Invalid GitHub name'}
+            error={!isValidGit}
             required
             inputProps={{ style: { textTransform: 'capitalize' } }}
-            onChange={handleInputLastNameChange}
+            onChange={handleInputGitHubChange}
+          />
+
+          <TextFields
+            id="linkedin"
+            type="text"
+            label="LinkedIn"
+            variant="standard"
+            value={linkedin}
+            helperText={isValidLinkedin ? '' : 'Invalid LinkedIn name'}
+            error={!isValidLinkedin}
+            required
+            inputProps={{ style: { textTransform: 'capitalize' } }}
+            onChange={handleInputLinkedInChange}
+          />
+
+          <TextFields
+            id="imgProfile"
+            type="text"
+            label="Profile Image"
+            variant="standard"
+            value={imgProfile}
+            helperText={isValidImgProfile ? '' : 'Invalid url for image'}
+            error={!isValidImgProfile}
+            required
+            inputProps={{ style: { textTransform: 'capitalize' } }}
+            onChange={handleInputImgProfileChange}
+          />
+
+          <TextFields
+            id="backgroundProfile"
+            type="text"
+            label="Background Image"
+            variant="standard"
+            value={backgroundProfile}
+            helperText={isValidBackgroundProfile ? '' : 'Invalid url for image'}
+            error={!isValidBackgroundProfile}
+            required
+            inputProps={{ style: { textTransform: 'capitalize' } }}
+            onChange={handleInputBackgroundProfileChange}
+          />
+
+          <TextFields
+            id="role"
+            type="text"
+            label="Role"
+            variant="standard"
+            value={role}
+            helperText={isValidRole ? '' : 'Invalid LinkedIn name'}
+            error={!isValidRole}
+            required
+            inputProps={{ style: { textTransform: 'capitalize' } }}
+            onChange={handleInputRoleChange}
+          />
+
+          <LanguagesAutocomplete
+            multiple
+            id="tags-standard"
+            options={languages}
+            getOptionLabel={(option) => option.name}
+            defaultValue={[languages[3]]}
+            renderTags={(value, getTagProps) =>
+              value.map((option, index) => (
+                <Chip
+                  label={option.name}
+                  {...getTagProps({ index })}
+                  sx={{
+                    backgroundColor: colors.contrast,
+                    color: 'white',
+                  }}
+                />
+              ))
+            }
+            renderInput={(params) => (
+              <TextFieldStyled
+                {...params}
+                variant="standard"
+                label="Languages"
+                placeholder="That you know"
+              />
+            )}
           />
 
         </Box>

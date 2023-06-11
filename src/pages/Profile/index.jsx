@@ -47,7 +47,12 @@ const ProfilePage = () => {
 
   const [name, setName] = useState("Mari");
   const [lastName, setLastName] = useState("Korz");
+  const [role, setRole] = useState("Frontend Developer");
+  const [bio, setBio] = useState("I'm a frontend developer with 2 years of experience in the industry. I'm currently working at a startup called DevMura, where I'm in charge of the frontend development of the platform.");
 
+  const handleInputNameChange = (event) => {
+    setName(event.target.value);
+  };
   return (
     <>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -70,16 +75,21 @@ const ProfilePage = () => {
               onClose={handleCloseModal}
               name={name}
               lastName={lastName}
-            />
+              bio={bio}
+              role={role}
+              setName={setName}
+            >
+              <input type ="text" value={name} onChange={handleInputNameChange} />
+            </ModalProfile>
             
             <HeaderProfileInfo
               name={name}
               username="mari_korz"
               lastName={lastName}
-              role="Frontend Developer"
+              role={role}
               location="US"
               createdAt="2021-10-10T00:00:00.000Z"
-              bio="I'm a frontend developer with 2 years of experience in the industry. I'm currently working at a startup called DevMura, where I'm in charge of the frontend development of the platform."
+              bio={bio}
             />
           </ProfileContainer>
             <SocialNetworks

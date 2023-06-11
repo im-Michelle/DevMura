@@ -68,7 +68,7 @@ const ModalGroup = ({ open, onClose }) => {
       aria-labelledby="parent-modal-title"
       aria-describedby="parent-modal-description"
     >
-      <Box className="modal-container"  sx={{p: 4}}>
+      <Box className="modal-containerG"  sx={{p: 4}}>
         <div id='title'>
           <h3 id="parent-modal-title" style={{ color: colors.lightBlue }}>Create group</h3>
         </div>
@@ -88,12 +88,13 @@ const ModalGroup = ({ open, onClose }) => {
           <Box className="multiline">
             <TextField
               id="outlined-multiline-static"
-              label="Description"
+              label="Bio"
               multiline
               rows={4}
-              defaultValue="Description here"
+              defaultValue="Bio here"
               sx={{
                 color: 'white',
+                width: '120%',
                 '& .MuiInputBase-root': {
                   color: 'white',
                 },
