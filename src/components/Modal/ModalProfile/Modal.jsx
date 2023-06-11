@@ -2,18 +2,19 @@ import React, { useState } from 'react';
 import Modal from '@mui/material/Modal';
 import Box from '@mui/material/Box';
 import { styled } from '@mui/system';
-import { colors } from "../../ui/colors";
+import { colors } from "../../../ui/colors"
 import "./modal.css";
-import TextFields from '../TextFields';
+import TextFields from '../../TextFields/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
 import Button from "@mui/material/Button";
 import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+import TextField from "@mui/material/TextField";
 
-import { getCountries } from "../../service/Gets/countryService"
 
+import { getCountries } from "../../../service/Gets/countryService"
 
 const CustomAutoComplete = styled(Autocomplete)`
   color: ${colors.primaryText};
@@ -43,20 +44,56 @@ const CustomAutoComplete = styled(Autocomplete)`
   }
 `;
 
-const ModalProfile = ({ open, onClose }) => {
-    // valores de los inputs
-    const [name, setName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [age, setAge] = useState("");
-    const [gender, setGender] = useState("");
-    const [selectedCountry, setSelectedCountry] = useState("");
+const TextFieldStyled = styled(TextField)`
+  input {
+    color: ${colors.primaryText};
+  }
+  label {
+    color: ${colors.primaryText};
+  }
+  .MuiInput-underline:before {
+    border-bottom-color: ${colors.navy};
+  }
 
-    // validadores de los inputs
+  .MuiInput-underline:hover:not(.Mui-disabled):before {
+    border-bottom-color: ${colors.vibrantBlue};
+  }
+
+  .MuiInput-underline:after {
+    border-bottom-color: ${colors.primaryText};
+  }
+  .MuiFormHelperText-root {
+    color: ${colors.secondaryText};
+  }
+  .MuiFormLabel-root.Mui-error {
+    color: ${colors.contrast};
+  }
+  .MuiInputLabel-root {
+    color: ${colors.primaryText};
+  }
+
+  .MuiInputLabel-root.Mui-focused {
+    color: ${colors.lightBlue};
+  }
+`;
+
+const ModalProfile = ({ open, onClose, name, lastName }) => {
+  // valores de los inputs
+  const [age, setAge] = useState(null);
+  const [birthday, setBirthday] = useState(null);
+  const [gender, setGender] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState("");
+  const [bio, setBio] = useState('');
+  
+  // validadores de los inputs
   const [isValidName, setIsValidName] = useState(true);
   const [isValidLastName, setIsValidLastName] = useState(true);
   const [isValidAge, setIsValidAge] = useState(true);
   const [countries,setCountries] = useState([]);
+  const [ageError, setAgeError] = useState('');
 
+
+  console.log("1",age);
 
   // validadores de los inputs
   const handleInputNameChange = (e) => {
@@ -92,17 +129,31 @@ const ModalProfile = ({ open, onClose }) => {
     }
   };
 
-  const handleInputAgeChange = (e) => {
-    const inputValue = e.target.value;
-    const regexAge = "^[0-9]{2,3}$";
-    if (inputValue < 18 || !inputValue.match(regexAge) || inputValue > 130) {
-      setIsValidAge(false);
-      setAge(inputValue);
+  console.log("2",age);
+
+  const handleInputAgeChange = () => {
+    if (birthday) {
+      const today = new Date();
+      const birthDate = new Date(birthday);
+      let age = today.getFullYear() - birthDate.getFullYear();
+      const monthDiff = today.getMonth() - birthDate.getMonth();
+  
+      if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
+        age--;
+      }
+  
+      if (age < 18 || age > 100) {
+        setAgeError('Invalid age');
+      } else {
+        setAgeError('');
+      }
+  
+      setAge(age.toString());
     } else {
-      setIsValidAge(true);
-      setAge(inputValue);
+      setAge('');
     }
   };
+  
   const handleInputCountryChange = (e, value) => {
     if(value){
       setSelectedCountry(value);
@@ -111,42 +162,19 @@ const ModalProfile = ({ open, onClose }) => {
     }
   };
 
-  const handleInputGenderChange = (e) => {
-    const inputValue = e.target.value;
-    setGender(inputValue);
+  const handleChange = (event) => {
+    setBio(event.target.value);
   };
 
-  //Form
-  const handleActiveButton = () => {
-    if (
-      isValidName &&
-      isValidLastName &&
-      isValidAge
-    ) {
-      setButtonActive(true);
-    } else {
-      setButtonActive(true);
-    }
-  };
+  const languages = [
+    { name: 'Ada'},
+    { name: 'Angular'},
+    { name: 'ASP. NET'},
+    { name: 'Assembly'},
+    { name: 'AWS'},
+  ];
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    console.log(formValues);
-  };
-
-
-  // Boton
-
-  // Use Effects
-  //useEffect(() => {
-    //const fetchCountries = async () => {
-      //const countries = await getCountries();
-      //setCountries(countries);
-    //};
-  
-    //fetchCountries();
-  //}, []);
-
+  console.log("3",age);
 
   return (
     <Modal
@@ -155,12 +183,13 @@ const ModalProfile = ({ open, onClose }) => {
       aria-labelledby="parent-modal-title"
       aria-describedby="parent-modal-description"
     >
-      <Box className="modal-container"  sx={{p: 4,}}>
+      <Box className="modal-container"  sx={{p: 4}}>
         <div id='title'>
           <h3 id="parent-modal-title" style={{ color: colors.lightBlue }}>Edit profile</h3>
         </div>
         <Box className="form">
           <p id="parent-modal-description" style={{ color: colors.lightBlue }}>Basic Information</p>
+
           <TextFields
             id="name"
             type="text"
@@ -180,33 +209,39 @@ const ModalProfile = ({ open, onClose }) => {
             label="Last Name"
             variant="standard"
             value={lastName}
-            helperText={isValidName ? '' : 'Invalid last name'}
-            error={!isValidName}
+            helperText={isValidLastName ? '' : 'Invalid last name'}
+            error={!isValidLastName}
             required
             inputProps={{ style: { textTransform: 'capitalize' } }}
             onChange={handleInputLastNameChange}
           />
+          <Box style={{ display: 'flex' , margin: 15}}>
 
-          <LocalizationProvider dateAdapter={AdapterDayjs}>
-            <DemoContainer components={['DatePicker']}>
-              <DatePicker label="Birthday" className='customDatePicker'/>
-            </DemoContainer>
-          </LocalizationProvider>
+            <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <DemoContainer components={['DatePicker']}>
+                <DatePicker
+                  label="Birthday"
+                  className="customDatePicker"
+                  onChange={(date) => {
+                    setBirthday(date);
+                    handleInputAgeChange();
+                  }}
+                />
+              </DemoContainer>
+            </LocalizationProvider>
 
-          <TextFields
-            id="age"
-            label="Age"
-            variant="standard"
-            type="Number"
-            helperText={isValidAge ? "" : "Invalid age"}
-            required
-            min="18"
-            max="100"
-            value={age}
-            onChange={handleInputAgeChange}
-            error={!isValidAge}
-          />
+            <TextFieldStyled
+              id="age"
+              label="Age"
+              variant="standard"
+              value={age ? age.toString() : ""}
+              readOnly
+              sx={{ width: '20%', marginLeft: 10 }}
+              helperText={ageError}
+              error={ageError !== ''}
+            />
 
+          </Box>
           <CustomAutoComplete
             disablePortal
             id="paises"
@@ -215,22 +250,55 @@ const ModalProfile = ({ open, onClose }) => {
             onChange={handleInputCountryChange}
             renderInput={(params) => <TextFields {...params} label="Country"variant="standard" required/>}
           />
+          
+          <Box className="multiline" sx={{ width: '80%' }}>
+            <TextField
+              id="outlined-multiline-static"
+              label="Bio"
+              multiline
+              rows={4}
+              defaultValue="Bio here"
+              sx={{
+                color: 'white',
+                width: '120%',
+                '& .MuiInputBase-root': {
+                  color: 'white',
+                },
+                '& .MuiInputBase-root::before': {
+                  borderBottomColor: 'white',
+                },
+                '& .MuiInputBase-root:hover::before': {
+                  borderBottomColor: 'yellow',
+                },
+                '& .MuiInputBase-root::after': {
+                  borderBottomColor: 'white',
+                },
+              }}
+              InputLabelProps={{
+                sx: {
+                  color: 'white',
+                },
+              }}
+              InputProps={{
+                sx: {
+                  color: 'white',
+                },
+              }}
+              onFocus={(e) => {
+                if (e.target.value === 'Description here') {
+                  e.target.value = '';
+                }
+              }}
+              onBlur={(e) => {
+                if (e.target.value === '') {
+                  e.target.value = 'Description here';
+                }
+              }}
+            />
+          </Box>
 
           <TextFields
-            id="last name"
-            type="text"
-            label="Bio"
-            variant="standard"
-            value={lastName}
-            helperText={isValidName ? '' : 'Invalid last name'}
-            error={!isValidName}
-            required
-            inputProps={{ style: { textTransform: 'capitalize' } }}
-            onChange={handleInputLastNameChange}
-          />
-
-          <TextFields
-            id="last name"
+            id="github"
             type="text"
             label="Github"
             variant="standard"
@@ -242,31 +310,6 @@ const ModalProfile = ({ open, onClose }) => {
             onChange={handleInputLastNameChange}
           />
 
-          <TextFields
-            id="last name"
-            type="text"
-            label="LinkedIn"
-            variant="standard"
-            value={lastName}
-            helperText={isValidName ? '' : 'Invalid last name'}
-            error={!isValidName}
-            required
-            inputProps={{ style: { textTransform: 'capitalize' } }}
-            onChange={handleInputLastNameChange}
-          />
-
-          <TextFields
-            id="last name"
-            type="text"
-            label="Role"
-            variant="standard"
-            value={lastName}
-            helperText={isValidName ? '' : 'Invalid last name'}
-            error={!isValidName}
-            required
-            inputProps={{ style: { textTransform: 'capitalize' } }}
-            onChange={handleInputLastNameChange}
-          />
         </Box>
         <div className='button-container'>
           <Button

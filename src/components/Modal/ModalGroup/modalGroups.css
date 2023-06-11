@@ -1,0 +1,66 @@
+.modal-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #171A22;
+  border: 2px solid #000;
+  box-shadow: 24px;
+  padding: 100px;
+  width: 45%;
+  height: 80%;
+  max-height: 80vh;
+  overflow: auto;
+}
+
+#title{
+  border-bottom: 1px solid gray;
+  width: '100%';
+  margin: '0 auto'
+}
+
+.form{
+  padding: 10px;
+}
+
+.multiline {
+  margin-top: 15px;
+  position: relative;
+}
+
+.input-root {
+  color: white;
+}
+
+.input-focused .input-notchedOutline {
+  border-color: white;
+}
+
+.input-notchedOutline {
+  border-color: yellow;
+}
+
+.label-root {
+  color: white;
+}
+
+
+.button-container {
+  margin-top: 20px;
+  border-top: 1px solid gray;
+  padding-top: 15px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.custom-button {
+  color: white;
+
+}
+
+@media (max-width: 600px) { 
+  .modal-container {
+    width: 100%; 
+    max-width: none; 
+  }
+}

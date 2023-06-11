@@ -10,6 +10,7 @@ import "./textfield.css"
 const TextFieldStyled = styled(TextField)`
   input {
     color: ${colors.primaryText};
+    margin: 3px;
   }
   label {
     color: ${colors.primaryText};

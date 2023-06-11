@@ -23,6 +23,10 @@
   padding: 10px;
 }
 
+.age{
+  display: flex;
+}
+
 .customDatePicker .MuiInputBase-root {
   color: #457B9D;
   border: #fff;
@@ -58,7 +62,6 @@
   color: white;
 
 }
-
 
 @media (max-width: 600px) { 
   .modal-container {

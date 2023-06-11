@@ -1,39 +1,4 @@
-input {
-    color: "#dee6e9";
-  }
-  
-  label {
-    color: "#dee6e9";
-  }
-  
-  .MuiInput-underline:before {
-    border-bottom-color: "#1D3557";
-  }
-  
-  .MuiInput-underline:hover:not(.Mui-disabled):before {
-    border-bottom-color: "#457B9D";
-  }
-  
-  .MuiInput-underline:after {
-    border-bottom-color: "#dee6e9";
-  }
-  
-  .MuiFormHelperText-root {
-    color: "#bbbbbb";
-  }
-  
-  .MuiFormLabel-root.Mui-error {
-    color: "#E63946";
-  }
-  
-  .MuiInputLabel-root {
-    color: "#457B9D";
-  }
-  
-  .MuiInputLabel-root.Mui-focused {
-    color: "#A8DADC";
-  }
-  .text-field-styled {
+.text-field-styled {
     width: 100%;
   }
   

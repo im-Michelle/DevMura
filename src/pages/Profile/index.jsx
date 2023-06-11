@@ -8,7 +8,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { Tooltip } from '@mui/material';
 import Languages from './components/Languages';
 import SocialNetworks from './components/SocialNetworks';
-import ModalProfile from '../../components/Modal/Modal';
+import ModalProfile from '../../components/Modal/ModalProfile/Modal';
 
 
 const MainAll = styled.main`
@@ -45,6 +45,9 @@ const ProfilePage = () => {
     setOpenModal(false);
   };
 
+  const [name, setName] = useState("Mari");
+  const [lastName, setLastName] = useState("Korz");
+
   return (
     <>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -62,12 +65,17 @@ const ProfilePage = () => {
               />
             </Tooltip>
 
-            <ModalProfile open={openModal} onClose={handleCloseModal} />
+            <ModalProfile
+              open={openModal}
+              onClose={handleCloseModal}
+              name={name}
+              lastName={lastName}
+            />
             
             <HeaderProfileInfo
-              name="Mari"
+              name={name}
               username="mari_korz"
-              lastName="Korz"
+              lastName={lastName}
               role="Frontend Developer"
               location="US"
               createdAt="2021-10-10T00:00:00.000Z"
