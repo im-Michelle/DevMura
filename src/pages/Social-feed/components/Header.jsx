@@ -68,7 +68,7 @@ const Header = ({ name, lastName , userName, img, backGroundIMG}, key) => {
       <Main style={mainStyle}>
         <ProfileImg src={ img ? img : ""  } alt={name} />
         <div>
-          <UserName>{userName}</UserName>
+          <UserName>@{userName}</UserName>
           <Names>
             <Name>{name}</Name>
             <LastName>{lastName}</LastName>
@@ -85,5 +85,6 @@ Header.defaultProps = {
   name: "no data",
   lastName: "no data",
   userName: "no data",
+  img: "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",
 };
 
