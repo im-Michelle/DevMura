@@ -67,7 +67,6 @@ const SocialFeed = () => {
    const getMyUser = async () => {
       try{
         const user = await getOwnUser(userLocalStorage.id, userLocalStorage.token)
-        console.log(user)
         setUser(user)
       }catch(error){
         console.error(error)
@@ -106,7 +105,7 @@ const SocialFeed = () => {
               key={user.id}
               name={user.name}
               lastName={user.lastName}
-              userName={user.userName}
+              userName={user.username}
               img={user.img}
               backGroundIMG={user.backGroundIMG}
             />
