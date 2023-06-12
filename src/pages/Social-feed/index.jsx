@@ -54,9 +54,9 @@ const FooterContainer = styled.div`
 `
 const userLocalStorage = readLocalStorage();
 
+await getOwnUser(  userLocalStorage.id, userLocalStorage.token);
+
 export const userImg = JSON.parse(localStorage.getItem("ownProfile"));
-
-
 
 const SocialFeed = () => {
   const [userProfile, setUser] = useState(userLocalStorage)
@@ -64,7 +64,6 @@ const SocialFeed = () => {
   const [loader, setLoader] = useState(true)
 
 
-  getOwnUser(  userLocalStorage.id, userLocalStorage.token);
 
   useEffect(() => {
    const getMyUser = async () => {
