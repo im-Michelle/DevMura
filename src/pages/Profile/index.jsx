@@ -34,10 +34,22 @@ const ProfileContainer = styled.div`
 `;
 
 const profile = JSON.parse(localStorage.getItem('ownProfile'));
-console.log(profile);
+console.log("profile: ", profile);
 
 const ProfilePage = () => {
 
+  // Info user/profile
+  const [name, setName] = useState(profile.user?.name); // profile.user && profile.user.name
+  const [lastname, setLastName] = useState(profile.user?.lastName); //profile.user && profile.user.lastName
+  const [userName, setUserName] = useState(profile.user?.username); // profile.user && profile.user.username
+  const [gender, setGender] = useState(profile.user?.gender?.genderName); // profile.role
+  const [bio, setBio] = useState(profile.bio); // profile.bio
+  const [role, setRole] = useState(profile.role); // profile.role
+  const [age, setAge] = useState(profile.user?.age); // profile.user && profile.user.age
+  const [location, setLocation] = useState(profile.user?.country?.code); // profile.user && profile.user.country && profile.user.country.code
+  const [createdAt, setCreatedAt] = useState(profile.user && profile.user.createdAt);
+
+  // Modal edit
   const [openModal, setOpenModal] = useState(false);
 
   const handleOpenModal = () => {
@@ -48,15 +60,10 @@ const ProfilePage = () => {
     setOpenModal(false);
   };
 
-  /* const [name, setName] = useState("Mari");
-  const [lastName, setLastName] = useState("Korz");
-  const [bio, setBio] = useState("I'm a frontend developer with 2 years of experience in the industry. I'm currently working at a startup called DevMura, where I'm in charge of the frontend development of the platform.");
- */
   const handleInputNameChange = (event) => {
     setName(event.target.value);
   };
 
-  const [role, setRole] = useState("Frontend Developer");
   return (
     <>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -78,24 +85,26 @@ const ProfilePage = () => {
             <ModalProfile
               open={openModal}
               onClose={handleCloseModal}
-              name={profile.user && profile.user.name}
-              lastName={profile.user && profile.user.lastName}
-              bio={profile.bio}
+              name={name}
+              lastName={lastname}
+              bio={bio}
               role={role}
-              age={profile.age}
+              age={age}
+              location={location}
+              gender={gender}
 /*               setName={setName}
  */            >
 {/*               <input type ="text" value={profile.user && profile.user.name} onChange={handleInputNameChange} />
  */}           </ModalProfile>
             
             <HeaderProfileInfo
-              name={profile.user && profile.user.name}
-              username={profile.user && profile.user.username}
-              lastName={profile.user && profile.user.lastName}
-              role={profile.role}
-              location={profile.user && profile.user.location && profile.user.location.code}
-              createdAt={profile.user && profile.user.createdAt}
-              bio={profile.bio}
+              name={name}
+              username={userName}
+              lastName={lastname}
+              role={role}
+              location={location}
+              createdAt={createdAt}
+              bio={bio}
             />
           </ProfileContainer>
             <SocialNetworks

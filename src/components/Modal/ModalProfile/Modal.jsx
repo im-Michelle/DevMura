@@ -15,7 +15,8 @@ import TextField from "@mui/material/TextField";
 import Chip from '@mui/material/Chip'
 import { withTheme } from 'styled-components';
 
-import { getCountries } from "../../../service/Gets/countryService"
+import { getCountries } from "../../../service/Gets/countryService";
+import { getGenders } from "../../../service/Gets/genderService";
 
 const CustomAutoComplete = styled(Autocomplete)`
   color: ${colors.primaryText};
@@ -117,11 +118,15 @@ const LanguagesAutocomplete = styled(Autocomplete)`
   }
 `;
 
-const ModalProfile = ({ open, onClose, name, lastName, bio, role, setName, age }) => {
+const ModalProfile = ({ open, onClose, name, lastName, bio, role, age, location, gender }) => {
   // valores de los inputs
+  const [countries,setCountries] = useState([]);
+  const [genders,setGenders] = useState([]);
+
   const [birthday, setBirthday] = useState(null);
-  const [gender, setGender] = useState("");
+  const [selectedGender, setSelectedGender] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("");
+
   const [github, setGitHub] = useState('');
   const [linkedin, setLinkedin] = useState('');
   const [imgProfile, setImgProfile] = useState('');
@@ -131,7 +136,6 @@ const ModalProfile = ({ open, onClose, name, lastName, bio, role, setName, age }
   // validadores de los inputs
   const [isValidName, setIsValidName] = useState(true);
   const [isValidLastName, setIsValidLastName] = useState(true);
-  const [countries,setCountries] = useState([]);
   const [ageError, setAgeError] = useState('');
   const [isValidGit, setIsValidGit] = useState(true);
   const [isValidLinkedin, setIsValidLinkedin] = useState(true);
@@ -173,6 +177,23 @@ const ModalProfile = ({ open, onClose, name, lastName, bio, role, setName, age }
       setLastName(inputValue);
     }
   };
+
+  const handleInputCountryChange = (e, value) => {
+    if(value){
+      setSelectedCountry(value);
+    }else{
+      setSelectedCountry('');
+    }
+  };
+
+  const handleInputGenderChange = (e, value) => {
+    if(value){
+      setSelectedGender(value);
+    }else{
+      setSelectedGender('');
+    }
+  };
+
 
   const handleInputGitHubChange = (e) => {
     const inputValue = e.target.value;
@@ -282,18 +303,28 @@ const ModalProfile = ({ open, onClose, name, lastName, bio, role, setName, age }
       setAge('');
     }
   };
-  
-  const handleInputCountryChange = (e, value) => {
-    if(value){
-      setSelectedCountry(value);
-    }else{
-      setSelectedCountry('');
-    }
-  };
 
   const handleChange = (event) => {
     setBio(event.target.value);
   };
+
+  useEffect(() => {
+    const fetchCountries = async () => {
+      const countries = await getCountries();
+      setCountries(countries);
+    };
+  
+    fetchCountries();
+  }, []);
+
+  useEffect(() => {
+    const fetchGenders= async () => {
+      const genders = await getGenders();
+      setGenders(genders);
+    };
+  
+    fetchGenders();
+  }, []);
 
   const languages = [
     { name: 'Ada'},
@@ -373,9 +404,18 @@ const ModalProfile = ({ open, onClose, name, lastName, bio, role, setName, age }
             disablePortal
             id="paises"
             options={countries}
-            value={selectedCountry}
+            value={location}
             onChange={handleInputCountryChange}
-            renderInput={(params) => <TextFields {...params} label="Country"variant="standard" required/>}
+            renderInput={(params) => <TextFieldStyled {...params} label="Country"variant="standard" required/>}
+          />
+
+          <CustomAutoComplete
+            disablePortal
+            id="genders"
+            options={genders}
+            value={gender}
+            onChange={handleInputGenderChange}
+            renderInput={(params) => <TextFields {...params} label="Gender"variant="standard" required/>}
           />
           
           <Box className="multiline">
