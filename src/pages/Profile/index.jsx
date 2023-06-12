@@ -37,6 +37,7 @@ const profile = JSON.parse(localStorage.getItem('ownProfile'));
 console.log(profile);
 
 const ProfilePage = () => {
+  
 
   const [openModal, setOpenModal] = useState(false);
 
@@ -47,6 +48,7 @@ const ProfilePage = () => {
   const handleCloseModal = () => {
     setOpenModal(false);
   };
+
 
   const [name, setName] = useState("Mari");
   const [lastName, setLastName] = useState("Korz");
@@ -65,7 +67,7 @@ const ProfilePage = () => {
             <HeaderProfile
               headerImg={profile.background ? profile.background : "https://images.pexels.com/photos/2387819/pexels-photo-2387819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"}
               avatarImg={profile.img ? profile.img : "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"}
-              vip={profile.user && profile.user.role}
+              vip={profile.role}
             />
             <Tooltip title="Edit Profile" placement="bottom-end">
               <EditIcon
@@ -87,12 +89,12 @@ const ProfilePage = () => {
             </ModalProfile>
             
             <HeaderProfileInfo
-              name={profile.user && profile.user.name}
-              username={profile.user && profile.user.username}
-              lastName={profile.user && profile.user.lastName}
+              name={profile.name}
+              username={profile.username}
+              lastName={profile.lastName}
               role={profile.role}
-              location={profile.user && profile.user.location && profile.user.location.code}
-              createdAt={profile.user && profile.user.createdAt}
+              location={profile.country}
+              createdAt={profile.createdAt}
               bio={profile.bio}
             />
           </ProfileContainer>

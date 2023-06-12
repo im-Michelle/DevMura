@@ -4,7 +4,7 @@ import axios from "axios";
 
 export const getOwnUser = async ( ownId, token) =>{
     try{
-        const response = await axios.get(`${BASE_URL}/profiles/${ownId}`,{
+        const response = await axios.get(`${BASE_URL}/profiles/dto/${ownId}`,{
             headers: {
                 Authorization: `Bearer ${token}`
             }

@@ -100,9 +100,9 @@ const SocialFeed = () => {
           <MainFeed>
             <Header
               key={userProfile.id}
-              name={userProfile.user && userProfile.user.name}
-              lastName={userProfile.user && userProfile.user.lastName}
-              userName={userProfile.user && userProfile.user.username}
+              name={userProfile.name}
+              lastName={userProfile.lastName}
+              userName={userProfile.username}
               img={userProfile.img}
               backGroundIMG={userProfile.background}
             />
