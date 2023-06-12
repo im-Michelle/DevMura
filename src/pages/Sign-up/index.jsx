@@ -9,13 +9,15 @@ import Radio from "@mui/material/Radio";
 import RadioGroup from "@mui/material/RadioGroup";
 import FormLabel from "@mui/material/FormLabel";
 import Button from "@mui/material/Button";
-import DeleteIcon from "@mui/icons-material/Delete";
-import SendIcon from "@mui/icons-material/Send";
+import { Link as LinkReactRouter } from "react-router-dom";
 import Stack from "@mui/material/Stack";
 import { useState } from "react";
-import { IconButton, InputAdornment } from "@mui/material";
+import { IconButton, InputAdornment, Link } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import Autocomplete from '@mui/material/Autocomplete';
+import { countrys } from "./countries";
+import { userRegister } from "../../service/userRegister";
 
 const Main = styled.main`
   width: 100%;
@@ -116,7 +118,28 @@ const MessageLogin = styled.p`
     text-decoration: none;
   }
 `;
+const CustomAutoComplete = styled(Autocomplete)`
+  color: ${colors.primaryText};
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  .MuiInput-underline:before {
+    border-bottom-color: ${colors.navy};
+  }
+  .MuiInput-underline:hover:not(.Mui-disabled):before {
+    border-bottom-color: ${colors.vibrantBlue};
+  }
+  .MuiInput-underline:after {
+    border-bottom-color: ${colors.primaryText};
+  }
+  .MuiFormHelperText-root {
+    color: ${colors.secondaryText};
+  }
+  .MuiFormLabel-root.Mui-error {
+    color: ${colors.contrast};
+  }
 
+`;
 const SignUp = () => {
   const [formValues, setFormValues] = useState({});
 
@@ -137,6 +160,7 @@ const SignUp = () => {
   const [password, setPassword] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
+  const [selectedCountry, setSelectedCountry] = useState("");
 
   // validadores de los inputs
   const [isValidName, setIsValidName] = useState(true);
@@ -145,7 +169,42 @@ const SignUp = () => {
   const [isValidEmail, setIsValidEmail] = useState(true);
   const [isValidPassword, setIsValidPassword] = useState(true);
   const [isValidAge, setIsValidAge] = useState(true);
-  const [isValidGender, setIsValidGender] = useState(false);
+  //const [isValidGender, setIsValidGender] = useState(false);
+
+  const [passwordErrors, setPasswordErrors] = useState([]);
+
+  // Validadores del password uno por uno
+
+  const validateLength = (inputValue) => {
+    if (inputValue.length < 8) {
+      return 'At least 8 characters are required.';
+    }
+    return '';
+  };
+  
+  const validateUppercase = (inputValue) => {
+    const regexUppercase = /^(?=.*[A-Z])/;
+    if (!regexUppercase.test(inputValue)) {
+      return 'At least one uppercase letter is required.';
+    }
+    return '';
+  };
+  
+  const validateNumber = (inputValue) => {
+    const regexNumber = /^(?=.*\d)/;
+    if (!regexNumber.test(inputValue)) {
+      return 'At least one number is required.';
+    }
+    return '';
+  };
+  
+  const validateSpecialCharacter = (inputValue) => {
+    const regexSpecialCharacter = /^(?=.*[@$!%*?&])/;
+    if (!regexSpecialCharacter.test(inputValue)) {
+      return 'At least one special character is required.';
+    }
+    return '';
+  };
 
   // validadores de los inputs
   const handleInputNameChange = (e) => {
@@ -215,19 +274,16 @@ const SignUp = () => {
 
   const handleInputPasswordChange = (e) => {
     const inputValue = e.target.value;
-    const regexPassword =
-      "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$";
-    if (
-      inputValue.length < 3 ||
-      inputValue.length > 50 ||
-      !inputValue.match(regexPassword)
-    ) {
-      setIsValidPassword(false);
-      setPassword(inputValue);
-    } else {
-      setIsValidPassword(true);
-      setPassword(inputValue);
-    }
+    const errors = [
+      validateLength(inputValue),
+      validateUppercase(inputValue),
+      validateNumber(inputValue),
+      validateSpecialCharacter(inputValue)
+    ].filter(error => error !== '');
+  
+    setIsValidPassword(errors.length === 0);
+    setPassword(inputValue);
+    setPasswordErrors(errors);
   };
 
   const handleInputAgeChange = (e) => {
@@ -241,6 +297,18 @@ const SignUp = () => {
       setAge(inputValue);
     }
   };
+  const handleInputCountryChange = (e, value) => {
+    if(value){
+      setSelectedCountry(value);
+    }else{
+      setSelectedCountry('');
+    }
+  };
+
+  const handleInputGenderChange = (e) => {
+    const inputValue = e.target.value;
+    setGender(inputValue);
+  };
 
   const handleActiveButton = () => {
     if (
@@ -252,7 +320,7 @@ const SignUp = () => {
       isValidAge &&
       terms
     ) {
-      setButtonActive(false);
+      setButtonActive(true);
     } else {
       setButtonActive(true);
     }
@@ -273,14 +341,17 @@ const SignUp = () => {
       isValidAge &&
       terms
     ) {
-      console.log("Formulario enviado");
+      userRegister(name, lastName, age, email, userName, password, gender ,selectedCountry.id)
+      //console.log("Formulario enviado");
+      alert("Usuario Registrado");
+      //Window.location.href = "/sign-in";
     } else {
       console.log("Formulario no enviado");
     }
   };
   const handleTerms = () => {
-    if (terms) {
-      setTerms(false);
+    if (terms ) {
+      setTerms(true);
     } else {
       setTerms(true);
     }
@@ -354,7 +425,7 @@ const SignUp = () => {
             helperText={
               isValidPassword
                 ? "Password: at least 8 characters with uppercase, lowercase, numbers, and special characters."
-                : "Invalid password"
+                : passwordErrors.join(' ')
             }
             error={!isValidPassword}
             value={password}
@@ -387,6 +458,16 @@ const SignUp = () => {
             onChange={handleInputAgeChange}
             error={!isValidAge}
           />
+          <CustomAutoComplete
+            disablePortal
+            id="paises"
+            variant="standard"
+            options={countrys}
+            value={selectedCountry}
+            onChange={handleInputCountryChange}
+            renderInput={(params) => <TextFieldStyled {...params} label="Country" />}
+            //getOptionLabel={(option) => option.label}
+          />
           <FormLabel
             id="formLabel"
             required
@@ -400,21 +481,24 @@ const SignUp = () => {
             name="row-radio-buttons-group"
           >
             <FormControlLabel
-              value="female"
+              value={1}
               control={<Radio style={{ color: colors.primaryText }} />}
               label="Female"
               style={{ color: colors.primaryText }}
+              onChange={handleInputGenderChange}
             />
             <FormControlLabel
-              value="male"
+              value={2}
               control={<Radio style={{ color: colors.primaryText }} />}
               label="Male"
+              onChange={handleInputGenderChange}
               style={{ color: colors.primaryText }}
             />
             <FormControlLabel
-              value="other"
+              value={3}
               control={<Radio style={{ color: colors.primaryText }} />}
               label="Other"
+              onChange={handleInputGenderChange}
               style={{ color: colors.primaryText }}
             />
           </RadioGroup>
@@ -430,15 +514,16 @@ const SignUp = () => {
             <Button
               variant="contained"
               type="submit"
-              endIcon={<SendIcon />}
               onClick={handleSubmmit}
-              disabled={buttonActive}
+              //! boton negado para que se active
+              disabled={!buttonActive}
+              sx={{ backgroundColor:'#E63946',":hover":{backgroundColor:'#1D3557' } }} 
             >
-              Send
+              Sign Up
             </Button>
           </Stack>
           <MessageLogin>
-            Already have an account? <a href="/sign-in">Sign in</a>
+            Already have an account? <LinkReactRouter to="/sign-in">Sign in</LinkReactRouter>
           </MessageLogin>
         </Form>
         <FormImg>

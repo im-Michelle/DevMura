@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { colors } from '../../ui/colors';
+import { user } from '../../data/user';
 
 const DropdownButton = styled.button`
   background-color: transparent;
@@ -28,17 +29,20 @@ const DropdownMenu = styled.div`
 `;
 
 const DropdownImgLink = styled(Link)`
-    width: 100%;
-    max-width: 90%;
-    height: 9vh;
+    width: 150px;
+    height: 70px;
     display: flex;
     align-items: center;
     text-decoration: none;
-    margin: 10px;
+    margin-top: 30px;
     color: ${colors.primaryText};
 
     @media (max-width: 768px) {
-        max-width: 20%;
+        max-width: 3rem;
+        max-height: 3rem;
+        width: 50px;
+        height: 50px;
+        margin-top: 25px;
     }
 `;
 
@@ -47,17 +51,16 @@ const MiniMenuContainer = styled.div`
     height: 12vh;
     display: flex;
     flex-direction: row;
-    
+   
     justify-content: space-around;
 `;
 
 const DropdownImg = styled.img`
+    height: 100%;
     width: 100%;
-    max-width: 35%;
-    height: 80%;
     border-radius: 50%;
     object-fit: cover;
-
+  
     @media (max-width: 768px) {
         max-width: 100%;
         width: 100%;
@@ -77,7 +80,7 @@ const DropdownImg = styled.img`
 const DropFeedRoutes = styled.div`
     display: flex;
     align-items: center;
-
+    
     @media (max-width: 768px) {
 
         gap: 1rem;
@@ -156,13 +159,15 @@ const StyledMenu = styled(Link)`
   display: flex;
   flex-direction: column;
   align-items: center;
+  
   text-decoration: none;
   color: ${colors.primaryText};
 
   .img {
     width: 30px;
     height: 30px;
-    margin: auto;
+    object-fit: cover;
+
   }
 
   .text {
@@ -187,22 +192,22 @@ const Menu = () => {
                 <DropdownContent open={dropdownOpen}>
                     <MiniMenuContainer>
                         <DropdownImgLink to="/profile">
-                            <DropdownImg src="https://images.pexels.com/photos/7841717/pexels-photo-7841717.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Me" />
+                            <DropdownImg src={user.img}  alt="Me" />
                         </DropdownImgLink>
                         <DropFeedRoutes>
-                            <StyledLink2 to="/sign-up">
+                            <StyledLink2 to="/feed">
                                 <LinkImg2 src="/icons/home-light-blue.png" alt="Home" />
                                 <TextImg2>Home</TextImg2>
                             </StyledLink2>
-                            <StyledLink2 to="/sign-up">
+                            <StyledLink2 to="/groups">
                                 <LinkImg2 src="/icons/groups-red.png" alt="Groups" />
                                 <TextImg2>Groups</TextImg2>
                             </StyledLink2>
-                            <StyledLink2 to="/sign-up">
+                            <StyledLink2 to="*">
                                 <LinkImg2 src="/icons/green-bell.png" alt="Notifications" />
                                 <TextImg2>Notifications</TextImg2>
                             </StyledLink2>
-                            <StyledLink2 to="/sign-up">
+                            <StyledLink2 to="/chats">
                                 <LinkImg2 src="/icons/messages.png" alt="Messages" />
                                 <TextImg2>Messages</TextImg2>
                             </StyledLink2>
@@ -216,6 +221,5 @@ const Menu = () => {
         </>
     );
 };
-
 
 export default Menu;

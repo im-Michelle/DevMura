@@ -153,7 +153,7 @@ const Footer = () => {
             <form action="">
               <CustomBox sx={{ display: 'flex', alignItems: 'flex-end' }}>
               <InputMui id="standard-basic" label="email" variant="standard"  required/>
-              <ButtonMui variant="contained" type="submit"  endIcon={<SendIcon />}>Send</ButtonMui>
+              <ButtonMui variant="contained" type="submit" sx={{ backgroundColor:'#E63946',":hover":{backgroundColor:'#1D3557' } }} endIcon={<SendIcon />}>Send</ButtonMui>
               </CustomBox>
             </form>
           </div>

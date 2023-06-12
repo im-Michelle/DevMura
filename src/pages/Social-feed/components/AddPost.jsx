@@ -3,6 +3,8 @@ import { colors } from "../../../ui/colors";
 import * as React from "react";
 import TextField from '@mui/material/TextField';
 import ImageIcon from '@mui/icons-material/Image';
+import { posts } from "../../../data/posts";
+
 
 const AddPostContainer = styled.div`
   display: flex;
@@ -86,11 +88,12 @@ const ContainerImg = styled.div`
 `;
 
 
-const AddPost = () => {
+const AddPost = ({ id, name, lastName, role, userName, img }) => {
   const [activeButton, setActiveButton] = React.useState(true);
+  const [showButtons, setShowButtons] = React.useState(false);
   const [showImgInput, setShowImgInput] = React.useState(false);
 
-  const [post, setPost] = React.useState("");
+  const [post, setPost] = React.useState({});
 
   const handleButton = (e) => {
     setPost(e.target.value);
@@ -103,6 +106,23 @@ const AddPost = () => {
     }
   };
 
+  const sendPost = () => {
+    let newPost ={
+      key: Date.now(),
+      name: `${name} ${lastName}`,
+      role: `${role}`,
+      userName: `${userName}`,
+      time: "just now",
+      img: `${img}`,
+      bodyText: post,
+      postImg: "",
+    }
+    posts.unshift(newPost);
+    setPost("");
+    setShowButtons(false);
+    setShowImgInput(false);
+  };
+
   return (
     <AddPostContainer>  
         <CustomTextField
@@ -110,6 +130,7 @@ const AddPost = () => {
           label="Add a new post"
           variant="outlined"
           multiline
+          onFocus={() => setShowButtons(true)}
           onChange={handleButton}
           max={250}
           sx={{ 
@@ -138,10 +159,11 @@ const AddPost = () => {
           maxRows={10}
           helperText="max 250 characters"
         />
-        <ButtonsContainer>
+        {showButtons ? (
+
+          <ButtonsContainer>
           <ContainerImg>
             <CustonButtonImg onClick={ (e) => setShowImgInput(!showImgInput) } > <ImageIcon/> </CustonButtonImg>
-
             {showImgInput ?
               <CustomInputLink 
               type="text" 
@@ -149,19 +171,19 @@ const AddPost = () => {
               variant="standard"
               sx={{
                 '& .MuiOutlinedInput-root': {
-                '& fieldset': {
-                  borderColor: `${colors.new}`,
+                  '& fieldset': {
+                    borderColor: `${colors.new}`,
+                  },
+                  '&:hover fieldset': {
+                    borderColor: `${colors.navy}`,
+                  },
+                  '&.Mui-focused fieldset': {
+                    borderColor: `${colors.vibrantBlue}`,
+                  },
                 },
-                '&:hover fieldset': {
-                  borderColor: `${colors.navy}`,
+                '& .MuiInputLabel-root': {
+                  color: `${colors.primaryText}`,
                 },
-                '&.Mui-focused fieldset': {
-                  borderColor: `${colors.vibrantBlue}`,
-                },
-              },
-              '& .MuiInputLabel-root': {
-                color: `${colors.primaryText}`,
-              },
               '& .MuiOutlinedInput-input': {
                 color: `${colors.primaryText}`,
               },
@@ -173,8 +195,13 @@ const AddPost = () => {
             : <></>
           }
           </ContainerImg>
-          <CustomButton disabled={activeButton} >Add Post</CustomButton>
+          <CustomButton disabled={activeButton} onClick={sendPost} >Add Post</CustomButton>
         </ButtonsContainer>
+        ) : (
+          <></>
+        )
+        }
+
     </AddPostContainer>
   );
 };

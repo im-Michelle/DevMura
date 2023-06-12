@@ -1,18 +1,18 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { colors } from "../../ui/colors";
+import { user } from '../../data/user';
 
-const FeedRoutes = styled.ol`
-width: 100%;
-max-width: 87%;
-height: 5vh;
-display: flex;
-flex-direction: row;
-justify-content: space-around;
-align-items: center;
-gap: 1rem;
-margin-top: .6rem;
 
+
+const FeedRoutes = styled.div`
+    width: 100%;
+    max-width: 87%;
+    max-height: 100%;
+    height: 5vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 1rem;
 
 @media (max-width: 768px) {
     display: none;
@@ -26,10 +26,8 @@ max-width: 100%;
 width: 1rem;
 display: flex;
 align-content: center;
-flex-direction: column;
 align-items: center;
 text-decoration: none;
-color: ${colors.primaryText};
 
 animation: all 0.8s ease-in;
 :hover {
@@ -45,6 +43,7 @@ animation: all 0.8s ease-in;
 const LinkImg = styled.img`
 width: 30px;
 height: 30px;
+object-fit: cover;
 
 &.profile-photo{
     border-radius: 50%;
@@ -58,21 +57,21 @@ const FeedRoutesComponent = () => {
     return (
         <>
 
-<FeedRoutes>
+                    <FeedRoutes>
                         <StyledLink to="/feed">
                             <LinkImg src="/icons/home-light-blue.png" alt="Home" />
                         </StyledLink>
-                        <StyledLink to="/sign-up">
+                        <StyledLink to="/groups">
                             <LinkImg src="/icons/groups-red.png" alt="Groups" />
                         </StyledLink>
-                        <StyledLink to="/sign-up">
+                        <StyledLink to="*">
                             <LinkImg src="/icons/green-bell.png" alt="Notifications" />
                         </StyledLink>
-                        <StyledLink to="/sign-up">
+                        <StyledLink to="/chats">
                             <LinkImg src="/icons/messages.png" alt="Messages" />
                         </StyledLink>
                         <StyledLink to="/profile">
-                            <LinkImg src="https://images.pexels.com/photos/7841717/pexels-photo-7841717.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" className='profile-photo' alt="Me" />
+                            <LinkImg src={user.img} className='profile-photo' alt="Me" />
                         </StyledLink>
                     </FeedRoutes>
         </>

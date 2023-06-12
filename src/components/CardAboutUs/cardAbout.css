@@ -2,8 +2,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  background-color: #A8DADC;
-  color: #163b59;
+  color: #ffffff;
   border-radius: 10px;
   padding: 20px;
   width: 300px;
@@ -12,6 +11,12 @@
   margin-bottom: 10px;
   margin-top: 10px;
   margin-left: 10px;
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  margin-top: auto;
 }
 
 .header-container {
@@ -38,7 +43,7 @@
   transform: rotate(-20deg);
   filter: grayscale(100%);
   transition: filter 0.3s ease-in-out;
-  border: 2px solid #E63946;
+  border: 2px solid #1D3557;
 }
 
 .image-container:hover img{

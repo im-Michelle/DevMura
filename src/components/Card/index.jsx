@@ -9,11 +9,12 @@ import { colors } from "../../ui/colors";
 
 const  TestiMonialCard = ({img, name, description }) => {
   return (
-    <Card sx={{ maxWidth: 345 , backgroundColor: `${colors.new}`}}>
+    <Card sx={{ width: 450, minHeight: 500, maxHeight: 500 , backgroundColor: `${colors.new}`}}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="300"
+          width={450}
           image={img}
           alt={name}
         />

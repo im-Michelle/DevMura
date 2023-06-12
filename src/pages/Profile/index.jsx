@@ -4,18 +4,19 @@ import { NewNavBarFeed } from '../../components/Navbar-feed';
 import { colors } from '../../ui/colors';
 import { MainFeed } from '../Social-feed';
 
+import { user1 } from '../../data/user';
+
 import { LearningInterests } from './components/LearningInterests';
 import { ProgramingLeng } from './components/ProgramingLeng';
 import { PersonalDescription } from './components/PersonalDescription';
 
-
 import PersonAddIcon from '@mui/icons-material/PersonAdd';
 import MailIcon from '@mui/icons-material/Mail';
 
-import Post from '../../components/Post';
-import { posts } from "../../data/posts";
 
-let publicaciones = posts;
+import { getUserByID } from '../../service/userService';
+import { useEffect, useState } from 'react';
+
 
 const MainAll = styled.main`
   display: flex;
@@ -28,33 +29,67 @@ const MainAll = styled.main`
 `;
 
 const GroupIcon = styled.div`
+  width: 100%;
+  flex-direction: row;
   display: flex;
+  justify-content: space-evenly;
+  margin-bottom: 5rem;
 `;
 const EachIcon = styled.div`
-  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  height: 4rem;
+  width: 4rem;
+  border-radius: 50%;
+  background-color: #A8DADC;
+  align-items: center;
+
+  transition: all 0.3s ease-out;
+  &:hover{
+    transform: scale(1.1);
+    background-color: ${colors.contrast};
+    box-shadow: 0 0 15px ${colors.contrast};
+    color: ${colors.primaryText};
+    cursor: pointer;
+  };
 `;
 
 const ExtraInfo = styled.div`
   display: flex;
   justify-content: center;
+
+  position: relative;
+
 `;
 
-
-
-
 const ProfilePage = () => {
+
+  const userPath = window.location.pathname.split("/")[2];
+
+  const [user, setUser] = useState({})
+
+  useEffect(() => {
+    getUserByID(userPath).then((response) => {
+      setUser(response.data);
+    });
+  }, []);
+
+
   return (
     <>
         <NewNavBarFeed/>
         <MainAll>
           <MainFeed>
               <Header 
-                  name="Susana"
-                  lastName="Gonzalez"
-                  userName="@susygonzalez"
-                  img="https://images.pexels.com/photos/7841717/pexels-photo-7841717.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+                  name= {user.name}
+                  lastName={user.lastName}
+                  userName={user.username}
+                  img={user.profile && user.profile.img}
+                  /* backGroundIMG={user.backGroundIMG} */
                   />
-              <PersonalDescription/>
+              <PersonalDescription
+                  description={user.profile && user.profile.bio}
+              />
 
               <ExtraInfo>
                 <ProgramingLeng/>
@@ -63,14 +98,15 @@ const ProfilePage = () => {
 
               <GroupIcon>
                 <EachIcon>
-                  <PersonAddIcon color='primary'fontSize='large'/>
+                  <PersonAddIcon fontSize='large'/>
                 </EachIcon>
                 <EachIcon>
-                  <MailIcon color='primary'fontSize='large'/>
+                  <MailIcon fontSize='large' />
                 </EachIcon>
               </GroupIcon>
 
-              {publicaciones.map((post)=>{
+
+              {/* {publicaciones.map((post)=>{
                 return(
                     <Post
                         key={post.key}
@@ -84,7 +120,7 @@ const ProfilePage = () => {
                         postImg={post.postImg}
                     />
                 )
-            })}
+            })} */}
           </MainFeed>
         </MainAll>
     </>

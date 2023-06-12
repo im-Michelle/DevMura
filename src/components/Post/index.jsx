@@ -7,6 +7,7 @@ import BookmarkBorderIcon from '@mui/icons-material/BookmarkBorder';
 import { useState } from "react";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Link } from 'react-router-dom';
+import moment from 'moment';
 
 const PostContainer = styled.div`
   display: flex;
@@ -40,25 +41,27 @@ const ProfilesPost = styled.div`
   margin-left: 10px;
 `;
 const Name = styled(Link)`
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   font-weight: 700;
   margin: 0;
   color: ${colors.primaryText};
   text-decoration: none;
+  transition: 0.1s ease-in-out;
   &:hover {
     color: ${colors.secondaryText};
   }
 `;
 const Role = styled.h2`
-  font-size: 1rem;
-  font-weight: 400;
-  margin: 0;
-`;
-const UserName = styled.h3`
   font-size: 0.8rem;
   font-weight: 400;
   margin: 0;
   color: ${colors.secondaryText};
+`;
+  
+const UserName = styled.h3`
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin: 0;
 `;
 const Time = styled.h4`
   font-size: 0.8rem;
@@ -110,38 +113,37 @@ const IconosLike = styled.div`
   width: 50%;
 `;
 
-const Post = ({ id, name, role, userName, time, img, bodyText, postImg }) => {
+const Post = ({ id, firstName, lastName, role, userName, time, img, bodyText, postImg, userId }) => {
 
   const [like, setLike] = useState(false);
 
   const [bookmark, setBookmark] = useState(false);
 
+  const formatdTime = moment(time).startOf('hour').fromNow();
 
-  
+  const fullName = `${firstName} ${lastName}`
+
   return (
-    <PostContainer id={id} key={id}>
+    <PostContainer key={id}>
       <PostEncabezado>
-        <ProfileImg src={img} alt={name} />
+        <ProfileImg src={img ? img : "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"}   alt={name} />
         <ProfilesPost>
-          <Name to={`/user/${id}`} >{name}</Name>
+          <Name to={`/user/${userId}`} >{fullName}</Name>
+          <UserName>@{userName}</UserName>
           <Role>{role}</Role>
-          <UserName>{userName}</UserName>
-          <Time>{time}</Time>
+          <Time>{formatdTime}</Time>
         </ProfilesPost>
       </PostEncabezado>
       <PostBody>
         <BodyText>{bodyText}</BodyText>
         <PostImg src={postImg} alt="" />
       </PostBody>
-
+      
       <PostFooter>
         <IconosLike>
-          { like ? <FavoriteIcon  fontSize="large" style={{color: `${colors.contrast} `}}  onClick={() => setLike(!like)} /> : <FavoriteBorderIcon fontSize="large"  onClick={() => setLike(!like)} />}
-          {/* <FavoriteBorderIcon fontSize="large"  /> */}
-             
+          { like ? <FavoriteIcon  fontSize="large" style={{color: `${colors.contrast} `}}  onClick={() => setLike(!like)} /> : <FavoriteBorderIcon fontSize="large"  onClick={() => setLike(!like)} />}     
           <ChatBubbleIcon fontSize="large"/>
         </IconosLike>
-
         <div>
         {bookmark ? <BookmarkIcon fontSize="large" onClick={() => setBookmark(!bookmark)} /> : <BookmarkBorderIcon fontSize="large" onClick={() => setBookmark(!bookmark)} />}
         </div>
@@ -150,3 +152,13 @@ const Post = ({ id, name, role, userName, time, img, bodyText, postImg }) => {
   );
 };
 export default Post;
+
+Post.defaultProps = {
+  name: "No name",
+  userName: "No userName to show",
+  time: "time",
+  img: "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",
+  bodyText: "bodyText",
+  role: "No role to show",
+};
+

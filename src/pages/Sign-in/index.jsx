@@ -5,13 +5,15 @@ import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 
 import Button from "@mui/material/Button";
-import DeleteIcon from "@mui/icons-material/Delete";
-import SendIcon from "@mui/icons-material/Send";
 import Stack from "@mui/material/Stack";
 import { useState } from "react";
 import { IconButton, InputAdornment } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+<<<<<<< HEAD
+=======
+import { Link as LinkReactRouter } from "react-router-dom";
+>>>>>>> 7f30976ad436606a47759f0c21ce26919affbe9f
 
 const Main = styled.main`
   width: 100%;
@@ -99,25 +101,64 @@ const TextFieldStyled = styled(TextField)`
     color: ${colors.lightBlue}; 
   }
 `;
+<<<<<<< HEAD
 
+=======
+const MessageLogin = styled.p`
+  color: ${colors.primaryText};
+  font-size: 1.2rem;
+  font-weight: 500;
+  margin-top: 1rem;
+  a {
+    color: ${colors.vibrantBlue};
+    text-decoration: none;
+  }
+`;
+>>>>>>> 7f30976ad436606a47759f0c21ce26919affbe9f
 const SignIn = () => {
   const [formValues, setFormValues] = useState({});
   const [showPassword, setShowPassword] = useState(false);
 
+  const [formErrors, setFormErrors] = useState({});
+  const [formValid, setFormValid] = useState(false);
+
+  const validateForm = () =>{
+    const errors = {};
+
+    // validate email
+    if(!formValues.email){
+      errors.email = "Email is required";
+    }else if(!/\S+@\S+\.\S+/.test(formValues.email)){
+      errors.email = "Email is invalid";
+    }
+
+    // validate password
+    if(!formValues.password){
+      errors.password = "Password is required";
+    }else if(formValues.password.length < 6){
+      errors.password = "Password must be at least 6 characters";
+    }
+
+    setFormErrors(errors);
+    setFormValid(Object.keys(errors).length === 0);
+  }
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(formValues);
+    validateForm();
+
+    if(formValid){
+      console.log(formValues);
+    }
   };
-  const handleFormReset = () => {
-    setFormValues({});
-  };
-  const inputAdornment = (
+ 
+  /* const inputAdornment = (
     <InputAdornment position="end">
       <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
         {showPassword ? <VisibilityOff /> : <Visibility />}
       </IconButton>
     </InputAdornment>
-  );
+  ); */
   return (
     <>
       <Main>
@@ -133,20 +174,28 @@ const SignIn = () => {
           <h1>Sign In to DevMura</h1>
           
           <TextFieldStyled
-            id="standard-basic"
+            id="email"
+            name="email"
             label="Email"
             type="email"
             variant="standard"
-            helperText="Please enter your email"
+            helperText={formErrors.email ? formErrors.email : null}
+            error={formErrors.email ? true : false}
             required
+            value={formValues.email || ""}
+            onChange={(e) => setFormValues({...formValues, email: e.target.value})}
           />
           <TextFieldStyled
-            id="standard-basic"
+            id="password"
+            name="password"
             label="Password"
             variant="standard"
             type={showPassword ? "text" : "password"}
-            helperText="Please enter your password"
+            helperText={formErrors.password ? formErrors.password : null}
             required
+            value={formValues.password || ""}
+            onChange={(e) => setFormValues({...formValues, password: e.target.value})}
+            error={formErrors.password ? true : false}
             InputProps={{
               endAdornment: (
                 <InputAdornment position="end">
@@ -162,18 +211,13 @@ const SignIn = () => {
             }}
           />
           <Stack direction="row" spacing={2}>
-            <Button
-              variant="outlined"
-              type="reset"
-              onClick={handleFormReset}
-              startIcon={<DeleteIcon />}
-            >
-              Delete
-            </Button>
-            <Button variant="contained" type="submit" endIcon={<SendIcon />}>
-              Send
+            <Button variant="contained" type="submit" sx={{ backgroundColor:'#E63946',":hover":{backgroundColor:'#1D3557' } }} /* disabled={formValid} */>
+              Sign In
             </Button>
           </Stack>
+          <MessageLogin>
+            New to DevMura? <LinkReactRouter to="/sign-up">Create an account</LinkReactRouter>
+          </MessageLogin>
         </Form>
 
         <FormImg>

@@ -1,5 +1,8 @@
 import styled from "styled-components";
 import { colors } from "../../../ui/colors";
+import { user } from "../../../data/user";
+
+
 
 const Main = styled.header`
   display: flex;
@@ -10,7 +13,6 @@ const Main = styled.header`
   max-width: 700px;
   height: max-content;
   margin: 0 auto;
-  background-image: url("https://images.pexels.com/photos/16144099/pexels-photo-16144099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -30,30 +32,41 @@ const ProfileImg = styled.img`
 const UserName = styled.h2`
   font-size: 1.5rem;
   font-weight: 500;
-  color: ${colors.primaryText};
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #262a263b;
+  backdrop-filter: blur(10px);
 `;
 const Name = styled.h2`
   font-size: 1.2rem;
   font-weight: 500;
-  color: ${colors.primaryText};
+  color: white;
 `;
 const LastName = styled.h2`
   font-size: 1.2rem;
   font-weight: 500;
-  color: ${colors.primaryText};
+  color: white;
 `;
 const Names = styled.div`
   display: flex;
   flex-direction: row;
+  gap: 5px;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  background-color: #262a263b;
+  backdrop-filter: blur(10px);
 `;
 
-const Header = ({ name = "no data", lastName = "no data", userName = "no data", img = "../../../../public/img/placeholder.png"}, key) => {
+const Header = ({ name = "no data", lastName = "no data", userName = "no data", img = "../../../../public/img/placeholder.png", backGroundIMG = "no img"}, key) => {
+  const mainStyle = {
+    backgroundImage: `url(${backGroundIMG})`
+  }
+
   return (
     <>
-      <Main id={key}>
+      <Main style={mainStyle}>
         <ProfileImg src={img} alt={name} />
         <div>
           <UserName>{userName}</UserName>
