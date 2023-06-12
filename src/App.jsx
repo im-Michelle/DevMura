@@ -10,19 +10,16 @@ import AboutUs from './pages/About-us'
 import ContactUs from './pages/Contact-us'
 import ProfilePage from './pages/Profile'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop'
-<<<<<<< HEAD
-=======
+
 import TermsOfService from './pages/TermsOfService'
 import PrivacyPolicy from './pages/Privacy'
 import ErroPage from './pages/ErroPage'
 import { Groups } from './pages/Groups'
 import { GroupPage } from './pages/GroupPage'
 import Chats from './pages/Chats'
-<<<<<<< HEAD
->>>>>>> 7f30976ad436606a47759f0c21ce26919affbe9f
-=======
+
 import UserPage from './pages/User';
->>>>>>> 13ace35a96665c43cabdd8f6a4f80c78f3a21640
+
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -42,7 +39,7 @@ function App() {
     <Router>
       <ScrollToTop/>
       <Routes>
-<<<<<<< HEAD
+
         <Route path='/' element={ <Home/>} />
         <Route path='home' element={ <Home/>} />
         <Route path='feed' element={ <SocialFeed/>} />
@@ -55,7 +52,6 @@ function App() {
         <Route path='*' element={ <SocialFeed/>} />
         <Route path='/changeprofile' element={ <ChangeProfile/> } /> 
         <Route path='contact-us' element={<ContactUs />} />
-=======
         <Route path='/' element={ <Home/>} exact/>
         <Route path='/home' element={ <Home/>} />
         <Route path='/sign-up' element={ <SignUp/>} />
@@ -72,7 +68,7 @@ function App() {
         <Route path='/user/:id' element={ <UserPage/>} />
         <Route path='contact-us' element={<ContactUs />} />
         <Route path='*' element={ <ErroPage/>} />
->>>>>>> 7f30976ad436606a47759f0c21ce26919affbe9f
+
       </Routes>
     </Router>
   );
