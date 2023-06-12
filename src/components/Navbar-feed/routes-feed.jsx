@@ -2,8 +2,6 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { user } from '../../data/user';
 
-
-
 const FeedRoutes = styled.div`
     width: 100%;
     max-width: 87%;
@@ -16,8 +14,7 @@ const FeedRoutes = styled.div`
 
 @media (max-width: 768px) {
     display: none;
-}
-
+    }
 `;
 
 const StyledLink = styled(Link)`
@@ -55,7 +52,7 @@ object-fit: cover;
     object-fit: cover;
 }
 `;
-
+const userImg = JSON.parse(localStorage.getItem("ownProfile"));
 
 const FeedRoutesComponent = () => {
     return (
@@ -75,7 +72,7 @@ const FeedRoutesComponent = () => {
                             <LinkImg src="/icons/messages.png" alt="Messages" />
                         </StyledLink>
                         <StyledLink to="/profile">
-                            <LinkImg src={user.img} className='profile-photo' alt="Me" />
+                            <LinkImg src={ userImg.img ? userImg.img : "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" } className='profile-photo' alt="Me" />
                         </StyledLink>
                     </FeedRoutes>
         </>

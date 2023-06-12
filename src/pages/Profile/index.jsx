@@ -33,6 +33,9 @@ const ProfileContainer = styled.div`
   position: relative;
 `;
 
+const profile = JSON.parse(localStorage.getItem('ownProfile'));
+console.log(profile);
+
 const ProfilePage = () => {
 
   const [openModal, setOpenModal] = useState(false);
@@ -60,8 +63,9 @@ const ProfilePage = () => {
         <MainAll>
           <ProfileContainer>
             <HeaderProfile
-              headerImg="https://images.pexels.com/photos/2387819/pexels-photo-2387819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              avatarImg="https://images.pexels.com/photos/10106827/pexels-photo-10106827.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              headerImg={profile.background ? profile.background : "https://images.pexels.com/photos/2387819/pexels-photo-2387819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"}
+              avatarImg={profile.img ? profile.img : "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"}
+              vip={profile.user && profile.user.role}
             />
             <Tooltip title="Edit Profile" placement="bottom-end">
               <EditIcon
@@ -83,18 +87,18 @@ const ProfilePage = () => {
             </ModalProfile>
             
             <HeaderProfileInfo
-              name={name}
-              username="mari_korz"
-              lastName={lastName}
-              role={role}
-              location="US"
-              createdAt="2021-10-10T00:00:00.000Z"
-              bio={bio}
+              name={profile.user && profile.user.name}
+              username={profile.user && profile.user.username}
+              lastName={profile.user && profile.user.lastName}
+              role="Frontend Developer"
+              location={profile.user && profile.user.location && profile.user.location.code}
+              createdAt={profile.user && profile.user.createdAt}
+              bio={profile.bio}
             />
           </ProfileContainer>
             <SocialNetworks
-              linkLinkedin="https://www.linkedin.com/"
-              linkGithub="https://www.linkedin.com/"
+              linkLinkedin={`https://www.linkedin.com/${profile.likedin}`}
+              linkGithub={`https://www.linkedin.com/${profile.github}`}
             />
             <Languages
               languages={["HTML", "CSS", "JavaScript", "React", "Angular", "Vue", "Svelte", "Node", "Express", "MongoDB", "SQL", "Python", "Java", "C", "CS", "C++", "Dart", "Flutter", "Go", "Django", "Docker",]}
