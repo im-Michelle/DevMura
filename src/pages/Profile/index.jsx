@@ -48,14 +48,15 @@ const ProfilePage = () => {
     setOpenModal(false);
   };
 
-  const [name, setName] = useState("Mari");
+  /* const [name, setName] = useState("Mari");
   const [lastName, setLastName] = useState("Korz");
-  const [role, setRole] = useState("Frontend Developer");
   const [bio, setBio] = useState("I'm a frontend developer with 2 years of experience in the industry. I'm currently working at a startup called DevMura, where I'm in charge of the frontend development of the platform.");
-
+ */
   const handleInputNameChange = (event) => {
     setName(event.target.value);
   };
+
+  const [role, setRole] = useState("Frontend Developer");
   return (
     <>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -77,20 +78,21 @@ const ProfilePage = () => {
             <ModalProfile
               open={openModal}
               onClose={handleCloseModal}
-              name={name}
-              lastName={lastName}
-              bio={bio}
+              name={profile.user && profile.user.name}
+              lastName={profile.user && profile.user.lastName}
+              bio={profile.bio}
               role={role}
-              setName={setName}
-            >
-              <input type ="text" value={name} onChange={handleInputNameChange} />
-            </ModalProfile>
+              age={profile.age}
+/*               setName={setName}
+ */            >
+{/*               <input type ="text" value={profile.user && profile.user.name} onChange={handleInputNameChange} />
+ */}           </ModalProfile>
             
             <HeaderProfileInfo
               name={profile.user && profile.user.name}
               username={profile.user && profile.user.username}
               lastName={profile.user && profile.user.lastName}
-              role="Frontend Developer"
+              role={role}
               location={profile.user && profile.user.location && profile.user.location.code}
               createdAt={profile.user && profile.user.createdAt}
               bio={profile.bio}

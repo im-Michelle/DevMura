@@ -117,9 +117,8 @@ const LanguagesAutocomplete = styled(Autocomplete)`
   }
 `;
 
-const ModalProfile = ({ open, onClose, name, lastName, bio, role, setName }) => {
+const ModalProfile = ({ open, onClose, name, lastName, bio, role, setName, age }) => {
   // valores de los inputs
-  const [age, setAge] = useState(null);
   const [birthday, setBirthday] = useState(null);
   const [gender, setGender] = useState("");
   const [selectedCountry, setSelectedCountry] = useState("");
