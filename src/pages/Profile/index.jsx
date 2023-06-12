@@ -37,6 +37,7 @@ const profile = JSON.parse(localStorage.getItem('ownProfile'));
 console.log("profile: ", profile);
 
 const ProfilePage = () => {
+  
 
   // Info user/profile
   const [name, setName] = useState(profile.user?.name); // profile.user && profile.user.name
@@ -60,6 +61,15 @@ const ProfilePage = () => {
     setOpenModal(false);
   };
 
+<<<<<<< HEAD
+=======
+
+  const [name, setName] = useState("Mari");
+  const [lastName, setLastName] = useState("Korz");
+  const [role, setRole] = useState("Frontend Developer");
+  const [bio, setBio] = useState("I'm a frontend developer with 2 years of experience in the industry. I'm currently working at a startup called DevMura, where I'm in charge of the frontend development of the platform.");
+
+>>>>>>> ef58c6246e0d660b031351a06f4c73e2997bc414
   const handleInputNameChange = (event) => {
     setName(event.target.value);
   };
@@ -73,7 +83,7 @@ const ProfilePage = () => {
             <HeaderProfile
               headerImg={profile.background ? profile.background : "https://images.pexels.com/photos/2387819/pexels-photo-2387819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"}
               avatarImg={profile.img ? profile.img : "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"}
-              vip={profile.user && profile.user.role}
+              vip={profile.role}
             />
             <Tooltip title="Edit Profile" placement="bottom-end">
               <EditIcon
@@ -98,6 +108,7 @@ const ProfilePage = () => {
  */}           </ModalProfile>
             
             <HeaderProfileInfo
+<<<<<<< HEAD
               name={name}
               username={userName}
               lastName={lastname}
@@ -105,6 +116,15 @@ const ProfilePage = () => {
               location={location}
               createdAt={createdAt}
               bio={bio}
+=======
+              name={profile.name}
+              username={profile.username}
+              lastName={profile.lastName}
+              role={profile.role}
+              location={profile.country}
+              createdAt={profile.createdAt}
+              bio={profile.bio}
+>>>>>>> ef58c6246e0d660b031351a06f4c73e2997bc414
             />
           </ProfileContainer>
             <SocialNetworks

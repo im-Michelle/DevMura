@@ -72,8 +72,6 @@ const LogoImage = styled.img`
     max-height: 100%;
 `;
 
-
-
 const NavRoutes = styled.div`
     width: 100%;
     max-width: 55%;
