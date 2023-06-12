@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { groups } from "../../data/groups";
 import { colors } from "../../ui/colors";
 import { MiniCardGroup } from "./mini-card-group";
-import ModalGroup from "../Modal/ModalSignUp/ModalSignUp"
+import ModalGroup from "../Modal/ModalGroup/ModalGroup"
 
 let allgroups = groups;
 
