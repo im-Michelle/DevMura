@@ -13,7 +13,12 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 <<<<<<< HEAD
 =======
 import { Link as LinkReactRouter } from "react-router-dom";
+<<<<<<< HEAD
 >>>>>>> 7f30976ad436606a47759f0c21ce26919affbe9f
+=======
+import { login } from "../../service/Login/login";
+
+>>>>>>> 13ace35a96665c43cabdd8f6a4f80c78f3a21640
 
 const Main = styled.main`
   width: 100%;
@@ -121,44 +126,48 @@ const SignIn = () => {
 
   const [formErrors, setFormErrors] = useState({});
   const [formValid, setFormValid] = useState(false);
+  
+
 
   const validateForm = () =>{
     const errors = {};
 
     // validate email
-    if(!formValues.email){
+    /* if(!formValues.email){
       errors.email = "Email is required";
     }else if(!/\S+@\S+\.\S+/.test(formValues.email)){
       errors.email = "Email is invalid";
-    }
+    } */
 
     // validate password
+    if(!formValues.username){
+      errors.username = "Username is required";
+    }else if(formValues.username.length < 3){
+      errors.username = "Username must be at least 3 characters";
+    }
     if(!formValues.password){
       errors.password = "Password is required";
     }else if(formValues.password.length < 6){
       errors.password = "Password must be at least 6 characters";
     }
-
     setFormErrors(errors);
     setFormValid(Object.keys(errors).length === 0);
   }
 
-  const handleFormSubmit = (e) => {
+  const handleFormSubmit = async (e) => {
     e.preventDefault();
     validateForm();
-
     if(formValid){
-      console.log(formValues);
-    }
-  };
- 
-  /* const inputAdornment = (
-    <InputAdornment position="end">
-      <IconButton onClick={() => setShowPassword(!showPassword)} edge="end">
-        {showPassword ? <VisibilityOff /> : <Visibility />}
-      </IconButton>
-    </InputAdornment>
-  ); */
+      console.log(formValues)
+      console.log("Form is valid");
+      try{
+        await login(formValues.username, formValues.password);
+        window.location.href = "/feed";
+      }catch(error){
+        console.log(error);
+      }
+    } 
+  }
   return (
     <>
       <Main>
@@ -168,12 +177,9 @@ const SignIn = () => {
             "& > :not(style)": { m: 1, width: "60%" },
           }}
           noValidate
-          autoComplete="off"
-          onSubmit={handleFormSubmit}
         >
           <h1>Sign In to DevMura</h1>
-          
-          <TextFieldStyled
+          {/* <TextFieldStyled
             id="email"
             name="email"
             label="Email"
@@ -184,6 +190,17 @@ const SignIn = () => {
             required
             value={formValues.email || ""}
             onChange={(e) => setFormValues({...formValues, email: e.target.value})}
+          /> */}
+          <TextFieldStyled
+            id="username"
+            name="username"
+            label="Username"
+            variant="standard"
+            helperText={formErrors.username ? formErrors.username : null}
+            error={formErrors.username ? true : false}
+            required
+            value={formValues.username || ""}
+            onChange={(e) => setFormValues({...formValues, username: e.target.value})}
           />
           <TextFieldStyled
             id="password"
@@ -211,7 +228,11 @@ const SignIn = () => {
             }}
           />
           <Stack direction="row" spacing={2}>
-            <Button variant="contained" type="submit" sx={{ backgroundColor:'#E63946',":hover":{backgroundColor:'#1D3557' } }} /* disabled={formValid} */>
+            <Button 
+              onClick={handleFormSubmit}
+              variant="contained" 
+              type="submit" 
+              sx={{ backgroundColor:'#E63946',":hover":{backgroundColor:'#1D3557' } }} /* disabled={formValid} */>
               Sign In
             </Button>
           </Stack>

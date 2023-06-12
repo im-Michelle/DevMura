@@ -1,0 +1,14 @@
+import { BASE_URL } from "../config";
+import axios from "axios";
+
+export const getAllPost = async () =>{
+    try{
+        const response = await axios.get(`${BASE_URL}/posts/dto`,);
+        const post = response.data
+        console.log("post", post)
+        return post
+    }catch(e){
+        console.error("No data", e);
+        return []
+    }
+}

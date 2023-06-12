@@ -9,7 +9,6 @@ import SignIn from './pages/Sign-in'
 import AboutUs from './pages/About-us'
 import ContactUs from './pages/Contact-us'
 import ProfilePage from './pages/Profile'
-import ProfilePageEdit from './pages/ProfileEdit'
 import ScrollToTop from './components/ScrollToTop/ScrollToTop'
 <<<<<<< HEAD
 =======
@@ -19,7 +18,11 @@ import ErroPage from './pages/ErroPage'
 import { Groups } from './pages/Groups'
 import { GroupPage } from './pages/GroupPage'
 import Chats from './pages/Chats'
+<<<<<<< HEAD
 >>>>>>> 7f30976ad436606a47759f0c21ce26919affbe9f
+=======
+import UserPage from './pages/User';
+>>>>>>> 13ace35a96665c43cabdd8f6a4f80c78f3a21640
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -65,8 +68,8 @@ function App() {
         <Route path='/groups' element={ <Groups/>} />
         <Route path='/groups/:id' element={<GroupPage/>} />
         <Route path='/chats' element={ <Chats/>} />
-        <Route path='/profile' element={ <ProfilePageEdit/>} />
-        <Route path='/user/:id' element={ <ProfilePage/>} />
+        <Route path='/profile' element={ <ProfilePage/>} />
+        <Route path='/user/:id' element={ <UserPage/>} />
         <Route path='contact-us' element={<ContactUs />} />
         <Route path='*' element={ <ErroPage/>} />
 >>>>>>> 7f30976ad436606a47759f0c21ce26919affbe9f

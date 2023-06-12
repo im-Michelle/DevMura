@@ -9,6 +9,7 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
 
+
 const PostContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -113,9 +114,9 @@ const IconosLike = styled.div`
   width: 50%;
 `;
 
-const Post = ({ id, firstName, lastName, role, userName, time, img, bodyText, postImg, userId }) => {
+const Post = ({ id, firstName, lastName, role, userName, time, img, bodyText, postImg, userId, liked }) => {
 
-  const [like, setLike] = useState(false);
+  const [like, setLike] = useState( !liked );
 
   const [bookmark, setBookmark] = useState(false);
 
@@ -160,5 +161,6 @@ Post.defaultProps = {
   img: "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",
   bodyText: "bodyText",
   role: "No role to show",
+  liked: false,
 };
 

@@ -2,14 +2,13 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { colors } from '../../ui/colors';
-import { user } from '../../data/user';
+import { userImg } from '../../pages/Social-feed';
 
 const DropdownButton = styled.button`
   background-color: transparent;
   border: none;
   cursor: pointer;
   margin-left: 1rem;
-  
 `;
 
 const DropdownMenu = styled.div`
@@ -144,7 +143,6 @@ const DropdownItem = styled(Link)`
   font-size: 16px;
   display: flex;
   justify-content: center;
-
   &:hover {
     color: ${colors.contrast};
   }
@@ -175,6 +173,7 @@ const StyledMenu = styled(Link)`
   }
 `;
 
+
 const Menu = () => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
@@ -192,7 +191,7 @@ const Menu = () => {
                 <DropdownContent open={dropdownOpen}>
                     <MiniMenuContainer>
                         <DropdownImgLink to="/profile">
-                            <DropdownImg src={user.img}  alt="Me" />
+                            <DropdownImg src={ userImg.img ? userImg.img : "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" }  alt="Me" />
                         </DropdownImgLink>
                         <DropFeedRoutes>
                             <StyledLink2 to="/feed">

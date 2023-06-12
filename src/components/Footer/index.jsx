@@ -114,7 +114,7 @@ const Footer = () => {
             <h2>DevMura</h2>
             <ul>
               <li>
-                <StyledLink to="/feed">Home</StyledLink>
+                <StyledLink to="/">Home</StyledLink>
               </li>
               <li>
                 <StyledLink to="/about-us">About</StyledLink>

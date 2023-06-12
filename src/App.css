@@ -30,7 +30,7 @@ body{
 
   /* Chrome, Edge, and Safari */
   *::-webkit-scrollbar {
-    width: 12px;
+    width: 8px;
   }
 
   *::-webkit-scrollbar-track {
@@ -39,7 +39,7 @@ body{
 
   *::-webkit-scrollbar-thumb {
     background-color: #F1FAEE;
-    border-radius: 6px;
+    border-radius: 2px;
   }
 
 

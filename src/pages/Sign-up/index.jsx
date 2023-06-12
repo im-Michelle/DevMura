@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { colors } from "../../ui/colors";
+import Alert from "../../components/Alerts/Alerts";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -11,13 +12,14 @@ import FormLabel from "@mui/material/FormLabel";
 import Button from "@mui/material/Button";
 import { Link as LinkReactRouter } from "react-router-dom";
 import Stack from "@mui/material/Stack";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { IconButton, InputAdornment, Link } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Autocomplete from '@mui/material/Autocomplete';
-import { countrys } from "./countries";
-import { userRegister } from "../../service/userRegister";
+import { userRegister } from "../../service/Posts/userRegister";
+import { getCountries } from "../../service/Gets/countryService"
+
 
 const Main = styled.main`
   width: 100%;
@@ -138,8 +140,16 @@ const CustomAutoComplete = styled(Autocomplete)`
   .MuiFormLabel-root.Mui-error {
     color: ${colors.contrast};
   }
+  .MuiInputLabel-root {
+    color: ${colors.primaryText};
+  }
+  .MuiInputLabel-root.Mui-focused {
+    color: ${colors.lightBlue};
+  }
+  
 
 `;
+
 const SignUp = () => {
   const [formValues, setFormValues] = useState({});
 
@@ -151,6 +161,9 @@ const SignUp = () => {
 
   // boton para aceptar los terminos y condiciones
   const [terms, setTerms] = useState(false);
+
+  // Alerts
+  const [alert, setAlert] = useState(null);
 
   // valores de los inputs
   const [name, setName] = useState("");
@@ -170,6 +183,8 @@ const SignUp = () => {
   const [isValidPassword, setIsValidPassword] = useState(true);
   const [isValidAge, setIsValidAge] = useState(true);
   //const [isValidGender, setIsValidGender] = useState(false);
+
+  const [countries,setCountries] = useState([]);
 
   const [passwordErrors, setPasswordErrors] = useState([]);
 
@@ -342,11 +357,9 @@ const SignUp = () => {
       terms
     ) {
       userRegister(name, lastName, age, email, userName, password, gender ,selectedCountry.id)
-      //console.log("Formulario enviado");
-      alert("Usuario Registrado");
-      //Window.location.href = "/sign-in";
+      console.log("Usuario Registrado");
     } else {
-      console.log("Formulario no enviado");
+      setAlert({ type: 'error', title: 'Error', message: 'An error occurred with the form' });
     }
   };
   const handleTerms = () => {
@@ -357,6 +370,16 @@ const SignUp = () => {
     }
   };
 
+  useEffect(() => {
+    const fetchCountries = async () => {
+      const countries = await getCountries();
+      setCountries(countries);
+    };
+  
+    fetchCountries();
+  }, []);
+
+ 
   return (
     <>
       <Main>
@@ -371,6 +394,10 @@ const SignUp = () => {
           onChange={handleActiveButton}
         >
           <h1>Sign Up to DevMura</h1>
+          {alert && (
+            <Alert type={alert.type} title={alert.title} message={alert.message} />
+          )}
+          
           <TextFieldStyled
             id="name"
             type="text"
@@ -461,12 +488,11 @@ const SignUp = () => {
           <CustomAutoComplete
             disablePortal
             id="paises"
-            variant="standard"
-            options={countrys}
+            options={countries}
             value={selectedCountry}
             onChange={handleInputCountryChange}
-            renderInput={(params) => <TextFieldStyled {...params} label="Country" />}
-            //getOptionLabel={(option) => option.label}
+            renderInput={(params) => <TextFieldStyled {...params} label="Country"variant="standard" required/>}
+            
           />
           <FormLabel
             id="formLabel"

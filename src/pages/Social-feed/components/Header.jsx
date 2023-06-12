@@ -1,8 +1,5 @@
 import styled from "styled-components";
 import { colors } from "../../../ui/colors";
-import { user } from "../../../data/user";
-
-
 
 const Main = styled.header`
   display: flex;
@@ -19,6 +16,7 @@ const Main = styled.header`
   border: 2px solid ${colors.secondary};
   border-radius: 10px;
   margin-bottom: 20px;
+  min-width: 300px;
 `;
 
 const ProfileImg = styled.img`
@@ -59,17 +57,17 @@ const Names = styled.div`
   backdrop-filter: blur(10px);
 `;
 
-const Header = ({ name = "no data", lastName = "no data", userName = "no data", img = "../../../../public/img/placeholder.png", backGroundIMG = "no img"}, key) => {
+const Header = ({ name, lastName , userName, img, backGroundIMG}, key) => {
   const mainStyle = {
-    backgroundImage: `url(${backGroundIMG})`
+    backgroundImage: backGroundIMG ? `url(${backGroundIMG})` : `url(${"https://images.pexels.com/photos/15536927/pexels-photo-15536927/free-photo-of-ciudad-coches-punto-de-referencia-calle.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"})`,
   }
 
   return (
     <>
       <Main style={mainStyle}>
-        <ProfileImg src={img} alt={name} />
+        <ProfileImg src={ img ? img : "https://images.pexels.com/photos/15536927/pexels-photo-15536927/free-photo-of-ciudad-coches-punto-de-referencia-calle.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"  } alt={name} />
         <div>
-          <UserName>{userName}</UserName>
+          <UserName>@{userName}</UserName>
           <Names>
             <Name>{name}</Name>
             <LastName>{lastName}</LastName>
@@ -81,3 +79,11 @@ const Header = ({ name = "no data", lastName = "no data", userName = "no data", 
 };
 
 export default Header;
+
+Header.defaultProps = {
+  name: "no data",
+  lastName: "no data",
+  userName: "no data",
+  img: "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",
+};
+

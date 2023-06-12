@@ -145,7 +145,7 @@ const ContactUs = () => {
                   <CustomTextField
                     name="name"
                     label="Name"
-                    variant="outlined"
+                    variant="standard"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
@@ -154,7 +154,7 @@ const ContactUs = () => {
                   <CustomTextField
                     name="email"
                     label="E-mail"
-                    variant="outlined"
+                    variant="standard"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
@@ -163,7 +163,7 @@ const ContactUs = () => {
                   <CustomTextField
                     name="phone"
                     label="Phone"
-                    variant="outlined"
+                    variant="standard"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     required
@@ -172,7 +172,7 @@ const ContactUs = () => {
                   <CustomTextField
                     name="message"
                     label="Message"
-                    variant="outlined"
+                    variant="standard"
                     multiline
                     rows={4}
                     value={message}
@@ -197,7 +197,7 @@ const ContactUs = () => {
                 autoHideDuration={4000}
                 onClose={() => setValidationError(false)}
                 message="Por favor, complete todos los campos correctamente"
-            />
+              />
             
             <Snackbar
               open={submitSuccess}
