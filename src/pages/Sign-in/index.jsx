@@ -148,7 +148,7 @@ const SignIn = () => {
       console.log("Form is valid");
       try{
         await login(formValues.username, formValues.password);
-        window.location.href = "/feed";
+        
       }catch(error){
         console.log(error);
       }
