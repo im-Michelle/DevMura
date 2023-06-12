@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { NewNavBarFeed } from '../../components/Navbar-feed';
 import { colors } from '../../ui/colors';
@@ -7,6 +8,8 @@ import EditIcon from '@mui/icons-material/Edit';
 import { Tooltip } from '@mui/material';
 import Languages from './components/Languages';
 import SocialNetworks from './components/SocialNetworks';
+import ModalProfile from '../../components/Modal/ModalProfile/Modal';
+
 
 const MainAll = styled.main`
   display: flex;
@@ -35,8 +38,27 @@ console.log(profile);
 
 const ProfilePage = () => {
 
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
+
+  const [name, setName] = useState("Mari");
+  const [lastName, setLastName] = useState("Korz");
+  const [role, setRole] = useState("Frontend Developer");
+  const [bio, setBio] = useState("I'm a frontend developer with 2 years of experience in the industry. I'm currently working at a startup called DevMura, where I'm in charge of the frontend development of the platform.");
+
+  const handleInputNameChange = (event) => {
+    setName(event.target.value);
+  };
   return (
     <>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <NewNavBarFeed/>
         <MainAll>
           <ProfileContainer>
@@ -46,8 +68,24 @@ const ProfilePage = () => {
               vip={profile.user && profile.user.role}
             />
             <Tooltip title="Edit Profile" placement="bottom-end">
-              <EditIcon style={{position: 'absolute', top: '10px', right: '10px', cursor: 'pointer'}}/>
+              <EditIcon
+                style={{ position: 'absolute', top: '10px', right: '10px', cursor: 'pointer' }}
+                onClick={handleOpenModal}
+              />
             </Tooltip>
+
+            <ModalProfile
+              open={openModal}
+              onClose={handleCloseModal}
+              name={name}
+              lastName={lastName}
+              bio={bio}
+              role={role}
+              setName={setName}
+            >
+              <input type ="text" value={name} onChange={handleInputNameChange} />
+            </ModalProfile>
+            
             <HeaderProfileInfo
               name={profile.user && profile.user.name}
               username={profile.user && profile.user.username}

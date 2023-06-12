@@ -1,7 +1,9 @@
+import React, { useState } from 'react';
 import styled from "styled-components";
 import { groups } from "../../data/groups";
 import { colors } from "../../ui/colors";
 import { MiniCardGroup } from "./mini-card-group";
+import ModalGroup from "../Modal/ModalGroup/ModalGroup"
 
 let allgroups = groups;
 
@@ -62,19 +64,26 @@ const Body = styled.div`
     width: 100%;
 `;
 
-
-
-
-
 export const CardGroup = () => {
+    
+    const [openModalGroup, setOpenModalGroup] = useState(false);
+
+    const handleOpenModalGroup = () => {
+        setOpenModalGroup(true);
+    };
+
+    const handleCloseModalGroup = () => {
+        setOpenModalGroup(false);
+    };
     return (
         <>
             <Card>
                 <Header>
                     <Title> Your Groups </Title>
-                    <NewGroup>
+                    <NewGroup onClick={handleOpenModalGroup}>
                         Create group
                     </NewGroup>
+                    <ModalGroup open={openModalGroup} onClose={handleCloseModalGroup} />
                 </Header>
                 <Body>
                     {allgroups.map((group) => (
