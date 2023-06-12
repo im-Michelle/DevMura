@@ -39,15 +39,17 @@ console.log("profile: ", profile);
 const ProfilePage = () => {
 
   // Info user/profile
-  const [name, setName] = useState(profile.user?.name); // profile.user && profile.user.name
-  const [lastname, setLastName] = useState(profile.user?.lastName); //profile.user && profile.user.lastName
-  const [userName, setUserName] = useState(profile.user?.username); // profile.user && profile.user.username
-  const [gender, setGender] = useState(profile.user?.gender?.genderName); // profile.role
+  const [name, setName] = useState(profile.name); // profile.user && profile.user.name
+  const [lastname, setLastName] = useState(profile.lastName); //profile.user && profile.user.lastName
+  const [userName, setUserName] = useState(profile.username); // profile.user && profile.user.username
   const [bio, setBio] = useState(profile.bio); // profile.bio
   const [role, setRole] = useState(profile.role); // profile.role
-  const [age, setAge] = useState(profile.user?.age); // profile.user && profile.user.age
-  const [location, setLocation] = useState(profile.user?.country?.code); // profile.user && profile.user.country && profile.user.country.code
-  const [createdAt, setCreatedAt] = useState(profile.user && profile.user.createdAt);
+  const [age, setAge] = useState(profile.age); // profile.user && profile.user.age
+  const [location, setLocation] = useState(profile.country); // profile.user && profile.user.country && profile.user.country.code
+  const [github, setGitHub] = useState(profile.github);
+  const [linkedin, setLinkedin] = useState(profile.likedin);
+  const [imgProfile, setImgProfile] = useState(profile.img);
+  const [backgroundProfile, setBackgroundProfile] = useState(profile.background);
 
   // Modal edit
   const [openModal, setOpenModal] = useState(false);
@@ -92,7 +94,10 @@ const ProfilePage = () => {
               role={role}
               age={age}
               location={location}
-              gender={gender}
+              github={github}
+              linkedin={linkedin}
+              imgProfile={imgProfile}
+              backgroundProfile={backgroundProfile}
 /*               setName={setName}
  */            >
 {/*               <input type ="text" value={profile.user && profile.user.name} onChange={handleInputNameChange} />
