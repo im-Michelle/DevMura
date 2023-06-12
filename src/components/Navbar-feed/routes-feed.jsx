@@ -52,7 +52,6 @@ object-fit: cover;
     object-fit: cover;
 }
 `;
-const userImg = JSON.parse(localStorage.getItem("ownProfile"));
 
 const FeedRoutesComponent = ({userImg}) => {
     return (
