@@ -13,7 +13,6 @@ const Main = styled.header`
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  border: 2px solid ${colors.secondary};
   border-radius: 10px;
   margin-bottom: 20px;
   min-width: 300px;
@@ -59,13 +58,13 @@ const Names = styled.div`
 
 const Header = ({ name, lastName , userName, img, backGroundIMG}, key) => {
   const mainStyle = {
-    backgroundImage: backGroundIMG ? `url(${backGroundIMG})` : `url(${"https://images.pexels.com/photos/15536927/pexels-photo-15536927/free-photo-of-ciudad-coches-punto-de-referencia-calle.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"})`,
+    backgroundImage: backGroundIMG ? `url(${backGroundIMG})` : `url(${"https://images.pexels.com/photos/2387819/pexels-photo-2387819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"})`,
   }
 
   return (
     <>
       <Main style={mainStyle}>
-        <ProfileImg src={ img ? img : "https://images.pexels.com/photos/15536927/pexels-photo-15536927/free-photo-of-ciudad-coches-punto-de-referencia-calle.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"  } alt={name} />
+        <ProfileImg src={ img ? img : "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"  } alt={name} />
         <div>
           <UserName>@{userName}</UserName>
           <Names>
