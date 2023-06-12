@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { BASE_URL_LOGIN } from '../config';
+import { getOwnUser } from '../Gets/getOwnUserService';
 
 
 /**
@@ -15,12 +16,10 @@ export const login = async (username, password) => {
             username,
             password
         });
-        console.log(response)
         if(response.status !== 200) throw new Error(message || "Error en el login");
         const { message, ...dataWuthoutMessage } = response.data;
-        console.log(dataWuthoutMessage)
-        //localStorage.clear();
         localStorage.setItem("userDevmura", JSON.stringify(dataWuthoutMessage));
+        getOwnUser(dataWuthoutMessage.id, dataWuthoutMessage.token);
         return response;
     }catch(err){
         console.log(err.response)

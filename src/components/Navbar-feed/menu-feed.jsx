@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { colors } from '../../ui/colors';
-import { userImg } from '../../pages/Social-feed';
+//import { userImg } from '../../pages/Social-feed';
 
 const DropdownButton = styled.button`
   background-color: transparent;
@@ -174,7 +174,7 @@ const StyledMenu = styled(Link)`
 `;
 
 
-const Menu = () => {
+const Menu = ({userImg}) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const toggleDropdown = () => {
@@ -191,7 +191,7 @@ const Menu = () => {
                 <DropdownContent open={dropdownOpen}>
                     <MiniMenuContainer>
                         <DropdownImgLink to="/profile">
-                            <DropdownImg src={ userImg.img ? userImg.img : "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" }  alt="Me" />
+                            <DropdownImg src={ userImg ? userImg :  "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" }  alt="Me" />
                         </DropdownImgLink>
                         <DropFeedRoutes>
                             <StyledLink2 to="/feed">

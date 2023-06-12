@@ -96,7 +96,7 @@ const NavRoutes = styled.div`
 `;
 
 
-export const NewNavBarFeed = () => {
+export const NewNavBarFeed = ({userImg}) => {
 
     return (
         <Nav>
