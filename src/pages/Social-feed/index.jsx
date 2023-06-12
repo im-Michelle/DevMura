@@ -54,7 +54,7 @@ const FooterContainer = styled.div`
 `
 const userLocalStorage = readLocalStorage();
 
-await getOwnUser(  userLocalStorage.id, userLocalStorage.token);
+getOwnUser(  userLocalStorage.id, userLocalStorage.token);
 
 export const userImg = JSON.parse(localStorage.getItem("ownProfile"));
 
