@@ -90,7 +90,7 @@ const ProfilePage = () => {
               name={profile.user && profile.user.name}
               username={profile.user && profile.user.username}
               lastName={profile.user && profile.user.lastName}
-              role="Frontend Developer"
+              role={profile.role}
               location={profile.user && profile.user.location && profile.user.location.code}
               createdAt={profile.user && profile.user.createdAt}
               bio={profile.bio}
