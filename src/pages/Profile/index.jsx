@@ -34,7 +34,6 @@ const ProfileContainer = styled.div`
 `;
 
 const profile = JSON.parse(localStorage.getItem('ownProfile'));
-console.log(profile);
 
 const ProfilePage = () => {
   
@@ -61,7 +60,9 @@ const ProfilePage = () => {
   return (
     <>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <NewNavBarFeed/>
+        <NewNavBarFeed
+          userImg={profile.img}
+        />
         <MainAll>
           <ProfileContainer>
             <HeaderProfile
