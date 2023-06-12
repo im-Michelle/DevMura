@@ -14,13 +14,17 @@ const GroupMain = styled.div`
     min-height: 100vh;
 `;
 
+const userProfile =  JSON.parse(localStorage.getItem('ownProfile'))
+
 
 export const GroupPage = () => {
   const group = groups.find((group) => group.key === 1);
 
   return (
     <>
-      <NewNavBarFeed />
+      <NewNavBarFeed 
+        userImg={userProfile.img}
+      />
       <GroupMain>
         {group && (
           <GroupBody

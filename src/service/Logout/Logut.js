@@ -1,5 +1,5 @@
 export const logut = () =>{
     localStorage.removeItem('ownProfile');
     localStorage.removeItem('userDevmura');
-    window.location.href = '/';
+    window.location.href = '/sign-in';
 }

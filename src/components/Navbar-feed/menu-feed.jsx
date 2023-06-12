@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { colors } from '../../ui/colors';
+import { logut } from '../../service/Logout/Logut';
 //import { userImg } from '../../pages/Social-feed';
 
 const DropdownButton = styled.button`
@@ -214,7 +215,7 @@ const Menu = ({userImg}) => {
                     </MiniMenuContainer>
                     <DropdownItem to="/profile" className="view-profile">View Profile</DropdownItem>
                     <DropdownItem to="/settings">Settings</DropdownItem>
-                    <DropdownItem to="/logout">Sign Out</DropdownItem>
+                    <DropdownItem onClick={logut} >Sign Out</DropdownItem>
                 </DropdownContent>
             </DropdownMenu>
         </>

@@ -42,12 +42,13 @@ const Containedor = styled.div`
     flex-direction: row;
 
 `
-
-
+const userProfile =  JSON.parse(localStorage.getItem('ownProfile'))
 const Chats = () => {
     return(
         <Main>
-            <NewNavBarFeed/>
+            <NewNavBarFeed
+                userImg={userProfile.img}
+            />
             <Containedor>
                 <ChatsMenu>
                     <BubbleChat/>
