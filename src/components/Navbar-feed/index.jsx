@@ -95,7 +95,6 @@ const NavRoutes = styled.div`
 
 
 export const NewNavBarFeed = ({userImg}) => {
-
     return (
         <Nav>
             <NavContainer>
@@ -106,8 +105,12 @@ export const NewNavBarFeed = ({userImg}) => {
                     <SearchBar />
                 </Logo>
                 <NavRoutes>
-                    <FeedRoutesComponent/>
-                    <Menu/>
+                    <FeedRoutesComponent
+                    userImg={userImg}
+                    />
+                    <Menu
+                    userImg={userImg}
+                    />
                 </NavRoutes>
             </NavContainer>
         </Nav>
