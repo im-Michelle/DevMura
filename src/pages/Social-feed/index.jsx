@@ -52,23 +52,17 @@ const FooterContainer = styled.div`
     display: none;
   }
 `
-const userLocalStorage = readLocalStorage();
-
-getOwnUser(  userLocalStorage.id, userLocalStorage.token);
-
-export const userImg = JSON.parse(localStorage.getItem("ownProfile"));
+const ownUserProfile = readLocalStorage()
 
 const SocialFeed = () => {
-  const [userProfile, setUser] = useState(userLocalStorage)
+  const [userProfile, setUser] = useState({})
   const [posts, getPosts] = useState([])
   const [loader, setLoader] = useState(true)
-
-
 
   useEffect(() => {
    const getMyUser = async () => {
       try{
-        const user = await getOwnUser(userLocalStorage.id, userLocalStorage.token)
+        const user = await getOwnUser(ownUserProfile.id, ownUserProfile.token)
         setUser(user)
       }catch(error){
         console.error(error)
@@ -95,7 +89,9 @@ const SocialFeed = () => {
 
   return (
     <>
-      <NewNavBarFeed/>
+      <NewNavBarFeed
+        userImg={userProfile.img}
+      />
       <Main>
       <FooterContainer>
           <FooterFeed/>
