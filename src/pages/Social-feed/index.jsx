@@ -52,12 +52,16 @@ const FooterContainer = styled.div`
     display: none;
   }
 `
+
+
 const ownUserProfile = readLocalStorage()
 
 const SocialFeed = () => {
   const [userProfile, setUser] = useState({})
   const [posts, getPosts] = useState([])
   const [loader, setLoader] = useState(true)
+
+  if(localStorage.getItem("userDevmura") === null) window.location.replace("/")
 
   useEffect(() => {
    const getMyUser = async () => {
