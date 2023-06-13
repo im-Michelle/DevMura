@@ -34,7 +34,9 @@ const ProfileContainer = styled.div`
 `;
 
 const profile = JSON.parse(localStorage.getItem('ownProfile'));
-console.log("profile: ", profile);
+const userDevMura = JSON.parse(localStorage.getItem('userDevmura'));
+//console.log("profile: ", profile);
+//console.log("TOKEN: ", userDevMura);
 
 const ProfilePage = () => {
   // Info user/profile
@@ -42,15 +44,19 @@ const ProfilePage = () => {
   const [birthday, setBirthday] = useState(profile.birthday);
   const [age, setAge] = useState(profile.age);
   const [bio, setBio] = useState(profile.bio);
-  const [imgProfile, setImgProfile] = useState(profile.img);
+  const [img, setImg] = useState(profile.img);
   const [github, setGitHub] = useState(profile.github);
-  const [linkedin, setLinkedin] = useState(profile.likedin);
+  const [likedin, setLikedin] = useState(profile.likedin);
   const [createdAt, setCreatedAt] = useState(profile.createdAt);
-  const [backgroundProfile, setBackgroundProfile] = useState(profile.background);
+  const [background, setBackground] = useState(profile.background);
   const [role, setRole] = useState(profile.role);
   const [name, setName] = useState(profile.name); 
-  const [lastname, setLastName] = useState(profile.lastName); 
+  const [lastName, setLastName] = useState(profile.lastName); 
   const [userName, setUserName] = useState(profile.username);
+  const [country, setCountry] = useState(profile.country);
+  const [countryName, setCountryName] = useState(profile.countryName);
+  const [token, setToken] = useState(userDevMura.token);
+
   //const [countryName, setCountryName] = useState(profile.countryName); 
 
   // Modal edit
@@ -96,16 +102,18 @@ const ProfilePage = () => {
               birthday={birthday}
               age={age}
               bio={bio}
-              imgProfile={imgProfile}
+              img={img}
               github={github}
-              linkedin={linkedin}
+              likedin={likedin}
               createdAt={createdAt}
-              backgroundProfile={backgroundProfile}
+              background={background}
               role={role}
               name={name}
-              lastName={lastname}
-              location={profile.countryName}
-              userName={profile.username}
+              lastName={lastName}
+              country={country}
+              countryName={countryName}
+              userName={userName}
+              token={token}
             />
                         
             <HeaderProfileInfo

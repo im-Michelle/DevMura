@@ -124,41 +124,35 @@ const ModalProfile = ({
   id,
   birthday,
   age,
-  bio,
-  imgProfile,
-  github,
-  linkedin,
+  bio: defaultBio,
+  img: defaultImg,
+  github: defaultGitHub,
+  likedin: defaultLikedin,
   createdAt,
-  backgroundProfile,
-  role,
-  name,
-  lastName,
-  location,
-  userName }) => {
-
-  // valores de los inputs
+  background: defaultBackground,
+  role: defaultRole,
+  name: defaultName,
+  lastName: defaultLastName,
+  country, 
+  countryName,
+  userName,
+  token }) => {
+  // valores de countries y languages
   const [countries,setCountries] = useState([]);
  // const [languages, setLanguages] = useState([]);
-
   const [selectedCountry, setSelectedCountry] = useState("");
 
-  console.log("props",  id,
-  birthday,
-  age,
-  bio,
-  imgProfile,
-  github,
-  linkedin,
-  createdAt,
-  backgroundProfile,
-  role,
-  name,
-  lastName,
-  location,
-  userName); 
-
   // Valores nuevos de los inputs
+  const [newBirthday, setNewBirthday] = useState("");
+  const [newAge, setNewAge] = useState("");
+  const [newBio, setNewBio] = useState("");
+  const [newImg, setNewImg] = useState("");
+  const [newGitHub, setNewGitHub] = useState("");
+  const [newLikedin, setNewLikedin] = useState("");
+  const [newBackground, setNewBackground] = useState("");
   const [newRole, setNewRole] = useState("");
+  const [newName, setNewName] = useState("");
+  const [newLastName, setNewLastName] = useState("");
 
   //validador boton
   const [formSubmitted, setFormSubmitted] = useState(false);
@@ -167,45 +161,35 @@ const ModalProfile = ({
   const [isValidName, setIsValidName] = useState(true);
   const [isValidLastName, setIsValidLastName] = useState(true);
   const [ageError, setAgeError] = useState('');
-  const [isValidGit, setIsValidGit] = useState(true);
-  const [isValidLinkedin, setIsValidLinkedin] = useState(true);
-  const [isValidImgProfile, setIsValidImgProfile] = useState(true);
-  const [isValidBackgroundProfile, setIsValidBackgroundProfile] = useState(true);
+  const [isValidGitHub,  setIsValidGitHub] = useState(true);
+  const [isValidLikedin, setIsValidLikedin] = useState(true);
+  const [isValidImg, setIsValidImg] = useState(true);
+  const [isValidBackground, setIsValidBackground] = useState(true);
   const [isValidRole, setIsValidRole] = useState(true);
   const [isValidBio, setIsValidBio] = useState(true);
 
   // validadores de los inputs
   const handleInputNameChange = (e) => {
     const newName = e.target.value;
-    const regeName = "^[A-Za-záéíóúüñÁÉÍÓÚÜÑ]+(?: [A-Za-záéíóúüñÁÉÍÓÚÜÑ]+)*$";
+    const regeName = /^[A-Za-záéíóúüñÁÉÍÓÚÜÑ]+(?: [A-Za-záéíóúüñÁÉÍÓÚÜÑ]+)*$/;
     if (
-      newName.length < 3 ||
-      newName.length > 50 ||
-      !newName.match(regeName)
-    ) {
+      newName.length > 50 || !newName.match(regeName)) {
       setIsValidName(false);
     } else {
       setIsValidName(true);
-      setName(newName);
-      console.log(newName);
+      setNewName(newName);
     }
   };
 
   const handleInputLastNameChange = (e) => {
-    const inputValue = e.target.value;
-    const regexLastName =
-      "^[A-Za-záéíóúüñÁÉÍÓÚÜÑ]+(?: [A-Za-záéíóúüñÁÉÍÓÚÜÑ]+)*$";
-    if (
-      inputValue.length < 3 ||
-      inputValue.length > 50 ||
-      !inputValue.match(regexLastName)
-    ) {
-      setIsValidLastName(false);
-      setLastName(inputValue);
-    } else {
-      setIsValidLastName(true);
-      setLastName(inputValue);
-    }
+    const newLastName = e.target.value;
+    const regexLastName = /^[A-Za-záéíóúüñÁÉÍÓÚÜÑ]+(?: [A-Za-záéíóúüñÁÉÍÓÚÜÑ]+)*$/;
+      if (newLastName.length > 50 || !newLastName.match(regexLastName)) {
+        setIsValidLastName(false);
+      } else {
+        setIsValidLastName(true);
+        setNewLastName(newLastName);
+      }
   };
 
   const handleInputCountryChange = (e, value) => {
@@ -216,79 +200,68 @@ const ModalProfile = ({
     }
   };
 
+  const handleInputBioChange = (e) => {
+    const newBio = e.target.value;
+    if(newBio.length > 100){
+      setIsValidBio(false);
+    }else{
+      setIsValidBio(true);
+      setNewBio(newBio);
+    }
+  }
+
   const handleInputGitHubChange = (e) => {
-    const inputValue = e.target.value;
-    const regexGitHub = 
-      "^[A-Za-záéíóúüñÁÉÍÓÚÜÑ0-9]+(?: [A-Za-záéíóúüñÁÉÍÓÚÜÑ0-9]+)*$";
-    if (
-      inputValue.length < 0 ||
-      inputValue.length > 50 ||
-      !inputValue.match(regexGitHub)
-    ) {
-      setIsValidGit(false);
-      setGitHub(inputValue);
+    const newGitHub = e.target.value;
+    const regexGitHub = /^[A-Za-záéíóúüñÁÉÍÓÚÜÑ0-9]+(?: [A-Za-záéíóúüñÁÉÍÓÚÜÑ0-9]+)*$/;
+    if ( newGitHub.length > 50 || !newGitHub.match(regexGitHub)) {
+      setIsValidGitHub(false);
     } else {
-      setIsValidGit(true);
-      setGitHub(inputValue);
+      setIsValidGitHub(true);
+      setNewGitHub(newGitHub);
     }
   };
 
-  const handleInputLinkedInChange = (e) => {
-    const inputValue = e.target.value;
-    const regexLinkedIn = 
-      "^[A-Za-záéíóúüñÁÉÍÓÚÜÑ0-9]+(?: [A-Za-záéíóúüñÁÉÍÓÚÜÑ0-9]+)*$";
-    if (
-      inputValue.length < 0 ||
-      inputValue.length > 100 ||
-      !inputValue.match(regexLinkedIn)
-    ) {
-      setIsValidLinkedin(false);
-      setLinkedin(inputValue);
+  const handleInputLikedInChange = (e) => {
+    const newLikedin = e.target.value;
+    const regexLikedIn = /^[A-Za-záéíóúüñÁÉÍÓÚÜÑ0-9]+(?: [A-Za-záéíóúüñÁÉÍÓÚÜÑ0-9]+)*$/;
+    if (newLikedin.length > 100 || !newLikedin.match(regexLikedIn)) {
+      setIsValidLikedin(false);
     } else {
-      setIsValidLinkedin(true);
-      setLinkedin(inputValue);
+      setIsValidLikedin(true);
+      setNewLikedin(newLikedin);
     }
   };
 
-  const handleInputImgProfileChange = (e) => {
-    const inputValue = e.target.value;
-    const regexImgProfile = 
-      /^(?:https?:\/\/)?(?:www\.)?[A-Za-záéíóúüñÁÉÍÓÚÜÑ0-9.-]+\.[A-Za-záéíóúüñÁÉÍÓÚÜÑ]{2,}(?:\/[\w.-]*)*\/?$/i;
-    if (
-      inputValue.length < 10 ||
-      inputValue.length > 150 ||
-      !inputValue.match(regexImgProfile)
-    ) {
-      setIsValidImgProfile(false);
-      setImgProfile(inputValue);
+  const handleInputImgChange = (e) => {
+    const newImg = e.target.value;
+    //const regexImg = /^(?:https?:\/\/)?(?:www\.)?[A-Za-záéíóúüñÁÉÍÓÚÜÑ0-9.-]+\.[A-Za-záéíóúüñÁÉÍÓÚÜÑ]{2,}(?:\/[\w.-]*)*\/?$/i;
+    if (newImg.length > 300 
+      //|| !newImg.match(regexImg)
+      ) {
+      setIsValidImg(false);
     } else {
-      setIsValidImgProfile(true);
-      setImgProfile(inputValue);
+      setIsValidImg(true);
+      setNewImg(newImg);
     }
 };
 
-
-  const handleInputBackgroundProfileChange = (e) => {
-    const inputValue = e.target.value;
-    const regexBackgroundProfile = 
-      /^(?:https?:\/\/)?(?:www\.)?[A-Za-záéíóúüñÁÉÍÓÚÜÑ0-9.-]+\.[A-Za-záéíóúüñÁÉÍÓÚÜÑ]{2,}(?:\/[\w.-]*)*\/?$/i;
-    if (
-      inputValue.length < 0 ||
-      inputValue.length > 150 ||
-      !inputValue.match(regexBackgroundProfile)
-    ) {
-      setIsValidBackgroundProfile(false);
-      setBackgroundProfile(inputValue);
+  const handleInputBackgroundChange = (e) => {
+    const newBackground = e.target.value;
+    //const regexBackground = /^(?:https?:\/\/)?(?:www\.)?[A-Za-záéíóúüñÁÉÍÓÚÜÑ0-9.-]+\.[A-Za-záéíóúüñÁÉÍÓÚÜÑ]{2,}(?:\/[\w.-]*)*\/?$/i;
+    if (newBackground.length > 300 
+      //|| !newBackground.match(regexBackground)
+      ) {
+      setIsValidBackground(false);
     } else {
-      setIsValidBackgroundProfile(true);
-      setBackgroundProfile(inputValue);
+      setIsValidBackground(true);
+      setNewBackground(newBackground);
     }
   };
 
   const handleInputRoleChange = (e) => {
     const inputValue = e.target.value;
     const regexRole = "^[A-Za-záéíóúüñÁÉÍÓÚÜÑ]+(?: [A-Za-záéíóúüñÁÉÍÓÚÜÑ]+)*$";
-    if (inputValue.length < 0 || inputValue.length > 100 || !inputValue.match(regexRole)) {
+    if (inputValue.length > 100 || !inputValue.match(regexRole)) {
       setIsValidRole(false);
       setNewRole(inputValue);
     } else {
@@ -296,7 +269,6 @@ const ModalProfile = ({
       setNewRole(inputValue);
     }
   };
-  
 
   const handleInputAgeChange = () => {
     if (birthday) {
@@ -330,32 +302,81 @@ const ModalProfile = ({
           id: id,
           birthday: birthday,
           age: age,
-          bio: "hola mundo",
-          img: imgProfile,
-          github: github,
-          linkedin: linkedin,
+          bio: newBio || defaultBio,
+          img: newImg || defaultImg,
+          github: newGitHub || defaultGitHub,
+          likedin: newLikedin || defaultLikedin,
           createdAt: createdAt,
-          background: backgroundProfile,
-          role: role,
-          name: name,
-          lastName: lastName,
-          country: location,
+          background: newBackground || defaultBackground,
+          role: newRole || defaultRole,
+          name: newName || defaultName,
+          lastName: newLastName || defaultLastName,
+          country: "MX",
           username: userName,
+          countryName: "Mexico",
           posts: [],
           languages: [],
         };
-  
-        await updateProfile(id, profileData);
+        //console.log("TOKEN:", token);
+        await updateProfile(id, profileData, token);
   
         console.log("Profile updated");
       } catch (error) {
-        console.log("Perfil no actualizado");
+        console.log("Perfil no actualizado", error);
       }
     } else {
       console.log("Faltan validaciones");
     }
   };
   
+// UseEffects
+useEffect(() => {
+  if (defaultName !== null) {
+    setNewName(defaultName);
+  }
+}, [defaultName]);
+
+useEffect(() => {
+  if (defaultLastName !== null) {
+    setNewLastName(defaultLastName);
+  }
+}, [defaultLastName]);
+
+useEffect(() => {
+  if (defaultBio !== null) {
+    setNewBio(defaultBio);
+  }
+}, [defaultBio]);
+
+useEffect(() => {
+  if (defaultGitHub !== null) {
+    setNewGitHub(defaultGitHub);
+  }
+}, [defaultGitHub]);
+
+useEffect(() => {
+  if (defaultLikedin !== null) {
+    setNewLikedin(defaultLikedin);
+  }
+}, [defaultLikedin]);
+
+useEffect(() => {
+  if (defaultImg !== null) {
+    setNewImg(defaultImg);
+  }
+}, [defaultImg]);
+
+useEffect(() => {
+  if (defaultBackground !== null) {
+    setNewBackground(defaultBackground);
+  }
+}, [defaultBackground]);
+
+useEffect(() => {
+  if (defaultRole !== null) {
+    setNewRole(defaultRole);
+  }
+}, [defaultRole]);
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -374,6 +395,18 @@ const ModalProfile = ({
     { name: 'AWS'},
   ];
 
+  // clear
+  const clearTextField = () => {
+    setNewName("");
+    setNewLastName("");
+    setNewBio("");
+    setNewGitHub("");
+    setNewLikedin("");
+    setNewImg("");
+    setNewBackground("");
+    setNewRole("");
+  };
+  
   return (
     <Modal
       open={open}
@@ -393,7 +426,7 @@ const ModalProfile = ({
             type="text"
             label="Name"
             variant="standard"
-            value={name}
+            value={newName}
             helperText={isValidName ? '' : 'Invalid name'}
             error={!isValidName}
             required
@@ -402,11 +435,11 @@ const ModalProfile = ({
           />
 
           <TextFields
-            id="last name"
+            id="lastName"
             type="text"
             label="Last Name"
             variant="standard"
-            value={lastName}
+            value={newLastName}
             helperText={isValidLastName ? '' : 'Invalid last name'}
             error={!isValidLastName}
             required
@@ -444,7 +477,7 @@ const ModalProfile = ({
             disablePortal
             id="paises"
             options={countries}
-            value={location}
+            value={countryName}
             onChange={handleInputCountryChange}
             renderInput={(params) => <TextFieldStyled {...params} label="Country"variant="standard" required/>}
           />
@@ -455,7 +488,10 @@ const ModalProfile = ({
               label="Bio"
               multiline
               rows={4}
-              value={bio}
+              value={newBio}
+              helperText={isValidBio? '' : 'Invalid bio'}
+              error={!isValidBio}
+              onChange={handleInputBioChange}
               sx={{
                 color: 'white',
                 width: '120%',
@@ -500,51 +536,51 @@ const ModalProfile = ({
             type="text"
             label="Github"
             variant="standard"
-            value={github}
-            helperText={github ? '' : 'Complete your GitHub'}
-            error={!isValidGit}
+            value={newGitHub}
+            helperText={isValidGitHub ? '' : 'Invalid GitHub name'}
+            error={!isValidGitHub}
             required
-            inputProps={{ style: { textTransform: 'capitalize' } }}
+            inputProps={{ style: { textTransform: "capitalize" } }}
             onChange={handleInputGitHubChange}
           />
 
           <TextFields
-            id="linkedin"
+            id="likedin"
             type="text"
             label="LinkedIn"
             variant="standard"
-            value={linkedin}
-            helperText={isValidLinkedin ? '' : 'Invalid LinkedIn name'}
-            error={!isValidLinkedin}
+            value={newLikedin}
+            helperText={isValidLikedin ? '' : 'Invalid LikedIn name'}
+            error={!isValidLikedin}
             required
             inputProps={{ style: { textTransform: 'capitalize' } }}
-            onChange={handleInputLinkedInChange}
+            onChange={handleInputLikedInChange}
           />
 
           <TextFields
-            id="imgProfile"
+            id="img"
             type="text"
             label="Profile Image"
             variant="standard"
-            value={imgProfile}
-            helperText={isValidImgProfile ? '' : 'Invalid url for image'}
-            error={!isValidImgProfile}
+            value={newImg}
+            helperText={isValidImg ? '' : 'Invalid url for image'}
+            error={!isValidImg}
             required
             inputProps={{ style: { textTransform: 'capitalize' } }}
-            onChange={handleInputImgProfileChange}
+            onChange={handleInputImgChange}
           />
 
           <TextFields
-            id="backgroundProfile"
+            id="background"
             type="text"
             label="Background Image"
             variant="standard"
-            value={backgroundProfile}
-            helperText={isValidBackgroundProfile ? '' : 'Invalid url for image'}
-            error={!isValidBackgroundProfile}
+            value={newBackground}
+            helperText={isValidBackground ? '' : 'Invalid url for image'}
+            error={!isValidBackground}
             required
             inputProps={{ style: { textTransform: 'capitalize' } }}
-            onChange={handleInputBackgroundProfileChange}
+            onChange={handleInputBackgroundChange}
           />
 
           <TextFields
@@ -552,7 +588,7 @@ const ModalProfile = ({
             type="text"
             label="Role"
             variant="standard"
-            value={role}
+            value={newRole}
             helperText={isValidRole ? '' : 'Invalid LinkedIn name'}
             error={!isValidRole}
             required

@@ -1,17 +1,37 @@
 import { BASE_URL } from "../config";
 import axios from "axios";
 
-/**
- * Función que actualiza un perfil de usuario
- * @param {number} id - ID del perfil a actualizar
- * @param {object} profileData - Datos del perfil a modificar
- */
-export const updateProfile = async (id, profileData) => {
+export const updateProfile = async (id, profileData, token) => {
   try {
-    await axios.put(`${BASE_URL}/users/${id}`, profileData);
-    console.log("Perfil actualizado correctamente");
+    const profileDto = {
+      id: profileData.id,
+      birthday: profileData.birthday,
+      age: profileData.age,
+      bio: profileData.bio,
+      img: profileData.img,
+      github: profileData.github,
+      likedin: profileData.likedin,
+      createdAt: profileData.createdAt,
+      background: profileData.background,
+      role: profileData.role,
+      name: profileData.name,
+      lastName: profileData.lastName,
+      country: profileData.country,
+      username: profileData.username,
+      countryName: profileData.countryName,
+      posts: profileData.posts,
+      languages: profileData.languages,
+    };
+
+    const response = await axios.put(`${BASE_URL}/profiles/dto/${id}`, profileDto, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    console.log("llega: ", profileData);
+    console.log("Respuesta del servidor", response.data);
   } catch (error) {
-    console.error("Error al actualizar el perfil", error);
+    console.error('Error al enviar la solicitud', error);
     throw error.response.data;
   }
 };
