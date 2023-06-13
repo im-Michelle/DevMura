@@ -37,19 +37,21 @@ const profile = JSON.parse(localStorage.getItem('ownProfile'));
 console.log("profile: ", profile);
 
 const ProfilePage = () => {
-
   // Info user/profile
-  const [name, setName] = useState(profile.name); // profile.user && profile.user.name
-  const [lastname, setLastName] = useState(profile.lastName); //profile.user && profile.user.lastName
-  const [userName, setUserName] = useState(profile.username); // profile.user && profile.user.username
-  const [bio, setBio] = useState(profile.bio); // profile.bio
-  const [role, setRole] = useState(profile.role); // profile.role
-  const [age, setAge] = useState(profile.age); // profile.user && profile.user.age
-  const [location, setLocation] = useState(profile.country); // profile.user && profile.user.country && profile.user.country.code
+  const [id, setId] = useState(profile.id); 
+  const [birthday, setBirthday] = useState(profile.birthday);
+  const [age, setAge] = useState(profile.age);
+  const [bio, setBio] = useState(profile.bio);
+  const [imgProfile, setImgProfile] = useState(profile.img);
   const [github, setGitHub] = useState(profile.github);
   const [linkedin, setLinkedin] = useState(profile.likedin);
-  const [imgProfile, setImgProfile] = useState(profile.img);
+  const [createdAt, setCreatedAt] = useState(profile.createdAt);
   const [backgroundProfile, setBackgroundProfile] = useState(profile.background);
+  const [role, setRole] = useState(profile.role);
+  const [name, setName] = useState(profile.name); 
+  const [lastname, setLastName] = useState(profile.lastName); 
+  const [userName, setUserName] = useState(profile.username);
+  //const [countryName, setCountryName] = useState(profile.countryName); 
 
   // Modal edit
   const [openModal, setOpenModal] = useState(false);
@@ -90,21 +92,22 @@ const ProfilePage = () => {
             <ModalProfile
               open={openModal}
               onClose={handleCloseModal}
-              name={name}
-              lastName={lastname}
-              bio={bio}
-              role={role}
+              id={id}
+              birthday={birthday}
               age={age}
-              location={location}
+              bio={bio}
+              imgProfile={imgProfile}
               github={github}
               linkedin={linkedin}
-              imgProfile={imgProfile}
+              createdAt={createdAt}
               backgroundProfile={backgroundProfile}
-/*               setName={setName}
- */            >
-{/*               <input type ="text" value={profile.user && profile.user.name} onChange={handleInputNameChange} />
- */}           </ModalProfile>
-            
+              role={role}
+              name={name}
+              lastName={lastname}
+              location={profile.countryName}
+              userName={profile.username}
+            />
+                        
             <HeaderProfileInfo
               name={profile.name}
               username={profile.username}

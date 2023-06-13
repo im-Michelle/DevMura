@@ -16,6 +16,7 @@ import Chip from '@mui/material/Chip'
 import { withTheme } from 'styled-components';
 
 import { getCountries } from "../../../service/Gets/countryService";
+import { updateProfile } from '../../../service/Puts/putProfile';
 
 const CustomAutoComplete = styled(Autocomplete)`
   color: ${colors.primaryText};
@@ -117,20 +118,50 @@ const LanguagesAutocomplete = styled(Autocomplete)`
   }
 `;
 
-const ModalProfile = ({ open, onClose, name, lastName, bio, role, age, location, github, linkedin, imgProfile, backgroundProfile }) => {
+const ModalProfile = ({ 
+  open, 
+  onClose, 
+  id,
+  birthday,
+  age,
+  bio,
+  imgProfile,
+  github,
+  linkedin,
+  createdAt,
+  backgroundProfile,
+  role,
+  name,
+  lastName,
+  location,
+  userName }) => {
+
   // valores de los inputs
   const [countries,setCountries] = useState([]);
+ // const [languages, setLanguages] = useState([]);
 
-  const [birthday, setBirthday] = useState(null);
   const [selectedCountry, setSelectedCountry] = useState("");
 
-  console.log("nombre",name);
-  console.log("bio",bio);
-  console.log("img",imgProfile);
-  console.log("github",github);
-  console.log("linkedin",linkedin);
-  console.log("back",backgroundProfile);
+  console.log("props",  id,
+  birthday,
+  age,
+  bio,
+  imgProfile,
+  github,
+  linkedin,
+  createdAt,
+  backgroundProfile,
+  role,
+  name,
+  lastName,
+  location,
+  userName); 
 
+  // Valores nuevos de los inputs
+  const [newRole, setNewRole] = useState("");
+
+  //validador boton
+  const [formSubmitted, setFormSubmitted] = useState(false);
 
   // validadores de los inputs
   const [isValidName, setIsValidName] = useState(true);
@@ -256,20 +287,16 @@ const ModalProfile = ({ open, onClose, name, lastName, bio, role, age, location,
 
   const handleInputRoleChange = (e) => {
     const inputValue = e.target.value;
-    const regexRole = 
-      "^[A-Za-záéíóúüñÁÉÍÓÚÜÑ]+(?: [A-Za-záéíóúüñÁÉÍÓÚÜÑ]+)*$";
-    if (
-      inputValue.length < 0 ||
-      inputValue.length > 100 ||
-      !inputValue.match(regexRole)
-    ) {
+    const regexRole = "^[A-Za-záéíóúüñÁÉÍÓÚÜÑ]+(?: [A-Za-záéíóúüñÁÉÍÓÚÜÑ]+)*$";
+    if (inputValue.length < 0 || inputValue.length > 100 || !inputValue.match(regexRole)) {
       setIsValidRole(false);
-      setRole(inputValue);
+      setNewRole(inputValue);
     } else {
-      setIsValiRole(true);
-      setRole(inputValue);
+      setIsValidRole(true);
+      setNewRole(inputValue);
     }
   };
+  
 
   const handleInputAgeChange = () => {
     if (birthday) {
@@ -294,9 +321,41 @@ const ModalProfile = ({ open, onClose, name, lastName, bio, role, age, location,
     }
   };
 
-  const handleChange = (event) => {
-    setBio(event.target.value);
+  const handleSubmmit = async () => {
+    if (isValidName && isValidLastName) {
+      try {
+        console.log("updating .........");
+  
+        const profileData = {
+          id: id,
+          birthday: birthday,
+          age: age,
+          bio: "hola mundo",
+          img: imgProfile,
+          github: github,
+          linkedin: linkedin,
+          createdAt: createdAt,
+          background: backgroundProfile,
+          role: role,
+          name: name,
+          lastName: lastName,
+          country: location,
+          username: userName,
+          posts: [],
+          languages: [],
+        };
+  
+        await updateProfile(id, profileData);
+  
+        console.log("Profile updated");
+      } catch (error) {
+        console.log("Perfil no actualizado");
+      }
+    } else {
+      console.log("Faltan validaciones");
+    }
   };
+  
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -442,7 +501,7 @@ const ModalProfile = ({ open, onClose, name, lastName, bio, role, age, location,
             label="Github"
             variant="standard"
             value={github}
-            helperText={isValidGit ? '' : 'Invalid GitHub name'}
+            helperText={github ? '' : 'Complete your GitHub'}
             error={!isValidGit}
             required
             inputProps={{ style: { textTransform: 'capitalize' } }}
@@ -534,6 +593,7 @@ const ModalProfile = ({ open, onClose, name, lastName, bio, role, age, location,
           <Button
             type="button"
             className='custom-button'
+            onClick={handleSubmmit}
             sx={{ color: 'white',backgroundColor: '#E63946',":hover":{backgroundColor:'#1D3557' } }} 
           > 
             Guardar 
