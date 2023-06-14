@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { NewNavBarFeed } from '../../components/Navbar-feed';
 import { colors } from '../../ui/colors';
@@ -33,30 +33,14 @@ const ProfileContainer = styled.div`
   position: relative;
 `;
 
-const profile = JSON.parse(localStorage.getItem('ownProfile'));
+//const profile = JSON.parse(localStorage.getItem('ownProfile'));
 const userDevMura = JSON.parse(localStorage.getItem('userDevmura'));
 //console.log("profile: ", profile);
 //console.log("TOKEN: ", userDevMura);
 
 const ProfilePage = () => {
   // Info user/profile
-  const [id, setId] = useState(profile.id); 
-  const [birthday, setBirthday] = useState(profile.birthday);
-  const [age, setAge] = useState(profile.age);
-  const [bio, setBio] = useState(profile.bio);
-  const [img, setImg] = useState(profile.img);
-  const [github, setGitHub] = useState(profile.github);
-  const [likedin, setLikedin] = useState(profile.likedin);
-  const [createdAt, setCreatedAt] = useState(profile.createdAt);
-  const [background, setBackground] = useState(profile.background);
-  const [role, setRole] = useState(profile.role);
-  const [name, setName] = useState(profile.name); 
-  const [lastName, setLastName] = useState(profile.lastName); 
-  const [userName, setUserName] = useState(profile.username);
-  const [countryName, setCountryName] = useState(profile.countryName);
-  const [countryCode, setCountryCode] = useState(profile.country);
-  const [token, setToken] = useState(userDevMura.token);
-
+  const [profile, setProfile] = useState(JSON.parse(localStorage.getItem('ownProfile')));
   //const [countryName, setCountryName] = useState(profile.countryName); 
 
   // Modal edit
@@ -68,11 +52,6 @@ const ProfilePage = () => {
 
   const handleCloseModal = () => {
     setOpenModal(false);
-  };
-
-
-  const handleInputNameChange = (event) => {
-    setName(event.target.value);
   };
 
   return (
@@ -98,22 +77,22 @@ const ProfilePage = () => {
             <ModalProfile
               open={openModal}
               onClose={handleCloseModal}
-              id={id}
-              birthday={birthday}
-              age={age}
-              bio={bio}
-              img={img}
-              github={github}
-              likedin={likedin}
-              createdAt={createdAt}
-              background={background}
-              role={role}
-              name={name}
-              lastName={lastName}
-              countryName={countryName}
-              countryCode={countryCode}
-              userName={userName}
-              token={token}
+              id={profile.id}
+              birthday={profile.birthday}
+              age={profile.age}
+              bio={profile.bio}
+              img={profile.img}
+              github={profile.github}
+              likedin={profile.likedin}
+              createdAt={profile.createdAt}
+              background={profile.background}
+              role={profile.role}
+              name={profile.name}
+              lastName={profile.lastName}
+              countryName={profile.countryName}
+              countryCode={profile.country}
+              userName={profile.username}
+              token={userDevMura.token}
             />
                         
             <HeaderProfileInfo
@@ -127,8 +106,8 @@ const ProfilePage = () => {
             />
           </ProfileContainer>
             <SocialNetworks
-              linkLinkedin={`https://www.linkedin.com/${profile.likedin}`}
-              linkGithub={`https://www.linkedin.com/${profile.github}`}
+              linkLinkedin={`${profile.likedin}`}
+              linkGithub={`${profile.github}`}
             />
             <Languages
               languages={["HTML", "CSS", "JavaScript", "React", "Angular", "Vue", "Svelte", "Node", "Express", "MongoDB", "SQL", "Python", "Java", "C", "CS", "C++", "Dart", "Flutter", "Go", "Django", "Docker",]}
