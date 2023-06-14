@@ -12,6 +12,7 @@ import LoaderFeed from "../../components/LoaderFeed";
 import { readLocalStorage } from "../../Utilities/readLocalStorage";
 import { getOwnUser } from "../../service/Gets/getOwnUserService";
 import InfiniteScroll from "react-infinite-scroll-component";
+import NoMorePosts from "../../components/NoMorePosts";
 
 const Main = styled.main`
   display: flex;
@@ -30,6 +31,9 @@ export const MainFeed = styled.main`
   width: 100%;
   max-width: 700px;
   gap: 30px;
+  @media (min-width: 1100px) {
+    width: 700px;
+  }
 `;
 
 const FeedContainer = styled.main`
@@ -48,6 +52,16 @@ const InfiniteScrollContainer = styled.div`
   max-width: 700px;
   gap: 30px;
 `
+const LoaderContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  padding: 4rem 0;
+`
+
+
 
 const SocialFeed = () => {
   const [userProfile, setUser] = useState({})
@@ -120,14 +134,14 @@ const SocialFeed = () => {
             aut={token}
             id={id}
           />
-
+          
           <InfiniteScrollContainer>
             <InfiniteScroll
             dataLength={posts.length}
             next={fetchMoreData}
             hasMore={true}
-            loader={<LoaderFeed/>}
-            endMessage={<p>Yay! You have seen it all</p>}
+            loader={<LoaderContainer><LoaderFeed/></LoaderContainer>  }
+            endMessage={<NoMorePosts/>}
             >
               {posts.map((post) => (
                 <Post
@@ -147,7 +161,6 @@ const SocialFeed = () => {
                 ))}
             </InfiniteScroll>
           </InfiniteScrollContainer>
-
         </MainFeed>
         </FeedContainer>
       </Main>
