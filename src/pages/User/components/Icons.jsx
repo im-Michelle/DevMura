@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { colors } from "../../../ui/colors";
 
+
 const IconContainer = styled.div`
     width: 70px;
     height: 70px;
@@ -25,13 +26,10 @@ const IconsLanguage = ({src}) => {
     const srcToLowerCase = src.toLowerCase();
     return (
         <IconContainer>
-            <Icon src={`public/languages/${srcToLowerCase}.svg`} alt={src} />
+            {/* //TODO wachar el path de la imagen por que no jala */}
+            <Icon src={`/public/languages/${srcToLowerCase}.svg`} alt={src} />
         </IconContainer>
     );
 };
 
 export default IconsLanguage;
-
-/* IconsLanguage.defaultProps = {
-    icons: [],
-}; */

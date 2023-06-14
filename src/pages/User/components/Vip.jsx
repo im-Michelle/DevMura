@@ -9,13 +9,17 @@ const VipLogo = styled.img`
             filter: drop-shadow(0 0 0.6rem #ffdc3f);
         }
     }
-        
 `
+const range = {
+    vip : "../../../../public/svg/vip.svg",
+    admin: "../../../../public/svg/admin.svg",
+    user: ""
+}
 
-const Vip = () =>{
+const Vip = ({role}) =>{
     return(
-       <Tooltip title="VIP MEMBER">
-        <VipLogo src="../../../../public/svg/vip.svg" alt="" />
+       <Tooltip title={role.toUpperCase()}>
+        <VipLogo src={range[role]} alt="" />
        </Tooltip>
     ) 
 }

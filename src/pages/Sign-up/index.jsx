@@ -19,7 +19,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Autocomplete from '@mui/material/Autocomplete';
 import { userRegister } from "../../service/Posts/userRegister";
 import { getCountries } from "../../service/Gets/countryService"
-
+//import { ModalSignUp } from "../../components/Modal/ModalSignUp/ModalSignUp";
 
 const Main = styled.main`
   width: 100%;
@@ -188,6 +188,19 @@ const SignUp = () => {
   const [countries,setCountries] = useState([]);
 
   const [passwordErrors, setPasswordErrors] = useState([]);
+
+  //estadp del modal de registro
+  
+  const [open, setOpen] = useState(false);
+
+  // funcion para abir el modal
+  const handleOpenModal = () =>{
+    setOpen(true);
+  }
+  // funcion para cerrar el modal
+  const handleCloseModal = () =>{
+    setOpen(false);
+  }
 
   // Validadores del password uno por uno
 
@@ -358,20 +371,17 @@ const SignUp = () => {
       terms
     ) {
       try{
-        
         await userRegister(name, lastName, age, email, userName, password, gender ,selectedCountry.id);
-        //console.log("Usuario Registrado");
-
+        handleOpenModal();
+        console.log("Usuario registrado");
       } catch (error){
-        //console.log("HOOORROOOR")
         setSnackbarMessage(error); 
         setSnackbarOpen(true);
         resetSnackbar();
-        //console.log("error", snackbarMessage);
-        //console.log("Error:" , error);
       }
     } else {
       console.log("Usuario no registrado");
+
     }
     setSnackbarOpen(false);
   };

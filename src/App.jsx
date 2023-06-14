@@ -22,7 +22,6 @@ function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    // Simula una carga de datos o cualquier proceso asíncrono
     setTimeout(() => {
       setIsLoading(false);
     }, 1500);
