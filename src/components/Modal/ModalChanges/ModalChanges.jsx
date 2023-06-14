@@ -22,7 +22,7 @@ const ModalChanges = ({ open, onClose, onDiscardChanges }) => {
       >
         <Box className="modal-containerM"  sx={{p: 2}}>
           <div id='titleM'>
-            <h5 id="parent-modal-title" style={{ color: colors.lightBlue , textAlign:'center'}}>Descartar cambios</h5>
+            <h5 id="parent-modal-title" style={{ color: colors.lightBlue , textAlign:'center'}}>Discard Changes</h5>
           </div>
           <div id="ask">
             <p style={{ color: colors.primaryText , textAlign:'center'}}> Are you sure that you want to eliminate changes? </p>

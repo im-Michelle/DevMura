@@ -2,15 +2,14 @@ import React from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 
-const CustomSnackbar = ({ severity, message }) => {
-  const [open, setOpen] = React.useState(true);
-
+const CustomSnackbar = ({open, severity, message, onClose }) => {
+  
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;
     }
 
-    setOpen(false);
+    onClose();
   };
 
   return (
