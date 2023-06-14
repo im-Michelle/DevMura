@@ -18,6 +18,8 @@ const PostContainer = styled.div`
   width: 90%;
   border-radius: 10px;
   box-shadow: 0 5px 8px #00000082;
+  margin: 0 auto;
+  margin-bottom: 25px;
 `;
 const PostEncabezado = styled.div`
   display: flex;
@@ -73,8 +75,9 @@ const Time = styled.h4`
 const PostBody = styled.div`
   display: flex;
   height: auto;
+  width: 100%;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-around;
   margin-top: 10px;
   margin-right: 10px;
@@ -86,20 +89,20 @@ const BodyText = styled.p`
   margin: 0;
   color: ${colors.primaryText};
   text-align: left;
-  width: 100%;
+  width: 95%;
 `;
 const PostImg = styled.img`
   width: 100%;
   height: auto;
   max-height: 500px;
   object-fit: cover;
-  border-radius: 10px;
+  //border-radius: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
 `;
 const PostFooter = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   align-items: center;
   justify-content: space-between;
   width: 90%;
@@ -108,13 +111,13 @@ const PostFooter = styled.div`
 `;
 const IconosLike = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   align-items: center;
   gap: 10px;
-  width: 50%;
+  /* width: 50%; */
 `;
 
-const Post = ({ id, firstName, lastName, role, userName, time, img, bodyText, postImg, userId, liked }) => {
+const Post = ({ id, firstName, lastName, role, userName, time, img, bodyText, postImg, userId, liked}) => {
 
   const [like, setLike] = useState( !liked );
 
@@ -125,9 +128,9 @@ const Post = ({ id, firstName, lastName, role, userName, time, img, bodyText, po
   const fullName = `${firstName} ${lastName}`
 
   return (
-    <PostContainer key={id}>
+    <PostContainer>
       <PostEncabezado>
-        <ProfileImg src={img ? img : "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"}   alt={name} />
+        <ProfileImg src={img ? img : "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"} alt={fullName} />
         <ProfilesPost>
           <Name to={`/user/${userId}`} >{fullName}</Name>
           <UserName>@{userName}</UserName>
@@ -159,7 +162,7 @@ Post.defaultProps = {
   userName: "No userName to show",
   time: "time",
   img: "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",
-  bodyText: "bodyText",
+  bodyText: "No text to show",
   role: "No role to show",
   liked: false,
 };

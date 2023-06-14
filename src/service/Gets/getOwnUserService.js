@@ -9,8 +9,10 @@ export const getOwnUser = async ( ownId, token) =>{
                 Authorization: `Bearer ${token}`
             }
         });
-        localStorage.setItem("ownProfile", JSON.stringify(response.data));
-        return response.data;
+        
+            localStorage.setItem("ownProfile", JSON.stringify(response.data));
+            return response.data;
+        
     }catch(e){
         console.error("No user fetch", e);
         console.error(e.response);

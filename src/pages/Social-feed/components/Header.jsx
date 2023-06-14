@@ -9,7 +9,7 @@ const Main = styled.header`
   width: 90%;
   max-width: 700px;
   height: max-content;
-  margin: 0 auto;
+  
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -19,15 +19,14 @@ const Main = styled.header`
 `;
 
 const ProfileImg = styled.img`
-  width: 90px;
-  height: 90px;
+  width: 95px;
+  height: 95px;
   object-fit: cover;
   border-radius: 50%;
   margin: 5px 0;
-  border: 2px solid ${colors.secondary};
 `;
 const UserName = styled.h2`
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-weight: 500;
   color: white;
   display: flex;
@@ -37,12 +36,12 @@ const UserName = styled.h2`
   backdrop-filter: blur(10px);
 `;
 const Name = styled.h2`
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 500;
   color: white;
 `;
 const LastName = styled.h2`
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 500;
   color: white;
 `;

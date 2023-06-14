@@ -6,6 +6,9 @@ import HeaderProfileInfo from './components/HeaderProfileInfo';
 import Languages from './components/Languages';
 import SocialNetworks from './components/SocialNetworks';
 import FriendOrNotFriend from './components/Friend';
+import { useState } from 'react';
+import { useEffect } from 'react';
+import { getUserByID } from '../../service/Gets/userService';
 
 const MainAll = styled.main`
   display: flex;
@@ -29,25 +32,44 @@ const ProfileContainer = styled.div`
   position: relative;
 `;
 
+
+const profile = JSON.parse(localStorage.getItem('ownProfile'));
+const token =  JSON.parse(localStorage.getItem('userDevmura'));
+
 const UserPage = () => {
+
+  const [user, setUser] = useState({});
+  useEffect(() => {
+    const userPath = window.location.pathname.split("/")[2];
+    getUserByID( userPath , token["token"])
+      .then((res) => {
+        setUser(res)
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  
 
   return (
     <>
-        <NewNavBarFeed/>
+        <NewNavBarFeed
+          userImg={profile.img}
+        />
         <MainAll> 
           <ProfileContainer>
             <HeaderProfile
-              headerImg="https://images.pexels.com/photos/2387819/pexels-photo-2387819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              avatarImg="https://images.pexels.com/photos/10106827/pexels-photo-10106827.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              headerImg={user.background ? user.background : "https://images.pexels.com/photos/2387819/pexels-photo-2387819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"}
+              avatarImg={user.img ? user.img : "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"}
+              vip={user.userRoles ? user.userRoles : ["vip"]}
             />
             <HeaderProfileInfo
-              name="Usuario"
-              username="Por definir"
-              lastName="Pedro paramos"
-              role="Don chingon"
-              location="US"
-              createdAt="1999-10-10T00:00:00.000Z"
-              bio="Me gusta el perico y los excesos alv"
+              name={user.name ? user.name : "User not found"}
+              username={user.username ? user.username : "not found"}
+              lastName={user.lastName ? user.lastName : "not found"}
+              role={user.role ? user.role : ""}
+              location={user.country}
+              createdAt={user.createdAt}
+              bio={user.bio ? user.bio : "--"}
             />
             
           </ProfileContainer>
@@ -56,11 +78,11 @@ const UserPage = () => {
             linkToMessage="/message"
           />
             <SocialNetworks
-              linkLinkedin="https://www.linkedin.com/"
-              linkGithub="https://www.linkedin.com/"
+              linkLinkedin={`https://www.linkedin.com/${user.linkedin}`}
+              linkGithub={`https://www.github.com/${user.github}`}
             />
             <Languages
-              languages={["Express", "MongoDB", "SQL", "Python", "Java", "C++", "CS", "C++", "Dart", "Flutter", "Go", "Django", "Docker",]}
+              languages={user.languageProfiles ? user.languageProfiles : ["Java", "JavaScript"]}
             />
         </MainAll>
         

@@ -3,7 +3,7 @@ import { colors } from "../../../ui/colors";
 import * as React from "react";
 import TextField from '@mui/material/TextField';
 import ImageIcon from '@mui/icons-material/Image';
-import { posts } from "../../../data/posts";
+import { createPost } from "../../../service/Posts/createPost";
 
 
 const AddPostContainer = styled.div`
@@ -88,15 +88,18 @@ const ContainerImg = styled.div`
 `;
 
 
-const AddPost = ({ id, name, lastName, role, userName, img }) => {
+const AddPost = ({ aut , id}) => {
+  //console.log("aut", aut)
   const [activeButton, setActiveButton] = React.useState(true);
   const [showButtons, setShowButtons] = React.useState(false);
   const [showImgInput, setShowImgInput] = React.useState(false);
 
+  const [imgSource, setImgSource] = React.useState("");
+  const [postText, setPostText] = React.useState("");
+
   const [post, setPost] = React.useState({});
 
   const handleButton = (e) => {
-    setPost(e.target.value);
     if (e.target.value.length === 0) {
       setActiveButton(true);
     } else if (e.target.value.length > 250) {
@@ -106,19 +109,16 @@ const AddPost = ({ id, name, lastName, role, userName, img }) => {
     }
   };
 
-  const sendPost = () => {
-    let newPost ={
-      key: Date.now(),
-      name: `${name} ${lastName}`,
-      role: `${role}`,
-      userName: `${userName}`,
-      time: "just now",
-      img: `${img}`,
-      bodyText: post,
-      postImg: "",
-    }
-    posts.unshift(newPost);
-    setPost("");
+  const handlePostTextChange = (e) => {
+    setPostText(e.target.value);
+  };
+  const handleImgSourceChange = (e) => {
+    setImgSource(e.target.value);
+  };
+
+  const sendPost = async () => {
+    await createPost(postText, 0 , imgSource , aut, id);
+    setPostText("");
     setShowButtons(false);
     setShowImgInput(false);
   };
@@ -132,6 +132,8 @@ const AddPost = ({ id, name, lastName, role, userName, img }) => {
           multiline
           onFocus={() => setShowButtons(true)}
           onChange={handleButton}
+          onChangeCapture={handlePostTextChange}
+          value={postText}
           max={250}
           sx={{ 
             width: '100%', 
@@ -169,6 +171,8 @@ const AddPost = ({ id, name, lastName, role, userName, img }) => {
               type="text" 
               label="Add a link to an image"
               variant="standard"
+              value={imgSource}
+              onChange={handleImgSourceChange}
               sx={{
                 '& .MuiOutlinedInput-root': {
                   '& fieldset': {
