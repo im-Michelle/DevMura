@@ -34,10 +34,32 @@ const ProfileContainer = styled.div`
 `;
 
 const profile = JSON.parse(localStorage.getItem('ownProfile'));
+const userDevMura = JSON.parse(localStorage.getItem('userDevmura'));
+//console.log("profile: ", profile);
+//console.log("TOKEN: ", userDevMura);
 
 const ProfilePage = () => {
-  
+  // Info user/profile
+  const [id, setId] = useState(profile.id); 
+  const [birthday, setBirthday] = useState(profile.birthday);
+  const [age, setAge] = useState(profile.age);
+  const [bio, setBio] = useState(profile.bio);
+  const [img, setImg] = useState(profile.img);
+  const [github, setGitHub] = useState(profile.github);
+  const [likedin, setLikedin] = useState(profile.likedin);
+  const [createdAt, setCreatedAt] = useState(profile.createdAt);
+  const [background, setBackground] = useState(profile.background);
+  const [role, setRole] = useState(profile.role);
+  const [name, setName] = useState(profile.name); 
+  const [lastName, setLastName] = useState(profile.lastName); 
+  const [userName, setUserName] = useState(profile.username);
+  const [countryName, setCountryName] = useState(profile.countryName);
+  const [countryCode, setCountryCode] = useState(profile.country);
+  const [token, setToken] = useState(userDevMura.token);
 
+  //const [countryName, setCountryName] = useState(profile.countryName); 
+
+  // Modal edit
   const [openModal, setOpenModal] = useState(false);
 
   const handleOpenModal = () => {
@@ -49,14 +71,10 @@ const ProfilePage = () => {
   };
 
 
-  const [name, setName] = useState("Mari");
-  const [lastName, setLastName] = useState("Korz");
-  const [role, setRole] = useState("Frontend Developer");
-  const [bio, setBio] = useState("I'm a frontend developer with 2 years of experience in the industry. I'm currently working at a startup called DevMura, where I'm in charge of the frontend development of the platform.");
-
   const handleInputNameChange = (event) => {
     setName(event.target.value);
   };
+
   return (
     <>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -80,15 +98,24 @@ const ProfilePage = () => {
             <ModalProfile
               open={openModal}
               onClose={handleCloseModal}
+              id={id}
+              birthday={birthday}
+              age={age}
+              bio={bio}
+              img={img}
+              github={github}
+              likedin={likedin}
+              createdAt={createdAt}
+              background={background}
+              role={role}
               name={name}
               lastName={lastName}
-              bio={bio}
-              role={role}
-              setName={setName}
-            >
-              <input type ="text" value={name} onChange={handleInputNameChange} />
-            </ModalProfile>
-            
+              countryName={countryName}
+              countryCode={countryCode}
+              userName={userName}
+              token={token}
+            />
+                        
             <HeaderProfileInfo
               name={profile.name}
               username={profile.username}
