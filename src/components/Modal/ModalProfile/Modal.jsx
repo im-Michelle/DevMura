@@ -15,6 +15,7 @@ import TextField from "@mui/material/TextField";
 import Chip from '@mui/material/Chip'
 import { withTheme } from 'styled-components';
 
+import { getLanguages } from '../../../service/Gets/languageService';
 import { getCountries } from "../../../service/Gets/countryService";
 import { updateProfile } from '../../../service/Puts/putProfile';
 
@@ -122,8 +123,8 @@ const ModalProfile = ({
   open, 
   onClose, 
   id,
-  birthday,
-  age,
+  birthday: defaultBirthday,
+  age: defaultAge,
   bio: defaultBio,
   img: defaultImg,
   github: defaultGitHub,
@@ -132,14 +133,14 @@ const ModalProfile = ({
   background: defaultBackground,
   role: defaultRole,
   name: defaultName,
-  lastName: defaultLastName,
-  country, 
-  countryName,
+  lastName: defaultLastName, 
+  countryName: defaultCountryName,
+  countryCode: defaultCountryCode,
   userName,
   token }) => {
   // valores de countries y languages
   const [countries,setCountries] = useState([]);
- // const [languages, setLanguages] = useState([]);
+  const [languages, setLanguages] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState("");
 
   // Valores nuevos de los inputs
@@ -270,38 +271,47 @@ const ModalProfile = ({
     }
   };
 
-  const handleInputAgeChange = () => {
-    if (birthday) {
+  const handleInputAgeChange = (date) => {
+    if (date) {
+      const formattedDate = date.toISOString().split("T")[0];
+      setNewBirthday(formattedDate);
       const today = new Date();
-      const birthDate = new Date(birthday);
-      let age = today.getFullYear() - birthDate.getFullYear();
+      const birthDate = new Date(date);
+      let newAge = today.getFullYear() - birthDate.getFullYear();
       const monthDiff = today.getMonth() - birthDate.getMonth();
   
       if (monthDiff < 0 || (monthDiff === 0 && today.getDate() < birthDate.getDate())) {
-        age--;
+        newAge--;
       }
   
-      if (age < 18 || age > 100) {
+      if (newAge < 18 || newAge > 100) {
         setAgeError('Invalid age');
       } else {
         setAgeError('');
       }
   
-      setAge(age.toString());
+      setNewAge(newAge.toString());
     } else {
-      setAge('');
+      setNewBirthday('');
+      setNewAge('');
     }
-  };
+  };  
 
   const handleSubmmit = async () => {
-    if (isValidName && isValidLastName) {
+    if (isValidName && 
+      isValidLastName &&
+      isValidBio &&
+      isValidGitHub &&
+      isValidLikedin &&
+      isValidImg &&
+      isValidBackground &&
+      isValidRole) {
       try {
         console.log("updating .........");
-  
         const profileData = {
           id: id,
-          birthday: birthday,
-          age: age,
+          birthday: newBirthday,
+          age: newAge || age,
           bio: newBio || defaultBio,
           img: newImg || defaultImg,
           github: newGitHub || defaultGitHub,
@@ -311,12 +321,13 @@ const ModalProfile = ({
           role: newRole || defaultRole,
           name: newName || defaultName,
           lastName: newLastName || defaultLastName,
-          country: "MX",
+          country: selectedCountry.code || defaultCountryCode,
           username: userName,
-          countryName: "Mexico",
+          countryName: selectedCountry.label || defaultCountryName,
           posts: [],
           languages: [],
         };
+        //console.log(profileData);
         //console.log("TOKEN:", token);
         await updateProfile(id, profileData, token);
   
@@ -326,7 +337,7 @@ const ModalProfile = ({
       }
     } else {
       console.log("Faltan validaciones");
-    }
+    } 
   };
   
 // UseEffects
@@ -341,6 +352,12 @@ useEffect(() => {
     setNewLastName(defaultLastName);
   }
 }, [defaultLastName]);
+
+useEffect(() => {
+  if (defaultCountryName !== null) {
+    setSelectedCountry(defaultCountryName);
+  }
+}, [defaultCountryName]);
 
 useEffect(() => {
   if (defaultBio !== null) {
@@ -378,6 +395,21 @@ useEffect(() => {
   }
 }, [defaultRole]);
 
+useEffect(() => {
+  if (defaultAge !== null) {
+    setNewAge(defaultAge);
+  }
+}, [defaultAge]);
+
+useEffect(() => {
+  let fechaFormato = new Date(defaultBirthday);
+  let nuevoFormato = fechaFormato.toISOString().split('T')[0];
+
+  if (defaultBirthday !== null) {
+    setNewBirthday(nuevoFormato);
+  }
+}, [defaultBirthday]);
+
   useEffect(() => {
     const fetchCountries = async () => {
       const countries = await getCountries();
@@ -387,13 +419,14 @@ useEffect(() => {
     fetchCountries();
   }, []);
 
-  const languages = [
-    { name: 'Ada'},
-    { name: 'Angular'},
-    { name: 'ASP. NET'},
-    { name: 'Assembly'},
-    { name: 'AWS'},
-  ];
+  useEffect(() => {
+    const fetchLanguages = async () => {
+      const languages = await getLanguages(token);
+      setLanguages(languages);
+    };
+  
+    fetchLanguages();
+  }, []);
 
   // clear
   const clearTextField = () => {
@@ -406,7 +439,7 @@ useEffect(() => {
     setNewBackground("");
     setNewRole("");
   };
-  
+
   return (
     <Modal
       open={open}
@@ -451,12 +484,19 @@ useEffect(() => {
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DemoContainer components={['DatePicker']}>
                 <DatePicker
-                  label="Birthday"
                   className="customDatePicker"
-                  onChange={(date) => {
-                    setBirthday(date);
-                    handleInputAgeChange();
-                  }}
+                  onChange={handleInputAgeChange}
+                  renderInput={(props) => (
+                    <TextFieldStyled
+                      {...props}
+                      label="Date of Birth"
+                      variant="standard"
+                      helperText={ageError || ''}
+                      error={Boolean(ageError)}
+                      required
+                      sx={{ mt: 2 }}
+                    />
+                  )}
                 />
               </DemoContainer>
             </LocalizationProvider>
@@ -465,7 +505,7 @@ useEffect(() => {
               id="age"
               label="Age"
               variant="standard"
-              value={age ? age.toString() : ""}
+              value={newAge ? newAge.toString() : ""}
               readOnly
               sx={{ width: '20%'}}
               helperText={ageError}
@@ -477,7 +517,7 @@ useEffect(() => {
             disablePortal
             id="paises"
             options={countries}
-            value={countryName}
+            value={selectedCountry}
             onChange={handleInputCountryChange}
             renderInput={(params) => <TextFieldStyled {...params} label="Country"variant="standard" required/>}
           />
@@ -600,12 +640,12 @@ useEffect(() => {
             multiple
             id="tags-standard"
             options={languages}
-            getOptionLabel={(option) => option.name}
+            getOptionLabel={(option) => option.label}
             defaultValue={[languages[3]]}
             renderTags={(value, getTagProps) =>
               value.map((option, index) => (
                 <Chip
-                  label={option.name}
+                  label={option.label}
                   {...getTagProps({ index })}
                   sx={{
                     backgroundColor: colors.contrast,

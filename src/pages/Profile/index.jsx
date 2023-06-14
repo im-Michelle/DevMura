@@ -53,8 +53,8 @@ const ProfilePage = () => {
   const [name, setName] = useState(profile.name); 
   const [lastName, setLastName] = useState(profile.lastName); 
   const [userName, setUserName] = useState(profile.username);
-  const [country, setCountry] = useState(profile.country);
   const [countryName, setCountryName] = useState(profile.countryName);
+  const [countryCode, setCountryCode] = useState(profile.country);
   const [token, setToken] = useState(userDevMura.token);
 
   //const [countryName, setCountryName] = useState(profile.countryName); 
@@ -110,8 +110,8 @@ const ProfilePage = () => {
               role={role}
               name={name}
               lastName={lastName}
-              country={country}
               countryName={countryName}
+              countryCode={countryCode}
               userName={userName}
               token={token}
             />
