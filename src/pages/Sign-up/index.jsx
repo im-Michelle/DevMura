@@ -19,7 +19,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Autocomplete from '@mui/material/Autocomplete';
 import { userRegister } from "../../service/Posts/userRegister";
 import { getCountries } from "../../service/Gets/countryService"
-//import { ModalSignUp } from "../../components/Modal/ModalSignUp/ModalSignUp";
+import  ModalSignUp  from "../../components/Modal/ModalSignUp/ModalSignUp";
 
 const Main = styled.main`
   width: 100%;
@@ -146,11 +146,20 @@ const CustomAutoComplete = styled(Autocomplete)`
   .MuiInputLabel-root.Mui-focused {
     color: ${colors.lightBlue};
   }
-  
-
 `;
 
 const SignUp = () => {
+  //Modal SignUp
+  const [openModalSignUp, setOpenModalSignUp] = useState(false);
+
+    const handleOpenModalSignUp = () => {
+        setOpenModalSignUp(true);
+    };
+
+    const handleCloseModalSignUp = () => {
+        setOpenModalSignUp(false);
+    };
+
   const [formValues, setFormValues] = useState({});
 
   // Mensajes de error 
@@ -357,8 +366,19 @@ const SignUp = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(formValues);
   };
+
+  const handleClearLabels = () =>{
+    setName("");
+    setLastName("");
+    setUserName("");
+    setEmail("");
+    setPassword("");
+    setAge("");
+    setSelectedCountry("");
+    setGender("");
+    setFormValues({});
+  }
 
   const handleSubmmit = async () => {
     if (
@@ -372,18 +392,16 @@ const SignUp = () => {
     ) {
       try{
         await userRegister(name, lastName, age, email, userName, password, gender ,selectedCountry.id);
-        handleOpenModal();
-        console.log("Usuario registrado");
+        handleOpenModalSignUp();
+        handleClearLabels();
       } catch (error){
         setSnackbarMessage(error); 
         setSnackbarOpen(true);
-        resetSnackbar();
       }
     } else {
-      console.log("Usuario no registrado");
-
+      setSnackbarMessage("User not register");
+      setSnackbarOpen(true);
     }
-    setSnackbarOpen(false);
   };
   const handleTerms = () => {
     if (terms ) {
@@ -402,13 +420,8 @@ const SignUp = () => {
     fetchCountries();
   }, []);
 
-  //SnackBar
-  const resetSnackbar = () => {
-    setSnackbarOpen(false);
-  };
-
   const handleSnackbarClose = () => {
-    resetSnackbar();
+      setSnackbarOpen(false);
   };  
 
   useEffect(() => {
@@ -426,7 +439,9 @@ const SignUp = () => {
   }, [snackbarOpen]);
 
   // Verifica si hay un mensaje en el Snackbar antes de mostrarlo
-  const isSnackbarEmpty = snackbarMessage.trim() === "";
+
+
+  const isSnackbarEmpty = typeof snackbarMessage === 'string' && snackbarMessage.trim() === "";
  
   return (
     <>
@@ -592,6 +607,7 @@ const SignUp = () => {
             >
               Sign Up
             </Button>
+            <ModalSignUp open={openModalSignUp} onClose={handleCloseModalSignUp} />
           </Stack>
           <MessageLogin>
             Already have an account? <LinkReactRouter to="/sign-in">Sign in</LinkReactRouter>
