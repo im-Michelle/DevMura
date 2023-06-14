@@ -12,12 +12,14 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import TextField from "@mui/material/TextField";
+import MiniModal from "../../Modal/ModalChanges/ModalChanges"
 import Chip from '@mui/material/Chip'
 import { withTheme } from 'styled-components';
 
 import { getLanguages } from '../../../service/Gets/languageService';
 import { getCountries } from "../../../service/Gets/countryService";
 import { updateProfile } from '../../../service/Puts/putProfile';
+import { json } from 'react-router';
 
 const CustomAutoComplete = styled(Autocomplete)`
   color: ${colors.primaryText};
@@ -137,7 +139,12 @@ const ModalProfile = ({
   countryName: defaultCountryName,
   countryCode: defaultCountryCode,
   userName,
-  token }) => {
+  token,
+  profile, 
+  setProfile}) => {
+  //Mini modal
+  const [showMiniModal, setShowMiniModal] = useState(false);
+
   // valores de countries y languages
   const [countries,setCountries] = useState([]);
   const [languages, setLanguages] = useState([]);
@@ -154,9 +161,6 @@ const ModalProfile = ({
   const [newRole, setNewRole] = useState("");
   const [newName, setNewName] = useState("");
   const [newLastName, setNewLastName] = useState("");
-
-  //validador boton
-  const [formSubmitted, setFormSubmitted] = useState(false);
 
   // validadores de los inputs
   const [isValidName, setIsValidName] = useState(true);
@@ -213,8 +217,8 @@ const ModalProfile = ({
 
   const handleInputGitHubChange = (e) => {
     const newGitHub = e.target.value;
-    const regexGitHub = /^[A-Za-záéíóúüñÁÉÍÓÚÜÑ0-9]+(?: [A-Za-záéíóúüñÁÉÍÓÚÜÑ0-9]+)*$/;
-    if ( newGitHub.length > 50 || !newGitHub.match(regexGitHub)) {
+    const regexGitHub = /^https:\/\/github\.com\/.*$/;
+    if (newGitHub.length > 50 || !newGitHub.match(regexGitHub)) {
       setIsValidGitHub(false);
     } else {
       setIsValidGitHub(true);
@@ -224,14 +228,14 @@ const ModalProfile = ({
 
   const handleInputLikedInChange = (e) => {
     const newLikedin = e.target.value;
-    const regexLikedIn = /^[A-Za-záéíóúüñÁÉÍÓÚÜÑ0-9]+(?: [A-Za-záéíóúüñÁÉÍÓÚÜÑ0-9]+)*$/;
+    const regexLikedIn =  /^https:\/\/www\.linkedin\.com\/in\/.*$/;
     if (newLikedin.length > 100 || !newLikedin.match(regexLikedIn)) {
       setIsValidLikedin(false);
     } else {
       setIsValidLikedin(true);
       setNewLikedin(newLikedin);
     }
-  };
+  };  
 
   const handleInputImgChange = (e) => {
     const newImg = e.target.value;
@@ -327,10 +331,9 @@ const ModalProfile = ({
           posts: [],
           languages: [],
         };
-        //console.log(profileData);
-        //console.log("TOKEN:", token);
         await updateProfile(id, profileData, token);
-  
+        handleSaveChanges();
+        handleLocalChanges(profile);
         console.log("Profile updated");
       } catch (error) {
         console.log("Perfil no actualizado", error);
@@ -339,6 +342,61 @@ const ModalProfile = ({
       console.log("Faltan validaciones");
     } 
   };
+
+const handleSaveChanges = () =>{
+  defaultName = newName;
+  defaultLastName = newLastName;
+  defaultBirthday = newBirthday;
+  defaultAge = newAge;
+  defaultBio = newBio;
+  defaultCountryName = selectedCountry;
+  defaultGitHub = newGitHub;
+  defaultLikedin = newLikedin;
+  defaultImg = newImg;
+  defaultBackground = newBackground;
+  defaultRole = newRole;
+}
+
+const handleLocalChanges = (profile) => {
+  localStorage.removeItem("name");
+  localStorage.removeItem("lastName");
+  localStorage.removeItem("birthday");
+  localStorage.removeItem("age");
+  localStorage.removeItem("bio");
+  localStorage.removeItem("countryName");
+  localStorage.removeItem("github");
+  localStorage.removeItem("likedin");
+  localStorage.removeItem("img");
+  localStorage.removeItem("background");
+  localStorage.removeItem("role");
+
+  localStorage.setItem("name", newName);
+  localStorage.setItem("lastName", newLastName);
+  localStorage.setItem("birthday", newBirthday);
+  localStorage.setItem("age", newAge);
+  localStorage.setItem("bio", newBio);
+  localStorage.setItem("countryName", selectedCountry);
+  localStorage.setItem("github", newGitHub);
+  localStorage.setItem("likedin", newLikedin);
+  localStorage.setItem("img", newImg);
+  localStorage.setItem("background", newBackground);
+  localStorage.setItem("role", newRole);
+
+  setProfile({...profile, 
+    name: newName, 
+    lastName: newLastName,
+    birthday: newBirthday,
+    age: newAge,
+    bio: newBio,
+    countryName: selectedCountry,
+    github: newGitHub,
+    likedin: newLikedin,
+    img: newImg,
+    background: newBackground,
+    role: newRole});
+
+  handleClose();
+}
   
 // UseEffects
 useEffect(() => {
@@ -362,36 +420,48 @@ useEffect(() => {
 useEffect(() => {
   if (defaultBio !== null) {
     setNewBio(defaultBio);
+  }else if (defaultBio === null){
+    setNewBio(null);
   }
 }, [defaultBio]);
 
 useEffect(() => {
   if (defaultGitHub !== null) {
     setNewGitHub(defaultGitHub);
+  }else if (defaultGitHub === null){
+    setNewGitHub(null);
   }
 }, [defaultGitHub]);
 
 useEffect(() => {
   if (defaultLikedin !== null) {
     setNewLikedin(defaultLikedin);
+  }else if (defaultLikedin === null){
+    setNewLikedin(null);
   }
 }, [defaultLikedin]);
 
 useEffect(() => {
   if (defaultImg !== null) {
     setNewImg(defaultImg);
+  }else if (defaultImg === null){
+    setNewImg(null);
   }
 }, [defaultImg]);
 
 useEffect(() => {
   if (defaultBackground !== null) {
     setNewBackground(defaultBackground);
+  }else if (defaultBackground === null){
+    setNewBackground(null);
   }
 }, [defaultBackground]);
 
 useEffect(() => {
   if (defaultRole !== null) {
     setNewRole(defaultRole);
+  }else if (defaultRole === null){
+    setNewRole(null);
   }
 }, [defaultRole]);
 
@@ -407,6 +477,8 @@ useEffect(() => {
 
   if (defaultBirthday !== null) {
     setNewBirthday(nuevoFormato);
+  }else if (defaultBirthday === null){
+    setNewBirthday(null);
   }
 }, [defaultBirthday]);
 
@@ -428,255 +500,296 @@ useEffect(() => {
     fetchLanguages();
   }, []);
 
-  // clear
-  const clearTextField = () => {
-    setNewName("");
-    setNewLastName("");
-    setNewBio("");
-    setNewGitHub("");
-    setNewLikedin("");
-    setNewImg("");
-    setNewBackground("");
-    setNewRole("");
+/*   console.log("D:", defaultName, "N:", newName);
+  console.log("D:", defaultLastName, "N:", newLastName);
+  console.log("D:", defaultBirthday, "N:", newBirthday);
+  console.log("D:", defaultAge, "N:", newAge);
+  console.log("D:", defaultCountryName, "N:", selectedCountry);
+  console.log("D:", defaultBio, "N:", newBio);
+  console.log("D:", defaultGitHub, "N:", newGitHub);
+  console.log("D:", defaultLikedin, "N:", newLikedin);
+  console.log("D:", defaultImg, "N:", newImg);
+  console.log("D:", defaultBackground, "N:", newBackground);
+  console.log("D:", defaultRole, "N:", newRole);  */
+
+  //Funcion del miniModal
+  const handleClose = () => {
+    if (defaultName === newName &&
+        defaultLastName === newLastName &&
+        defaultAge === newAge &&
+        defaultCountryName === selectedCountry &&
+        defaultBio === newBio &&
+        defaultGitHub === newGitHub &&
+        defaultLikedin === newLikedin &&
+        defaultImg === newImg &&
+        defaultBackground === newBackground &&
+        defaultRole === newRole){
+        onClose();
+    } else {
+      setShowMiniModal(true);
+    }
+  };
+
+  const handleMiniModalClose = () => {
+    setShowMiniModal(false);
+  };
+
+  const handleDiscardChanges = () => {
+    setNewName(defaultName);
+    setNewLastName(defaultLastName);
+    setNewAge(defaultAge);
+    setSelectedCountry(defaultCountryName);
+    setNewBio(defaultBio);
+    setNewGitHub(defaultGitHub);
+    setNewLikedin(defaultLikedin);
+    setNewImg(defaultImg);
+    setNewBackground(defaultBackground);
+    setNewRole(defaultRole);
+    onClose();
   };
 
   return (
-    <Modal
-      open={open}
-      onClose={onClose}
-      aria-labelledby="parent-modal-title"
-      aria-describedby="parent-modal-description"
-    >
-      <Box className="modal-container"  sx={{p: 4}}>
-        <div id='title'>
-          <h3 id="parent-modal-title" style={{ color: colors.lightBlue }}>Edit profile</h3>
-        </div>
-        <Box className="form">
-          <p id="parent-modal-description" style={{ color: colors.lightBlue }}>Basic Information</p>
+    <>
+      <Modal
+        open={open}
+        onClose={handleClose}
+        aria-labelledby="parent-modal-title"
+        aria-describedby="parent-modal-description"
+      >
+        <Box className="modal-container"  sx={{p: 4}}>
+          <div id='title'>
+            <h3 id="parent-modal-title" style={{ color: colors.lightBlue }}>Edit profile</h3>
+          </div>
+          <Box className="form">
+            <p id="parent-modal-description" style={{ color: colors.lightBlue }}>Basic Information</p>
 
-          <TextFields
-            id="name"
-            type="text"
-            label="Name"
-            variant="standard"
-            value={newName}
-            helperText={isValidName ? '' : 'Invalid name'}
-            error={!isValidName}
-            required
-            inputProps={{ style: { textTransform: 'capitalize' } }}
-            onChange={handleInputNameChange}
-          />
-
-          <TextFields
-            id="lastName"
-            type="text"
-            label="Last Name"
-            variant="standard"
-            value={newLastName}
-            helperText={isValidLastName ? '' : 'Invalid last name'}
-            error={!isValidLastName}
-            required
-            inputProps={{ style: { textTransform: 'capitalize' } }}
-            onChange={handleInputLastNameChange}
-          />
-          <Box style={{ display: 'flex' , margin: 15}}>
-
-            <LocalizationProvider dateAdapter={AdapterDayjs}>
-              <DemoContainer components={['DatePicker']}>
-                <DatePicker
-                  className="customDatePicker"
-                  onChange={handleInputAgeChange}
-                  renderInput={(props) => (
-                    <TextFieldStyled
-                      {...props}
-                      label="Date of Birth"
-                      variant="standard"
-                      helperText={ageError || ''}
-                      error={Boolean(ageError)}
-                      required
-                      sx={{ mt: 2 }}
-                    />
-                  )}
-                />
-              </DemoContainer>
-            </LocalizationProvider>
-
-            <TextFieldStyled
-              id="age"
-              label="Age"
+            <TextFields
+              id="name"
+              type="text"
+              label="Name"
               variant="standard"
-              value={newAge ? newAge.toString() : ""}
-              readOnly
-              sx={{ width: '20%'}}
-              helperText={ageError}
-              error={ageError !== ''}
+              value={newName}
+              helperText={isValidName ? '' : 'Invalid name'}
+              error={!isValidName}
+              required
+              inputProps={{ style: { textTransform: 'capitalize' } }}
+              onChange={handleInputNameChange}
             />
 
-          </Box>
-          <CustomAutoComplete
-            disablePortal
-            id="paises"
-            options={countries}
-            value={selectedCountry}
-            onChange={handleInputCountryChange}
-            renderInput={(params) => <TextFieldStyled {...params} label="Country"variant="standard" required/>}
-          />
-          
-          <Box className="multiline">
-            <TextField
-              id="outlined-multiline-static"
-              label="Bio"
-              multiline
-              rows={4}
-              value={newBio}
-              helperText={isValidBio? '' : 'Invalid bio'}
-              error={!isValidBio}
-              onChange={handleInputBioChange}
-              sx={{
-                color: 'white',
-                width: '120%',
-                '& .MuiInputBase-root': {
-                  color: 'white',
-                },
-                '& .MuiInputBase-root::before': {
-                  borderBottomColor: 'white',
-                },
-                '& .MuiInputBase-root:hover::before': {
-                  borderBottomColor: 'yellow',
-                },
-                '& .MuiInputBase-root::after': {
-                  borderBottomColor: 'white',
-                },
-              }}
-              InputLabelProps={{
-                sx: {
-                  color: 'white',
-                },
-              }}
-              InputProps={{
-                sx: {
-                  color: 'white',
-                },
-              }}
-              onFocus={(e) => {
-                if (e.target.value === 'Description here') {
-                  e.target.value = '';
-                }
-              }}
-              onBlur={(e) => {
-                if (e.target.value === '') {
-                  e.target.value = 'Description here';
-                }
-              }}
+            <TextFields
+              id="lastName"
+              type="text"
+              label="Last Name"
+              variant="standard"
+              value={newLastName}
+              helperText={isValidLastName ? '' : 'Invalid last name'}
+              error={!isValidLastName}
+              required
+              inputProps={{ style: { textTransform: 'capitalize' } }}
+              onChange={handleInputLastNameChange}
             />
-          </Box>
+            <Box style={{ display: 'flex' , margin: 15}}>
 
-          <TextFields
-            id="github"
-            type="text"
-            label="Github"
-            variant="standard"
-            value={newGitHub}
-            helperText={isValidGitHub ? '' : 'Invalid GitHub name'}
-            error={!isValidGitHub}
-            required
-            inputProps={{ style: { textTransform: "capitalize" } }}
-            onChange={handleInputGitHubChange}
-          />
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
+                <DemoContainer components={['DatePicker']}>
+                  <DatePicker
+                    className="customDatePicker"
+                    onChange={handleInputAgeChange}
+                    renderInput={(props) => (
+                      <TextFieldStyled
+                        {...props}
+                        label="Date of Birth"
+                        variant="standard"
+                        helperText={ageError || ''}
+                        error={Boolean(ageError)}
+                        required
+                        sx={{ mt: 2 }}
+                      />
+                    )}
+                  />
+                </DemoContainer>
+              </LocalizationProvider>
 
-          <TextFields
-            id="likedin"
-            type="text"
-            label="LinkedIn"
-            variant="standard"
-            value={newLikedin}
-            helperText={isValidLikedin ? '' : 'Invalid LikedIn name'}
-            error={!isValidLikedin}
-            required
-            inputProps={{ style: { textTransform: 'capitalize' } }}
-            onChange={handleInputLikedInChange}
-          />
-
-          <TextFields
-            id="img"
-            type="text"
-            label="Profile Image"
-            variant="standard"
-            value={newImg}
-            helperText={isValidImg ? '' : 'Invalid url for image'}
-            error={!isValidImg}
-            required
-            inputProps={{ style: { textTransform: 'capitalize' } }}
-            onChange={handleInputImgChange}
-          />
-
-          <TextFields
-            id="background"
-            type="text"
-            label="Background Image"
-            variant="standard"
-            value={newBackground}
-            helperText={isValidBackground ? '' : 'Invalid url for image'}
-            error={!isValidBackground}
-            required
-            inputProps={{ style: { textTransform: 'capitalize' } }}
-            onChange={handleInputBackgroundChange}
-          />
-
-          <TextFields
-            id="role"
-            type="text"
-            label="Role"
-            variant="standard"
-            value={newRole}
-            helperText={isValidRole ? '' : 'Invalid LinkedIn name'}
-            error={!isValidRole}
-            required
-            inputProps={{ style: { textTransform: 'capitalize' } }}
-            onChange={handleInputRoleChange}
-          />
-
-          <LanguagesAutocomplete
-            multiple
-            id="tags-standard"
-            options={languages}
-            getOptionLabel={(option) => option.label}
-            defaultValue={[languages[3]]}
-            renderTags={(value, getTagProps) =>
-              value.map((option, index) => (
-                <Chip
-                  label={option.label}
-                  {...getTagProps({ index })}
-                  sx={{
-                    backgroundColor: colors.contrast,
-                    color: 'white',
-                  }}
-                />
-              ))
-            }
-            renderInput={(params) => (
               <TextFieldStyled
-                {...params}
+                id="age"
+                label="Age"
                 variant="standard"
-                label="Languages"
-                placeholder="That you know"
+                value={newAge ? newAge.toString() : ""}
+                readOnly
+                sx={{ width: '20%'}}
+                helperText={ageError}
+                error={ageError !== ''}
               />
-            )}
-          />
 
+            </Box>
+            <CustomAutoComplete
+              disablePortal
+              id="paises"
+              options={countries}
+              value={selectedCountry}
+              onChange={handleInputCountryChange}
+              renderInput={(params) => <TextFieldStyled {...params} label="Country"variant="standard" required/>}
+            />
+            
+            <Box className="multiline">
+              <TextField
+                id="outlined-multiline-static"
+                label="Bio"
+                multiline
+                rows={4}
+                value={newBio}
+                helperText={isValidBio? '' : 'Invalid bio'}
+                error={!isValidBio}
+                onChange={handleInputBioChange}
+                sx={{
+                  color: 'white',
+                  width: '120%',
+                  '& .MuiInputBase-root': {
+                    color: 'white',
+                  },
+                  '& .MuiInputBase-root::before': {
+                    borderBottomColor: 'white',
+                  },
+                  '& .MuiInputBase-root:hover::before': {
+                    borderBottomColor: 'yellow',
+                  },
+                  '& .MuiInputBase-root::after': {
+                    borderBottomColor: 'white',
+                  },
+                }}
+                InputLabelProps={{
+                  sx: {
+                    color: 'white',
+                  },
+                }}
+                InputProps={{
+                  sx: {
+                    color: 'white',
+                  },
+                }}
+                onFocus={(e) => {
+                  if (e.target.value === 'Description here') {
+                    e.target.value = '';
+                  }
+                }}
+                onBlur={(e) => {
+                  if (e.target.value === '') {
+                    e.target.value = 'Description here';
+                  }
+                }}
+              />
+            </Box>
+
+            <TextFields
+              id="github"
+              type="text"
+              label="Github"
+              variant="standard"
+              value={newGitHub}
+              helperText={isValidGitHub ? '' : 'Invalid GitHub name'}
+              error={!isValidGitHub}
+              required
+              inputProps={{ style: { textTransform: "capitalize" } }}
+              onChange={handleInputGitHubChange}
+            />
+
+            <TextFields
+              id="likedin"
+              type="text"
+              label="LinkedIn"
+              variant="standard"
+              value={newLikedin}
+              helperText={isValidLikedin ? '' : 'Invalid LikedIn name'}
+              error={!isValidLikedin}
+              required
+              inputProps={{ style: { textTransform: 'capitalize' } }}
+              onChange={handleInputLikedInChange}
+            />
+
+            <TextFields
+              id="img"
+              type="text"
+              label="Profile Image"
+              variant="standard"
+              value={newImg}
+              helperText={isValidImg ? '' : 'Invalid url for image'}
+              error={!isValidImg}
+              required
+              inputProps={{ style: { textTransform: 'capitalize' } }}
+              onChange={handleInputImgChange}
+            />
+
+            <TextFields
+              id="background"
+              type="text"
+              label="Background Image"
+              variant="standard"
+              value={newBackground}
+              helperText={isValidBackground ? '' : 'Invalid url for image'}
+              error={!isValidBackground}
+              required
+              inputProps={{ style: { textTransform: 'capitalize' } }}
+              onChange={handleInputBackgroundChange}
+            />
+
+            <TextFields
+              id="role"
+              type="text"
+              label="Role"
+              variant="standard"
+              value={newRole}
+              helperText={isValidRole ? '' : 'Invalid LinkedIn name'}
+              error={!isValidRole}
+              required
+              inputProps={{ style: { textTransform: 'capitalize' } }}
+              onChange={handleInputRoleChange}
+            />
+
+            <LanguagesAutocomplete
+              multiple
+              id="tags-standard"
+              options={languages}
+              getOptionLabel={(option) => option.label}
+              defaultValue={[languages[3]]}
+              renderTags={(value, getTagProps) =>
+                value.map((option, index) => (
+                  <Chip
+                    label={option.label}
+                    {...getTagProps({ index })}
+                    sx={{
+                      backgroundColor: colors.contrast,
+                      color: 'white',
+                    }}
+                  />
+                ))
+              }
+              renderInput={(params) => (
+                <TextFieldStyled
+                  {...params}
+                  variant="standard"
+                  label="Languages"
+                  placeholder="That you know"
+                />
+              )}
+            />
+
+          </Box>
+          <div className='button-container'>
+            <Button
+              type="button"
+              className='custom-button'
+              onClick={handleSubmmit}
+              sx={{ color: 'white',backgroundColor: '#E63946',":hover":{backgroundColor:'#1D3557' } }} 
+            > 
+              Guardar 
+            </Button>
+          </div>
         </Box>
-        <div className='button-container'>
-          <Button
-            type="button"
-            className='custom-button'
-            onClick={handleSubmmit}
-            sx={{ color: 'white',backgroundColor: '#E63946',":hover":{backgroundColor:'#1D3557' } }} 
-          > 
-            Guardar 
-          </Button>
-        </div>
-      </Box>
-    </Modal>
+      </Modal>
+      {showMiniModal && (
+          <MiniModal open={showMiniModal} onClose={handleMiniModalClose} onDiscardChanges={handleDiscardChanges} />
+        )}
+    </>
   );
 };
 
