@@ -9,7 +9,6 @@ export const getOwnUser = async ( ownId, token) =>{
                 Authorization: `Bearer ${token}`
             }
         });
-        
             localStorage.setItem("ownProfile", JSON.stringify(response.data));
             return response.data;
         

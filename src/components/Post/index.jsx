@@ -20,6 +20,9 @@ const PostContainer = styled.div`
   box-shadow: 0 5px 8px #00000082;
   margin: 0 auto;
   margin-bottom: 25px;
+  @media (min-width: 1100px) {
+    width: 600px;
+  }
 `;
 const PostEncabezado = styled.div`
   display: flex;

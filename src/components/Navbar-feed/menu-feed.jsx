@@ -191,9 +191,9 @@ const Menu = ({userImg}) => {
                 </DropdownButton>
                 <DropdownContent open={dropdownOpen}>
                     <MiniMenuContainer>
-                        <DropdownImgLink to="/profile">
+                        {<DropdownImgLink to="/profile">
                             <DropdownImg src={ userImg ? userImg :  "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" }  alt="Me" />
-                        </DropdownImgLink>
+                        </DropdownImgLink>}
                         <DropFeedRoutes>
                             <StyledLink2 to="/feed">
                                 <LinkImg2 src="/icons/home-light-blue.png" alt="Home" />

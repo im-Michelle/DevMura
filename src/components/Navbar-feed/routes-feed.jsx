@@ -20,7 +20,7 @@ const FeedRoutes = styled.div`
 const StyledLink = styled(Link)`
 height: 5vh;
 max-width: 100%;
-width: 1rem;
+//width: 1rem;
 display: flex;
 align-content: center;
 align-items: center;
@@ -44,11 +44,10 @@ const LinkImg = styled.img`
 width: 30px;
 height: 30px;
 object-fit: cover;
-
 &.profile-photo{
     border-radius: 50%;
-    height: 35px;
     width: 35px;
+    height: 35px;
     object-fit: cover;
 }
 `;
@@ -56,7 +55,6 @@ object-fit: cover;
 const FeedRoutesComponent = ({userImg}) => {
     return (
         <>
-
                     <FeedRoutes>
                         <StyledLink to="/feed">
                             <LinkImg src="/icons/home-light-blue.png" alt="Home" />
@@ -70,9 +68,9 @@ const FeedRoutesComponent = ({userImg}) => {
                         <StyledLink to="/chats">
                             <LinkImg src="/icons/messages.png" alt="Messages" />
                         </StyledLink>
-                        <StyledLink to="/profile">
+                        {<StyledLink to="/profile">
                             <LinkImg src={ userImg ? userImg :  "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" } className='profile-photo' alt="Me" />
-                        </StyledLink>
+                        </StyledLink>}
                     </FeedRoutes>
         </>
     )

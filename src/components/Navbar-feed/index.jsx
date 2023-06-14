@@ -104,14 +104,14 @@ export const NewNavBarFeed = ({userImg}) => {
                     </LogoContainer>
                     <SearchBar />
                 </Logo>
-                <NavRoutes>
-                    <FeedRoutesComponent
+                {<NavRoutes>
+                    {<FeedRoutesComponent
                     userImg={userImg}
-                    />
-                    <Menu
+                    />}
+                    {<Menu
                     userImg={userImg}
-                    />
-                </NavRoutes>
+                    />}
+                </NavRoutes>}
             </NavContainer>
         </Nav>
     )
