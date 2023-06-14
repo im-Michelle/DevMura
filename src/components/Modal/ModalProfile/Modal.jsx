@@ -139,7 +139,9 @@ const ModalProfile = ({
   countryName: defaultCountryName,
   countryCode: defaultCountryCode,
   userName,
-  token }) => {
+  token,
+  profile, 
+  setProfile}) => {
   //Mini modal
   const [showMiniModal, setShowMiniModal] = useState(false);
 
@@ -215,8 +217,8 @@ const ModalProfile = ({
 
   const handleInputGitHubChange = (e) => {
     const newGitHub = e.target.value;
-    const regexGitHub = /^[A-Za-záéíóúüñÁÉÍÓÚÜÑ0-9]+(?: [A-Za-záéíóúüñÁÉÍÓÚÜÑ0-9]+)*$/;
-    if ( newGitHub.length > 50 || !newGitHub.match(regexGitHub)) {
+    const regexGitHub = /^https:\/\/github\.com\/.*$/;
+    if (newGitHub.length > 50 || !newGitHub.match(regexGitHub)) {
       setIsValidGitHub(false);
     } else {
       setIsValidGitHub(true);
@@ -226,14 +228,14 @@ const ModalProfile = ({
 
   const handleInputLikedInChange = (e) => {
     const newLikedin = e.target.value;
-    const regexLikedIn = /^[A-Za-záéíóúüñÁÉÍÓÚÜÑ0-9]+(?: [A-Za-záéíóúüñÁÉÍÓÚÜÑ0-9]+)*$/;
+    const regexLikedIn =  /^https:\/\/www\.linkedin\.com\/in\/.*$/;
     if (newLikedin.length > 100 || !newLikedin.match(regexLikedIn)) {
       setIsValidLikedin(false);
     } else {
       setIsValidLikedin(true);
       setNewLikedin(newLikedin);
     }
-  };
+  };  
 
   const handleInputImgChange = (e) => {
     const newImg = e.target.value;
@@ -329,10 +331,9 @@ const ModalProfile = ({
           posts: [],
           languages: [],
         };
-        //console.log(profileData);
-        //console.log("TOKEN:", token);
         await updateProfile(id, profileData, token);
         handleSaveChanges();
+        handleLocalChanges(profile);
         console.log("Profile updated");
       } catch (error) {
         console.log("Perfil no actualizado", error);
@@ -354,28 +355,47 @@ const handleSaveChanges = () =>{
   defaultImg = newImg;
   defaultBackground = newBackground;
   defaultRole = newRole;
+}
 
-/*   const updatingProfile = {
-    id,
-    defaultBirthday,
-    defaultAge,
-    defaultBio,
-    defaultImg,
-    defaultGitHub,
-    defaultLikedin,
-    createdAt,
-    defaultBackground,
-    defaultRole,
-    defaultName,
-    defaultLastName,
-    defaultCountryName,
-    countryCode,
-    userName,
-    token,
-  };
+const handleLocalChanges = (profile) => {
+  localStorage.removeItem("name");
+  localStorage.removeItem("lastName");
+  localStorage.removeItem("birthday");
+  localStorage.removeItem("age");
+  localStorage.removeItem("bio");
+  localStorage.removeItem("countryName");
+  localStorage.removeItem("github");
+  localStorage.removeItem("likedin");
+  localStorage.removeItem("img");
+  localStorage.removeItem("background");
+  localStorage.removeItem("role");
 
-  localStorage.setItem('ownProfile', JSON.stringify(updatingProfile)); */
-  close();
+  localStorage.setItem("name", newName);
+  localStorage.setItem("lastName", newLastName);
+  localStorage.setItem("birthday", newBirthday);
+  localStorage.setItem("age", newAge);
+  localStorage.setItem("bio", newBio);
+  localStorage.setItem("countryName", selectedCountry);
+  localStorage.setItem("github", newGitHub);
+  localStorage.setItem("likedin", newLikedin);
+  localStorage.setItem("img", newImg);
+  localStorage.setItem("background", newBackground);
+  localStorage.setItem("role", newRole);
+
+  setProfile({...profile, 
+    name: newName, 
+    lastName: newLastName,
+    birthday: newBirthday,
+    age: newAge,
+    bio: newBio,
+    countryName: selectedCountry,
+    github: newGitHub,
+    likedin: newLikedin,
+    img: newImg,
+    background: newBackground,
+    role: newRole});
+
+  handleClose();
 }
   
 // UseEffects
@@ -490,13 +510,12 @@ useEffect(() => {
   console.log("D:", defaultLikedin, "N:", newLikedin);
   console.log("D:", defaultImg, "N:", newImg);
   console.log("D:", defaultBackground, "N:", newBackground);
-  console.log("D:", defaultRole, "N:", newRole); 
- */
+  console.log("D:", defaultRole, "N:", newRole);  */
+
   //Funcion del miniModal
   const handleClose = () => {
     if (defaultName === newName &&
         defaultLastName === newLastName &&
-        defaultBirthday === newBirthday &&
         defaultAge === newAge &&
         defaultCountryName === selectedCountry &&
         defaultBio === newBio &&
@@ -518,7 +537,6 @@ useEffect(() => {
   const handleDiscardChanges = () => {
     setNewName(defaultName);
     setNewLastName(defaultLastName);
-    setNewBirthday(defaultBirthday);
     setNewAge(defaultAge);
     setSelectedCountry(defaultCountryName);
     setNewBio(defaultBio);
@@ -527,6 +545,7 @@ useEffect(() => {
     setNewImg(defaultImg);
     setNewBackground(defaultBackground);
     setNewRole(defaultRole);
+    onClose();
   };
 
   return (

@@ -10,7 +10,6 @@ import Languages from './components/Languages';
 import SocialNetworks from './components/SocialNetworks';
 import ModalProfile from '../../components/Modal/ModalProfile/Modal';
 
-
 const MainAll = styled.main`
   display: flex;
   flex-direction: column;
@@ -33,16 +32,25 @@ const ProfileContainer = styled.div`
   position: relative;
 `;
 
-//const profile = JSON.parse(localStorage.getItem('ownProfile'));
 const userDevMura = JSON.parse(localStorage.getItem('userDevmura'));
-//console.log("profile: ", profile);
-//console.log("TOKEN: ", userDevMura);
 
 const ProfilePage = () => {
   // Info user/profile
   const [profile, setProfile] = useState(JSON.parse(localStorage.getItem('ownProfile')));
-  //const [countryName, setCountryName] = useState(profile.countryName); 
 
+/*   var viejoName = profile.name;
+  console.log(viejoName);
+
+  var nuevoName = "Ayayaya";
+
+  localStorage.removeItem("name");
+  localStorage.setItem("name", nuevoName);
+
+  setProfile({  ...profile, name: nuevoName});
+  
+  console.log(viejoName, nuevoName);
+  console.log(profile.name); */
+  
   // Modal edit
   const [openModal, setOpenModal] = useState(false);
 
@@ -53,7 +61,7 @@ const ProfilePage = () => {
   const handleCloseModal = () => {
     setOpenModal(false);
   };
-
+  
   return (
     <>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -93,6 +101,8 @@ const ProfilePage = () => {
               countryCode={profile.country}
               userName={profile.username}
               token={userDevMura.token}
+              profile={profile}
+              setProfile={setProfile}
             />
                         
             <HeaderProfileInfo
