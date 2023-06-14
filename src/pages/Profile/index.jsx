@@ -68,7 +68,7 @@ const ProfilePage = () => {
             <HeaderProfile
               headerImg={profile.background ? profile.background : "https://images.pexels.com/photos/2387819/pexels-photo-2387819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"}
               avatarImg={profile.img ? profile.img : "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"}
-              vip={profile.role}
+              vip={profile.userRoles}
             />
             <Tooltip title="Edit Profile" placement="bottom-end">
               <EditIcon
@@ -104,7 +104,7 @@ const ProfilePage = () => {
               linkGithub={`https://www.linkedin.com/${profile.github}`}
             />
             <Languages
-              languages={["HTML", "CSS", "JavaScript", "React", "Angular", "Vue", "Svelte", "Node", "Express", "MongoDB", "SQL", "Python", "Java", "C", "CS", "C++", "Dart", "Flutter", "Go", "Django", "Docker",]}
+              languages={profile.languageProfiles}
             />
         </MainAll>
         

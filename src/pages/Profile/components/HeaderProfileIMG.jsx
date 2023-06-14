@@ -32,11 +32,14 @@ const VipContainer = styled.div`
 `
 
 
-const HeaderProfile = ({headerImg, avatarImg, role}) => {
+const HeaderProfile = ({headerImg, avatarImg, vip}) => {
+
     return (
         <Header>
             <VipContainer>
-                <Vip /> 
+                {
+                vip.map((role, index) => <Vip key={index} role={role} />)
+                }
             </VipContainer>
             <HeaderIMG src={headerImg} alt="" />
             <HeaderAvatar src={avatarImg} alt="" />
