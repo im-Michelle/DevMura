@@ -17,6 +17,7 @@ export const getOwnUser = async ( ownId, token) =>{
         console.error(e.response);
         console.error(e.response.data);
         console.error(e.response.status);
+        window.location.href = "/sign-in";
         return []
     }
 }
