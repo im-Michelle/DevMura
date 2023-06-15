@@ -9,13 +9,12 @@ const Main = styled.header`
   width: 90%;
   max-width: 700px;
   height: max-content;
-  
+
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   border-radius: 10px;
   margin-bottom: 20px;
-  min-width: 300px;
 `;
 
 const ProfileImg = styled.img`

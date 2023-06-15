@@ -22,19 +22,20 @@ const Main = styled.main`
   width: 100%;
   padding-top: 10vh;
   min-height: 100vh;
-`;
+`
+
 export const MainFeed = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: ${colors.new};
-  width: 100%;
+  width: 100vw;
   max-width: 700px;
   gap: 30px;
   @media (min-width: 1100px) {
     width: 700px;
   }
-`;
+`
 
 const FeedContainer = styled.main`
   display: flex;
@@ -48,7 +49,7 @@ const InfiniteScrollContainer = styled.div`
   flex-direction: column;
   align-items: center;
   background-color: ${colors.new};
-  width: 100%;
+  width: 100vw;
   max-width: 700px;
   gap: 30px;
 `
@@ -61,14 +62,10 @@ const LoaderContainer = styled.div`
   padding: 4rem 0;
 `
 
-
-
 const SocialFeed = () => {
   const [userProfile, setUser] = useState({})
   const [posts, setPosts] = useState([])
   const [page, setPage] = useState(0)
-
-
   const ownUserProfile = readLocalStorage()
   const token = JSON.parse(localStorage.getItem("userDevmura")).token
   const id = JSON.parse(localStorage.getItem("userDevmura")).id
@@ -157,6 +154,10 @@ const SocialFeed = () => {
                 userRole={post.userRole}
                 userId={post.userId}
                 postImg={post.imgSource}
+                likes={post.counter}
+                hearts={post.hearts}
+                ownId={id}
+                aut={token}
                 />
                 ))}
             </InfiniteScroll>
