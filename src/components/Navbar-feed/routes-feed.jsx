@@ -60,21 +60,10 @@ const FeedRoutesComponent = ({userImg}) => {
                         <StyledLink to="/feed">
                             <LinkImg src="/icons/home-light-blue.png" alt="Home" />
                         </StyledLink>
-<<<<<<< HEAD
                         <StyledLink to="/groups">
                             <LinkImg src="/icons/groups-red.png" alt="Groups" />
                         </StyledLink>
                         <StyledLink to="/friends">
-=======
-
-                        <Tooltip title="Próximamente" placement="bottom-end">
-                            <StyledLink to="/groups">
-                                <LinkImg src="/icons/groups-red.png" alt="Groups" />
-                            </StyledLink>
-                        </Tooltip> 
-
-                        <StyledLink to="*">
->>>>>>> 742137c90f44f777c0e7a8d3b6f93d421c54549c
                             <LinkImg src="/icons/green-bell.png" alt="Notifications" />
                         </StyledLink>
 
