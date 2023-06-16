@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { NewNavBarFeed } from '../../components/Navbar-feed';
 import { colors } from '../../ui/colors';
@@ -7,6 +8,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import { Tooltip } from '@mui/material';
 import Languages from './components/Languages';
 import SocialNetworks from './components/SocialNetworks';
+import ModalProfile from '../../components/Modal/ModalProfile/Modal';
 
 const MainAll = styled.main`
   display: flex;
@@ -30,40 +32,104 @@ const ProfileContainer = styled.div`
   position: relative;
 `;
 
-const profile = JSON.parse(localStorage.getItem('ownProfile'));
-console.log(profile);
+const userDevMura = JSON.parse(localStorage.getItem('userDevmura'));
 
 const ProfilePage = () => {
+  // Info user/profile
+  const [profile, setProfile] = useState(JSON.parse(localStorage.getItem('ownProfile')));
 
+/*   var viejoName = profile.name;
+  console.log(viejoName);
+
+  var nuevoName = "Ayayaya";
+
+  localStorage.removeItem("name");
+  localStorage.setItem("name", nuevoName);
+
+  setProfile({  ...profile, name: nuevoName});
+  
+  console.log(viejoName, nuevoName);
+  console.log(profile.name); */
+  
+  // Modal edit
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleOpenModal = () => {
+    setOpenModal(true);
+  };
+
+  const handleCloseModal = () => {
+    setOpenModal(false);
+  };
+  
   return (
     <>
-        <NewNavBarFeed/>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <NewNavBarFeed
+          userImg={profile.img}
+        />
         <MainAll>
           <ProfileContainer>
             <HeaderProfile
               headerImg={profile.background ? profile.background : "https://images.pexels.com/photos/2387819/pexels-photo-2387819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"}
               avatarImg={profile.img ? profile.img : "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"}
-              vip={profile.user && profile.user.role}
+              vip={profile.userRoles}
             />
             <Tooltip title="Edit Profile" placement="bottom-end">
-              <EditIcon style={{position: 'absolute', top: '10px', right: '10px', cursor: 'pointer'}}/>
+              <EditIcon
+                style={{ position: 'absolute', top: '10px', right: '10px', cursor: 'pointer' }}
+                onClick={handleOpenModal}
+              />
             </Tooltip>
+
+            <ModalProfile
+              open={openModal}
+              onClose={handleCloseModal}
+              id={profile.id}
+              birthday={profile.birthday}
+              age={profile.age}
+              bio={profile.bio}
+              img={profile.img}
+              github={profile.github}
+              likedin={profile.likedin}
+              createdAt={profile.createdAt}
+              background={profile.background}
+              role={profile.role}
+              name={profile.name}
+              lastName={profile.lastName}
+              countryName={profile.countryName}
+              countryCode={profile.country}
+              userName={profile.username}
+              token={userDevMura.token}
+              profile={profile}
+              setProfile={setProfile}
+            />
+                        
             <HeaderProfileInfo
+<<<<<<< HEAD
               name={profile.user && profile.user.name}
               username={profile.user && profile.user.username}
               lastName={profile.user && profile.user.lastName}
               role={profile.role}
               location={profile.user && profile.user.location && profile.user.location.code}
               createdAt={profile.user && profile.user.createdAt}
+=======
+              name={profile.name}
+              username={profile.username}
+              lastName={profile.lastName}
+              role={profile.role}
+              location={profile.country}
+              createdAt={profile.createdAt}
+>>>>>>> a6446ce5805838273ba034ff6b5aad8cc8f63465
               bio={profile.bio}
             />
           </ProfileContainer>
             <SocialNetworks
-              linkLinkedin={`https://www.linkedin.com/${profile.likedin}`}
-              linkGithub={`https://www.linkedin.com/${profile.github}`}
+              linkLinkedin={`${profile.likedin}`}
+              linkGithub={`${profile.github}`}
             />
             <Languages
-              languages={["HTML", "CSS", "JavaScript", "React", "Angular", "Vue", "Svelte", "Node", "Express", "MongoDB", "SQL", "Python", "Java", "C", "CS", "C++", "Dart", "Flutter", "Go", "Django", "Docker",]}
+              languages={profile.languageProfiles}
             />
         </MainAll>
         

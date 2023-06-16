@@ -11,6 +11,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { Link as LinkReactRouter } from "react-router-dom";
 import { login } from "../../service/Login/login";
+import { getOwnUser } from "../../service/Gets/getOwnUserService";
 
 
 const Main = styled.main`
@@ -147,7 +148,7 @@ const SignIn = () => {
       console.log("Form is valid");
       try{
         await login(formValues.username, formValues.password);
-        window.location.href = "/feed";
+        
       }catch(error){
         console.log(error);
       }

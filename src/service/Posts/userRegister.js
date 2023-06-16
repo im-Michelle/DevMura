@@ -24,8 +24,9 @@ export const userRegister = async ( name, lastName, age, email, username, passwo
             gender: {id: parseInt(gender)},
             country: {id: country},
         });
-       console.log("Respuesta del servidor", response.data)
+       //console.log("Respuesta del servidor", response.data);
     }catch(error){
-        console.error('Error al enviar la solicitud', error)
+        //console.error('Error al enviar la solicitud', error);
+        throw error.response.data;
     }
 }

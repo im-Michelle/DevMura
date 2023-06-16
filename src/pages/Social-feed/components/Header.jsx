@@ -9,26 +9,23 @@ const Main = styled.header`
   width: 90%;
   max-width: 700px;
   height: max-content;
-  margin: 0 auto;
+
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  border: 2px solid ${colors.secondary};
   border-radius: 10px;
   margin-bottom: 20px;
-  min-width: 300px;
 `;
 
 const ProfileImg = styled.img`
-  width: 90px;
-  height: 90px;
+  width: 95px;
+  height: 95px;
   object-fit: cover;
   border-radius: 50%;
   margin: 5px 0;
-  border: 2px solid ${colors.secondary};
 `;
 const UserName = styled.h2`
-  font-size: 1.5rem;
+  font-size: 1.7rem;
   font-weight: 500;
   color: white;
   display: flex;
@@ -38,12 +35,12 @@ const UserName = styled.h2`
   backdrop-filter: blur(10px);
 `;
 const Name = styled.h2`
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 500;
   color: white;
 `;
 const LastName = styled.h2`
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: 500;
   color: white;
 `;
@@ -59,13 +56,13 @@ const Names = styled.div`
 
 const Header = ({ name, lastName , userName, img, backGroundIMG}, key) => {
   const mainStyle = {
-    backgroundImage: backGroundIMG ? `url(${backGroundIMG})` : `url(${"https://images.pexels.com/photos/15536927/pexels-photo-15536927/free-photo-of-ciudad-coches-punto-de-referencia-calle.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"})`,
+    backgroundImage: backGroundIMG ? `url(${backGroundIMG})` : `url(${"https://images.pexels.com/photos/2387819/pexels-photo-2387819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"})`,
   }
 
   return (
     <>
       <Main style={mainStyle}>
-        <ProfileImg src={ img ? img : "https://images.pexels.com/photos/15536927/pexels-photo-15536927/free-photo-of-ciudad-coches-punto-de-referencia-calle.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"  } alt={name} />
+        <ProfileImg src={ img ? img : "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"  } alt={name} />
         <div>
           <UserName>@{userName}</UserName>
           <Names>

@@ -72,8 +72,6 @@ const LogoImage = styled.img`
     max-height: 100%;
 `;
 
-
-
 const NavRoutes = styled.div`
     width: 100%;
     max-width: 55%;
@@ -96,8 +94,7 @@ const NavRoutes = styled.div`
 `;
 
 
-export const NewNavBarFeed = () => {
-
+export const NewNavBarFeed = ({userImg}) => {
     return (
         <Nav>
             <NavContainer>
@@ -107,10 +104,14 @@ export const NewNavBarFeed = () => {
                     </LogoContainer>
                     <SearchBar />
                 </Logo>
-                <NavRoutes>
-                    <FeedRoutesComponent/>
-                    <Menu/>
-                </NavRoutes>
+                {<NavRoutes>
+                    {<FeedRoutesComponent
+                    userImg={userImg}
+                    />}
+                    {<Menu
+                    userImg={userImg}
+                    />}
+                </NavRoutes>}
             </NavContainer>
         </Nav>
     )

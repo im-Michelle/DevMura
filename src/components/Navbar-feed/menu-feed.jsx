@@ -2,7 +2,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 import { colors } from '../../ui/colors';
-import { userImg } from '../../pages/Social-feed';
+import { logut } from '../../service/Logout/Logut';
+//import { userImg } from '../../pages/Social-feed';
 
 const DropdownButton = styled.button`
   background-color: transparent;
@@ -174,7 +175,7 @@ const StyledMenu = styled(Link)`
 `;
 
 
-const Menu = () => {
+const Menu = ({userImg}) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
 
     const toggleDropdown = () => {
@@ -190,9 +191,9 @@ const Menu = () => {
                 </DropdownButton>
                 <DropdownContent open={dropdownOpen}>
                     <MiniMenuContainer>
-                        <DropdownImgLink to="/profile">
-                            <DropdownImg src={ userImg.img ? userImg.img : "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" }  alt="Me" />
-                        </DropdownImgLink>
+                        {<DropdownImgLink to="/profile">
+                            <DropdownImg src={ userImg ? userImg :  "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" }  alt="Me" />
+                        </DropdownImgLink>}
                         <DropFeedRoutes>
                             <StyledLink2 to="/feed">
                                 <LinkImg2 src="/icons/home-light-blue.png" alt="Home" />
@@ -214,7 +215,7 @@ const Menu = () => {
                     </MiniMenuContainer>
                     <DropdownItem to="/profile" className="view-profile">View Profile</DropdownItem>
                     <DropdownItem to="/settings">Settings</DropdownItem>
-                    <DropdownItem to="/logout">Sign Out</DropdownItem>
+                    <DropdownItem onClick={logut} >Sign Out</DropdownItem>
                 </DropdownContent>
             </DropdownMenu>
         </>

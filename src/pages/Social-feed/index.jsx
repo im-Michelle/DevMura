@@ -4,15 +4,15 @@ import Header from "./components/Header";
 import { Link } from "react-router-dom";
 import AddPost from "./components/AddPost";
 import { NewNavBarFeed } from "../../components/Navbar-feed";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Post from "../../components/Post";
-import FooterFeed from "../../components/Footer-feed";
 
 import { getAllPost } from "../../service/Gets/postService";
-import { useEffect } from "react";
 import LoaderFeed from "../../components/LoaderFeed";
 import { readLocalStorage } from "../../Utilities/readLocalStorage";
 import { getOwnUser } from "../../service/Gets/getOwnUserService";
+import InfiniteScroll from "react-infinite-scroll-component";
+import NoMorePosts from "../../components/NoMorePosts";
 
 const Main = styled.main`
   display: flex;
@@ -22,19 +22,20 @@ const Main = styled.main`
   width: 100%;
   padding-top: 10vh;
   min-height: 100vh;
-`;
+`
+
 export const MainFeed = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
   background-color: ${colors.new};
-  width: 100%;
+  width: 100vw;
   max-width: 700px;
   gap: 30px;
-  @media (max-width: 1100px) {
-    margin-left: 0em;
+  @media (min-width: 1100px) {
+    width: 700px;
   }
-`;
+`
 
 const FeedContainer = styled.main`
   display: flex;
@@ -43,33 +44,40 @@ const FeedContainer = styled.main`
     display: block;
   }
 `
-const FooterContainer = styled.div`
-  position: fixed;
-  top: 10vh;
-  width: 100%;
-  padding-left: 10vw;
-  @media (max-width: 1385px) {
-    display: none;
-  }
+const InfiniteScrollContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: ${colors.new};
+  width: 100vw;
+  max-width: 700px;
+  gap: 30px;
 `
-const userLocalStorage = readLocalStorage();
-
-export const userImg = JSON.parse(localStorage.getItem("ownProfile"));
-
-
+const LoaderContainer = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: auto;
+  padding: 4rem 0;
+`
 
 const SocialFeed = () => {
-  const [userProfile, setUser] = useState(userLocalStorage)
-  const [posts, getPosts] = useState([])
-  const [loader, setLoader] = useState(true)
+  const [userProfile, setUser] = useState({})
+  const [posts, setPosts] = useState([])
+  const [page, setPage] = useState(0)
+  const ownUserProfile = readLocalStorage()
+  const token = JSON.parse(localStorage.getItem("userDevmura")).token
+  const id = JSON.parse(localStorage.getItem("userDevmura")).id
 
-
-  getOwnUser(  userLocalStorage.id, userLocalStorage.token);
+  useEffect(() => {
+    if(localStorage.getItem("userDevmura") === null) window.location.replace("/")
+  }, [])
 
   useEffect(() => {
    const getMyUser = async () => {
       try{
-        const user = await getOwnUser(userLocalStorage.id, userLocalStorage.token)
+        const user = await getOwnUser(ownUserProfile.id, ownUserProfile.token)
         setUser(user)
       }catch(error){
         console.error(error)
@@ -79,64 +87,81 @@ const SocialFeed = () => {
   }, [])
 
 
-  /* useEffect(() => {
+  useEffect(() => {
     const fetchPosts = async () => {
       try{
-        console.log("fetching posts")
-        const posts = await getAllPost()
-        console.log(posts)
-        getPosts(posts)
-        setLoader(false)
+        const posts = await getAllPost(page)
+        setPage(page + 1)
+        setPosts(posts)
       }catch(error){
         console.error(error)
       }
     }
     fetchPosts()
-  }, []) */
+  }, [])
+
+  const fetchMoreData = async () => {
+    setPage(page + 1)
+    try{
+      const newPosts = await getAllPost(page)
+      setPosts([...posts, ...newPosts])
+    }catch(error){
+    console.error(error)
+    }
+  }
 
   return (
     <>
-      <NewNavBarFeed/>
+      <NewNavBarFeed
+        userImg={userProfile.img}
+      />
       <Main>
-      <FooterContainer>
-          <FooterFeed/>
-        </FooterContainer>
         <FeedContainer>
           <MainFeed>
             <Header
               key={userProfile.id}
-              name={userProfile.user && userProfile.user.name}
-              lastName={userProfile.user && userProfile.user.lastName}
-              userName={userProfile.user && userProfile.user.username}
+              name={userProfile.name}
+              lastName={userProfile.lastName}
+              userName={userProfile.username}
               img={userProfile.img}
               backGroundIMG={userProfile.background}
             />
 
           <AddPost 
-            name={userProfile.name}
-            lastName={userProfile.lastName}
-            role={userProfile.role}
-            userName={userProfile.userName}
-            img={userProfile.img}
+            aut={token}
+            id={id}
           />
-
-          {loader ? <LoaderFeed/> : posts.map((post) => {
-            return (
-              <Post 
-                id={post.id}
+          
+          <InfiniteScrollContainer>
+            <InfiniteScroll
+            dataLength={posts.length}
+            next={fetchMoreData}
+            hasMore={true}
+            loader={<LoaderContainer><LoaderFeed/></LoaderContainer>  }
+            endMessage={<NoMorePosts/>}
+            >
+              {posts.map((post) => (
+                <Post
                 key={post.id}
+                id={post.id} 
                 firstName={post.name}
                 lastName={post.lastName}
+                role={post.role}
                 userName={post.username}
                 time={post.createdAt}
-                role={post.role}
-                bodyText={post.postBody}
                 img={post.img}
-                userId={post.id}
+                bodyText={post.postBody}               
+                userRole={post.userRole}
+                userId={post.userId}
                 postImg={post.imgSource}
-              />
-            );
-          })}
+                likes={post.counter}
+                hearts={post.hearts}
+                ownId={id}
+                aut={token}
+                />
+                ))}
+            </InfiniteScroll>
+          </InfiniteScrollContainer>
         </MainFeed>
         </FeedContainer>
       </Main>

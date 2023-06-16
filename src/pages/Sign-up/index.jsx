@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "@emotion/styled";
 import { colors } from "../../ui/colors";
-import Alert from "../../components/Alerts/Alerts";
+import Snackbar from "../../components/SnackBar/SnackBar";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
@@ -19,7 +19,7 @@ import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import Autocomplete from '@mui/material/Autocomplete';
 import { userRegister } from "../../service/Posts/userRegister";
 import { getCountries } from "../../service/Gets/countryService"
-
+import  ModalSignUp  from "../../components/Modal/ModalSignUp/ModalSignUp";
 
 const Main = styled.main`
   width: 100%;
@@ -146,12 +146,25 @@ const CustomAutoComplete = styled(Autocomplete)`
   .MuiInputLabel-root.Mui-focused {
     color: ${colors.lightBlue};
   }
-  
-
 `;
 
 const SignUp = () => {
+  //Modal SignUp
+  const [openModalSignUp, setOpenModalSignUp] = useState(false);
+
+    const handleOpenModalSignUp = () => {
+        setOpenModalSignUp(true);
+    };
+
+    const handleCloseModalSignUp = () => {
+        setOpenModalSignUp(false);
+    };
+
   const [formValues, setFormValues] = useState({});
+
+  // Mensajes de error 
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
 
   // use state para ver el password
   const [showPassword, setShowPassword] = useState(false);
@@ -161,9 +174,6 @@ const SignUp = () => {
 
   // boton para aceptar los terminos y condiciones
   const [terms, setTerms] = useState(false);
-
-  // Alerts
-  const [alert, setAlert] = useState(null);
 
   // valores de los inputs
   const [name, setName] = useState("");
@@ -187,6 +197,19 @@ const SignUp = () => {
   const [countries,setCountries] = useState([]);
 
   const [passwordErrors, setPasswordErrors] = useState([]);
+
+  //estadp del modal de registro
+  
+  const [open, setOpen] = useState(false);
+
+  // funcion para abir el modal
+  const handleOpenModal = () =>{
+    setOpen(true);
+  }
+  // funcion para cerrar el modal
+  const handleCloseModal = () =>{
+    setOpen(false);
+  }
 
   // Validadores del password uno por uno
 
@@ -343,10 +366,21 @@ const SignUp = () => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(formValues);
   };
 
-  const handleSubmmit = () => {
+  const handleClearLabels = () =>{
+    setName("");
+    setLastName("");
+    setUserName("");
+    setEmail("");
+    setPassword("");
+    setAge("");
+    setSelectedCountry("");
+    setGender("");
+    setFormValues({});
+  }
+
+  const handleSubmmit = async () => {
     if (
       isValidName &&
       isValidLastName &&
@@ -356,10 +390,17 @@ const SignUp = () => {
       isValidAge &&
       terms
     ) {
-      userRegister(name, lastName, age, email, userName, password, gender ,selectedCountry.id)
-      console.log("Usuario Registrado");
+      try{
+        await userRegister(name, lastName, age, email, userName, password, gender ,selectedCountry.id);
+        handleOpenModalSignUp();
+        handleClearLabels();
+      } catch (error){
+        setSnackbarMessage(error); 
+        setSnackbarOpen(true);
+      }
     } else {
-      setAlert({ type: 'error', title: 'Error', message: 'An error occurred with the form' });
+      setSnackbarMessage("User not register");
+      setSnackbarOpen(true);
     }
   };
   const handleTerms = () => {
@@ -379,6 +420,28 @@ const SignUp = () => {
     fetchCountries();
   }, []);
 
+  const handleSnackbarClose = () => {
+      setSnackbarOpen(false);
+  };  
+
+  useEffect(() => {
+    let snackbarTimer;
+
+    if (snackbarOpen) {
+      // Configura un temporizador para cerrar automáticamente el Snackbar después de 3 segundos
+      snackbarTimer = setTimeout(() => {
+        setSnackbarOpen(false);
+      }, 3000);
+    }
+
+    // Limpia el temporizador cuando el componente se desmonte o cuando el estado de snackbarOpen cambie a false
+    return () => clearTimeout(snackbarTimer);
+  }, [snackbarOpen]);
+
+  // Verifica si hay un mensaje en el Snackbar antes de mostrarlo
+
+
+  const isSnackbarEmpty = typeof snackbarMessage === 'string' && snackbarMessage.trim() === "";
  
   return (
     <>
@@ -394,9 +457,6 @@ const SignUp = () => {
           onChange={handleActiveButton}
         >
           <h1>Sign Up to DevMura</h1>
-          {alert && (
-            <Alert type={alert.type} title={alert.title} message={alert.message} />
-          )}
           
           <TextFieldStyled
             id="name"
@@ -547,6 +607,7 @@ const SignUp = () => {
             >
               Sign Up
             </Button>
+            <ModalSignUp open={openModalSignUp} onClose={handleCloseModalSignUp} />
           </Stack>
           <MessageLogin>
             Already have an account? <LinkReactRouter to="/sign-in">Sign in</LinkReactRouter>
@@ -556,6 +617,15 @@ const SignUp = () => {
           <img src="/img/icono-logo-blanco.svg" alt="" />
         </FormImg>
       </Main>
+      {!isSnackbarEmpty && (
+        <Snackbar
+          open={snackbarOpen}
+          autoHideDuration={4000}
+          onClose={handleSnackbarClose}
+          message={snackbarMessage}
+          severity={"error"}
+        />
+      )}
     </>
   );
 };

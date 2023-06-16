@@ -1,0 +1,49 @@
+.modal-containerS {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #171A22;
+    border: 2px solid #000;
+    box-shadow: 24px;
+    width: 28%;
+    height: 39%;
+    max-height: 80vh;
+    overflow: auto;
+  }
+
+  #circle{
+    background: #E63946;
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+  }
+  
+  .icon {
+    font-size: 3rem;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  #titleS{
+    width: '100%';
+    margin: '0 auto'
+  }
+
+  #buttonS{
+    text-align: center;
+    padding-top: 10px;
+  }
+  
+  @media (max-width: 600px) { 
+    .modal-containerS {
+      width: 100%; 
+      max-width: none; 
+    }
+  }

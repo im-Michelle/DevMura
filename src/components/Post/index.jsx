@@ -8,16 +8,20 @@ import { useState } from "react";
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { Link } from 'react-router-dom';
 import moment from 'moment';
-
+import { heartPost } from "../../service/Posts/heartPost";
+import BubleAvatarPost from "../BubleAvatarPost";
+import { useEffect } from "react";
 
 const PostContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   color: ${colors.primaryText};
-  width: 90%;
+  width: 98%;
   border-radius: 10px;
   box-shadow: 0 5px 8px #00000082;
+  margin: 0 auto;
+  margin-bottom: 25px;
 `;
 const PostEncabezado = styled.div`
   display: flex;
@@ -73,8 +77,9 @@ const Time = styled.h4`
 const PostBody = styled.div`
   display: flex;
   height: auto;
+  width: 100%;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-around;
   margin-top: 10px;
   margin-right: 10px;
@@ -86,20 +91,21 @@ const BodyText = styled.p`
   margin: 0;
   color: ${colors.primaryText};
   text-align: left;
-  width: 100%;
+  width: 95%;
+  word-wrap: break-word;
 `;
 const PostImg = styled.img`
   width: 100%;
   height: auto;
   max-height: 500px;
   object-fit: cover;
-  border-radius: 10px;
+  //border-radius: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
 `;
 const PostFooter = styled.div`
   display: flex;
-  flex-direction: row;
+  flex-direction: row-reverse;
   align-items: center;
   justify-content: space-between;
   width: 90%;
@@ -108,26 +114,79 @@ const PostFooter = styled.div`
 `;
 const IconosLike = styled.div`
   display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  /* width: 50%; */
+`;
+const LikeCounter = styled.p`
+  font-size: 1.3rem;
+  font-weight: 400;
+  margin: 0;
+  color: ${colors.primaryText};
+`;
+const SaveAndBubble = styled.div`
+  display: flex;
   flex-direction: row;
   align-items: center;
   gap: 10px;
-  width: 50%;
+  cursor: not-allowed;
 `;
+const BubleAvatarPostContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+`
 
-const Post = ({ id, firstName, lastName, role, userName, time, img, bodyText, postImg, userId, liked }) => {
+const Post = ({ id ,firstName, lastName, role, userName, time, img, bodyText, postImg, userId, likes, hearts, ownId, aut}) => {
+  //console.log(hearts)
+  //console.log(ownId)
+  /* console.log(aut)
+  console.log(id) */
 
-  const [like, setLike] = useState( !liked );
+  const likesToNumber = parseInt(likes)
+
+  const [like, setLike] = useState(  );
 
   const [bookmark, setBookmark] = useState(false);
+
+  const [likeCounter, setLikeCounter] = useState( likesToNumber );
 
   const formatdTime = moment(time).startOf('hour').fromNow();
 
   const fullName = `${firstName} ${lastName}`
 
+  useEffect(() => {
+    hearts.forEach((post) => {
+      if(post.userId === ownId && post.status === 1 ){
+        setLike(true)
+      }else{
+        setLike(false)
+      }
+    })
+  }, [])
+
+
+  const handleLike = async () =>{
+    const megusta = await heartPost( ownId, id , aut)
+    console.log(megusta)
+    megusta == 1 ? setLike(true) : setLike(false)
+    megusta == 1 ? setLikeCounter(likeCounter + 1) : setLikeCounter(likeCounter - 1)
+  }
+
+  const imgArray = []
+
+  /* if(hearts.length > 0){
+    hearts.forEach((user) =>{
+      let imgsrc = user.userImg;
+      imgArray.push(imgsrc)
+    })
+  } */
+  
   return (
-    <PostContainer key={id}>
+    <PostContainer>
       <PostEncabezado>
-        <ProfileImg src={img ? img : "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"}   alt={name} />
+        <ProfileImg src={img ? img : "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"} alt={fullName} />
         <ProfilesPost>
           <Name to={`/user/${userId}`} >{fullName}</Name>
           <UserName>@{userName}</UserName>
@@ -142,12 +201,20 @@ const Post = ({ id, firstName, lastName, role, userName, time, img, bodyText, po
       
       <PostFooter>
         <IconosLike>
-          { like ? <FavoriteIcon  fontSize="large" style={{color: `${colors.contrast} `}}  onClick={() => setLike(!like)} /> : <FavoriteBorderIcon fontSize="large"  onClick={() => setLike(!like)} />}     
+          { likesToNumber !== 0 ? <LikeCounter>Likes {likeCounter}</LikeCounter> : <></>}
+          { like ? <FavoriteIcon  fontSize="large" style={{color: `${colors.contrast} `}}  onClick={() => handleLike()} /> : <FavoriteBorderIcon fontSize="large"  onClick={() => handleLike()} />}     
           <ChatBubbleIcon fontSize="large"/>
         </IconosLike>
-        <div>
+        <SaveAndBubble>
         {bookmark ? <BookmarkIcon fontSize="large" onClick={() => setBookmark(!bookmark)} /> : <BookmarkBorderIcon fontSize="large" onClick={() => setBookmark(!bookmark)} />}
-        </div>
+          {/* <BubleAvatarPostContainer>
+            {
+              imgArray.map((img) => {
+                return <BubleAvatarPost imgsrc={img}  />
+              })
+            }
+          </BubleAvatarPostContainer> */}
+        </SaveAndBubble>
       </PostFooter>
     </PostContainer>
   );
@@ -159,7 +226,7 @@ Post.defaultProps = {
   userName: "No userName to show",
   time: "time",
   img: "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png",
-  bodyText: "bodyText",
+  bodyText: "No text to show",
   role: "No role to show",
   liked: false,
 };

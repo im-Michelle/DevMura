@@ -15,12 +15,14 @@ const Main = styled.main`
   min-height: 100vh;
 `;
 
-
+const userProfile =  JSON.parse(localStorage.getItem('ownProfile'))
 
 export const Groups = () => {
   return (
     <>
-      <NewNavBarFeed/>
+      <NewNavBarFeed
+        userImg={userProfile.img}
+      />
       <Main>
         <CardGroup/>
       </Main>

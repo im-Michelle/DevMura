@@ -32,10 +32,8 @@ const Languages = ({languages}) => {
                     return (
                         <IconsLanguage key={index} src={language} />  
                     )
-                })}
-                
+                })}  
             </LanguagesContainer>
-
         </Container>
     )
 }

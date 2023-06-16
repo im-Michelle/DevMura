@@ -9,6 +9,7 @@ const Container = styled.div`
     max-width: 800px;
     border-radius: 10px;
     box-shadow: 0 5px 8px #000000a2;
+    padding-bottom: 20px;
 `
 const LanguagesContainer = styled.div`
     display: flex;
