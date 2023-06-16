@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { Tooltip } from '@mui/material';
 
 
 const FeedRoutes = styled.div`
@@ -59,15 +60,23 @@ const FeedRoutesComponent = ({userImg}) => {
                         <StyledLink to="/feed">
                             <LinkImg src="/icons/home-light-blue.png" alt="Home" />
                         </StyledLink>
-                        <StyledLink to="/groups">
-                            <LinkImg src="/icons/groups-red.png" alt="Groups" />
-                        </StyledLink>
+
+                        <Tooltip title="Próximamente" placement="bottom-end">
+                            <StyledLink to="/groups">
+                                <LinkImg src="/icons/groups-red.png" alt="Groups" />
+                            </StyledLink>
+                        </Tooltip> 
+
                         <StyledLink to="*">
                             <LinkImg src="/icons/green-bell.png" alt="Notifications" />
                         </StyledLink>
-                        <StyledLink to="/chats">
-                            <LinkImg src="/icons/messages.png" alt="Messages" />
-                        </StyledLink>
+
+                        <Tooltip title="Próximamente" placement="bottom-end">
+                            <StyledLink to="/chats">
+                                <LinkImg src="/icons/messages.png" alt="Messages" />
+                            </StyledLink>
+                        </Tooltip> 
+
                         {<StyledLink to="/profile">
                             <LinkImg src={ userImg ? userImg :  "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" } className='profile-photo' alt="Me" />
                         </StyledLink>}
