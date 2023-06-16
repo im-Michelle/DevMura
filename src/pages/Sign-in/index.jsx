@@ -1,16 +1,16 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import { colors } from "../../ui/colors";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
-import { useState } from "react";
 import { IconButton, InputAdornment } from "@mui/material";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import { Link as LinkReactRouter } from "react-router-dom";
 import { login } from "../../service/Login/login";
+import Snackbar from "../../components/SnackBar/SnackBar";
 import { getOwnUser } from "../../service/Gets/getOwnUserService";
 
 
@@ -112,19 +112,13 @@ const SignIn = () => {
 
   const [formErrors, setFormErrors] = useState({});
   const [formValid, setFormValid] = useState(false);
-  
 
+  // Mensajes de error 
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [snackbarMessage, setSnackbarMessage] = useState("");
 
   const validateForm = () =>{
     const errors = {};
-
-    // validate email
-    /* if(!formValues.email){
-      errors.email = "Email is required";
-    }else if(!/\S+@\S+\.\S+/.test(formValues.email)){
-      errors.email = "Email is invalid";
-    } */
-
     // validate password
     if(!formValues.username){
       errors.username = "Username is required";
@@ -144,8 +138,8 @@ const SignIn = () => {
     e.preventDefault();
     validateForm();
     if(formValid){
-      console.log(formValues)
-      console.log("Form is valid");
+      //console.log(formValues)
+      //console.log("Form is valid");
       try{
         await login(formValues.username, formValues.password);
         
@@ -154,6 +148,11 @@ const SignIn = () => {
       }
     } 
   }
+
+  useEffect(() => {
+    setFormValid(Object.keys(formErrors).length === 0);
+  }, [formErrors]);
+  
   return (
     <>
       <Main>
@@ -165,18 +164,7 @@ const SignIn = () => {
           noValidate
         >
           <h1>Sign In to DevMura</h1>
-          {/* <TextFieldStyled
-            id="email"
-            name="email"
-            label="Email"
-            type="email"
-            variant="standard"
-            helperText={formErrors.email ? formErrors.email : null}
-            error={formErrors.email ? true : false}
-            required
-            value={formValues.email || ""}
-            onChange={(e) => setFormValues({...formValues, email: e.target.value})}
-          /> */}
+
           <TextFieldStyled
             id="username"
             name="username"
