@@ -5,6 +5,8 @@ import SendIcon from '@mui/icons-material/Send';
 import InputAdornment from '@mui/material/InputAdornment';
 import { useState } from "react";
 import { Link } from "react-router-dom";
+import { OutlinedInput } from "@mui/material";
+import { commentPost } from "../../../service/Posts/commentPost";
 
 
 const ModalContainer = styled.div`
@@ -80,7 +82,7 @@ const StyledSendIcon = styled(SendIcon)`
     color: ${colors.primaryText};
     cursor: pointer;
 `
-const StyledInput = styled(TextField)`
+const StyledInput = styled(OutlinedInput)`
     input{
         color: ${colors.primaryText};
     }
@@ -104,7 +106,9 @@ const StyledInput = styled(TextField)`
 
 const ModalComments = (props) =>{
 
-    const { id, ownPhoto, ownName,  comments = []} = props;
+    const { id, ownPhoto, userName,  comments, aut = [], ownId} = props;
+
+    const [ commentsPost, setCommentsPost ] = useState(comments);
 
     const [comment, setComment] = useState("");
 
@@ -112,9 +116,19 @@ const ModalComments = (props) =>{
         setComment(e.target.value);
     }
 
+    const handleSendComment = async () =>{
+        await commentPost( id , ownId , comment, aut);
+        const newComment = {username: userName, content: comment, img: ownPhoto};
+        setCommentsPost([...commentsPost, newComment]);
+        setComment("");
+        
+        /* console.log(data);
+        comments.push(data); */
+    }
+
     return (
         <ModalContainer>
-            {comments ? comments.map((comment) => {
+            {commentsPost ? commentsPost.map((comment) => {
                 return (
                     <Comment>
                         <Avatar src={comment.img ? comment.img : "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"} alt="" />
@@ -131,13 +145,15 @@ const ModalComments = (props) =>{
                     {/* <UserName>{ownName} {ownLastName}</UserName> */}
                     <StyledInput 
                         id="standard-basic" 
-                        label={`Add a comment as ${ownName}`}
-                        variant="standard"
+                        /* label={`Add a comment as ${ownName}`} */
+                        placeholder={`Add a comment as ${userName}`}
+                        variant="outlined"
+                        autoComplete="off"
                         value={comment}
                         onChange={handleCommentChange}
-                        endadornment={
+                        endAdornment={
                             <InputAdornment position="end">
-                                <StyledSendIcon  />
+                                <StyledSendIcon onClick={handleSendComment} />
                             </InputAdornment>
                         }
                     />
