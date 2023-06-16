@@ -36,10 +36,10 @@ const userDevMura = JSON.parse(localStorage.getItem('userDevmura'));
 
 const ProfilePage = () => {
   // Info user/profile
+  // Info user/profile
   const [profile, setProfile] = useState(JSON.parse(localStorage.getItem('ownProfile')));
-  //console.log(profile.languageProfiles);
   
-  // Modal edit
+  const [ownPosts, setOwnPosts] = useState([]);
   const [openModal, setOpenModal] = useState(false);
 
   const handleOpenModal = () => {
@@ -92,8 +92,7 @@ const ProfilePage = () => {
               token={userDevMura.token}
               profile={profile}
               setProfile={setProfile}
-            />
-                        
+            />       
             <HeaderProfileInfo
               name={profile.name}
               username={profile.username}
@@ -111,8 +110,35 @@ const ProfilePage = () => {
             <Languages
               languages={profile.languageProfiles}
             />
+
+          <PostContainer>
+           {
+            ownPosts.map((post) =>(
+              <Post
+                key={post.id}
+                id={post.id} 
+                firstName={post.name}
+                lastName={post.lastName}
+                role={post.role}
+                userName={post.username}
+                time={post.createdAt}
+                img={post.img}
+                bodyText={post.postBody}               
+                userRole={post.userRole}
+                userId={post.userId}
+                postImg={post.imgSource}
+                likes={post.counter}
+                hearts={post.hearts}
+                ownId={userDevMura.id}
+                aut={userDevMura.token}
+                ownPhoto={ownUser.img}
+                ownName={ownUser.name}
+                ownLastName={ownUser.lastName}
+              />
+            ))
+           }
+          </PostContainer> 
         </MainAll>
-        
     </>
   )
 }
