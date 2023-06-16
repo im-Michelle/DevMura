@@ -249,7 +249,7 @@ const SignUp = () => {
     const inputValue = e.target.value;
     const regeName = "^[A-Za-záéíóúüñÁÉÍÓÚÜÑ]+(?: [A-Za-záéíóúüñÁÉÍÓÚÜÑ]+)*$";
     if (
-      inputValue.length < 3 ||
+      inputValue.length < 5 ||
       inputValue.length > 50 ||
       !inputValue.match(regeName)
     ) {
@@ -282,7 +282,7 @@ const SignUp = () => {
     const inputValue = e.target.value;
     const regexUserName = "^[a-zA-Z0-9._-]{3,16}$";
     if (
-      inputValue.length < 3 ||
+      inputValue.length < 5 ||
       inputValue.length > 50 ||
       !inputValue.match(regexUserName)
     ) {
