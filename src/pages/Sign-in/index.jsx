@@ -115,7 +115,7 @@ const SignIn = () => {
 
   // Mensajes de error 
   const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarMessage, setSnackbarMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const validateForm = () =>{
     const errors = {};
@@ -145,6 +145,7 @@ const SignIn = () => {
         
       }catch(error){
         console.log(error);
+        setErrorMessage('Error al iniciar sesión. Por favor, verifica tus credenciales.');
       }
     } 
   }
@@ -219,6 +220,15 @@ const SignIn = () => {
           <img src="/img/icono-logo-blanco.svg" alt="" />
         </FormImg>
       </Main>
+     {/*  {!isSnackbarEmpty && (
+        <Snackbar
+          open={snackbarOpen}
+          autoHideDuration={4000}
+          onClose={handleSnackbarClose}
+          message={snackbarMessage}
+          severity={"error"}
+        />
+      )} */}
     </>
   );
 };
