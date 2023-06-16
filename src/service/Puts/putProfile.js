@@ -20,7 +20,7 @@ export const updateProfile = async (id, profileData, token) => {
       username: profileData.username,
       countryName: profileData.countryName,
       posts: profileData.posts,
-      languages: profileData.languages,
+      idsLanguages: profileData.idsLanguages
     };
 
     const response = await axios.put(`${BASE_URL}/profiles/dto/${id}`, profileDto, {
