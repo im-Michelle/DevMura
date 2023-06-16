@@ -227,7 +227,7 @@ const Post = ({ id ,firstName, lastName, role, userName, time, img, bodyText, po
           </BubleAvatarPostContainer> */}
         </SaveAndBubble>
       </PostFooter>
-        {showModal ? <ModalComments comments={comments} aut={aut} ownPhoto={ownPhoto} ownLastName={ownLastName} ownName={ownName}  id={id} setShowModal={setShowModal} /> : <></>}
+        {showModal ? <ModalComments comments={comments} aut={aut} ownPhoto={ownPhoto} userName={userName}   id={id} setShowModal={setShowModal} ownId={ownId}/> : <></>}
     </PostContainer>
   );
 };
