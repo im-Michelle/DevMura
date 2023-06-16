@@ -9,7 +9,6 @@ import { Tooltip } from '@mui/material';
 import Languages from './components/Languages';
 import SocialNetworks from './components/SocialNetworks';
 import ModalProfile from '../../components/Modal/ModalProfile/Modal';
-import InfiniteScroll from 'react-infinite-scroll-component';
 import { getOwnUser } from '../../service/Gets/getOwnUserService';
 import Post from '../../components/Post';
 
@@ -50,7 +49,6 @@ const userDevMura = JSON.parse(localStorage.getItem('userDevmura'));
 const ownUser = JSON.parse(localStorage.getItem('ownProfile'));
 
 const ProfilePage = () => {
-  // Info user/profile
   const [profile, setProfile] = useState(JSON.parse(localStorage.getItem('ownProfile')));
   
   const [ownPosts, setOwnPosts] = useState([]);
@@ -74,7 +72,6 @@ const ProfilePage = () => {
       try {
         const ownPosts = await getOwnUser(userDevMura.id, userDevMura.token);
         setOwnPosts(ownPosts.posts);
-        console.log(ownPosts.posts);
       }catch(error){
         console.log(error);
       }
@@ -125,8 +122,7 @@ const ProfilePage = () => {
               token={userDevMura.token}
               profile={profile}
               setProfile={setProfile}
-            />
-                        
+            />       
             <HeaderProfileInfo
               name={profile.name}
               username={profile.username}
@@ -171,12 +167,8 @@ const ProfilePage = () => {
               />
             ))
            }
-           
-
-          </PostContainer>
-            
+          </PostContainer> 
         </MainAll>
-        
     </>
   )
 }
