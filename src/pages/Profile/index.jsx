@@ -49,6 +49,24 @@ const ProfilePage = () => {
   const handleCloseModal = () => {
     setOpenModal(false);
   };
+
+  useEffect(() => {
+    if(localStorage.getItem("userDevmura") === null) window.location.replace("/")
+    localStorage.setItem('ownProfile', JSON.stringify(profile));
+  }, [])
+ 
+  useEffect(() =>{
+    const fetchOwnPosts = async () => {
+      try {
+        const ownPosts = await getOwnUser(userDevMura.id, userDevMura.token);
+        setOwnPosts(ownPosts.posts);
+      }catch(error){
+        console.log(error);
+      }
+    }
+    fetchOwnPosts();
+  },[])
+
   
   return (
     <>

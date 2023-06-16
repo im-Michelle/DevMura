@@ -32,7 +32,6 @@ const ProfileContainer = styled.div`
   position: relative;
 `;
 
-
 const profile = JSON.parse(localStorage.getItem('ownProfile'));
 const token =  JSON.parse(localStorage.getItem('userDevmura'));
 
