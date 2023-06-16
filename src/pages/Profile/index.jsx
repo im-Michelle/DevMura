@@ -9,6 +9,10 @@ import { Tooltip } from '@mui/material';
 import Languages from './components/Languages';
 import SocialNetworks from './components/SocialNetworks';
 import ModalProfile from '../../components/Modal/ModalProfile/Modal';
+import InfiniteScroll from 'react-infinite-scroll-component';
+import { getOwnUser } from '../../service/Gets/getOwnUserService';
+import Post from '../../components/Post';
+
 
 const MainAll = styled.main`
   display: flex;
@@ -32,27 +36,24 @@ const ProfileContainer = styled.div`
   position: relative;
 `;
 
+const PostContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: ${colors.new};
+  width: 100vw;
+  max-width: 700px;
+  gap: 30px;
+`
+
 const userDevMura = JSON.parse(localStorage.getItem('userDevmura'));
+const ownUser = JSON.parse(localStorage.getItem('ownProfile'));
 
 const ProfilePage = () => {
   // Info user/profile
   const [profile, setProfile] = useState(JSON.parse(localStorage.getItem('ownProfile')));
-  //console.log(profile.languageProfiles);
-
-/*   var viejoName = profile.name;
-  console.log(viejoName);
-
-  var nuevoName = "Ayayaya";
-
-  localStorage.removeItem("name");
-  localStorage.setItem("name", nuevoName);
-
-  setProfile({  ...profile, name: nuevoName});
   
-  console.log(viejoName, nuevoName);
-  console.log(profile.name); */
-  
-  // Modal edit
+  const [ownPosts, setOwnPosts] = useState([]);
   const [openModal, setOpenModal] = useState(false);
 
   const handleOpenModal = () => {
@@ -62,7 +63,26 @@ const ProfilePage = () => {
   const handleCloseModal = () => {
     setOpenModal(false);
   };
-  
+
+  useEffect(() => {
+    if(localStorage.getItem("userDevmura") === null) window.location.replace("/")
+    localStorage.setItem('ownProfile', JSON.stringify(profile));
+  }, [])
+ 
+  useEffect(() =>{
+    const fetchOwnPosts = async () => {
+      try {
+        const ownPosts = await getOwnUser(userDevMura.id, userDevMura.token);
+        setOwnPosts(ownPosts.posts);
+        console.log(ownPosts.posts);
+      }catch(error){
+        console.log(error);
+      }
+
+    }
+    fetchOwnPosts();
+  },[])
+
   return (
     <>
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -124,6 +144,37 @@ const ProfilePage = () => {
             <Languages
               languages={profile.languageProfiles}
             />
+
+          <PostContainer>
+           {
+            ownPosts.map((post) =>(
+              <Post
+                key={post.id}
+                id={post.id} 
+                firstName={post.name}
+                lastName={post.lastName}
+                role={post.role}
+                userName={post.username}
+                time={post.createdAt}
+                img={post.img}
+                bodyText={post.postBody}               
+                userRole={post.userRole}
+                userId={post.userId}
+                postImg={post.imgSource}
+                likes={post.counter}
+                hearts={post.hearts}
+                ownId={userDevMura.id}
+                aut={userDevMura.token}
+                ownPhoto={ownUser.img}
+                ownName={ownUser.name}
+                ownLastName={ownUser.lastName}
+              />
+            ))
+           }
+           
+
+          </PostContainer>
+            
         </MainAll>
         
     </>
