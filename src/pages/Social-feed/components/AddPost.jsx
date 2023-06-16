@@ -97,8 +97,6 @@ const AddPost = ({ aut , id}) => {
   const [imgSource, setImgSource] = React.useState("");
   const [postText, setPostText] = React.useState("");
 
-  const [post, setPost] = React.useState({});
-
   const handleButton = (e) => {
     if (e.target.value.length === 0) {
       setActiveButton(true);
@@ -121,6 +119,7 @@ const AddPost = ({ aut , id}) => {
     setPostText("");
     setShowButtons(false);
     setShowImgInput(false);
+    window.location.reload();
   };
 
   return (

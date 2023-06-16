@@ -139,6 +139,7 @@ const ModalProfile = ({
   countryName: defaultCountryName,
   countryCode: defaultCountryCode,
   userName,
+  languageProfiles : defaultLanguageProfiles,
   token,
   profile, 
   setProfile}) => {
@@ -148,8 +149,11 @@ const ModalProfile = ({
   // valores de countries y languages
   const [countries,setCountries] = useState([]);
   const [languages, setLanguages] = useState([]);
+  const [selectedLanguages, setSelectedLanguages] = useState([]);
+  const [selectedNameLanguages, setSelectedNameLanguages] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState("");
 
+  console.log("id ", selectedLanguages);
   // Valores nuevos de los inputs
   const [newBirthday, setNewBirthday] = useState("");
   const [newAge, setNewAge] = useState("");
@@ -311,7 +315,6 @@ const ModalProfile = ({
       isValidBackground &&
       isValidRole) {
       try {
-        console.log("updating .........");
         const profileData = {
           id: id,
           birthday: newBirthday,
@@ -329,17 +332,17 @@ const ModalProfile = ({
           username: userName,
           countryName: selectedCountry.label || defaultCountryName,
           posts: [],
-          languages: [],
+          idsLanguages: selectedLanguages,
         };
         await updateProfile(id, profileData, token);
         handleSaveChanges();
         handleLocalChanges(profile);
-        console.log("Profile updated");
+        console.log("guardado");
       } catch (error) {
-        console.log("Perfil no actualizado", error);
+        //console.log("Perfil no actualizado", error);
       }
     } else {
-      console.log("Faltan validaciones");
+      //console.log("Faltan validaciones");
     } 
   };
 
@@ -355,6 +358,7 @@ const handleSaveChanges = () =>{
   defaultImg = newImg;
   defaultBackground = newBackground;
   defaultRole = newRole;
+  defaultLanguageProfiles = selectedNameLanguages.slice();
 }
 
 const handleLocalChanges = (profile) => {
@@ -369,6 +373,7 @@ const handleLocalChanges = (profile) => {
   localStorage.removeItem("img");
   localStorage.removeItem("background");
   localStorage.removeItem("role");
+  localStorage.removeItem("languagesProfiles");
 
   localStorage.setItem("name", newName);
   localStorage.setItem("lastName", newLastName);
@@ -381,6 +386,7 @@ const handleLocalChanges = (profile) => {
   localStorage.setItem("img", newImg);
   localStorage.setItem("background", newBackground);
   localStorage.setItem("role", newRole);
+  localStorage.setItem("selectedNameLanguages", JSON.stringify(selectedNameLanguages));
 
   setProfile({...profile, 
     name: newName, 
@@ -393,7 +399,9 @@ const handleLocalChanges = (profile) => {
     likedin: newLikedin,
     img: newImg,
     background: newBackground,
-    role: newRole});
+    role: newRole,
+    languageProfiles: selectedNameLanguages
+  });
 
   handleClose();
 }
@@ -410,6 +418,12 @@ useEffect(() => {
     setNewLastName(defaultLastName);
   }
 }, [defaultLastName]);
+
+useEffect(() => {
+  if (defaultLanguageProfiles.length !== 0) {
+    setSelectedNameLanguages(defaultLanguageProfiles);
+  }
+}, [defaultLanguageProfiles]);
 
 useEffect(() => {
   if (defaultCountryName !== null) {
@@ -500,17 +514,13 @@ useEffect(() => {
     fetchLanguages();
   }, []);
 
-/*   console.log("D:", defaultName, "N:", newName);
-  console.log("D:", defaultLastName, "N:", newLastName);
-  console.log("D:", defaultBirthday, "N:", newBirthday);
-  console.log("D:", defaultAge, "N:", newAge);
-  console.log("D:", defaultCountryName, "N:", selectedCountry);
-  console.log("D:", defaultBio, "N:", newBio);
-  console.log("D:", defaultGitHub, "N:", newGitHub);
-  console.log("D:", defaultLikedin, "N:", newLikedin);
-  console.log("D:", defaultImg, "N:", newImg);
-  console.log("D:", defaultBackground, "N:", newBackground);
-  console.log("D:", defaultRole, "N:", newRole);  */
+  const handleLanguageSelection = (event, values) => {
+    const idsSelect = values.map((option) => option.id);
+    const selectedNames = values.map((option) => option.label);
+
+    setSelectedLanguages(idsSelect);
+    setSelectedNameLanguages(selectedNames);
+  };
 
   //Funcion del miniModal
   const handleClose = () => {
@@ -523,7 +533,9 @@ useEffect(() => {
         defaultLikedin === newLikedin &&
         defaultImg === newImg &&
         defaultBackground === newBackground &&
-        defaultRole === newRole){
+        defaultRole === newRole &&
+        JSON.stringify(defaultLanguageProfiles) === JSON.stringify(selectedNameLanguages)
+        ){
         onClose();
     } else {
       setShowMiniModal(true);
@@ -545,6 +557,8 @@ useEffect(() => {
     setNewImg(defaultImg);
     setNewBackground(defaultBackground);
     setNewRole(defaultRole);
+    setSelectedLanguages([]);
+    setSelectedNameLanguages([]);
     onClose();
   };
 
@@ -569,7 +583,7 @@ useEffect(() => {
               label="Name"
               variant="standard"
               value={newName}
-              helperText={isValidName ? '' : 'Invalid name'}
+              helperText={isValidName ? '' : 'Invalid name, only letters are allowed'}
               error={!isValidName}
               required
               inputProps={{ style: { textTransform: 'capitalize' } }}
@@ -582,7 +596,7 @@ useEffect(() => {
               label="Last Name"
               variant="standard"
               value={newLastName}
-              helperText={isValidLastName ? '' : 'Invalid last name'}
+              helperText={isValidLastName ? '' : 'Invalid last name, only letters are allowed'}
               error={!isValidLastName}
               required
               inputProps={{ style: { textTransform: 'capitalize' } }}
@@ -686,7 +700,7 @@ useEffect(() => {
               label="Github"
               variant="standard"
               value={newGitHub}
-              helperText={isValidGitHub ? '' : 'Invalid GitHub name'}
+              helperText={isValidGitHub ? '' : 'Invalid GitHub url, use the address https://github.com/'}
               error={!isValidGitHub}
               required
               inputProps={{ style: { textTransform: "capitalize" } }}
@@ -699,7 +713,7 @@ useEffect(() => {
               label="LinkedIn"
               variant="standard"
               value={newLikedin}
-              helperText={isValidLikedin ? '' : 'Invalid LikedIn name'}
+              helperText={isValidLikedin ? '' : 'Invalid LikedIn url, use the address https://linkedin.com/in/'}
               error={!isValidLikedin}
               required
               inputProps={{ style: { textTransform: 'capitalize' } }}
@@ -738,7 +752,7 @@ useEffect(() => {
               label="Role"
               variant="standard"
               value={newRole}
-              helperText={isValidRole ? '' : 'Invalid LinkedIn name'}
+              helperText={isValidRole ? '' : 'Invalid role, only letters are allowed'}
               error={!isValidRole}
               required
               inputProps={{ style: { textTransform: 'capitalize' } }}
@@ -750,12 +764,12 @@ useEffect(() => {
               id="tags-standard"
               options={languages}
               getOptionLabel={(option) => option.label}
-              defaultValue={[languages[3]]}
+              defaultValue={selectedLanguages}
               renderTags={(value, getTagProps) =>
-                value.map((option, index) => (
+                value.map((option) => (
                   <Chip
                     label={option.label}
-                    {...getTagProps({ index })}
+                    {...getTagProps({ index: option.id })}
                     sx={{
                       backgroundColor: colors.contrast,
                       color: 'white',
@@ -771,6 +785,7 @@ useEffect(() => {
                   placeholder="That you know"
                 />
               )}
+              onChange={handleLanguageSelection}
             />
 
           </Box>

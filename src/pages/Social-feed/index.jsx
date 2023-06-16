@@ -158,6 +158,9 @@ const SocialFeed = () => {
                 hearts={post.hearts}
                 ownId={id}
                 aut={token}
+                ownPhoto={userProfile.img}
+                ownName={userProfile.name}
+                ownLastName={userProfile.lastName}
                 />
                 ))}
             </InfiniteScroll>
