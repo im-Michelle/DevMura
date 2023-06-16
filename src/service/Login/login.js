@@ -19,12 +19,12 @@ export const login = async (username, password) => {
         if(response.status !== 200) throw new Error(message || "Error en el login");
         const { message, ...dataWuthoutMessage } = response.data;
         localStorage.setItem("userDevmura", JSON.stringify(dataWuthoutMessage));
-        console.log(response.data)
+        //console.log(response.data)
         await getOwnUser(dataWuthoutMessage.id, dataWuthoutMessage.token);
         window.location.href = "/feed";
-    }catch(err){
-        console.log(err.response)
-        console.log("Error en el login")
-        return err.response;
+    }catch(error){
+        //console.log(error.response)
+         //console.error('Error al enviar la solicitud', error);
+         throw error.response.data;
     }
 };
