@@ -56,10 +56,10 @@ const FriendAndMessage = ({ aut, friendId, owndId, friend}) =>{
     return(
         <Container>
             {   friendStatus 
-                ? <AddButton onClick={handleFriend}><img src="/public/svg/addfriend.svg" alt="" /></AddButton> 
-                : <AddButton onClick={handleFriend}><img src="/public/svg/deletefriend.svg" alt="" /></AddButton> 
+                ? <AddButton onClick={handleFriend}><img src="./svg/addfriend.svg" alt="" /></AddButton> 
+                : <AddButton onClick={handleFriend}><img src="./svg/deletefriend.svg" alt="" /></AddButton> 
                 }
-            <AddButton><img src="/public/svg/message.svg" alt="" /></AddButton> 
+            <AddButton><img src="./svg/message.svg" alt="" /></AddButton> 
         </Container>
     )
 }
