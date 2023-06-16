@@ -106,7 +106,7 @@ const StyledInput = styled(OutlinedInput)`
 
 const ModalComments = (props) =>{
 
-    const { id, ownPhoto, userName,  comments, aut = [], ownId} = props;
+    const { id, ownPhoto, userName,  comments, aut = [], ownId, ownName} = props;
 
     const [ commentsPost, setCommentsPost ] = useState(comments);
 
@@ -118,7 +118,7 @@ const ModalComments = (props) =>{
 
     const handleSendComment = async () =>{
         await commentPost( id , ownId , comment, aut);
-        const newComment = {username: userName, content: comment, img: ownPhoto};
+        const newComment = {username: ownName, content: comment, img: ownPhoto};
         setCommentsPost([...commentsPost, newComment]);
         setComment("");
         
