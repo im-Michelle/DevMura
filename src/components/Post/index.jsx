@@ -11,6 +11,8 @@ import moment from 'moment';
 import { heartPost } from "../../service/Posts/heartPost";
 import BubleAvatarPost from "../BubleAvatarPost";
 import { useEffect } from "react";
+import ModalComments from "./ModalComments";
+import { getComments } from "../../service/Gets/commentsService";
 
 const PostContainer = styled.div`
   display: flex;
@@ -138,11 +140,7 @@ const BubleAvatarPostContainer = styled.div`
     flex-direction: row;
 `
 
-const Post = ({ id ,firstName, lastName, role, userName, time, img, bodyText, postImg, userId, likes, hearts, ownId, aut}) => {
-  //console.log(hearts)
-  //console.log(ownId)
-  /* console.log(aut)
-  console.log(id) */
+const Post = ({ id ,firstName, lastName, role, userName, time, img, bodyText, postImg, userId, likes, hearts, ownId, aut, ownPhoto, ownName, ownLastName}) => {
 
   const likesToNumber = parseInt(likes)
 
@@ -151,6 +149,10 @@ const Post = ({ id ,firstName, lastName, role, userName, time, img, bodyText, po
   const [bookmark, setBookmark] = useState(false);
 
   const [likeCounter, setLikeCounter] = useState( likesToNumber );
+
+  const [showModal, setShowModal] = useState(false);
+
+  const [comments, setComments] = useState([]);
 
   const formatdTime = moment(time).startOf('hour').fromNow();
 
@@ -166,6 +168,15 @@ const Post = ({ id ,firstName, lastName, role, userName, time, img, bodyText, po
     })
   }, [])
 
+  const handleModal = async () =>{
+    try{
+      const comentarios = await getComments(aut, id)
+      setComments(comentarios)
+      setShowModal(!showModal)
+    }catch(error){
+      console.log(error)
+    }
+  }
 
   const handleLike = async () =>{
     const megusta = await heartPost( ownId, id , aut)
@@ -201,9 +212,9 @@ const Post = ({ id ,firstName, lastName, role, userName, time, img, bodyText, po
       
       <PostFooter>
         <IconosLike>
-          { likesToNumber !== 0 ? <LikeCounter>Likes {likeCounter}</LikeCounter> : <></>}
+          { likesToNumber != 0 ? <LikeCounter>Likes {likeCounter}</LikeCounter> : <></>}
           { like ? <FavoriteIcon  fontSize="large" style={{color: `${colors.contrast} `}}  onClick={() => handleLike()} /> : <FavoriteBorderIcon fontSize="large"  onClick={() => handleLike()} />}     
-          <ChatBubbleIcon fontSize="large"/>
+          {<ChatBubbleIcon onClick={ () => handleModal() } fontSize="large"/>}
         </IconosLike>
         <SaveAndBubble>
         {bookmark ? <BookmarkIcon fontSize="large" onClick={() => setBookmark(!bookmark)} /> : <BookmarkBorderIcon fontSize="large" onClick={() => setBookmark(!bookmark)} />}
@@ -216,6 +227,7 @@ const Post = ({ id ,firstName, lastName, role, userName, time, img, bodyText, po
           </BubleAvatarPostContainer> */}
         </SaveAndBubble>
       </PostFooter>
+        {showModal ? <ModalComments comments={comments} aut={aut} ownPhoto={ownPhoto} ownLastName={ownLastName} ownName={ownName}  id={id} setShowModal={setShowModal} /> : <></>}
     </PostContainer>
   );
 };

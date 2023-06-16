@@ -60,6 +60,7 @@ const DropdownImg = styled.img`
     width: 100%;
     border-radius: 50%;
     object-fit: cover;
+    
   
     @media (max-width: 768px) {
         max-width: 100%;
@@ -185,9 +186,9 @@ const Menu = ({userImg}) => {
         <>
             <DropdownMenu>
                 <DropdownButton onClick={toggleDropdown}>
-                    <StyledMenu className="link-menu">
+                    {<StyledMenu className="link-menu">
                         <img className="img" src="/icons/menu.png" alt="Menu" />
-                    </StyledMenu>
+                    </StyledMenu>}
                 </DropdownButton>
                 <DropdownContent open={dropdownOpen}>
                     <MiniMenuContainer>
