@@ -127,7 +127,7 @@ const SignIn = () => {
     }
     if(!formValues.password){
       errors.password = "Password is required";
-    }else if(formValues.password.length < 6){
+    }else if(formValues.password.length < 3){
       errors.password = "Password must be at least 6 characters";
     }
     setFormErrors(errors);

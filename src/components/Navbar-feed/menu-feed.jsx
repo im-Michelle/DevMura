@@ -215,7 +215,7 @@ const Menu = ({userImg}) => {
                         </DropFeedRoutes>
                     </MiniMenuContainer>
                     <DropdownItem to="/profile" className="view-profile">View Profile</DropdownItem>
-                    <DropdownItem to="/settings">Settings</DropdownItem>
+                    {/* <DropdownItem to="/settings">Settings</DropdownItem> */}
                     <DropdownItem onClick={logut} >Sign Out</DropdownItem>
                 </DropdownContent>
             </DropdownMenu>
