@@ -9,6 +9,7 @@ import FriendOrNotFriend from './components/Friend';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { getUserByID } from '../../service/Gets/userService';
+import Post from '../../components/Post';
 
 const MainAll = styled.main`
   display: flex;
@@ -31,18 +32,32 @@ const ProfileContainer = styled.div`
   padding-bottom: 20px;
   position: relative;
 `;
+const PostContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: ${colors.new};
+  width: 100vw;
+  max-width: 700px;
+  gap: 30px;
+`
 
 const profile = JSON.parse(localStorage.getItem('ownProfile'));
 const token =  JSON.parse(localStorage.getItem('userDevmura'));
+const userDevMura = JSON.parse(localStorage.getItem('userDevmura'));
+const ownUser = JSON.parse(localStorage.getItem('ownProfile'));
 
 const UserPage = () => {
 
   const [user, setUser] = useState({});
+  const [posts, setPosts] = useState([]);
+
   useEffect(() => {
     const userPath = window.location.pathname.split("/")[2];
     getUserByID( userPath , token["token"])
       .then((res) => {
         setUser(res)
+        setPosts(res.posts)
       })
       .catch((err) => console.log(err));
   }, []);
@@ -83,6 +98,34 @@ const UserPage = () => {
             <Languages
               languages={user.languageProfiles ? user.languageProfiles : ["Java", "JavaScript"]}
             />
+
+            <PostContainer>
+              {
+              posts.map((post) => (
+                <Post
+                  key={post.id}
+                  id={post.id} 
+                  firstName={post.name}
+                  lastName={post.lastName}
+                  role={post.role}
+                  userName={post.username}
+                  time={post.createdAt}
+                  img={post.img}
+                  bodyText={post.postBody}               
+                  userRole={post.userRole}
+                  userId={post.userId}
+                  postImg={post.imgSource}
+                  likes={post.counter}
+                  hearts={post.hearts}
+                  ownId={userDevMura.id}
+                  aut={userDevMura.token}
+                  ownPhoto={ownUser.img}
+                  ownName={ownUser.name}
+                  ownLastName={ownUser.lastName}
+                />
+              ))
+              }
+            </PostContainer>
         </MainAll>
         
     </>
