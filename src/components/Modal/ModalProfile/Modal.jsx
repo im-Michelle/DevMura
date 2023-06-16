@@ -148,7 +148,12 @@ const ModalProfile = ({
   // valores de countries y languages
   const [countries,setCountries] = useState([]);
   const [languages, setLanguages] = useState([]);
+  const [selectedLanguages, setSelectedLanguages] = useState([]);
+  const [selectedNameLanguages, setSelectedNameLanguages] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState("");
+
+  console.log("seleccionado id:", selectedLanguages);
+  console.log("seleccionando nombre:", selectedNameLanguages);
 
   // Valores nuevos de los inputs
   const [newBirthday, setNewBirthday] = useState("");
@@ -329,7 +334,7 @@ const ModalProfile = ({
           username: userName,
           countryName: selectedCountry.label || defaultCountryName,
           posts: [],
-          languages: [],
+          idsLanguages: selectedLanguages,
         };
         await updateProfile(id, profileData, token);
         handleSaveChanges();
@@ -369,6 +374,7 @@ const handleLocalChanges = (profile) => {
   localStorage.removeItem("img");
   localStorage.removeItem("background");
   localStorage.removeItem("role");
+  //localStorage.removeItem("");
 
   localStorage.setItem("name", newName);
   localStorage.setItem("lastName", newLastName);
@@ -381,6 +387,7 @@ const handleLocalChanges = (profile) => {
   localStorage.setItem("img", newImg);
   localStorage.setItem("background", newBackground);
   localStorage.setItem("role", newRole);
+  //localStorage.setItem("");
 
   setProfile({...profile, 
     name: newName, 
@@ -499,6 +506,10 @@ useEffect(() => {
   
     fetchLanguages();
   }, []);
+
+  const handleLanguageSelection = (event, values) => {
+    setSelectedLanguages(values.map((option) => option.id));
+  };
 
 /*   console.log("D:", defaultName, "N:", newName);
   console.log("D:", defaultLastName, "N:", newLastName);
@@ -750,12 +761,12 @@ useEffect(() => {
               id="tags-standard"
               options={languages}
               getOptionLabel={(option) => option.label}
-              defaultValue={[languages[3]]}
+              defaultValue={selectedLanguages}
               renderTags={(value, getTagProps) =>
-                value.map((option, index) => (
+                value.map((option) => (
                   <Chip
                     label={option.label}
-                    {...getTagProps({ index })}
+                    {...getTagProps({ index: option.id })}
                     sx={{
                       backgroundColor: colors.contrast,
                       color: 'white',
@@ -771,6 +782,7 @@ useEffect(() => {
                   placeholder="That you know"
                 />
               )}
+              onChange={handleLanguageSelection}
             />
 
           </Box>
