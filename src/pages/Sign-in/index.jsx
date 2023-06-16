@@ -135,14 +135,19 @@ const SignIn = () => {
     }else if(formValues.password.length < 6){
       errors.password = "Password must be at least 6 characters";
     }
-
+    console.log("errores: ", errors);
     setFormErrors(errors);
     setFormValid(Object.keys(errors).length === 0);
   }
 
-  const handleFormSubmit = async () => {
-    const e = {preventDefault: () => {} };
+  const handleFormSubmit = async (e) => {
+    console.log("entra aqui");
+    e.preventDefault();
+    //const e = {preventDefault: () => {} };
+    
+    console.log("pasa por prevent");
     validateForm();
+    console.log("pasa por validate", validateForm);
     if(formValid){
       //console.log(formValues)
       //console.log("Form is valid");
@@ -154,7 +159,7 @@ const SignIn = () => {
     } 
   }
 
-  useEffect(() => {
+/*   useEffect(() => {
     if (formValid) {
       handleFormSubmit();
     }
@@ -163,7 +168,7 @@ const SignIn = () => {
   const handleClick = async (e) => {
     e.preventDefault();
     await handleFormSubmit(e);
-  }
+  } */
 
   return (
     <>
@@ -226,7 +231,7 @@ const SignIn = () => {
           />
           <Stack direction="row" spacing={2}>
             <Button 
-              onClick={handleClick}
+              onClick={handleFormSubmit}
               variant="contained" 
               type="submit" 
               sx={{ backgroundColor:'#E63946',":hover":{backgroundColor:'#1D3557' } }} /* disabled={formValid} */>
