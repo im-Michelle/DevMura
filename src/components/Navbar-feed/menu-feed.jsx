@@ -204,9 +204,9 @@ const Menu = ({userImg}) => {
                                 <LinkImg2 src="/icons/groups-red.png" alt="Groups" />
                                 <TextImg2>Groups</TextImg2>
                             </StyledLink2>
-                            <StyledLink2 to="*">
+                            <StyledLink2 to="/friends">
                                 <LinkImg2 src="/icons/green-bell.png" alt="Notifications" />
-                                <TextImg2>Notifications</TextImg2>
+                                <TextImg2>Friends</TextImg2>
                             </StyledLink2>
                             <StyledLink2 to="/chats">
                                 <LinkImg2 src="/icons/messages.png" alt="Messages" />

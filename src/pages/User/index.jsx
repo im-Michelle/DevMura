@@ -5,11 +5,11 @@ import HeaderProfile from './components/HeaderProfileIMG';
 import HeaderProfileInfo from './components/HeaderProfileInfo';
 import Languages from './components/Languages';
 import SocialNetworks from './components/SocialNetworks';
-import FriendOrNotFriend from './components/Friend';
 import { useState } from 'react';
 import { useEffect } from 'react';
 import { getUserByID } from '../../service/Gets/userService';
 import Post from '../../components/Post';
+import FriendAndMessage from './components/Friend';
 
 const MainAll = styled.main`
   display: flex;
@@ -52,6 +52,8 @@ const UserPage = () => {
   const [user, setUser] = useState({});
   const [posts, setPosts] = useState([]);
 
+  const path = window.location.pathname.split("/")[2];
+
   useEffect(() => {
     const userPath = window.location.pathname.split("/")[2];
     getUserByID( userPath , token["token"])
@@ -87,16 +89,23 @@ const UserPage = () => {
             />
             
           </ProfileContainer>
-          <FriendOrNotFriend
-            friend={true}
-            linkToMessage="/message"
-          />
+          {
+            path == userDevMura.id ? <></> :
+            <FriendAndMessage
+              friend={false}
+              linkToMessage="/message"
+              aut={userDevMura.token}
+              friendId={user.id}
+              owndId={userDevMura.id}
+            />
+          }
+        
             <SocialNetworks
               linkLinkedin={`https://www.linkedin.com/${user.linkedin}`}
               linkGithub={`https://www.github.com/${user.github}`}
             />
             <Languages
-              languages={user.languageProfiles ? user.languageProfiles : ["Java", "JavaScript"]}
+              languages={user.languageProfiles}
             />
 
             <PostContainer>

@@ -17,6 +17,7 @@ import { Groups } from './pages/Groups'
 import { GroupPage } from './pages/GroupPage'
 import Chats from './pages/Chats'
 import UserPage from './pages/User';
+import Friends from './pages/Friends';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -44,6 +45,7 @@ function App() {
         <Route path='/terms-of-service' element={<TermsOfService />} />
         <Route path='/privacy-policy' element={<PrivacyPolicy />} />
         <Route path='/feed' element={ <SocialFeed/>} />
+        <Route path='/friends' element={ <Friends/>} />
         <Route path='/groups' element={ <Groups/>} />
         <Route path='/groups/:id' element={<GroupPage/>} />
         <Route path='/chats' element={ <Chats/>} />

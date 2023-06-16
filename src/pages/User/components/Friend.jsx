@@ -1,24 +1,67 @@
+import { useState } from 'react';
 import styled from 'styled-components';
+import { colors } from '../../../ui/colors';
+import { addFriend } from '../../../service/Posts/addFriend';
 
 const Container = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
+    justify-content: space-around;
     align-items: center;
     width: 95%;
     max-width: 800px;
     border-radius: 10px;
     box-shadow: 0 5px 8px #000000a2;
     padding-bottom: 20px;
+    padding-top: 20px;
     position: relative;
 `;
 
+const AddButton = styled.button`
+    border-radius: 50%;
+    height: 65px;
+    width: 65px;
+    border: none;
+    color: ${colors.primaryText};
+    transition: all 0.3s ease-in-out;
+    &:hover{
+        background-color: ${colors.contrast};
+    }
+    &:active{
+        scale: 0.8;
+    }
+    img{
+        height: 35px;
+        width: 35px;
+        margin: auto;
+    }
+`
 
-const FriendOrNotFriend = ({friend, message}) =>{
+
+const FriendAndMessage = ({ aut, friendId, owndId, friend}) =>{
+    console.log( 'friend id ', friendId,  "propio id ", owndId, "status", friend)
+
+    const [friendStatus, setFriend] = useState(friend);
+
+    
+    const handleFriendRequest = async () =>{
+        addFriend(owndId, friendId , aut)
+    }
+
+    const handleFriend = () =>{
+        setFriend(!friendStatus);
+        handleFriendRequest();
+    }
+    
     return(
         <Container>
-            {friend ? <h1>Amigo</h1> : <h1>No amigo</h1>} 
+            {   friendStatus 
+                ? <AddButton onClick={handleFriend}><img src="/public/svg/addfriend.svg" alt="" /></AddButton> 
+                : <AddButton onClick={handleFriend}><img src="/public/svg/deletefriend.svg" alt="" /></AddButton> 
+                }
+            <AddButton><img src="/public/svg/message.svg" alt="" /></AddButton> 
         </Container>
     )
 }
 
-export default FriendOrNotFriend;
+export default FriendAndMessage;
