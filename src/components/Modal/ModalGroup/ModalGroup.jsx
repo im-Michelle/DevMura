@@ -44,7 +44,7 @@ const ModalGroup = ({ open, onClose }) => {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log(formValues);
+    //console.log(formValues);
   };
 
 

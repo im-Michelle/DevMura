@@ -268,11 +268,11 @@ const AboutUs = () => {
                           gitHub="https://github.com/DaveOval"
                         />  
                          <IndividualCards
-                          img="https://cdn.discordapp.com/attachments/1100907913037484092/1111534255311421461/1685080711703__DSC0417.jpg"
+                          img="https://hardwaresfera.com/wp-content/uploads/2018/10/cuanto-gana-alexelcapo.jpg"
                           name="Alvaro González"
                           rol="Web Developer Trainee"
                           description="Full stack development apprentice with a physio therapy background, with the vision to creat amazing development solutions"             
-                          linkedIn="https://www.linkedin.com/in/alejandra-patricia-chaparro-matias-3274a4267/" 
+                          linkedIn="https://www.linkedin.com/in/alvaro-david-gonzalez/" 
                           gitHub="https://github.com/AlvaroGO32"
                         />
                       </CardContainer>

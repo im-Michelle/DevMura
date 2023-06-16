@@ -1,4 +1,5 @@
 import React from "react";
+import { useEffect } from 'react';
 import styled from "@emotion/styled";
 import { colors } from "../../ui/colors";
 import Box from "@mui/material/Box";
@@ -112,8 +113,6 @@ const SignIn = () => {
 
   const [formErrors, setFormErrors] = useState({});
   const [formValid, setFormValid] = useState(false);
-  
-
 
   const validateForm = () =>{
     const errors = {};
@@ -136,24 +135,36 @@ const SignIn = () => {
     }else if(formValues.password.length < 6){
       errors.password = "Password must be at least 6 characters";
     }
+
     setFormErrors(errors);
     setFormValid(Object.keys(errors).length === 0);
   }
 
-  const handleFormSubmit = async (e) => {
-    e.preventDefault();
+  const handleFormSubmit = async () => {
+    const e = {preventDefault: () => {} };
     validateForm();
     if(formValid){
-      console.log(formValues)
-      console.log("Form is valid");
+      //console.log(formValues)
+      //console.log("Form is valid");
       try{
-        await login(formValues.username, formValues.password);
-        
+        await login(formValues.username, formValues.password);        
       }catch(error){
-        console.log(error);
+        //console.log(error);
       }
     } 
   }
+
+  useEffect(() => {
+    if (formValid) {
+      handleFormSubmit();
+    }
+  }, [formValid]);
+
+  const handleClick = async (e) => {
+    e.preventDefault();
+    await handleFormSubmit(e);
+  }
+
   return (
     <>
       <Main>
@@ -215,7 +226,7 @@ const SignIn = () => {
           />
           <Stack direction="row" spacing={2}>
             <Button 
-              onClick={handleFormSubmit}
+              onClick={handleClick}
               variant="contained" 
               type="submit" 
               sx={{ backgroundColor:'#E63946',":hover":{backgroundColor:'#1D3557' } }} /* disabled={formValid} */>

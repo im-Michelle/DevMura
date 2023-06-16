@@ -38,19 +38,6 @@ const ProfilePage = () => {
   // Info user/profile
   const [profile, setProfile] = useState(JSON.parse(localStorage.getItem('ownProfile')));
   //console.log(profile.languageProfiles);
-
-/*   var viejoName = profile.name;
-  console.log(viejoName);
-
-  var nuevoName = "Ayayaya";
-
-  localStorage.removeItem("name");
-  localStorage.setItem("name", nuevoName);
-
-  setProfile({  ...profile, name: nuevoName});
-  
-  console.log(viejoName, nuevoName);
-  console.log(profile.name); */
   
   // Modal edit
   const [openModal, setOpenModal] = useState(false);

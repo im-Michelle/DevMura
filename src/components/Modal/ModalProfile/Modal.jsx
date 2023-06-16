@@ -153,7 +153,7 @@ const ModalProfile = ({
   const [selectedNameLanguages, setSelectedNameLanguages] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState("");
 
-  console.log("id ", selectedLanguages);
+  //console.log("id ", selectedLanguages);
   // Valores nuevos de los inputs
   const [newBirthday, setNewBirthday] = useState("");
   const [newAge, setNewAge] = useState("");
@@ -337,7 +337,7 @@ const ModalProfile = ({
         await updateProfile(id, profileData, token);
         handleSaveChanges();
         handleLocalChanges(profile);
-        console.log("guardado");
+        //console.log("guardado");
       } catch (error) {
         //console.log("Perfil no actualizado", error);
       }

@@ -8,7 +8,7 @@ const options = [
 
 const MyComponent = () => {
   const handleSelectChange = (selectedValue) => {
-    console.log('Selected value:', selectedValue);
+    //console.log('Selected value:', selectedValue);
   };
 
   return (
