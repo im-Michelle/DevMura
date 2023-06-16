@@ -9,6 +9,7 @@ export const getUserByID = async (id, token) =>{
             }
         });
         const user = response.data;
+        console.log("User fetch", user);
         return user
     }catch(e){
         console.error("No user fetch", e);
