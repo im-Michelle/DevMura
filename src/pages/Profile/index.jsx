@@ -37,7 +37,7 @@ const userDevMura = JSON.parse(localStorage.getItem('userDevmura'));
 const ProfilePage = () => {
   // Info user/profile
   const [profile, setProfile] = useState(JSON.parse(localStorage.getItem('ownProfile')));
-  console.log(profile.languageProfiles);
+  //console.log(profile.languageProfiles);
 
 /*   var viejoName = profile.name;
   console.log(viejoName);
