@@ -26,8 +26,7 @@ const IconsLanguage = ({src}) => {
     const srcToLowerCase = src.toLowerCase();
     return (
         <IconContainer>
-            {/* //TODO wachar el path de la imagen por que no jala */}
-            <Icon src={`/public/languages/${srcToLowerCase}.svg`} alt={src} />
+            <Icon src={`./languages/${srcToLowerCase}.svg`} alt={src} />
         </IconContainer>
     );
 };

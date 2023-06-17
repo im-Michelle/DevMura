@@ -13,7 +13,6 @@ import { login } from "../../service/Login/login";
 import Snackbar from "../../components/SnackBar/SnackBar";
 import { getOwnUser } from "../../service/Gets/getOwnUserService";
 
-
 const Main = styled.main`
   width: 100%;
   height: max-content;
