@@ -47,20 +47,6 @@ const ModalGroup = ({ open, onClose }) => {
     console.log(formValues);
   };
 
-
-  // Boton
-
-  // Use Effects
-  //useEffect(() => {
-    //const fetchCountries = async () => {
-      //const countries = await getCountries();
-      //setCountries(countries);
-    //};
-  
-    //fetchCountries();
-  //}, []);
-
-
   return (
     <Modal
       open={open}
@@ -91,7 +77,7 @@ const ModalGroup = ({ open, onClose }) => {
               label="Bio"
               multiline
               rows={4}
-              defaultValue="Bio here"
+              defaultValue="Description here"
               sx={{
                 color: 'white',
                 width: '120%',
