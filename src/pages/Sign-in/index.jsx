@@ -145,7 +145,7 @@ const SignIn = () => {
       }catch(error){
         console.log(error);
         setSnackbarOpen(true);
-        setErrorMessage('Error al iniciar sesión. Por favor, verifica tu usuario y/o contraseña.');
+        setErrorMessage('Login failed. Please check your username and password and try again.');
       }
     } 
   }
