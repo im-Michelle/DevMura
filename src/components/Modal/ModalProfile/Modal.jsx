@@ -15,12 +15,10 @@ import TextField from "@mui/material/TextField";
 import MiniModal from "../../Modal/ModalChanges/ModalChanges"
 import Chip from '@mui/material/Chip'
 import { withTheme } from 'styled-components';
-
 import { getLanguages } from '../../../service/Gets/languageService';
 import { getCountries } from "../../../service/Gets/countryService";
 import { updateProfile } from '../../../service/Puts/putProfile';
-import { json } from 'react-router';
-import { ConstructionOutlined } from '@mui/icons-material';
+import dayjs from 'dayjs';
 
 const CustomAutoComplete = styled(Autocomplete)`
   color: ${colors.primaryText};
@@ -154,9 +152,9 @@ const ModalProfile = ({
   const [selectedNameLanguages, setSelectedNameLanguages] = useState([]);
   const [selectedCountry, setSelectedCountry] = useState("");
 
-  console.log("id ", selectedLanguages);
   // Valores nuevos de los inputs
   const [newBirthday, setNewBirthday] = useState("");
+  const [imprimirBirthday, setImprimirBirthday] = useState("");
   const [newAge, setNewAge] = useState("");
   const [newBio, setNewBio] = useState("");
   const [newImg, setNewImg] = useState("");
@@ -166,6 +164,8 @@ const ModalProfile = ({
   const [newRole, setNewRole] = useState("");
   const [newName, setNewName] = useState("");
   const [newLastName, setNewLastName] = useState("");
+  //const defaultDate = dayjs('2000-08-25');
+
 
   // validadores de los inputs
   const [isValidName, setIsValidName] = useState(true);
@@ -338,7 +338,7 @@ const ModalProfile = ({
         await updateProfile(id, profileData, token);
         handleSaveChanges();
         handleLocalChanges(profile);
-        console.log("guardado");
+        //console.log("guardado");
       } catch (error) {
         //console.log("Perfil no actualizado", error);
       }
@@ -424,7 +424,23 @@ useEffect(() => {
   if (defaultLanguageProfiles.length !== 0) {
     setSelectedNameLanguages(defaultLanguageProfiles);
   }
-}, [defaultLanguageProfiles]);
+
+  const idsSelectLanguages = defaultLanguageProfiles.map((language) =>
+    languages.find((lang) => lang.label === language)?.id
+  ).filter(Boolean);
+
+  //console.log("ids default", idsSelectLanguages);
+
+  setSelectedLanguages(idsSelectLanguages);
+
+  //console.log(selectedNameLanguages);
+  //console.log("ids new", selectedLanguages);
+}, [defaultLanguageProfiles, languages, setSelectedNameLanguages, setSelectedLanguages]);
+
+useEffect(() => {
+  //console.log("ids new", selectedLanguages);
+}, [selectedLanguages]);
+
 
 useEffect(() => {
   if (defaultCountryName !== null) {
@@ -494,8 +510,15 @@ useEffect(() => {
     setNewBirthday(nuevoFormato);
   }else if (defaultBirthday === null){
     setNewBirthday(null);
+    
   }
 }, [defaultBirthday]);
+
+useEffect(() => {
+  let formatoPicker = dayjs(newBirthday);
+  setImprimirBirthday(formatoPicker);
+}, [newBirthday]);
+
 
   useEffect(() => {
     const fetchCountries = async () => {
@@ -608,6 +631,7 @@ useEffect(() => {
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DemoContainer components={['DatePicker']}>
                   <DatePicker
+                   value={imprimirBirthday}
                     className="customDatePicker"
                     onChange={handleInputAgeChange}
                     renderInput={(props) => (
@@ -765,7 +789,7 @@ useEffect(() => {
               id="tags-standard"
               options={languages}
               getOptionLabel={(option) => option.label}
-              defaultValue={selectedLanguages}
+              defaultValue={languages.filter((language) => selectedNameLanguages.includes(language.label))}
               renderTags={(value, getTagProps) =>
                 value.map((option) => (
                   <Chip
