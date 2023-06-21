@@ -144,7 +144,8 @@ const SignIn = () => {
         
       }catch(error){
         console.log(error);
-        setErrorMessage('Error al iniciar sesión. Por favor, verifica tus credenciales.');
+        setSnackbarOpen(true);
+        setErrorMessage('Login failed. Please check your username and password and try again.');
       }
     } 
   }
@@ -219,15 +220,14 @@ const SignIn = () => {
           <img src="/img/icono-logo-blanco.svg" alt="" />
         </FormImg>
       </Main>
-     {/*  {!isSnackbarEmpty && (
-        <Snackbar
-          open={snackbarOpen}
-          autoHideDuration={4000}
-          onClose={handleSnackbarClose}
-          message={snackbarMessage}
-          severity={"error"}
-        />
-      )} */}
+      <Snackbar
+        key={snackbarOpen}
+        open={snackbarOpen}
+        autoHideDuration={4000}
+        onClose={() => setSnackbarOpen(false)}
+        message={errorMessage}
+        severity={"error"}
+      />
     </>
   );
 };
