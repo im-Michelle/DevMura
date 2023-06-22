@@ -105,6 +105,7 @@ const LinkImg2 = styled.img`
     width: 24px;
     height: 24px;
     object-fit: cover;
+    filter: invert(1);
 `;
 
 const TextImg2 = styled.span`
@@ -197,19 +198,19 @@ const Menu = ({userImg}) => {
                         </DropdownImgLink>}
                         <DropFeedRoutes>
                             <StyledLink2 to="/feed">
-                                <LinkImg2 src="/icons/home-light-blue.png" alt="Home" />
+                                <LinkImg2 src="/icons/home-light-blue.svg" alt="Home" />
                                 <TextImg2>Home</TextImg2>
                             </StyledLink2>
                             <StyledLink2 to="/groups">
-                                <LinkImg2 src="/icons/groups-red.png" alt="Groups" />
+                                <LinkImg2 src="/icons/groups-red.svg" alt="Groups" />
                                 <TextImg2>Groups</TextImg2>
                             </StyledLink2>
                             <StyledLink2 to="/friends">
-                                <LinkImg2 src="/icons/green-bell.png" alt="Notifications" />
-                                <TextImg2>Friends</TextImg2>
+                                <LinkImg2 src="/icons/green-bell.svg" alt="Notifications" />
+                                <TextImg2>Notifications</TextImg2>
                             </StyledLink2>
                             <StyledLink2 to="/chats">
-                                <LinkImg2 src="/icons/messages.png" alt="Messages" />
+                                <LinkImg2 src="/icons/messages.svg" alt="Messages" />
                                 <TextImg2>Messages</TextImg2>
                             </StyledLink2>
                         </DropFeedRoutes>
