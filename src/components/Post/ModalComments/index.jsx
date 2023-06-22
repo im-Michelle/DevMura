@@ -133,7 +133,7 @@ const ModalComments = (props) =>{
                     <Comment>
                         <Avatar src={comment.img ? comment.img : "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png"} alt="" />
                         <UserAndComent>
-                            <UserName to={`/user/${id}`}>@{comment.username}</UserName>
+                            <UserName to={`/user/${comment.id}`}>@{comment.username}</UserName>
                             <CommentText>{comment.content}</CommentText>
                         </UserAndComent>
                     </Comment>
@@ -146,7 +146,7 @@ const ModalComments = (props) =>{
                     <StyledInput 
                         id="standard-basic" 
                         /* label={`Add a comment as ${ownName}`} */
-                        placeholder={`Add a comment as ${userName}`}
+                        placeholder={`Add a comment as ${ownName}`}
                         variant="outlined"
                         autoComplete="off"
                         value={comment}
