@@ -31,14 +31,14 @@ const LinkTuneado = styled(Link)`
 const SocialNetworks = ( {linkLinkedin, linkGithub} ) => {
     return (
         <Cotainer>
-                <LinkTuneado to={linkLinkedin}>
+                <LinkTuneado to={linkLinkedin} target="_blank">
                     <LinkedInIcon
                         style={{
                             fontSize: '4rem',
                         }}
                     />
                 </LinkTuneado>
-                <LinkTuneado to={linkGithub}>
+                <LinkTuneado to={linkGithub} target="_blank">
                     <GitHubIcon
                         style={{
                             fontSize: '4rem',
