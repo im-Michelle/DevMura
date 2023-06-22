@@ -146,7 +146,7 @@ const ModalComments = (props) =>{
                     <StyledInput 
                         id="standard-basic" 
                         /* label={`Add a comment as ${ownName}`} */
-                        placeholder={`Add a comment as ${ownName}`}
+                        placeholder={`Add a comment as ${userName}`}
                         variant="outlined"
                         autoComplete="off"
                         value={comment}
