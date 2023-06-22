@@ -101,8 +101,8 @@ const UserPage = () => {
           }
         
             <SocialNetworks
-              linkLinkedin={`https://www.linkedin.com/${user.linkedin}`}
-              linkGithub={`https://www.github.com/${user.github}`}
+              linkLinkedin={`${user.linkedin}`}
+              linkGithub={`${user.github}`}
             />
             <Languages
               languages={user.languageProfiles}
