@@ -65,6 +65,7 @@ const LoaderContainer = styled.div`
 const SocialFeed = () => {
   const [userProfile, setUser] = useState({})
   const [posts, setPosts] = useState([])
+  const [hasMorePosts, setHasMorePosts] = useState(true);
   const [page, setPage] = useState(0)
   const ownUserProfile = readLocalStorage()
   const token = JSON.parse(localStorage.getItem("userDevmura")).token
@@ -100,15 +101,23 @@ const SocialFeed = () => {
     fetchPosts()
   }, [])
 
-  const fetchMoreData = async () => {
-    setPage(page + 1)
-    try{
-      const newPosts = await getAllPost(page)
-      setPosts([...posts, ...newPosts])
-    }catch(error){
-    console.error(error)
+  const fetchPosts = async () => {
+    try {
+      const newPosts = await getAllPost(page);
+      setPage(page + 1);
+
+      if (newPosts.length === 0) {
+        setHasMorePosts(false); // No hay más publicaciones por cargar
+      } else {
+        setPosts([...posts, ...newPosts]);
+      }
+    } catch (error) {
+      console.error(error);
     }
-  }
+  };
+  const fetchMoreData = () => {
+    fetchPosts();
+  };
 
   return (
     <>
@@ -136,8 +145,12 @@ const SocialFeed = () => {
             <InfiniteScroll
             dataLength={posts.length}
             next={fetchMoreData}
-            hasMore={true}
-            loader={<LoaderContainer><LoaderFeed/></LoaderContainer>  }
+            hasMore={hasMorePosts}
+            loader={
+              <LoaderContainer>
+                <LoaderFeed/>
+              </LoaderContainer> 
+            }
             endMessage={<NoMorePosts/>}
             >
               {posts.map((post) => (
