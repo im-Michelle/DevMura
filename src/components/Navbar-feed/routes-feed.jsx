@@ -27,13 +27,12 @@ align-content: center;
 align-items: center;
 text-decoration: none;
 transition: all 0.1s ease-in-out;
+filter: invert(1);
 :hover {
-    transform: scale(1.1);
-    filter: contrast(1.8);
+    transform: scale(1.09);
 }
 :active {
     transform: scale(0.99);
-    filter: contrast(1.8);
 }
 
 @media (max-width: 500px) {
@@ -46,36 +45,45 @@ width: 30px;
 height: 30px;
 object-fit: cover;
 &.profile-photo{
+    filter: invert(1);
     border-radius: 50%;
-    width: 35px;
-    height: 35px;
+    width: 40px;
+    height: 40px;
     object-fit: cover;
 }
 `;
+
 
 const FeedRoutesComponent = ({userImg}) => {
     return (
         <>
                     <FeedRoutes>
+                        <Tooltip title="home">
                         <StyledLink to="/feed">
-                            <LinkImg src="/icons/home-light-blue.png" alt="Home" />
+                            <LinkImg src="/icons/home-light-blue.svg" alt="Home" />
                         </StyledLink>
+                        </Tooltip>
+                        <Tooltip title="groups">
                         <StyledLink to="/groups">
-                            <LinkImg src="/icons/groups-red.png" alt="Groups" />
+                            <LinkImg src="/icons/groups-red.svg" alt="Groups" />
                         </StyledLink>
-                        <StyledLink to="/friends">
-                            <LinkImg src="/icons/green-bell.png" alt="Notifications" />
-                        </StyledLink>
-
-                        <Tooltip title="Próximamente" placement="bottom-end">
+                        </Tooltip>
+                        <Tooltip title="notification">
+                            <StyledLink to="/friends">
+                                <LinkImg src="/icons/green-bell.svg" alt="Notifications" />
+                            </StyledLink>
+                        </Tooltip> 
+                        <Tooltip title="message">
                             <StyledLink to="/chats">
-                                <LinkImg src="/icons/messages.png" alt="Messages" />
+                                <LinkImg src="/icons/messages.svg" alt="Messages" />
                             </StyledLink>
                         </Tooltip> 
 
-                        {<StyledLink to="/profile">
-                            <LinkImg src={ userImg ? userImg :  "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" } className='profile-photo' alt="Me" />
-                        </StyledLink>}
+                        <Tooltip title="profile">
+                            {<StyledLink to="/profile">
+                                <LinkImg src={ userImg ? userImg :  "https://upload.wikimedia.org/wikipedia/commons/8/89/Portrait_Placeholder.png" } className='profile-photo' alt="Me" />
+                            </StyledLink>}
+                        </Tooltip>
                     </FeedRoutes>
         </>
     )
