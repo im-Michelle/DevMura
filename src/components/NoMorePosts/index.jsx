@@ -24,7 +24,7 @@ const NoMorePosts = () =>{
     return (
         <MainContainer>
             <Title>There are no more posts to show</Title>
-            <Img src="/public/nomoreposts.jpg"/>    
+            <Img src="/img/nomoreposts.jpg"/>    
         </MainContainer>
     )
 }
