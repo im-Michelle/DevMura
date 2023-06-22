@@ -39,11 +39,9 @@ const AddButton = styled.button`
 
 
 const FriendAndMessage = ({ aut, friendId, owndId, friend}) =>{
-    console.log( 'friend id ', friendId,  "propio id ", owndId, "status", friend)
 
     const [friendStatus, setFriend] = useState(friend);
 
-    
     const handleFriendRequest = async () =>{
         addFriend(owndId, friendId , aut)
     }
@@ -56,10 +54,10 @@ const FriendAndMessage = ({ aut, friendId, owndId, friend}) =>{
     return(
         <Container>
             {   friendStatus 
-                ? <AddButton onClick={handleFriend}><img src="./svg/addfriend.svg" alt="add friend" /></AddButton> 
-                : <AddButton onClick={handleFriend}><img src="./svg/deletefriend.svg" alt="delete friend" /></AddButton> 
+                ? <AddButton onClick={handleFriend}><img src="/svg/addfriend.svg" alt="add friend" /></AddButton> 
+                : <AddButton onClick={handleFriend}><img src="/svg/deletefriend.svg" alt="delete friend" /></AddButton> 
                 }
-            <AddButton><img src="./svg/message.svg" alt="" /></AddButton> 
+            <AddButton><img src="/svg/message.svg" alt="delete button" /></AddButton> 
         </Container>
     )
 }
