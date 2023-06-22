@@ -11,8 +11,8 @@ const VipLogo = styled.img`
     }
 `
 const range = {
-    vip : "./svg/vip.svg",
-    admin: "./svg/admin.svg",
+    vip : "/svg/vip.svg",
+    admin: "/svg/admin.svg",
     user: ""
 }
 
