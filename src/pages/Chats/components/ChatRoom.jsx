@@ -58,7 +58,7 @@ const ChatRoom = () => {
         }
     }
     const onError = (error) => {
-        //console.log(error);
+        console.log(error);
     }
     return (
         <div>

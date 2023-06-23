@@ -174,7 +174,7 @@ const Post = ({ id ,firstName, lastName, role, userName, time, img, bodyText, po
       setComments(comentarios)
       setShowModal(!showModal)
     }catch(error){
-      //console.log(error)
+      console.log(error)
     }
   }
 

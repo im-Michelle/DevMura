@@ -73,7 +73,7 @@ const ProfilePage = () => {
         const ownPosts = await getOwnUser(userDevMura.id, userDevMura.token);
         setOwnPosts(ownPosts.posts);
       }catch(error){
-        //console.log(error);
+        console.log(error);
       }
     }
     fetchOwnPosts();

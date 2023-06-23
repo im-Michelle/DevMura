@@ -137,8 +137,8 @@ const SignIn = () => {
     e.preventDefault();
     validateForm();
     if(formValid){
-      //console.log(formValues)
-      //console.log("Form is valid");
+      console.log(formValues)
+      console.log("Form is valid");
       try{
         await login(formValues.username, formValues.password);
         

@@ -28,10 +28,10 @@ export const updateProfile = async (id, profileData, token) => {
         Authorization: `Bearer ${token}`,
       },
     });
-    //console.log("llega: ", profileData);
-    //console.log("Respuesta del servidor", response.data);
+    console.log("llega: ", profileData);
+    console.log("Respuesta del servidor", response.data);
   } catch (error) {
-    //console.error('Error al enviar la solicitud', error);
+    console.error('Error al enviar la solicitud', error);
     throw error.response.data;
   }
 };
