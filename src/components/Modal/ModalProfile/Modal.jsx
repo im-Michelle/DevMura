@@ -19,6 +19,7 @@ import { getLanguages } from '../../../service/Gets/languageService';
 import { getCountries } from "../../../service/Gets/countryService";
 import { updateProfile } from '../../../service/Puts/putProfile';
 import dayjs from 'dayjs';
+import { faL } from '@fortawesome/free-solid-svg-icons';
 
 const CustomAutoComplete = styled(Autocomplete)`
   color: ${colors.primaryText};
@@ -166,7 +167,6 @@ const ModalProfile = ({
   const [newLastName, setNewLastName] = useState("");
   //const defaultDate = dayjs('2000-08-25');
 
-
   // validadores de los inputs
   const [isValidName, setIsValidName] = useState(true);
   const [isValidLastName, setIsValidLastName] = useState(true);
@@ -177,6 +177,7 @@ const ModalProfile = ({
   const [isValidBackground, setIsValidBackground] = useState(true);
   const [isValidRole, setIsValidRole] = useState(true);
   const [isValidBio, setIsValidBio] = useState(true);
+  const [isValidAge, setIsValidAge] = useState(true);
 
   // validadores de los inputs
   const handleInputNameChange = (e) => {
@@ -294,9 +295,11 @@ const ModalProfile = ({
       }
   
       if (newAge < 18 || newAge > 100) {
-        setAgeError('Invalid age');
+        setAgeError('Invalid age, you need to be of legal age');
+        setIsValidAge(false);
       } else {
         setAgeError('');
+        setIsValidAge(true);
       }
   
       setNewAge(newAge.toString());
@@ -314,7 +317,8 @@ const ModalProfile = ({
       isValidLikedin &&
       isValidImg &&
       isValidBackground &&
-      isValidRole) {
+      isValidRole &&
+      isValidAge) {
       try {
         const profileData = {
           id: id,
@@ -340,10 +344,10 @@ const ModalProfile = ({
         handleLocalChanges(profile);
         //console.log("guardado");
       } catch (error) {
-        //console.log("Perfil no actualizado", error);
+        console.log("Perfil no actualizado", error);
       }
     } else {
-      //console.log("Faltan validaciones");
+      console.log("Faltan validaciones");
     } 
   };
 
