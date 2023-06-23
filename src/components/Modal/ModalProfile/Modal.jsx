@@ -19,6 +19,7 @@ import { getLanguages } from '../../../service/Gets/languageService';
 import { getCountries } from "../../../service/Gets/countryService";
 import { updateProfile } from '../../../service/Puts/putProfile';
 import dayjs from 'dayjs';
+import Snackbar from "../../SnackBar/SnackBar";
 
 const CustomAutoComplete = styled(Autocomplete)`
   color: ${colors.primaryText};
@@ -166,7 +167,6 @@ const ModalProfile = ({
   const [newLastName, setNewLastName] = useState("");
   //const defaultDate = dayjs('2000-08-25');
 
-
   // validadores de los inputs
   const [isValidName, setIsValidName] = useState(true);
   const [isValidLastName, setIsValidLastName] = useState(true);
@@ -177,6 +177,11 @@ const ModalProfile = ({
   const [isValidBackground, setIsValidBackground] = useState(true);
   const [isValidRole, setIsValidRole] = useState(true);
   const [isValidBio, setIsValidBio] = useState(true);
+  const [isValidAge, setIsValidAge] = useState(true);
+
+  // Mensajes de error 
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   // validadores de los inputs
   const handleInputNameChange = (e) => {
@@ -294,9 +299,11 @@ const ModalProfile = ({
       }
   
       if (newAge < 18 || newAge > 100) {
-        setAgeError('Invalid age');
+        setAgeError('Invalid age, you need to be of legal age');
+        setIsValidAge(false);
       } else {
         setAgeError('');
+        setIsValidAge(true);
       }
   
       setNewAge(newAge.toString());
@@ -314,7 +321,8 @@ const ModalProfile = ({
       isValidLikedin &&
       isValidImg &&
       isValidBackground &&
-      isValidRole) {
+      isValidRole &&
+      isValidAge) {
       try {
         const profileData = {
           id: id,
@@ -341,9 +349,13 @@ const ModalProfile = ({
         //console.log("guardado");
       } catch (error) {
         //console.log("Perfil no actualizado", error);
+        setSnackbarOpen(true);
+        setErrorMessage('Perfil no actualizado');
       }
     } else {
       //console.log("Faltan validaciones");
+        setSnackbarOpen(true);
+        setErrorMessage('Tienes errores, corrigelos');
     } 
   };
 
@@ -677,7 +689,7 @@ useEffect(() => {
                 multiline
                 rows={4}
                 value={newBio}
-                helperText={isValidBio? '' : 'Invalid bio'}
+                helperText={isValidBio? '' : 'Invalid bio, less than 100 characters'}
                 error={!isValidBio}
                 onChange={handleInputBioChange}
                 sx={{
@@ -751,7 +763,7 @@ useEffect(() => {
               label="Profile Image"
               variant="standard"
               value={newImg}
-              helperText={isValidImg ? '' : 'Invalid url for image'}
+              helperText={isValidImg ? '' : 'Invalid url for image, less than 300 characters'}
               error={!isValidImg}
               required
               inputProps={{ style: { textTransform: 'capitalize' } }}
@@ -764,7 +776,7 @@ useEffect(() => {
               label="Background Image"
               variant="standard"
               value={newBackground}
-              helperText={isValidBackground ? '' : 'Invalid url for image'}
+              helperText={isValidBackground ? '' : 'Invalid url for image, less than 300 characters'}
               error={!isValidBackground}
               required
               inputProps={{ style: { textTransform: 'capitalize' } }}
@@ -829,6 +841,14 @@ useEffect(() => {
       {showMiniModal && (
           <MiniModal open={showMiniModal} onClose={handleMiniModalClose} onDiscardChanges={handleDiscardChanges} />
         )}
+      <Snackbar
+        key={snackbarOpen}
+        open={snackbarOpen}
+        autoHideDuration={4000}
+        onClose={() => setSnackbarOpen(false)}
+        message={errorMessage}
+        severity={"error"}
+      />
     </>
   );
 };

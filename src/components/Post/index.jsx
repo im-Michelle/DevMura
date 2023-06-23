@@ -174,13 +174,13 @@ const Post = ({ id ,firstName, lastName, role, userName, time, img, bodyText, po
       setComments(comentarios)
       setShowModal(!showModal)
     }catch(error){
-      console.log(error)
+      //console.log(error)
     }
   }
 
   const handleLike = async () =>{
     const megusta = await heartPost( ownId, id , aut)
-    console.log(megusta)
+    //console.log(megusta)
     megusta == 1 ? setLike(true) : setLike(false)
     megusta == 1 ? setLikeCounter(likeCounter + 1) : setLikeCounter(likeCounter - 1)
   }

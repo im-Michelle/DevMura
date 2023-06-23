@@ -25,10 +25,10 @@ const ModalSignUp = ({ open, onClose }) => {
     >
       <Box className="modal-containerS"  sx={{p: 2}}>
         <div id='circle'> 
-          <CheckIcon className="icon" />
+          <CheckIcon className="icon" style={{ fontSize: '4rem'}}/>
         </div>
         <div id='titleS'>
-          <h2 id="parent-modal-title" style={{ color: colors.contrast , textAlign:'center'}}>¡User register!</h2>
+          <h2 id="parent-modal-title" style={{ color: '#50715A', textAlign:'center'}}>¡User register!</h2>
           <p style={{textAlign: 'center'}}> Your user is register now, you can login </p>
         </div>
         <div id='buttonS'>
