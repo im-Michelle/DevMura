@@ -689,7 +689,7 @@ useEffect(() => {
                 multiline
                 rows={4}
                 value={newBio}
-                helperText={isValidBio? '' : 'Invalid bio'}
+                helperText={isValidBio? '' : 'Invalid bio, less than 100 characters'}
                 error={!isValidBio}
                 onChange={handleInputBioChange}
                 sx={{
@@ -763,7 +763,7 @@ useEffect(() => {
               label="Profile Image"
               variant="standard"
               value={newImg}
-              helperText={isValidImg ? '' : 'Invalid url for image'}
+              helperText={isValidImg ? '' : 'Invalid url for image, less than 300 characters'}
               error={!isValidImg}
               required
               inputProps={{ style: { textTransform: 'capitalize' } }}
@@ -776,7 +776,7 @@ useEffect(() => {
               label="Background Image"
               variant="standard"
               value={newBackground}
-              helperText={isValidBackground ? '' : 'Invalid url for image'}
+              helperText={isValidBackground ? '' : 'Invalid url for image, less than 300 characters'}
               error={!isValidBackground}
               required
               inputProps={{ style: { textTransform: 'capitalize' } }}
