@@ -10,10 +10,10 @@ export const friendRequest = async (ownId, aut )   => {
             },
         }
         );
-        console.log("friendRequest", response.data);
+        //console.log("friendRequest", response.data);
         return response.data;
     }catch(error){
-        console.error("Error retrieving friendRequest", error);
+        //console.error("Error retrieving friendRequest", error);
         return [];
     }
 }
