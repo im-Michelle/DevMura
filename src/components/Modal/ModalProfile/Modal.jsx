@@ -19,7 +19,7 @@ import { getLanguages } from '../../../service/Gets/languageService';
 import { getCountries } from "../../../service/Gets/countryService";
 import { updateProfile } from '../../../service/Puts/putProfile';
 import dayjs from 'dayjs';
-import { faL } from '@fortawesome/free-solid-svg-icons';
+import Snackbar from "../../SnackBar/SnackBar";
 
 const CustomAutoComplete = styled(Autocomplete)`
   color: ${colors.primaryText};
@@ -178,6 +178,10 @@ const ModalProfile = ({
   const [isValidRole, setIsValidRole] = useState(true);
   const [isValidBio, setIsValidBio] = useState(true);
   const [isValidAge, setIsValidAge] = useState(true);
+
+  // Mensajes de error 
+  const [snackbarOpen, setSnackbarOpen] = useState(false);
+  const [errorMessage, setErrorMessage] = useState("");
 
   // validadores de los inputs
   const handleInputNameChange = (e) => {
@@ -344,10 +348,14 @@ const ModalProfile = ({
         handleLocalChanges(profile);
         //console.log("guardado");
       } catch (error) {
-        console.log("Perfil no actualizado", error);
+        //console.log("Perfil no actualizado", error);
+        setSnackbarOpen(true);
+        setErrorMessage('Perfil no actualizado');
       }
     } else {
-      console.log("Faltan validaciones");
+      //console.log("Faltan validaciones");
+        setSnackbarOpen(true);
+        setErrorMessage('Tienes errores, corrigelos');
     } 
   };
 
@@ -833,6 +841,14 @@ useEffect(() => {
       {showMiniModal && (
           <MiniModal open={showMiniModal} onClose={handleMiniModalClose} onDiscardChanges={handleDiscardChanges} />
         )}
+      <Snackbar
+        key={snackbarOpen}
+        open={snackbarOpen}
+        autoHideDuration={4000}
+        onClose={() => setSnackbarOpen(false)}
+        message={errorMessage}
+        severity={"error"}
+      />
     </>
   );
 };
