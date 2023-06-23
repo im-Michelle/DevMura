@@ -8,11 +8,11 @@ export const getUserByID = async (id, token) =>{
                 Authorization: `Bearer ${token}`
             }
         });
-        //console.log("User fetch", response.data);
+        console.log("User fetch", response.data);
         const user = response.data;
         return user
     }catch(e){
-        //console.error("No user fetch", e);
+        console.error("No user fetch", e);
         return []
     }
 }

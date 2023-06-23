@@ -121,9 +121,9 @@ const Friends = () =>{
             try{
                 const requests = await friendRequest(ownUserProfile.id, ownUserProfile.token)
                 setFriendRequest(requests)
-                //console.log(requests)
+                console.log(requests)
             }catch(error){
-                //console.log(error)
+                console.log(error)
             }
         };
         fetchFriendRequest();

@@ -23,8 +23,8 @@ export const heartPost = async ( userId , postId , aut ) =>{
                 Authorization: `Bearer ${aut}`
             }
         });
-        //console.log('Solicitud enviada correctamente', response.data);
-        //console.log('Status: ', response.data.status);
+        console.log('Solicitud enviada correctamente', response.data);
+        console.log('Status: ', response.data.status);
         return response.data.status;
     }catch(error){
         console.error('Error al enviar la solicitud', error);
